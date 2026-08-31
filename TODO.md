@@ -15,13 +15,16 @@
 - [x] Add the GitHub Pages build and deployment workflow.
 - [x] Verify a clean build and browser behavior at desktop and mobile widths.
 - [x] Confirm the first GitHub Pages deployment after the pull request is merged.
-- [ ] Complete final production-polish verification for footer attribution and Open Graph metadata.
+- [x] Complete final production-polish verification for footer attribution and Open Graph metadata.
 
 ## M2 — Content planning and taxonomy
 
-- [ ] Define the course taxonomy and naming conventions.
-- [ ] Create a reviewed content template for theory, labs, exams, and projects.
-- [ ] Decide which source items are authored, official, or external links.
+- [x] Define the course taxonomy and naming conventions.
+- [x] Create reviewed content templates for theory, labs, exams, and projects.
+- [x] Map the 19 primary course-source files to canonical topic groups and classify the student report as case-study-only.
+- [ ] Review the taxonomy/source map for omissions or duplicate concepts.
+- [ ] Create the destination folder/index skeleton without migrating full theory content.
+- [ ] Run CI and artifact checks on the complete M2 planning branch.
 
 ## M3 — Theory and practical labs
 
