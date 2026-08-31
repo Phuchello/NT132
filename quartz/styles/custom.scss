@@ -8,6 +8,11 @@
   --nt132-accent-soft: color-mix(in srgb, var(--secondary) 10%, transparent);
 }
 
+// Keep the document inside the client width when a mobile scrollbar is present.
+html {
+  width: 100%;
+}
+
 .page-title a {
   color: var(--secondary);
   letter-spacing: 0.02em;
