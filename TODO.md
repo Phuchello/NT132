@@ -21,10 +21,15 @@
 
 - [x] Define the course taxonomy and naming conventions.
 - [x] Create reviewed content templates for theory, labs, exams, and projects.
-- [x] Map the 19 primary course-source files to canonical topic groups and classify the student report as case-study-only.
-- [ ] Review the taxonomy/source map for omissions or duplicate concepts.
-- [ ] Create the destination folder/index skeleton without migrating full theory content.
-- [ ] Run CI and artifact checks on the complete M2 planning branch.
+- [x] Map the 19 primary course-source files to canonical topic groups.
+- [x] Record A/B/C policy class and redistribution status for every mapped source.
+- [x] Classify the student report as Class C, case-study/reference only.
+- [x] Review the taxonomy/source map for omissions or duplicate concepts.
+- [x] Create the destination theory/practical folder and index skeleton without migrating full chapter content.
+- [x] Replace public future-work lab placeholders with durable student-facing section guidance.
+- [x] Define explicit relative internal-link semantics and verify a zero-missing-reference artifact on the link remediation build.
+- [ ] Run final CI and artifact checks on the complete current M2 remediation HEAD.
+- [ ] Obtain a clean current-head Codex re-review and merge PR #3.
 
 ## M3 — Theory and practical labs
 
