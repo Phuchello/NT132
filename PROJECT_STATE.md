@@ -1,12 +1,12 @@
 # NT132 Project State
 
-Current milestone: M1 — Working website foundation
+Current milestone: M1 — Review remediation complete; re-review pending
 
-Last safe checkpoint: Clean Quartz build, static-host nested-route check, browser verification, Pages enablement, and PR #1 build are complete.
+Last safe checkpoint: PR build succeeds, but P2 route/concurrency issues are under remediation.
 
 Current branch: feat/quartz-foundation
 
-Latest verified commit: 68c90ed (Quartz foundation and GitHub Pages workflow)
+Latest verified commit: 105e7bb (M1 review remediation and visual verification)
 
 Working features:
 
@@ -18,10 +18,11 @@ Working features:
 - GitHub Pages route preparation for extensionless nested refreshes
 - Three temporary structural graph-test notes: Static Routing, OSPF, and ACL
 
-Known issues:
+Known unresolved findings and gates:
 
-- GitHub Pages has not been deployed from this environment yet, so the live deployment URL is not independently confirmed.
-- Full course content, downloadable material, diagrams, and source migration are intentionally out of scope for M1.
-- The deploy job is intentionally skipped on PR events; first live deployment requires merging PR #1 into `main`.
+- The two Codex review threads still need the actual-fix replies and a fresh re-review.
+- PR #1 remains intentionally unmerged until that re-review confirms the blockers are closed.
+- GitHub Pages has not been deployed from this environment; the first live deployment remains merge-gated.
+- M2 content work has not started.
 
-Exact next action: Review and merge PR #1 into `main`, confirm the first Pages deployment at `https://phuchello.github.io/NT132/`, then begin M2 content planning.
+Exact next action: Resolve review findings -> run CI -> verify direct nested routes -> request re-review.
