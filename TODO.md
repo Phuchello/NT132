@@ -9,11 +9,11 @@
 
 ## M1 — Working website foundation
 
-- [ ] Pin the Quartz v4 foundation and deterministic npm lockfile.
-- [ ] Add the NT132 content skeleton and temporary graph-test notes.
-- [ ] Configure Explorer, search, graph view, TOC, backlinks, breadcrumbs, and responsive layout.
-- [ ] Add the GitHub Pages build and deployment workflow.
-- [ ] Verify a clean build and browser behavior at desktop and mobile widths.
+- [x] Pin the Quartz v4 foundation and deterministic npm lockfile.
+- [x] Add the NT132 content skeleton and temporary graph-test notes.
+- [x] Configure Explorer, search, graph view, TOC, backlinks, breadcrumbs, and responsive layout.
+- [x] Add the GitHub Pages build and deployment workflow.
+- [x] Verify a clean build and browser behavior at desktop and mobile widths.
 - [ ] Confirm the first GitHub Pages deployment after the pull request is merged.
 
 ## M2 — Content planning and taxonomy

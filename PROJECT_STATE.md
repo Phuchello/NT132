@@ -1,22 +1,27 @@
 # NT132 Project State
 
-Current milestone: M0 — Repository audit and architecture
+Current milestone: M1 — Working website foundation
 
-Last safe checkpoint: Initial repository audit is complete and the requested feature branch has been created.
+Last safe checkpoint: Clean Quartz build, static-host nested-route check, and browser verification are complete on the feature branch.
 
 Current branch: feat/quartz-foundation
 
-Latest verified commit: dd5330e (initial repository baseline)
+Latest verified commit: 68c90ed (Quartz foundation and GitHub Pages workflow)
 
 Working features:
 
-- Initial repository state and source policy are documented.
-- The feature branch `feat/quartz-foundation` is ready for M1 implementation.
+- Quartz v4.5.2 build pipeline with Markdown content under `content/`
+- NT132 light/dark visual system and Vietnamese UI locale
+- Explorer, search, local/global graph, table of contents, backlinks, breadcrumbs, popovers, and SPA navigation
+- Responsive desktop/tablet/mobile layout with an accessible mobile Explorer trigger
+- GitHub Pages build/deploy workflow targeting `main`
+- GitHub Pages route preparation for extensionless nested refreshes
+- Three temporary structural graph-test notes: Static Routing, OSPF, and ACL
 
 Known issues:
 
-- Quartz and the working website foundation have not yet been committed.
-- GitHub Pages configuration and deployment are not yet present.
-- The initial repository contains no course content or source files to migrate.
+- GitHub Pages has not been deployed from this environment yet, so the live deployment URL is not independently confirmed.
+- Full course content, downloadable material, diagrams, and source migration are intentionally out of scope for M1.
+- The pull request can only be opened after the feature branch is pushed with repository write access.
 
-Exact next action: Add the pinned Quartz v4.5.2 foundation, navigation skeleton, graph-test notes, and GitHub Pages workflow on this feature branch.
+Exact next action: Push `feat/quartz-foundation`, open the pull request into `main`, and review CI/Pages deployment before starting M2 content planning.
