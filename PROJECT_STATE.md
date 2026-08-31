@@ -1,12 +1,14 @@
 # NT132 Project State
 
-Current milestone: M3.1 — review remediation
+Current milestone: M3.1 — final mentor review
 
 Current branch: feat/m3-1-core-routing
 
-Last safe checkpoint: M2 is production-complete and merged into `main` (`2fd023e3e23297a7e8e50b73b5a1768c8375fc8e`). PR #4 is open on `feat/m3-1-core-routing`.
+Last safe checkpoint: M3.1 remediation round 2 is committed in `2b980100da10704e029579f736a99c048aa534f9`; final mentor review is pending.
 
-Latest production commit: 2fd023e3e23297a7e8e50b73b5a1768c8375fc8e
+Latest production commit: af561c936e0b13929cc9bb81f73c14b13f057784
+
+Current candidate HEAD: 2b980100da10704e029579f736a99c048aa534f9
 
 Work completed in Remediation Round 1:
 
@@ -26,20 +28,30 @@ Work completed in Remediation Round 1:
 - **Comprehensive Artifact Audit**:
   - Upgraded `scripts/audit-artifact.mjs` to check `href`, `src`, `srcset`, single `<h1>` tag integrity, required diagrams, forbidden terms, and PDF leaks.
 
+Work completed in Remediation Round 2:
+
+- Redesigned the cross-network forwarding diagram for 390px and desktop rendering, explicitly teaching PC-A → R1 → R2 → PC-B, end-to-end IP addresses, and hop-by-hop MAC addresses.
+- Corrected OSPF terminology around LSA contents and LSU transport while preserving the course-slide “LSU update” framing with an RFC 2328 clarification.
+- Removed unattributed ECMP implementation detail from RIP and made Floating Static failover wording precise about route removal, resolution, installation, and downstream failure limits.
+- Extracted a shared `srcset`/`imagesrcset` parser and added regression coverage for density/width descriptors, multiple candidates, data URL commas, and ordinary URL commas.
+- Added audit gates for forbidden `prompt`, `placeholder`, and `TODO` terms and kept external/data references out of broken-local counters.
+
 Current blockers:
 
-- source/provenance normalization (remediated; pending mentor review)
-- accuracy/overstatement corrections (remediated; pending mentor review)
-- duplicate H1 (remediated; 0 violations across 40 routes)
-- mobile diagram readability (remediated; redesigned for 390px)
-- artifact audit parity (remediated; 374 hrefs, 90 srcs, 0 broken)
+- Mentor final re-review only.
 
-Verification completed:
+Verification completed after Round 2:
 
-- `npm run check`: PASS (0 errors)
-- `npm test`: PASS (74/74 unit tests)
-- `npm run test:routes`: PASS (5/5 tests)
-- `npx quartz build` + `npm run prepare-pages`: PASS (77 files emitted, 7 extensionless routes)
-- `npm run test:audit`: PASS (0 H1 violations, 0 broken links, 0 broken srcs, 0 term violations)
+- `npm ci`: PASS
+- `npm run check`: PASS
+- `npm test`: PASS (75/75)
+- `npm run quartz -- build -d content -v`: PASS (77 files emitted)
+- `npm run prepare-pages`: PASS (7 extensionless routes)
+- `npm run test:routes`: PASS (5/5)
+- `npm run test:audit`: PASS (40 routes, 374 hrefs, 90 srcs, 0 srcsets, 0 broken targets, 0 H1 violations, 0 term violations, 0 restricted PDFs)
+- `git diff --check`: PASS
+- Visual inspection: all 5 diagrams checked at 390px and desktop width; cross-network forwarding checked in the actual embedded image viewport without clipping or duplicate content.
 
-Exact Next Action: fix current M3.1 blockers -> run full QA -> artifact inspect -> request re-review if quota available.
+Review note: Codex independent review is unavailable due to quota. Mentor final review remains the merge gate.
+
+Exact Next Action: final QA → inspect final artifact → wait for mentor PASS.
