@@ -1,12 +1,12 @@
 # NT132 Project State
 
-Current milestone: M1 — Final Codex re-review pending
+Current milestone: M1 — Production polish verification
 
-Last safe checkpoint: Local verification passes on 09881c; root-only 404 handling and regression verification passed; PR #1 remains unpushed for review.
+Last safe checkpoint: PR #1 was merged to `main` as `cc07d72d5d41a250f07b889f3e62dcc324c17306`; GitHub Actions run #11 built and deployed successfully to GitHub Pages.
 
-Current branch: feat/quartz-foundation
+Current branch: fix/m1-production-polish
 
-Latest verified commit: 09881c943e39964fae80fa82271669390264be7a (root-only 404 handling and regression tests)
+Latest production commit: cc07d72d5d41a250f07b889f3e62dcc324c17306
 
 Working features:
 
@@ -16,15 +16,22 @@ Working features:
 - Responsive desktop/tablet/mobile layout with an accessible mobile Explorer trigger
 - GitHub Pages build/deploy workflow targeting `main`
 - GitHub Pages route preparation for extensionless nested refreshes
+- Root-only GitHub Pages 404 preservation with nested `404.html` route support
 - Three temporary structural graph-test notes: Static Routing, OSPF, and ACL
 
-Known unresolved findings and gates:
+Production verification completed:
 
-- Open gate: Codex re-review of root-404 handling.
-- PR #1 remains intentionally unmerged until that re-review confirms the blockers are closed.
-- GitHub Pages has not been deployed from this environment; the first live deployment remains merge-gated.
-- M2 content work has not started.
+- Main build and deploy jobs passed.
+- The Pages deployment reported success for commit `cc07d72d5d41a250f07b889f3e62dcc324c17306`.
+- The deployed artifact contains all expected top-level and nested extensionless routes.
+- Static artifact validation found no missing internal `href`, `src`, or `srcset` targets across 160 checked local references.
+- Viewport metadata and mobile Explorer controls are present in generated HTML.
 
-Recorded M1 review sequence: Resolve review findings -> run CI -> verify direct nested routes and assets -> request re-review -> fix alias meta-refresh rebasing -> run full validation -> request re-review -> fix root-only 404 handling -> run full validation.
-Exact next action: Wait for clean Codex re-review.
-Do not merge until current HEAD has no P1/P2 findings.
+Final production-polish findings being remediated:
+
+- Footer displayed the project package version as if it were the Quartz framework version; attribution should show `Quartz` without the misleading `v0.1.0` label.
+- Default Open Graph image metadata emitted `image/.png`; it should emit the valid MIME type `image/png`.
+
+M2 content work has not started yet.
+
+Exact next action: Validate the production-polish branch with CI and generated-artifact inspection, merge it if clean, then immediately start M2 content planning and taxonomy on a fresh branch.
