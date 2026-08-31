@@ -101,10 +101,11 @@ function findTestAttributes(document) {
   function visit(node) {
     const marker = node.attrs?.find((attribute) => attribute.name === "data-test")
     if (marker) {
-      const value = node.attrs.find((attribute) =>
-        ["href", "src", "srcset"].includes(attribute.name),
-      )
-      if (value) attributes.set(marker.value, value.value)
+      for (const attribute of node.attrs) {
+        if (!["href", "src", "srcset"].includes(attribute.name)) continue
+        attributes.set(`${marker.value}:${attribute.name}`, attribute.value)
+        if (!attributes.has(marker.value)) attributes.set(marker.value, attribute.value)
+      }
       if (marker.value === "contentIndex") {
         const scriptText = node.childNodes?.find((child) => child.nodeName === "#text")?.value
         const match = scriptText?.match(/fetch\("([^"]+)"\)/)
@@ -199,6 +200,36 @@ test("rebases generated URLs for root, folder, and nested routes", async () => {
       assert.equal(actual.get("mailto"), "mailto:student@example.com")
       assert.equal(actual.get("tel"), "tel:+84123456789")
     }
+  } finally {
+    await rm(outputRoot, { recursive: true, force: true })
+  }
+})
+
+test("rebases bare-relative srcset candidates in a nested route", async () => {
+  const outputRoot = await mkdtemp(path.join(os.tmpdir(), "nt132-pages-srcset-bare-"))
+  const sourcePath = path.join(outputRoot, "topic", "page.html")
+  const sourceSrcset =
+    "small.png, images/large.png 2x, ./with-query.png?crop=1,2 400w, data:image/png;base64,AAAA 1x"
+
+  try {
+    await mkdir(path.dirname(sourcePath), { recursive: true })
+    await writeFile(
+      sourcePath,
+      `<!doctype html><html><body><img data-test="responsive" srcset="${sourceSrcset}" src="small.png" alt="responsive"></body></html>`,
+    )
+
+    assert.equal(await preparePages(outputRoot), 1)
+
+    const output = parse(
+      await readFile(path.join(outputRoot, "topic", "page", "index.html"), "utf8"),
+    )
+    const actual = findTestAttributes(output)
+
+    assert.equal(actual.get("responsive:src"), "../small.png")
+    assert.equal(
+      actual.get("responsive:srcset"),
+      "../small.png, ../images/large.png 2x, ../with-query.png?crop=1,2 400w, data:image/png;base64,AAAA 1x",
+    )
   } finally {
     await rm(outputRoot, { recursive: true, force: true })
   }

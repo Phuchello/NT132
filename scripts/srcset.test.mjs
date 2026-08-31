@@ -5,28 +5,34 @@ import { parseSrcsetCandidates } from "./srcset.mjs"
 test("parses srcset and imagesrcset candidates without corrupting URL commas", () => {
   const cases = [
     {
-      label: "pixel density 1x",
-      value: "./small.png 1x",
-      urls: ["./small.png"],
-      descriptors: ["1x"],
+      label: "bare relative candidates without descriptors",
+      value: "small.png, large.png",
+      urls: ["small.png", "large.png"],
+      descriptors: ["", ""],
     },
     {
-      label: "pixel density 2x",
-      value: "./large.png 2x",
-      urls: ["./large.png"],
-      descriptors: ["2x"],
+      label: "bare relative candidate followed by a width candidate",
+      value: "images/small.png, images/large.png 2x",
+      urls: ["images/small.png", "images/large.png"],
+      descriptors: ["", "2x"],
+    },
+    {
+      label: "bare relative candidate followed by dot-relative candidate",
+      value: "small.png, ./large.png",
+      urls: ["small.png", "./large.png"],
+      descriptors: ["", ""],
+    },
+    {
+      label: "pixel density candidates",
+      value: "./small.png 1x, ./large.png 2x",
+      urls: ["./small.png", "./large.png"],
+      descriptors: ["1x", "2x"],
     },
     {
       label: "width descriptor",
       value: "./wide.png 400w",
       urls: ["./wide.png"],
       descriptors: ["400w"],
-    },
-    {
-      label: "multiple normal candidates",
-      value: "./small.png 1x, ./large.png 2x",
-      urls: ["./small.png", "./large.png"],
-      descriptors: ["1x", "2x"],
     },
     {
       label: "data URL containing commas",
@@ -41,16 +47,34 @@ test("parses srcset and imagesrcset candidates without corrupting URL commas", (
       descriptors: ["1x", "2x"],
     },
     {
-      label: "imagesrcset uses the same candidate grammar",
+      label: "absolute URL",
+      value: "https://example.com/a.png 1x",
+      urls: ["https://example.com/a.png"],
+      descriptors: ["1x"],
+    },
+    {
+      label: "protocol-relative URL",
+      value: "//cdn.example.com/a.png 2x",
+      urls: ["//cdn.example.com/a.png"],
+      descriptors: ["2x"],
+    },
+    {
+      label: "imagesrcset candidate grammar",
       value: "./preview.png 400w, https://cdn.example.com/full.png 800w",
       urls: ["./preview.png", "https://cdn.example.com/full.png"],
       descriptors: ["400w", "800w"],
     },
     {
-      label: "absolute and data URLs remain identifiable",
-      value: "https://example.com/a.png 1x, data:image/png;base64,AAAA 2x",
-      urls: ["https://example.com/a.png", "data:image/png;base64,AAAA"],
-      descriptors: ["1x", "2x"],
+      label: "first candidate without descriptor",
+      value: "small.png, ./large.png 2x",
+      urls: ["small.png", "./large.png"],
+      descriptors: ["", "2x"],
+    },
+    {
+      label: "mixed bare-relative and parent-relative candidates",
+      value: "images/small.png, ../large.png 400w",
+      urls: ["images/small.png", "../large.png"],
+      descriptors: ["", "400w"],
     },
   ]
 

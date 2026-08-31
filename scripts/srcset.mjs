@@ -2,29 +2,13 @@ function isWhitespace(value) {
   return /\s/.test(value)
 }
 
-function isLikelyCandidateStart(value, start) {
-  let cursor = start
-  while (cursor < value.length && isWhitespace(value[cursor])) cursor += 1
-  if (cursor >= value.length) return false
-
-  const tokenStart = cursor
-  while (cursor < value.length && !isWhitespace(value[cursor]) && value[cursor] !== ",") {
-    cursor += 1
-  }
-  const token = value.slice(tokenStart, cursor)
-
-  return (
-    token.startsWith("./") ||
-    token.startsWith("../") ||
-    token.startsWith("/") ||
-    token.startsWith("//") ||
-    /^[a-z][a-z\d+.-]*:/i.test(token)
-  )
-}
-
 function isCandidateSeparator(value, index) {
   if (value[index] !== ",") return false
-  return isLikelyCandidateStart(value, index + 1)
+
+  // In the srcset grammar a comma followed by whitespace starts the next
+  // candidate. A comma without that separator context remains part of the
+  // URL token, which preserves data URLs and ordinary URL query/path commas.
+  return index + 1 >= value.length || isWhitespace(value[index + 1])
 }
 
 /**

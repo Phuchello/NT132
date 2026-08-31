@@ -149,7 +149,7 @@ Router(config)# ip route 192.168.2.0 255.255.255.0 Serial0/0/0
 Router(config)# ip route 192.168.2.0 255.255.255.0 GigabitEthernet0/1 172.16.2.2
 ```
 
-- **Đặc điểm**: Triệt tiêu hiện tượng tra cứu đệ quy, đồng thời xác định chính xác địa chỉ IP của thiết bị nhận để phân giải địa chỉ MAC qua ARP. Đây là phương pháp tối ưu trên môi trường mạng Ethernet.
+- **Đặc điểm**: Triệt tiêu hiện tượng tra cứu đệ quy, đồng thời xác định chính xác địa chỉ IP của thiết bị nhận để phân giải địa chỉ MAC qua ARP. Trên Ethernet đa truy cập, cách này có thể hữu ích khi cần nêu rõ cả cổng thoát và next-hop.
 
 ---
 

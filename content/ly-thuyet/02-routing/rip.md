@@ -66,14 +66,14 @@ Thông điệp định tuyến của Distance Vector:
 
 Bảng đối chiếu kỹ thuật giữa hai thế hệ của giao thức RIP:
 
-| Đặc tính kỹ thuật                  | RIP Version 1 (RIPv1)             | RIP Version 2 (RIPv2)                     | Ý nghĩa thực tế                                                                                   |
-| :--------------------------------- | :-------------------------------- | :---------------------------------------- | :------------------------------------------------------------------------------------------------ |
-| **Loại giao thức**                 | **Classful** (Theo lớp A, B, C)   | **Classless** (Phi lớp)                   | RIPv1 ép các mạng về lớp chuẩn (/8, /16, /24), RIPv2 hỗ trợ chia mạng con tùy ý.                  |
-| **Gửi kèm Subnet Mask**            | **Không**                         | **Có**                                    | Không có Subnet Mask thì không thể chạy các mạng chia nhỏ theo VLSM.                              |
-| **Địa chỉ gửi cập nhật**           | **Broadcast** (`255.255.255.255`) | **Multicast** (`224.0.0.9`)               | Broadcast làm phiền tất cả máy tính trong LAN; Multicast chỉ các router chạy RIPv2 mới lắng nghe. |
-| **Hỗ trợ VLSM & CIDR**             | **Không**                         | **Có**                                    | Tiết kiệm không gian địa chỉ IPv4 hiện đại.                                                       |
-| **Xác thực (Authentication)**      | **Không**                         | **Có** (Plain text / MD5)                 | Ngăn chặn thiết bị lạ gửi thông tin định tuyến giả mạo.                                           |
-| **Tự động tóm tắt (Auto-Summary)** | Bắt buộc                          | Mặc định bật (tắt bằng `no auto-summary`) | Cần tắt trên RIPv2 khi có các dải mạng con phân mảnh.                                             |
+| Đặc tính kỹ thuật                  | RIP Version 1 (RIPv1)             | RIP Version 2 (RIPv2)                     | Ý nghĩa thực tế                                                                                                                          |
+| :--------------------------------- | :-------------------------------- | :---------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
+| **Loại giao thức**                 | **Classful** (Theo lớp A, B, C)   | **Classless** (Phi lớp)                   | RIPv1 không mang subnet mask trong bản tin update và dựa vào diễn giải classful, nên không hỗ trợ hành vi VLSM/CIDR classless như RIPv2. |
+| **Gửi kèm Subnet Mask**            | **Không**                         | **Có**                                    | Không có Subnet Mask thì không thể chạy các mạng chia nhỏ theo VLSM.                                                                     |
+| **Địa chỉ gửi cập nhật**           | **Broadcast** (`255.255.255.255`) | **Multicast** (`224.0.0.9`)               | Broadcast làm phiền tất cả máy tính trong LAN; Multicast chỉ các router chạy RIPv2 mới lắng nghe.                                        |
+| **Hỗ trợ VLSM & CIDR**             | **Không**                         | **Có**                                    | Tiết kiệm không gian địa chỉ IPv4 hiện đại.                                                                                              |
+| **Xác thực (Authentication)**      | **Không**                         | **Có** (Plain text / MD5)                 | Ngăn chặn thiết bị lạ gửi thông tin định tuyến giả mạo.                                                                                  |
+| **Tự động tóm tắt (Auto-Summary)** | Bắt buộc                          | Mặc định bật (tắt bằng `no auto-summary`) | Cần tắt trên RIPv2 khi có các dải mạng con phân mảnh.                                                                                    |
 
 ---
 
