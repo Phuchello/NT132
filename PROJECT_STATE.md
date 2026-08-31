@@ -1,12 +1,12 @@
 # NT132 Project State
 
-Current milestone: M1 — Review remediation round 4
+Current milestone: M1 — Final Codex re-review pending
 
-Last safe checkpoint: Latest Codex review on 5e74c875 identified a root-404 route-preparation blocker; remediation is in progress.
+Last safe checkpoint: Local verification passes on 09881c; root-only 404 handling and regression verification passed; PR #1 remains unpushed for review.
 
 Current branch: feat/quartz-foundation
 
-Latest reviewed commit: 5e74c875
+Latest verified commit: 09881c943e39964fae80fa82271669390264be7a (root-only 404 handling and regression tests)
 
 Working features:
 
@@ -20,10 +20,11 @@ Working features:
 
 Known unresolved findings and gates:
 
-- Only root public/404.html should be reserved; nested 404.html notes must receive extensionless route preparation.
+- Open gate: Codex re-review of root-404 handling.
 - PR #1 remains intentionally unmerged until that re-review confirms the blockers are closed.
 - GitHub Pages has not been deployed from this environment; the first live deployment remains merge-gated.
 - M2 content work has not started.
 
-Recorded M1 review sequence: Resolve review findings -> run CI -> verify direct nested routes and assets -> request re-review -> fix alias meta-refresh rebasing -> run full validation -> request re-review -> fix root-only 404 handling.
-Exact next action: Fix root-only 404 handling -> add regression tests -> run full validation -> request Codex re-review.
+Recorded M1 review sequence: Resolve review findings -> run CI -> verify direct nested routes and assets -> request re-review -> fix alias meta-refresh rebasing -> run full validation -> request re-review -> fix root-only 404 handling -> run full validation.
+Exact next action: Wait for clean Codex re-review.
+Do not merge until current HEAD has no P1/P2 findings.
