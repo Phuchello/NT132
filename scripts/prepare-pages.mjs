@@ -150,6 +150,22 @@ function rebaseFetchCalls(value, originalDocumentUrl, destinationDocumentUrl) {
   )
 }
 
+function rebaseMetaRefreshContent(value, originalDocumentUrl, destinationDocumentUrl) {
+  const match = value.match(/(^|;)(\s*url\s*=\s*)(?:(['"])(.*?)\3|([^;\s]+))/i)
+  if (!match || match.index === undefined) return value
+
+  const originalTarget = match[4] ?? match[5]
+  const rewrittenTarget = rebaseRelativeUrl(
+    originalTarget,
+    originalDocumentUrl,
+    destinationDocumentUrl,
+  )
+  const quote = match[3] ?? ""
+  const replacement = `${match[1]}${match[2]}${quote}${rewrittenTarget}${quote}`
+
+  return `${value.slice(0, match.index)}${replacement}${value.slice(match.index + match[0].length)}`
+}
+
 function rewriteHtml(html, originalDocumentUrl, destinationDocumentUrl) {
   const document = parse(html)
 
@@ -167,6 +183,20 @@ function rewriteHtml(html, originalDocumentUrl, destinationDocumentUrl) {
       } else if (attributeName === "ping") {
         attribute.value = rebaseSpaceSeparatedUrls(
           attribute.value,
+          originalDocumentUrl,
+          destinationDocumentUrl,
+        )
+      }
+    }
+
+    if (node.nodeName === "meta") {
+      const httpEquiv = node.attrs?.find(
+        (attribute) => attribute.name.toLowerCase() === "http-equiv",
+      )
+      const content = node.attrs?.find((attribute) => attribute.name.toLowerCase() === "content")
+      if (httpEquiv?.value.trim().toLowerCase() === "refresh" && content) {
+        content.value = rebaseMetaRefreshContent(
+          content.value,
           originalDocumentUrl,
           destinationDocumentUrl,
         )

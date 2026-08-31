@@ -1,12 +1,12 @@
 # NT132 Project State
 
-Current milestone: M1 — Review remediation round 2
+Current milestone: M1 — Review remediation round 3
 
-Last safe checkpoint: Latest Codex review on d46aac8 found two P2 blockers; fixes are under verification.
+Last safe checkpoint: Latest Codex review on 8ff0581 identified an alias meta-refresh rebase blocker; remediation is in progress.
 
 Current branch: feat/quartz-foundation
 
-Latest verified commit: d46aac8 (preserve commas in srcset URLs, route tests, and CI)
+Latest reviewed commit: 8ff0581
 
 Working features:
 
@@ -20,11 +20,10 @@ Working features:
 
 Known unresolved findings and gates:
 
-- FolderPage collision handling in `scripts/prepare-pages.mjs` must preserve an existing `index.html`.
-- Project-owned assets must use the Quartz-native `content/static/` locations and be verified in `public/`.
+- AliasRedirects meta-refresh target is not rebased after extensionless route preparation.
 - PR #1 remains intentionally unmerged until that re-review confirms the blockers are closed.
 - GitHub Pages has not been deployed from this environment; the first live deployment remains merge-gated.
 - M2 content work has not started.
 
-Recorded M1 review sequence: Resolve review findings -> run CI -> verify direct nested routes and assets -> request re-review.
-Exact next action: Fix both findings -> run full CI -> verify routes/assets -> request Codex re-review.
+Recorded M1 review sequence: Resolve review findings -> run CI -> verify direct nested routes and assets -> request re-review -> fix alias meta-refresh rebasing.
+Exact next action: Fix alias meta-refresh rebasing -> add regression tests -> run full validation -> request Codex re-review.

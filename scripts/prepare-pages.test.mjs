@@ -119,6 +119,31 @@ function findTestAttributes(document) {
   return attributes
 }
 
+function findMetaRefreshContents(document) {
+  const contents = []
+
+  function visit(node) {
+    if (node.nodeName === "meta") {
+      const httpEquiv = node.attrs?.find((attribute) => attribute.name === "http-equiv")
+      const content = node.attrs?.find((attribute) => attribute.name === "content")
+      if (httpEquiv?.value.trim().toLowerCase() === "refresh" && content) {
+        contents.push(content.value)
+      }
+    }
+
+    for (const child of node.childNodes ?? []) visit(child)
+  }
+
+  visit(document)
+  return contents
+}
+
+function refreshUrl(content) {
+  const match = content.match(/(?:^|;)\s*url\s*=\s*(?:(['"])(.*?)\1|([^;\s>"']+))/i)
+  assert.ok(match, `expected a meta refresh URL in ${content}`)
+  return match[2] ?? match[3]
+}
+
 function expectedPath(key, page) {
   if (key === "internal") {
     return page.route.includes("static-routing")
@@ -215,6 +240,71 @@ test("preserves an existing FolderPage during a same-slug collision", async () =
     const childOutput = await readFile(path.join(topicDirectory, "child", "index.html"), "utf8")
     assert.match(childOutput, /data-page="ChildPage"/)
     assert.match(childOutput, /href="\.\.\/"/)
+  } finally {
+    await rm(outputRoot, { recursive: true, force: true })
+  }
+})
+
+test("rebases alias meta refresh targets without changing their canonical destination", async () => {
+  const outputRoot = await mkdtemp(path.join(os.tmpdir(), "nt132-pages-alias-"))
+  const pages = [
+    {
+      source: "alias.html",
+      route: "/alias",
+      content: '<meta http-equiv="refresh" content="0; url=./target">',
+      expected: "0; url=../target",
+    },
+    {
+      source: "folder/old.html",
+      route: "/folder/old",
+      content: '<meta http-equiv="refresh" content="5;url=../target">',
+      expected: "5;url=../../target",
+    },
+    {
+      source: "case.html",
+      route: "/case",
+      content: '<meta HTTP-EQUIV="Refresh" content="0; URL=./target">',
+      expected: "0; URL=../target",
+    },
+    {
+      source: "quoted.html",
+      route: "/quoted",
+      content: `<meta http-equiv="refresh" content="7;  url='./target'">
+<meta http-equiv="refresh" content='8;url="./target"'>`,
+      expected: ["7;  url='../target'", '8;url="../target"'],
+    },
+    {
+      source: "preserved.html",
+      route: "/preserved",
+      content: `<meta http-equiv="refresh" content="0; url=https://example.com/x">
+<meta http-equiv="refresh" content="0; url=/root/path">
+<meta http-equiv="refresh" content="0; url=#fragment">`,
+      expected: ["0; url=https://example.com/x", "0; url=/root/path", "0; url=#fragment"],
+    },
+  ]
+
+  try {
+    for (const page of pages) {
+      const sourcePath = path.join(outputRoot, page.source)
+      await mkdir(path.dirname(sourcePath), { recursive: true })
+      await writeFile(sourcePath, `<!doctype html><html><head>${page.content}</head></html>`)
+    }
+
+    assert.equal(await preparePages(outputRoot), pages.length)
+
+    for (const page of pages) {
+      const outputPath = page.source.replace(/\.html$/, "/index.html")
+      const output = parse(await readFile(path.join(outputRoot, outputPath), "utf8"))
+      const actual = findMetaRefreshContents(output)
+      const expected = Array.isArray(page.expected) ? page.expected : [page.expected]
+      assert.deepEqual(actual, expected, `${page.route} meta refresh content`)
+
+      if (!Array.isArray(page.expected)) {
+        const beforePath = new URL(refreshUrl(page.content), `${testOrigin}${page.route}`).pathname
+        const afterPath = new URL(refreshUrl(actual[0]), `${testOrigin}${page.route}/`).pathname
+        assert.equal(afterPath, beforePath, `${page.route} canonical target`)
+      }
+    }
   } finally {
     await rm(outputRoot, { recursive: true, force: true })
   }
