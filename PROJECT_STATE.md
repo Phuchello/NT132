@@ -2,7 +2,7 @@
 
 Current milestone: M1 — Working website foundation
 
-Last safe checkpoint: Clean Quartz build, static-host nested-route check, and browser verification are complete on the feature branch.
+Last safe checkpoint: Clean Quartz build, static-host nested-route check, browser verification, Pages enablement, and PR #1 build are complete.
 
 Current branch: feat/quartz-foundation
 
@@ -22,6 +22,6 @@ Known issues:
 
 - GitHub Pages has not been deployed from this environment yet, so the live deployment URL is not independently confirmed.
 - Full course content, downloadable material, diagrams, and source migration are intentionally out of scope for M1.
-- The pull request can only be opened after the feature branch is pushed with repository write access.
+- The deploy job is intentionally skipped on PR events; first live deployment requires merging PR #1 into `main`.
 
-Exact next action: Push `feat/quartz-foundation`, open the pull request into `main`, and review CI/Pages deployment before starting M2 content planning.
+Exact next action: Review and merge PR #1 into `main`, confirm the first Pages deployment at `https://phuchello.github.io/NT132/`, then begin M2 content planning.
