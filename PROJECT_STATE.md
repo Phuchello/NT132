@@ -4,11 +4,13 @@ Current milestone: M3.1 — final mentor review
 
 Current branch: feat/m3-1-core-routing
 
-Last safe checkpoint: M3.1 remediation round 2 is committed in `2b980100da10704e029579f736a99c048aa534f9`; final mentor review is pending.
+Last safe checkpoint: Mentor review held the release gate on the shared srcset parser; the final micro-remediation is implemented and ready for re-review.
 
 Latest production commit: af561c936e0b13929cc9bb81f73c14b13f057784
 
-Current candidate HEAD: 0e59e619b6b17acd9bfa81417e1a009f69215b54
+Latest reviewed implementation commit: 1662e5a516440cc57393930a6c4e45c91cbea2a9
+
+Subsequent documentation-only checkpoint commits do not change the reviewed implementation.
 
 Work completed in Remediation Round 1:
 
@@ -33,7 +35,8 @@ Work completed in Remediation Round 2:
 - Redesigned the cross-network forwarding diagram for 390px and desktop rendering, explicitly teaching PC-A → R1 → R2 → PC-B, end-to-end IP addresses, and hop-by-hop MAC addresses.
 - Corrected OSPF terminology around LSA contents and LSU transport while preserving the course-slide “LSU update” framing with an RFC 2328 clarification.
 - Removed unattributed ECMP implementation detail from RIP and made Floating Static failover wording precise about route removal, resolution, installation, and downstream failure limits.
-- Extracted a shared `srcset`/`imagesrcset` parser and added regression coverage for density/width descriptors, multiple candidates, data URL commas, and ordinary URL commas.
+- Extracted a shared `srcset`/`imagesrcset` parser and added regression coverage for bare-relative candidates, density/width descriptors, multiple candidates, data URL commas, and ordinary URL commas.
+- Added a nested-route integration regression proving bare-relative `srcset` and `src` URLs rebase correctly while descriptors, query commas, and data URLs remain intact.
 - Added audit gates for forbidden `prompt`, `placeholder`, and `TODO` terms and kept external/data references out of broken-local counters.
 
 Current blockers:
@@ -44,14 +47,14 @@ Verification completed after Round 2:
 
 - `npm ci`: PASS
 - `npm run check`: PASS
-- `npm test`: PASS (75/75)
+- `npm test`: PASS (76/76)
 - `npm run quartz -- build -d content -v`: PASS (77 files emitted)
 - `npm run prepare-pages`: PASS (7 extensionless routes)
-- `npm run test:routes`: PASS (5/5)
+- `npm run test:routes`: PASS (6/6)
 - `npm run test:audit`: PASS (40 routes, 374 hrefs, 90 srcs, 0 srcsets, 0 broken targets, 0 H1 violations, 0 term violations, 0 restricted PDFs)
 - `git diff --check`: PASS
 - Visual inspection: all 5 diagrams checked at 390px and desktop width; cross-network forwarding checked in the actual embedded image viewport without clipping or duplicate content.
 
 Review note: Codex independent review is unavailable due to quota. Mentor final review remains the merge gate.
 
-Exact Next Action: final QA → inspect final artifact → wait for mentor PASS.
+Exact Next Action: mentor final review -> merge only if PASS.
