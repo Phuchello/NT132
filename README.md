@@ -17,6 +17,11 @@ npm run quartz -- build --serve -d content
 
 The development server is available at `http://localhost:8080`.
 
+Store project-owned non-Markdown assets under `content/static/images/`,
+`content/static/diagrams/`, or `content/static/downloads/`. Quartz's
+`Plugin.Assets()` copies these files to the matching `public/static/` paths;
+the repository root `static/` directory is not a project-asset location.
+
 ## Project status
 
 M0 (repository audit) and M1 (working website foundation) are the current

@@ -10,6 +10,12 @@ it does not relicense NT132 course content. See [NOTICE.md](NOTICE.md) and
 [LICENSES/Quartz-LICENSE.txt](LICENSES/Quartz-LICENSE.txt) for the attribution
 boundary.
 
+Project-owned non-Markdown assets belong under
+`content/static/images/`, `content/static/diagrams/`, or
+`content/static/downloads/`. Quartz's `Plugin.Assets()` emits them under the
+corresponding `public/static/` paths. Do not place NT132 assets in the
+repository root `static/` directory or in vendored `quartz/static/`.
+
 ## Rules
 
 1. Prefer notes authored for this repository and label them as Class A.

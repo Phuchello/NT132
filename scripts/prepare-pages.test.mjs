@@ -195,3 +195,27 @@ test("keeps anchors, root-relative URLs, and protocol URLs unchanged", () => {
   )
   assert.equal(rebaseRelativeUrl("tel:+84123456789", original, destination), "tel:+84123456789")
 })
+
+test("preserves an existing FolderPage during a same-slug collision", async () => {
+  const outputRoot = await mkdtemp(path.join(os.tmpdir(), "nt132-pages-collision-"))
+  const topicDirectory = path.join(outputRoot, "topic")
+  const folderPage = `<!doctype html><html><body><main data-page="FolderPage">Child listing</main></body></html>`
+  const standalonePage = `<!doctype html><html><body><main data-page="StandalonePage">Standalone note</main></body></html>`
+  const childPage = `<!doctype html><html><body><main data-page="ChildPage"><a data-test="parent" href="./">Parent</a></main></body></html>`
+
+  try {
+    await mkdir(topicDirectory, { recursive: true })
+    await writeFile(path.join(outputRoot, "topic.html"), standalonePage)
+    await writeFile(path.join(topicDirectory, "index.html"), folderPage)
+    await writeFile(path.join(topicDirectory, "child.html"), childPage)
+
+    assert.equal(await preparePages(outputRoot), 1)
+    assert.equal(await readFile(path.join(topicDirectory, "index.html"), "utf8"), folderPage)
+
+    const childOutput = await readFile(path.join(topicDirectory, "child", "index.html"), "utf8")
+    assert.match(childOutput, /data-page="ChildPage"/)
+    assert.match(childOutput, /href="\.\.\/"/)
+  } finally {
+    await rm(outputRoot, { recursive: true, force: true })
+  }
+})

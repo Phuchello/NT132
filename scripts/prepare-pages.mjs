@@ -1,4 +1,4 @@
-import { mkdir, readdir, readFile, writeFile } from "node:fs/promises"
+import { access, mkdir, readdir, readFile, writeFile } from "node:fs/promises"
 import path from "node:path"
 import { pathToFileURL } from "node:url"
 import { parse, serialize } from "parse5"
@@ -214,6 +214,16 @@ export async function preparePages(directory = outputDirectory) {
 
     const targetDirectory = path.join(path.dirname(htmlFile), basename)
     const targetFile = path.join(targetDirectory, "index.html")
+
+    // Quartz can emit both a standalone page and a FolderPage for the same
+    // slug. Preserve the generated FolderPage instead of overwriting it.
+    try {
+      await access(targetFile)
+      continue
+    } catch (error) {
+      if (error.code !== "ENOENT") throw error
+    }
+
     const original = await readFile(htmlFile, "utf8")
     const rewritten = rewriteHtml(
       original,

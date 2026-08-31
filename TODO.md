@@ -45,6 +45,8 @@
 - [ ] Add project ideas and report guidance.
 - [ ] Publish only authored or redistributable downloads.
 - [ ] Add diagrams and images with license metadata.
+- [ ] Store approved project assets under `content/static/images/`,
+      `content/static/diagrams/`, or `content/static/downloads/`.
 
 ## M7 — Quality, accessibility, and release
 

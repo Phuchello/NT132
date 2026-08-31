@@ -14,14 +14,15 @@ they are not the course textbook.
 
 ## Current inventory
 
-| Path or item                           | Class | Status                    | Notes                                                                |
-| -------------------------------------- | ----- | ------------------------- | -------------------------------------------------------------------- |
-| `content/index.md` and section indexes | A     | Structural placeholder    | Navigation validation only.                                          |
-| `content/Static-Routing.md`            | A     | Temporary structural note | Graph/search/backlink validation only.                               |
-| `content/OSPF.md`                      | A     | Temporary structural note | Graph/search/backlink validation only.                               |
-| `content/ACL.md`                       | A     | Temporary structural note | Graph/search/backlink validation only.                               |
-| Future UIT-provided course files       | B     | Rights review required    | Do not add until the instructor/course distribution terms are clear. |
-| Future external references             | C     | Link only                 | Store citation/provenance metadata, not mirrored PDFs.               |
+| Path or item                                        | Class | Status                    | Notes                                                                                                      |
+| --------------------------------------------------- | ----- | ------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `content/index.md` and section indexes              | A     | Structural placeholder    | Navigation validation only.                                                                                |
+| `content/Static-Routing.md`                         | A     | Temporary structural note | Graph/search/backlink validation only.                                                                     |
+| `content/OSPF.md`                                   | A     | Temporary structural note | Graph/search/backlink validation only.                                                                     |
+| `content/ACL.md`                                    | A     | Temporary structural note | Graph/search/backlink validation only.                                                                     |
+| `content/static/images/`, `diagrams/`, `downloads/` | A     | Canonical asset scaffold  | Authored or redistributable non-Markdown assets; Quartz emits these under matching `public/static/` paths. |
+| Future UIT-provided course files                    | B     | Rights review required    | Do not add until the instructor/course distribution terms are clear.                                       |
+| Future external references                          | C     | Link only                 | Store citation/provenance metadata, not mirrored PDFs.                                                     |
 
 No Studocu or Scribd document is copied into this repository. Third-party PDFs
 and other restricted downloads remain out of scope until a redistribution right
