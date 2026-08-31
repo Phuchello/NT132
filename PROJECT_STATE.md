@@ -1,6 +1,6 @@
 # NT132 Project State
 
-Current milestone: M2 — Content planning and taxonomy
+Current milestone: M2 — Content planning and taxonomy review
 
 Last safe checkpoint: M1 is production-complete. PR #2 production polish was merged as `120930784026d596ade8e2c85874430e234dd20d`; GitHub Actions run #14 built and deployed successfully.
 
@@ -18,17 +18,23 @@ M1 production verification:
 - Footer attribution no longer mislabels the NT132 package version as the Quartz framework version.
 - Open Graph MIME metadata emits valid `image/webp` or `image/png` values.
 
-M2 work completed so far:
+M2 work completed:
 
-- Added `M2_CONTENT_PLAN.md` with the canonical course taxonomy, source map, naming rules, cross-link backbone, and M3 migration order.
+- Added `M2_CONTENT_PLAN.md` with the canonical course taxonomy, naming/link rules, source map, cross-link backbone, and M3 migration order.
 - Added `CONTENT_TEMPLATE.md` for theory, practical labs, exam-prep pages, and project/case-study pages.
-- Mapped the 19 primary course-source files into canonical topic groups.
-- Classified `Group07_PreReport.docx` as case-study-only rather than a canonical theory source.
+- Mapped all 19 primary course PDFs to canonical topic groups and conservatively classified them as Class B with redistribution review required.
+- Classified `Group07_PreReport.docx` as Class C, case-study/reference only.
+- Created the theory and practical folder/index skeleton without migrating full chapter content.
+- Replaced future-work lab placeholder prose with durable student-facing learning goals and prerequisite links.
+- Switched Quartz internal Markdown resolution to explicit relative-path semantics so section navigation preserves directory intent.
+- Previous generated-artifact audit after the relative-link fix found zero missing local references across 312 checked `href`/`src`/`srcset` targets.
+- Public artifact text audit found no `M1`, `M2`, `placeholder`, `scaffold`, `migration`, `agent workflow`, `AI-generated`, or `TODO` leakage.
 
 M2 open gates:
 
-- Review the taxonomy/source map for omissions and duplicate concepts.
-- Create the destination folder/index skeleton without migrating full theory content yet.
-- Run CI and inspect the generated artifact for the completed M2 planning branch.
+- Run CI on the current remediation HEAD after the source-classification and lab-index updates.
+- Re-inspect the generated artifact for broken internal routes and public scaffolding leakage.
+- Reply to the four Codex findings with implementation evidence and request a current-HEAD re-review.
+- Merge PR #3 only after current-head CI is green and Codex has no remaining P1/P2 findings.
 
-Exact next action: Create the M2 folder/index skeleton from `M2_CONTENT_PLAN.md`, validate navigation/build output, then open the M2 planning PR for review.
+Exact next action: validate the current M2 HEAD in CI and the generated artifact, then request Codex re-review. Do not merge PR #3 until both gates are clean.
