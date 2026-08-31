@@ -1,12 +1,12 @@
 # NT132 Project State
 
-Current milestone: M1 — Review remediation round 3
+Current milestone: M1 — Final Codex re-review pending
 
-Last safe checkpoint: Latest Codex review on 8ff0581 identified an alias meta-refresh rebase blocker; remediation is in progress.
+Last safe checkpoint: CI passes on 5e74c87; alias meta-refresh rebasing and regression verification passed; PR #1 remains unmerged.
 
 Current branch: feat/quartz-foundation
 
-Latest reviewed commit: 8ff0581
+Latest verified commit: 5e74c875c57bd0d6943515064d799875d6eed2ee (alias meta-refresh rebase and regression tests)
 
 Working features:
 
@@ -20,10 +20,11 @@ Working features:
 
 Known unresolved findings and gates:
 
-- AliasRedirects meta-refresh target is not rebased after extensionless route preparation.
+- Codex re-review of the alias meta-refresh fix is pending.
 - PR #1 remains intentionally unmerged until that re-review confirms the blockers are closed.
 - GitHub Pages has not been deployed from this environment; the first live deployment remains merge-gated.
 - M2 content work has not started.
 
-Recorded M1 review sequence: Resolve review findings -> run CI -> verify direct nested routes and assets -> request re-review -> fix alias meta-refresh rebasing.
-Exact next action: Fix alias meta-refresh rebasing -> add regression tests -> run full validation -> request Codex re-review.
+Recorded M1 review sequence: Resolve review findings -> run CI -> verify direct nested routes and assets -> request re-review -> fix alias meta-refresh rebasing -> run full validation -> request re-review.
+Exact next action: Wait for Codex re-review.
+Do not merge until the current head receives a clean review.
