@@ -8,7 +8,7 @@ Last safe checkpoint: M3.1 remediation round 2 is committed in `2b980100da10704e
 
 Latest production commit: af561c936e0b13929cc9bb81f73c14b13f057784
 
-Current candidate HEAD: 13c8c70407b6b5ab153bf805e20abbae9e66a61f
+Current candidate HEAD: 0e59e619b6b17acd9bfa81417e1a009f69215b54
 
 Work completed in Remediation Round 1:
 
