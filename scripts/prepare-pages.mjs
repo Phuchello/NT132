@@ -240,7 +240,7 @@ export async function preparePages(directory = outputDirectory) {
 
     // Folder indexes already work on GitHub Pages. The 404 document must remain
     // at the Pages-reserved root name, and the home page is already index.html.
-    if (basename === "index" || basename === "404") continue
+    if (basename === "index" || relativeFile === "404.html") continue
 
     const targetDirectory = path.join(path.dirname(htmlFile), basename)
     const targetFile = path.join(targetDirectory, "index.html")

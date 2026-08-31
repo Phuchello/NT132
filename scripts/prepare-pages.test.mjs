@@ -245,6 +245,73 @@ test("preserves an existing FolderPage during a same-slug collision", async () =
   }
 })
 
+test("reserves only the root 404 document during route preparation", async () => {
+  const outputRoot = await mkdtemp(path.join(os.tmpdir(), "nt132-pages-404-"))
+  const root404 = `<!doctype html><html><body><main data-page="Root404">Reserved fallback</main></body></html>`
+  const nestedPages = [
+    {
+      source: "topic/404.html",
+      css: "../index.css",
+      js: "../prescript.js",
+      contentIndex: "../static/contentIndex.json",
+      icon: "../static/icon.png",
+      internal: "./child",
+      srcset: "../small.png 1x, ../large.png 2x",
+      expected: {
+        css: "../../index.css",
+        js: "../../prescript.js",
+        contentIndex: "../../static/contentIndex.json",
+        icon: "../../static/icon.png",
+        internal: "../child",
+        srcset: "../../small.png 1x, ../../large.png 2x",
+      },
+    },
+    {
+      source: "a/b/404.html",
+      css: "../../index.css",
+      js: "../../prescript.js",
+      contentIndex: "../../static/contentIndex.json",
+      icon: "../../static/icon.png",
+      internal: "./child",
+      srcset: "../../small.png 1x, ../../large.png 2x",
+      expected: {
+        css: "../../../index.css",
+        js: "../../../prescript.js",
+        contentIndex: "../../../static/contentIndex.json",
+        icon: "../../../static/icon.png",
+        internal: "../child",
+        srcset: "../../../small.png 1x, ../../../large.png 2x",
+      },
+    },
+  ]
+
+  try {
+    await writeFile(path.join(outputRoot, "404.html"), root404)
+    for (const page of nestedPages) {
+      const sourcePath = path.join(outputRoot, page.source)
+      await mkdir(path.dirname(sourcePath), { recursive: true })
+      await writeFile(sourcePath, fixture(page))
+    }
+
+    assert.equal(await preparePages(outputRoot), nestedPages.length)
+    assert.equal(await readFile(path.join(outputRoot, "404.html"), "utf8"), root404)
+    await assert.rejects(readFile(path.join(outputRoot, "404", "index.html")), { code: "ENOENT" })
+
+    for (const page of nestedPages) {
+      const outputPath = page.source.replace(/\.html$/, "/index.html")
+      const output = parse(await readFile(path.join(outputRoot, outputPath), "utf8"))
+      const actual = findTestAttributes(output)
+
+      for (const key of ["css", "js", "contentIndex", "icon", "internal"]) {
+        assert.equal(actual.get(key), page.expected[key], `${page.source} ${key}`)
+      }
+      assert.equal(actual.get("srcset"), page.expected.srcset, `${page.source} srcset`)
+    }
+  } finally {
+    await rm(outputRoot, { recursive: true, force: true })
+  }
+})
+
 test("rebases alias meta refresh targets without changing their canonical destination", async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), "nt132-pages-alias-"))
   const pages = [
