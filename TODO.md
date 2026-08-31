@@ -45,6 +45,15 @@
 - [x] Remediate Round 1 review findings (provenance tiers, technical claim qualifiers, single H1, mobile 390px diagrams, expanded artifact audit).
 - [x] Integrate comprehensive artifact audit checks into CI (`npm run test:audit`).
 
+### M3.2 — Switching, VLAN & Inter-VLAN
+
+- Previous milestone: M3.1 — production complete.
+- M3.1 merge commit: `6ece18f2aad49aa1a899b68dbcf1af31834a1036`.
+- M3.1 production workflow: `33406354082`.
+- Current branch: `feat/m3-2-switching-vlan`.
+- [ ] Wait for mentor M3.2 implementation prompt.
+- Exact Next Action: wait for mentor M3.2 implementation prompt.
+
 ### M3.2+ — Remaining theory chapters and practical lab curriculum
 
 - [ ] Author remaining theory chapters (Switching/VLAN, Inter-VLAN, Network Services, etc.).

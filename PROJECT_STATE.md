@@ -1,12 +1,18 @@
 # NT132 Project State
 
-Current milestone: M3.1 — final mentor review
+Current milestone: M3.2 — Switching, VLAN & Inter-VLAN
 
-Current branch: feat/m3-1-core-routing
+Previous milestone: M3.1 — production complete
 
-Last safe checkpoint: Mentor review held the release gate on the shared srcset parser; the final micro-remediation is implemented and ready for re-review.
+Current branch: feat/m3-2-switching-vlan
 
-Latest production commit: af561c936e0b13929cc9bb81f73c14b13f057784
+Last safe checkpoint: M3.1 received final mentor PASS, was squash-merged into main, and passed the production GitHub Pages build, deployment, and smoke test.
+
+M3.1 merge commit: 6ece18f2aad49aa1a899b68dbcf1af31834a1036
+
+M3.1 production workflow: 33406354082
+
+Latest production commit: 6ece18f2aad49aa1a899b68dbcf1af31834a1036
 
 Latest reviewed implementation commit: 1662e5a516440cc57393930a6c4e45c91cbea2a9
 
@@ -41,7 +47,7 @@ Work completed in Remediation Round 2:
 
 Current blockers:
 
-- Mentor final re-review only.
+- Mentor M3.2 implementation prompt only.
 
 Verification completed after Round 2:
 
@@ -55,6 +61,6 @@ Verification completed after Round 2:
 - `git diff --check`: PASS
 - Visual inspection: all 5 diagrams checked at 390px and desktop width; cross-network forwarding checked in the actual embedded image viewport without clipping or duplicate content.
 
-Review note: Codex independent review is unavailable due to quota. Mentor final review remains the merge gate.
+Review note: M3.1 final mentor review was PASS and Codex independent review remained unavailable due to quota.
 
-Exact Next Action: mentor final review -> merge only if PASS.
+Exact Next Action: wait for mentor M3.2 implementation prompt
