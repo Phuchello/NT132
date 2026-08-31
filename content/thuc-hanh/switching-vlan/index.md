@@ -3,8 +3,6 @@ title: Lab Switching & VLAN
 description: Thực hành VLAN, trunk, access port và Inter-VLAN Routing theo luồng frame và packet.
 ---
 
-# Lab Switching & VLAN
-
 Nhóm thực hành này tập trung vào **VLAN membership → frame forwarding → trunk → liên lạc giữa các VLAN**.
 
 ## Bạn cần làm được

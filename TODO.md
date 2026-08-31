@@ -31,7 +31,7 @@
 - [x] Remove legacy M1 graph-test notes from the public M2 artifact.
 - [x] Reproduce and remediate all P1/P2 findings returned by available Codex reviews.
 - [x] Run final remediation CI and artifact checks; record the final Codex quota limitation and independent-review contingency.
-- [ ] Merge PR #3 and verify the production deployment from `main`.
+- [x] Merge PR #3 and verify the production deployment from `main`.
 
 ## M3 — Theory and practical labs
 
@@ -42,7 +42,8 @@
 - [x] Author Chapter 3: RIP Distance Vector (`rip.md`).
 - [x] Author Chapter 4: OSPF Link State & Dijkstra (`ospf.md`).
 - [x] Create original SVG diagrams for local forwarding, cross-LAN forwarding, static routing, RIP rounds, and OSPF Dijkstra SPF.
-- [x] Integrate artifact audit checks into CI (`npm run test:audit`).
+- [x] Remediate Round 1 review findings (provenance tiers, technical claim qualifiers, single H1, mobile 390px diagrams, expanded artifact audit).
+- [x] Integrate comprehensive artifact audit checks into CI (`npm run test:audit`).
 
 ### M3.2+ — Remaining theory chapters and practical lab curriculum
 

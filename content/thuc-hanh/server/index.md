@@ -3,8 +3,6 @@ title: Lab Server
 description: Thực hành triển khai và kiểm tra dịch vụ trên Windows Server, Linux Server và Cloud Server.
 ---
 
-# Lab Server
-
 Nhóm thực hành này tập trung vào **dịch vụ đang chạy ở đâu, lắng nghe trên interface/port nào và client có truy cập được hay không**.
 
 ## Bạn cần làm được

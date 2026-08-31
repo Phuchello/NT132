@@ -3,8 +3,6 @@ title: Routing — Định tuyến
 description: Cơ chế hoạt động của Static Routing, RIP (Distance Vector) và OSPF (Link-State) trong mạng máy tính.
 ---
 
-# Routing — Định tuyến
-
 Định tuyến (**Routing**) là tiến trình Router tìm kiếm và lựa chọn con đường tối ưu để chuyển tiếp gói tin (**Packet**) từ mạng nguồn đến mạng đích thông qua bảng định tuyến (**Routing Table**).
 
 Trong chương này, chúng ta sẽ đi qua 3 phương pháp định tuyến quan trọng nhất: từ cấu hình thủ công (**Static Routing**), đến giao thức trao đổi theo khoảng cách (**RIP**), và giao thức xây dựng bản đồ toàn cảnh bằng thuật toán Dijkstra (**OSPF**).

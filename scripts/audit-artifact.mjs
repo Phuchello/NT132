@@ -41,11 +41,13 @@ const forbiddenTerms = [
 ]
 
 let termViolations = 0
-const hrefRegex = /href=["']([^"'#?]+)(?:[#?][^"']*)?["']/gi
-const srcRegex = /src=["']([^"'#?]+)(?:[#?][^"']*)?["']/gi
-
+let h1Violations = 0
 let brokenLinks = 0
 let brokenSrcs = 0
+let checkedHrefs = 0
+let checkedSrcs = 0
+let checkedSrcsets = 0
+let checkedH1Count = 0
 
 // Check for legacy notes
 const legacyFiles = ["Static-Routing", "OSPF", "ACL"]
@@ -59,9 +61,29 @@ for (const leg of legacyFiles) {
   }
 }
 
+// Check required diagrams
+const requiredDiagrams = [
+  "lan-forwarding-same-subnet.svg",
+  "cross-network-forwarding.svg",
+  "static-routing-topology.svg",
+  "rip-propagation-rounds.svg",
+  "ospf-dijkstra-graph.svg",
+]
+for (const diag of requiredDiagrams) {
+  const diskPath = path.join("content", "static", "diagrams", diag)
+  const publicPath = path.join("public", "static", "diagrams", diag)
+  if (!fs.existsSync(diskPath)) {
+    console.error(`ERROR: Required diagram missing in content: ${diskPath}`)
+    brokenSrcs++
+  }
+  if (!fs.existsSync(publicPath)) {
+    console.error(`ERROR: Required diagram missing in public output: ${publicPath}`)
+    brokenSrcs++
+  }
+}
+
 function normalizeTargetPath(target, currentFile) {
-  // Strip baseUrl prefix if present
-  let cleanTarget = target
+  let cleanTarget = target.trim()
   if (cleanTarget.startsWith("/NT132/")) {
     cleanTarget = cleanTarget.slice("/NT132".length)
   } else if (cleanTarget === "/NT132") {
@@ -83,10 +105,42 @@ function targetExists(resolved) {
   )
 }
 
+// Parse srcset candidates without fragile comma splitting
+function extractSrcsetUrls(srcsetValue) {
+  const urls = []
+  // Matches tokens that look like a URL followed by optional width/pixel-density descriptor
+  const candidates = srcsetValue.split(/\s*,\s*(?=[^\s,]+\s*(?:\d+[wx]|$))/)
+  for (const c of candidates) {
+    const parts = c.trim().split(/\s+/)
+    if (parts[0]) {
+      urls.push(parts[0])
+    }
+  }
+  return urls
+}
+
+const hrefRegex = /href=["']([^"'#?]+)(?:[#?][^"']*)?["']/gi
+const srcRegex = /src=["']([^"'#?]+)(?:[#?][^"']*)?["']/gi
+const srcsetRegex = /(?:srcset|imagesrcset)=["']([^"']+)["']/gi
+const h1Regex = /<h1\b[^>]*>(.*?)<\/h1>/gis
+
 for (const f of htmlFiles) {
   const rawContent = fs.readFileSync(f, "utf8")
 
-  // Remove <script>, <style>, <svg>, and HTML attributes from text check to avoid false positives in code/search placeholder
+  // Check H1 count (Only for HTML files, skipping 404 if needed)
+  if (f.endsWith(".html") || !path.basename(f).includes(".")) {
+    const h1Matches = [...rawContent.matchAll(h1Regex)]
+    checkedH1Count++
+    if (h1Matches.length !== 1) {
+      console.log(`H1 Count Violation in ${f}: found ${h1Matches.length} <h1> tags!`)
+      for (const m of h1Matches) {
+        console.log(`   -> <h1>: ${m[1].replace(/<[^>]+>/g, "").trim()}`)
+      }
+      h1Violations++
+    }
+  }
+
+  // Remove <script>, <style>, <svg>, and HTML tags from text check to avoid false positives in code
   const bodyOnly = rawContent
     .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "")
     .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, "")
@@ -114,6 +168,7 @@ for (const f of htmlFiles) {
     )
       continue
 
+    checkedHrefs++
     const resolved = normalizeTargetPath(target, f)
     if (!targetExists(resolved)) {
       console.log(`Broken href: ${target} resolved to: ${resolved} in ${f}`)
@@ -127,10 +182,26 @@ for (const f of htmlFiles) {
     if (target.startsWith("http://") || target.startsWith("https://") || target.startsWith("data:"))
       continue
 
+    checkedSrcs++
     const resolved = normalizeTargetPath(target, f)
     if (!fs.existsSync(resolved)) {
       console.log(`Broken src: ${target} resolved to: ${resolved} in ${f}`)
       brokenSrcs++
+    }
+  }
+
+  // Check srcsets
+  while ((m = srcsetRegex.exec(rawContent)) !== null) {
+    const srcsetValue = m[1]
+    const urls = extractSrcsetUrls(srcsetValue)
+    for (const u of urls) {
+      if (u.startsWith("http://") || u.startsWith("https://") || u.startsWith("data:")) continue
+      checkedSrcsets++
+      const resolved = normalizeTargetPath(u, f)
+      if (!fs.existsSync(resolved)) {
+        console.log(`Broken srcset item: ${u} in ${f}`)
+        brokenSrcs++
+      }
     }
   }
 }
@@ -138,19 +209,33 @@ for (const f of htmlFiles) {
 // Check PDFs in public
 const publicPdfs = publicFiles.filter((f) => f.endsWith(".pdf"))
 if (publicPdfs.length > 0) {
-  console.error("ERROR: Public PDFs found:", publicPdfs)
+  console.error("ERROR: Public PDFs found in public directory:", publicPdfs)
   termViolations += publicPdfs.length
 }
 
-console.log("=== ARTIFACT AUDIT SUMMARY ===")
-console.log("Term violations:", termViolations)
-console.log("Broken links:", brokenLinks)
-console.log("Broken srcs:", brokenSrcs)
-console.log("Public PDFs count:", publicPdfs.length)
+console.log("=========================================")
+console.log("=== ARTIFACT AUDIT COMPREHENSIVE SUMMARY ===")
+console.log("=========================================")
+console.log("Total HTML / Route files audited:", checkedH1Count)
+console.log("Total local href references checked:", checkedHrefs)
+console.log("Total local src references checked:", checkedSrcs)
+console.log("Total local srcset references checked:", checkedSrcsets)
+console.log("H1 Violations (must be 0):", h1Violations)
+console.log("Broken href targets (must be 0):", brokenLinks)
+console.log("Broken src/srcset targets (must be 0):", brokenSrcs)
+console.log("Term / Scaffolding violations (must be 0):", termViolations)
+console.log("Restricted PDFs in public (must be 0):", publicPdfs.length)
 
-if (termViolations === 0 && brokenLinks === 0 && brokenSrcs === 0 && publicPdfs.length === 0) {
-  console.log("ALL ARTIFACT CHECKS PASSED PERFECTLY!")
+if (
+  termViolations === 0 &&
+  h1Violations === 0 &&
+  brokenLinks === 0 &&
+  brokenSrcs === 0 &&
+  publicPdfs.length === 0
+) {
+  console.log(">>> ALL ARTIFACT QUALITY GATES PASSED (100% CLEAN) <<<")
   process.exit(0)
 } else {
+  console.error(">>> ARTIFACT AUDIT FAILED <<<")
   process.exit(1)
 }

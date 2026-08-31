@@ -3,8 +3,6 @@ title: Hạ tầng mạng
 description: Thiết bị mạng, vai trò các thành phần và nền tảng chuyển tiếp packet trong mô hình mạng doanh nghiệp.
 ---
 
-# Hạ tầng mạng
-
 Chương này xây dựng mô hình tư duy (Mental Model) nền tảng nhất cho toàn bộ chương trình NT132: hiểu rõ các thiết bị mạng, cấu trúc interface, địa chỉ MAC, địa chỉ IP, và cách thức dữ liệu chuyển tiếp xuyên suốt từ máy gửi tới máy nhận.
 
 ## Chủ đề trong chương

@@ -3,8 +3,6 @@ title: Lab Management
 description: Thực hành quan sát, thu thập trạng thái và chẩn đoán hệ thống/mạng theo góc nhìn quản lý.
 ---
 
-# Lab Management
-
 Nhóm thực hành này tập trung vào **quan sát trạng thái → phát hiện bất thường → khoanh vùng nguyên nhân → xác minh sau xử lý**.
 
 ## Bạn cần làm được

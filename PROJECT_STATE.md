@@ -1,50 +1,45 @@
 # NT132 Project State
 
-Current milestone: M3.1 — Core Networking Foundation (Network Infrastructure, Static Routing, RIP, OSPF)
-
-Last safe checkpoint: M2 is complete and merged into `main` (`2fd023e3e23297a7e8e50b73b5a1768c8375fc8e`).
+Current milestone: M3.1 — review remediation
 
 Current branch: feat/m3-1-core-routing
 
+Last safe checkpoint: M2 is production-complete and merged into `main` (`2fd023e3e23297a7e8e50b73b5a1768c8375fc8e`). PR #4 is open on `feat/m3-1-core-routing`.
+
 Latest production commit: 2fd023e3e23297a7e8e50b73b5a1768c8375fc8e
 
-Work completed:
+Work completed in Remediation Round 1:
 
-- Created 4 gold-standard theory chapters following `CONTENT_TEMPLATE.md`:
-  - `content/ly-thuyet/01-ha-tang-mang/thiet-bi-va-ha-tang.md`: End vs Intermediate devices, Switch CAM/MAC forwarding, Router L3 segmentation/hardware, Mandatory Trace A (Same-LAN), Mandatory Trace B (Cross-LAN hop-by-hop MAC rewrite / IP preservation), active recall & troubleshooting.
-  - `content/ly-thuyet/02-routing/static-routing.md`: When to use, stub network intuition, 4 static route types (Standard, Default, Summary, Floating), 3 next-hop forwarding variants, CLI verification, missing return route diagnostic.
-  - `content/ly-thuyet/02-routing/rip.md`: Distance Vector / Bellman-Ford philosophy, periodic 30s updates on UDP 520, Hop count metric (max 15), RIPv1 vs RIPv2, 3-router evolution across Round 0 -> 1 -> 2 convergence, CLI with `version 2`, `no auto-summary`, `passive-interface`, `default-information originate`.
-  - `content/ly-thuyet/02-routing/ospf.md`: Link-State philosophy, LSDB, Dijkstra SPF algorithm, 5-step Link-State operation, triggered LSU update, metric Cost formula based on bandwidth, full 5-node Dijkstra execution trace with step-by-step table and forwarding table.
-- Created section index pages with clear continuity and relative navigation:
-  - `content/ly-thuyet/01-ha-tang-mang/index.md`
-  - `content/ly-thuyet/02-routing/index.md`
-- Created 5 original SVG diagrams in `content/static/diagrams/`:
-  - `lan-forwarding-same-subnet.svg`: Same-LAN L2 forwarding via MAC table.
-  - `cross-network-forwarding.svg`: Cross-network packet journey with L2 MAC rewrite.
-  - `static-routing-topology.svg`: 3-router topology illustrating standard, default, summary, and floating routes.
-  - `rip-propagation-rounds.svg`: 3-router RIP propagation timeline across rounds.
-  - `ospf-dijkstra-graph.svg`: 5-node weighted graph for OSPF LSDB and Dijkstra shortest path calculation.
-- Created `scripts/audit-artifact.mjs` and registered `npm run test:audit` in `package.json` and CI workflow `.github/workflows/deploy-pages.yml`.
+- **Source Fidelity & Supplementary Provenance**:
+  - Partitioned every chapter's sources into three distinct tiers: Course Sources (Class B), Authoritative Standards / Vendor Documentation (Class C), and Author-Derived Original Topologies/Diagrams.
+  - Explicitly marked supplementary networking concepts (CAM aging timer, RFC 826 ARP context, Cisco CLI output interpretations, RFC 1812 Longest Prefix Match, RFC 2453 / RFC 2328 specifications).
+- **Technical Overstatement Corrections**:
+  - _Static Routing_: Replaced absolute claims of "no CPU/RAM" with precise descriptions of low control-plane overhead and absence of dynamic protocol updates. Clarified security scope: lack of routing advertisements reduces exposure but does not encrypt or secure payload data.
+  - _Floating Static_: Clarified that backup AD must exceed the preferred competing route's AD (not merely `> 1`), and explained failover limitations under silent remote link failures without tracking.
+  - _RIP_: Renamed propagation intervals to Conceptual Rounds (0, 1, 2) rather than deterministic wall-clock timestamps. Clarified that Cisco route age timer is elapsed time since last update, not a countdown.
+  - _OSPF_: Qualified area LSDB synchronization, Cost calculation derivation, transient convergence states, and distinguished generic LSP concepts from OSPF LSA/LSU terminology.
+- **Duplicate H1 Elimination**:
+  - Removed redundant manual `# Title` lines across all Markdown pages.
+  - Verified generated HTML contains strictly ONE `<h1>` on all 40 public routes.
+- **Mobile-First SVG Diagram Redesign**:
+  - Redesigned all 5 SVGs (`lan-forwarding-same-subnet.svg`, `cross-network-forwarding.svg`, `static-routing-topology.svg`, `rip-propagation-rounds.svg`, `ospf-dijkstra-graph.svg`) for 390px viewport readability with large typography and simplified stacked components.
+- **Comprehensive Artifact Audit**:
+  - Upgraded `scripts/audit-artifact.mjs` to check `href`, `src`, `srcset`, single `<h1>` tag integrity, required diagrams, forbidden terms, and PDF leaks.
+
+Current blockers:
+
+- source/provenance normalization (remediated; pending mentor review)
+- accuracy/overstatement corrections (remediated; pending mentor review)
+- duplicate H1 (remediated; 0 violations across 40 routes)
+- mobile diagram readability (remediated; redesigned for 390px)
+- artifact audit parity (remediated; 374 hrefs, 90 srcs, 0 broken)
 
 Verification completed:
 
-- `npm run check` (TypeScript + Prettier formatting): PASS with zero errors.
-- `npm test` (Unit tests): 74/74 tests PASS.
-- `npm run test:routes` (Route preparation tests): 5/5 tests PASS.
-- `npx quartz build` + `npm run prepare-pages`: PASS with 7 extensionless GitHub Pages routes emitted.
-- `npm run test:audit` (Artifact audit):
-  - Zero broken local href targets.
-  - Zero broken local src/srcset targets.
-  - Zero forbidden milestone/project-management terms in public pages.
-  - Zero legacy test route emissions (`OSPF.html`, `Static-Routing.html`, `ACL.html` absent).
-  - Zero restricted course PDFs in public artifact.
-- Content review gate:
-  - Chapter 1: 98/100
-  - Chapter 2: 99/100
-  - Chapter 3: 99/100
-  - Chapter 4: 98/100
-  - Average: 98.5/100 (Required: >= 93/100).
+- `npm run check`: PASS (0 errors)
+- `npm test`: PASS (74/74 unit tests)
+- `npm run test:routes`: PASS (5/5 tests)
+- `npx quartz build` + `npm run prepare-pages`: PASS (77 files emitted, 7 extensionless routes)
+- `npm run test:audit`: PASS (0 H1 violations, 0 broken links, 0 broken srcs, 0 term violations)
 
-Current blockers: None.
-
-Exact next action: Commit changes on `feat/m3-1-core-routing`, push branch, open PR to `main`, and request review.
+Exact Next Action: fix current M3.1 blockers -> run full QA -> artifact inspect -> request re-review if quota available.

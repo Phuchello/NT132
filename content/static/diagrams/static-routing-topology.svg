@@ -1,132 +1,111 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 560" width="100%" height="100%">
   <defs>
-    <linearGradient id="srHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="srHdr" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#0369a1"/>
       <stop offset="100%" stop-color="#0f172a"/>
     </linearGradient>
-    <filter id="srShadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
-      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08"/>
+    <filter id="srSh" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.10"/>
     </filter>
   </defs>
 
-  <rect width="100%" height="100%" fill="#ffffff" rx="12"/>
+  <rect width="100%" height="100%" fill="#ffffff" rx="10"/>
 
-  <!-- Title Banner -->
-  <rect x="20" y="14" width="920" height="42" rx="8" fill="url(#srHeader)"/>
-  <text x="480" y="40" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">
-    CÁC LOẠI STATIC ROUTE TRONG THỰC TẾ (STANDARD, DEFAULT, SUMMARY &amp; FLOATING)
+  <!-- Title -->
+  <rect x="12" y="12" width="396" height="38" rx="6" fill="url(#srHdr)"/>
+  <text x="210" y="36" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">
+    4 LOẠI STATIC ROUTE TRONG THỰC TẾ
   </text>
 
-  <!-- Left: Stub Branch R1 -->
-  <g transform="translate(30, 80)" filter="url(#srShadow)">
-    <rect width="260" height="240" rx="8" fill="#f8fafc" stroke="#0284c7" stroke-width="1.5"/>
-    <rect width="260" height="26" rx="8" fill="#0284c7"/>
-    <text x="130" y="18" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11.5" font-weight="bold" text-anchor="middle">
-      Chi nhánh A (Stub Network) — Router R1
+  <!-- Topology Bar Top -->
+  <g transform="translate(15, 60)" filter="url(#srSh)">
+    <rect width="390" height="90" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+    <rect width="390" height="22" rx="6" fill="#475569"/>
+    <text x="195" y="16" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">
+      MÔ HÌNH TOPOLOGY THAM CHIẾU
     </text>
 
-    <text x="12" y="48" fill="#475569" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold">Mạng nội bộ LAN A:</text>
-    <text x="12" y="66" fill="#0369a1" font-family="monospace" font-size="10">192.168.10.0/24 (Gi0/0)</text>
+    <!-- Node R1 -->
+    <rect x="14" y="30" width="105" height="50" rx="4" fill="#eff6ff" stroke="#3b82f6"/>
+    <text x="66" y="47" fill="#1e40af" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle">R1 (Stub)</text>
+    <text x="66" y="65" fill="#334155" font-family="monospace" font-size="9.5" text-anchor="middle">LAN: .10.0/24</text>
 
-    <rect x="10" y="80" width="240" height="70" rx="4" fill="#eff6ff" stroke="#bfdbfe"/>
-    <text x="120" y="96" fill="#1e40af" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">
-      1. DEFAULT STATIC ROUTE (R1 → R2)
-    </text>
-    <text x="16" y="114" fill="#1e293b" font-family="monospace" font-size="9">ip route 0.0.0.0 0.0.0.0 10.1.1.2</text>
-    <text x="16" y="134" fill="#64748b" font-family="system-ui, sans-serif" font-size="9">
-      Chỉ có 1 đường ra, gom toàn bộ về R2
-    </text>
+    <!-- Link R1-R2 -->
+    <line x1="120" y1="50" x2="160" y2="50" stroke="#0284c7" stroke-width="2"/>
+    <text x="140" y="44" fill="#0284c7" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" text-anchor="middle">Primary</text>
+    <line x1="120" y1="62" x2="160" y2="62" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <text x="140" y="74" fill="#ea580c" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" text-anchor="middle">Backup</text>
 
-    <rect x="10" y="160" width="240" height="70" rx="4" fill="#fff7ed" stroke="#fed7aa"/>
-    <text x="120" y="176" fill="#c2410c" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">
-      2. FLOATING STATIC ROUTE (Dự phòng)
+    <!-- Node R2 (HQ) -->
+    <rect x="162" y="30" width="95" height="50" rx="4" fill="#f0fdfa" stroke="#0f766e"/>
+    <text x="209" y="47" fill="#0f766e" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle">R2 (HQ Core)</text>
+    <text x="209" y="65" fill="#334155" font-family="monospace" font-size="9.5" text-anchor="middle">WAN 10.3.3.1</text>
+
+    <!-- Link R2-R3 -->
+    <line x1="258" y1="55" x2="298" y2="55" stroke="#059669" stroke-width="2"/>
+
+    <!-- Node R3 (Branch) -->
+    <rect x="300" y="30" width="76" height="50" rx="4" fill="#ecfdf5" stroke="#10b981"/>
+    <text x="338" y="47" fill="#047857" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle">R3</text>
+    <text x="338" y="65" fill="#334155" font-family="monospace" font-size="8.5" text-anchor="middle">4 Subnets</text>
+  </g>
+
+  <!-- 4 Route Type Cards -->
+  <!-- 1. Standard Static Route -->
+  <g transform="translate(15, 160)" filter="url(#srSh)">
+    <rect width="390" height="85" rx="6" fill="#ffffff" stroke="#0284c7" stroke-width="1.5"/>
+    <rect width="390" height="22" rx="6" fill="#0284c7"/>
+    <text x="14" y="16" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">
+      1. Standard Static Route (Tuyến đường tiêu chuẩn)
     </text>
-    <text x="16" y="194" fill="#1e293b" font-family="monospace" font-size="9">ip route 0.0.0.0 0.0.0.0 10.2.2.2 10</text>
-    <text x="16" y="214" fill="#c2410c" font-family="system-ui, sans-serif" font-size="9">
-      AD = 10 (Chỉ nổi lên khi đường chính đứt)
+    <text x="14" y="40" fill="#475569" font-family="system-ui, sans-serif" font-size="10.5">Trỏ đến một mạng đích cụ thể với subnet mask xác định.</text>
+    <rect x="12" y="48" width="366" height="26" rx="4" fill="#f0f9ff" stroke="#bae6fd"/>
+    <text x="20" y="65" fill="#0369a1" font-family="monospace" font-size="10.5" font-weight="bold">
+      ip route 192.168.10.0 255.255.255.0 10.3.3.1
     </text>
   </g>
 
-  <!-- Center: HQ Router R2 -->
-  <g transform="translate(350, 80)" filter="url(#srShadow)">
-    <rect width="260" height="240" rx="8" fill="#f8fafc" stroke="#0f766e" stroke-width="1.5"/>
-    <rect width="260" height="26" rx="8" fill="#0f766e"/>
-    <text x="130" y="18" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11.5" font-weight="bold" text-anchor="middle">
-      Trụ sở chính HQ — Router R2
+  <!-- 2. Default Static Route -->
+  <g transform="translate(15, 255)" filter="url(#srSh)">
+    <rect width="390" height="85" rx="6" fill="#ffffff" stroke="#1e40af" stroke-width="1.5"/>
+    <rect width="390" height="22" rx="6" fill="#1e40af"/>
+    <text x="14" y="16" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">
+      2. Default Static Route (Gateway of Last Resort)
     </text>
-
-    <text x="12" y="48" fill="#475569" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold">Interface kết nối:</text>
-    <text x="12" y="66" fill="#334155" font-family="monospace" font-size="9.5">Gi0/0 (Link chính R1): 10.1.1.2/30</text>
-    <text x="12" y="82" fill="#c2410c" font-family="monospace" font-size="9.5">Gi0/2 (Link backup R1): 10.2.2.2/30</text>
-    <text x="12" y="98" fill="#334155" font-family="monospace" font-size="9.5">Gi0/1 (Nối R3): 10.3.3.1/30</text>
-
-    <rect x="10" y="112" width="240" height="118" rx="4" fill="#f0fdfa" stroke="#99f6e4"/>
-    <text x="120" y="130" fill="#0f766e" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">
-      3. SUMMARY ROUTE (R2 → R3)
-    </text>
-    <text x="16" y="148" fill="#1e293b" font-family="monospace" font-size="8.5">4 subnet ở R3:</text>
-    <text x="16" y="164" fill="#64748b" font-family="monospace" font-size="8">172.16.0.0/24 ... 172.16.3.0/24</text>
-    <text x="16" y="184" fill="#0f766e" font-family="monospace" font-size="8.5" font-weight="bold">ip route 172.16.0.0 255.255.252.0 10.3.3.2</text>
-    <text x="16" y="204" fill="#0f766e" font-family="system-ui, sans-serif" font-size="8.5">
-      Gộp 4 route /24 thành 1 route duy nhất /22
+    <text x="14" y="40" fill="#475569" font-family="system-ui, sans-serif" font-size="10.5">Khớp mọi địa chỉ không có trong bảng routing (dùng cho Stub R1).</text>
+    <rect x="12" y="48" width="366" height="26" rx="4" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="20" y="65" fill="#1e40af" font-family="monospace" font-size="10.5" font-weight="bold">
+      ip route 0.0.0.0 0.0.0.0 10.1.1.2
     </text>
   </g>
 
-  <!-- Right: Branch B with 4 subnets -->
-  <g transform="translate(670, 80)" filter="url(#srShadow)">
-    <rect width="260" height="240" rx="8" fill="#f8fafc" stroke="#059669" stroke-width="1.5"/>
-    <rect width="260" height="26" rx="8" fill="#059669"/>
-    <text x="130" y="18" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11.5" font-weight="bold" text-anchor="middle">
-      Chi nhánh B — Router R3
+  <!-- 3. Summary Static Route -->
+  <g transform="translate(15, 350)" filter="url(#srSh)">
+    <rect width="390" height="95" rx="6" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
+    <rect width="390" height="22" rx="6" fill="#0f766e"/>
+    <text x="14" y="16" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">
+      3. Summary Static Route (Route tóm tắt dải mạng)
     </text>
-
-    <text x="12" y="48" fill="#475569" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold">4 Subnet nội bộ tại R3:</text>
-    <text x="12" y="66" fill="#059669" font-family="monospace" font-size="9.5">• 172.16.0.0/24 (VLAN 10)</text>
-    <text x="12" y="82" fill="#059669" font-family="monospace" font-size="9.5">• 172.16.1.0/24 (VLAN 20)</text>
-    <text x="12" y="98" fill="#059669" font-family="monospace" font-size="9.5">• 172.16.2.0/24 (VLAN 30)</text>
-    <text x="12" y="114" fill="#059669" font-family="monospace" font-size="9.5">• 172.16.3.0/24 (VLAN 40)</text>
-
-    <rect x="10" y="128" width="240" height="100" rx="4" fill="#ecfdf5" stroke="#a7f3d0"/>
-    <text x="120" y="146" fill="#047857" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">
-      4. STANDARD ROUTE VỀ R1
-    </text>
-    <text x="16" y="168" fill="#1e293b" font-family="monospace" font-size="8.5">ip route 192.168.10.0 255.255.255.0 10.3.3.1</text>
-    <text x="16" y="190" fill="#047857" font-family="system-ui, sans-serif" font-size="8.5">
-      Đảm bảo có đường về cho gói tin trả lời (Tránh bẫy Asymmetric drop)
+    <text x="14" y="40" fill="#475569" font-family="system-ui, sans-serif" font-size="10.5">Gộp 4 dải mạng /24 tại R3 thành 1 route duy nhất /22 trên R2.</text>
+    <rect x="12" y="48" width="366" height="34" rx="4" fill="#f0fdfa" stroke="#ccfbf1"/>
+    <text x="20" y="63" fill="#64748b" font-family="system-ui, sans-serif" font-size="9.5">172.16.0.0/24 ... 172.16.3.0/24 → 172.16.0.0/22</text>
+    <text x="20" y="77" fill="#0f766e" font-family="monospace" font-size="10" font-weight="bold">
+      ip route 172.16.0.0 255.255.252.0 10.3.3.2
     </text>
   </g>
 
-  <!-- Connectors -->
-  <!-- Primary Link R1-R2 -->
-  <line x1="290" y1="130" x2="350" y2="130" stroke="#0284c7" stroke-width="3"/>
-  <text x="320" y="124" fill="#0369a1" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" text-anchor="middle">Primary (AD=1)</text>
-
-  <!-- Backup Link R1-R2 -->
-  <line x1="290" y1="210" x2="350" y2="210" stroke="#f97316" stroke-width="2.5" stroke-dasharray="4,3"/>
-  <text x="320" y="204" fill="#ea580c" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" text-anchor="middle">Backup (AD=10)</text>
-
-  <!-- Link R2-R3 -->
-  <line x1="610" y1="170" x2="670" y2="170" stroke="#059669" stroke-width="3"/>
-  <text x="640" y="164" fill="#047857" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" text-anchor="middle">WAN 10.3.3.0/30</text>
-
-  <!-- Bottom Summary Card -->
-  <g transform="translate(30, 335)" filter="url(#srShadow)">
-    <rect width="900" height="125" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
-    <rect width="900" height="24" rx="8" fill="#f1f5f9"/>
-    <text x="450" y="17" fill="#334155" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">
-      TÓM TẮT 4 LOẠI STATIC ROUTE VÀ CÔNG DỤNG
+  <!-- 4. Floating Static Route -->
+  <g transform="translate(15, 455)" filter="url(#srSh)">
+    <rect width="390" height="95" rx="6" fill="#ffffff" stroke="#c2410c" stroke-width="1.5"/>
+    <rect width="390" height="22" rx="6" fill="#c2410c"/>
+    <text x="14" y="16" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">
+      4. Floating Static Route (Tuyến dự phòng nổi)
     </text>
-
-    <text x="20" y="44" fill="#0369a1" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold">1. Standard Route:</text>
-    <text x="140" y="44" fill="#475569" font-family="system-ui, sans-serif" font-size="10">Trỏ đến một mạng đích cụ thể với prefix/mask rõ ràng. Dùng để kết nối mạng nhánh xác định.</text>
-
-    <text x="20" y="64" fill="#1e40af" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold">2. Default Route:</text>
-    <text x="140" y="64" fill="#475569" font-family="system-ui, sans-serif" font-size="10">Mạng đích 0.0.0.0/0 (Gateway of Last Resort). Khớp với mọi địa chỉ không có trong bảng routing.</text>
-
-    <text x="20" y="84" fill="#0f766e" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold">3. Summary Route:</text>
-    <text x="140" y="84" fill="#475569" font-family="system-ui, sans-serif" font-size="10">Gộp nhiều dải mạng liên tiếp có chung tiền tố thành 1 route lớn hơn. Giảm kích thước bảng định tuyến.</text>
-
-    <text x="20" y="104" fill="#c2410c" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold">4. Floating Route:</text>
-    <text x="140" y="104" fill="#475569" font-family="system-ui, sans-serif" font-size="10">Route dự phòng với Administrative Distance cao hơn route chính (AD > 1). Tự động kích hoạt khi link chính đứt.</text>
+    <text x="14" y="40" fill="#475569" font-family="system-ui, sans-serif" font-size="10.5">Gán AD cao hơn route chính (AD 10 > AD 1); chỉ kích hoạt khi link chính đứt.</text>
+    <rect x="12" y="48" width="366" height="34" rx="4" fill="#fff7ed" stroke="#fed7aa"/>
+    <text x="20" y="63" fill="#9a3412" font-family="system-ui, sans-serif" font-size="9.5">Đường chính (AD 1): ip route 0.0.0.0 0.0.0.0 10.1.1.2</text>
+    <text x="20" y="77" fill="#c2410c" font-family="monospace" font-size="10" font-weight="bold">
+      ip route 0.0.0.0 0.0.0.0 10.2.2.2 10
+    </text>
   </g>
 </svg>
