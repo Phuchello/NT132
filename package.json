@@ -19,6 +19,7 @@
     "format": "npx prettier . --write",
     "test": "tsx --test",
     "test:routes": "node --test scripts/prepare-pages.test.mjs",
+    "test:audit": "node scripts/audit-artifact.mjs",
     "profile": "0x -D prof ./quartz/bootstrap-cli.mjs build --concurrency=1"
   },
   "engines": {

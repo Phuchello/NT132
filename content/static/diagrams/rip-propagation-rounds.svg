@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ripHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <filter id="ripShadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff" rx="12"/>
+
+  <!-- Title Banner -->
+  <rect x="20" y="14" width="920" height="42" rx="8" fill="url(#ripHeader)"/>
+  <text x="480" y="40" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">
+    TIẾN TRÌNH HỌC ĐỊNH TUYẾN CỦA RIP THEO TỪNG VÒNG (DISTANCE VECTOR PROPAGATION)
+  </text>
+
+  <!-- Topology Bar -->
+  <g transform="translate(40, 68)">
+    <rect width="880" height="48" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="70" y="28" fill="#4f46e5" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">LAN 1 (.1.0/24)</text>
+    <line x1="140" y1="24" x2="220" y2="24" stroke="#4f46e5" stroke-width="2"/>
+    <circle cx="230" cy="24" r="14" fill="#4f46e5"/>
+    <text x="230" y="28" fill="#ffffff" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">R1</text>
+    <line x1="244" y1="24" x2="436" y2="24" stroke="#94a3b8" stroke-width="2"/>
+    <text x="340" y="18" fill="#64748b" font-family="monospace" font-size="9" text-anchor="middle">WAN 1 (.12.0/30)</text>
+    <circle cx="450" cy="24" r="14" fill="#0f766e"/>
+    <text x="450" y="28" fill="#ffffff" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">R2</text>
+    <line x1="464" y1="24" x2="656" y2="24" stroke="#94a3b8" stroke-width="2"/>
+    <text x="560" y="18" fill="#64748b" font-family="monospace" font-size="9" text-anchor="middle">WAN 2 (.23.0/30)</text>
+    <circle cx="670" cy="24" r="14" fill="#059669"/>
+    <text x="670" y="28" fill="#ffffff" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">R3</text>
+    <line x1="684" y1="24" x2="760" y2="24" stroke="#059669" stroke-width="2"/>
+    <text x="810" y="28" fill="#059669" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">LAN 3 (.3.0/24)</text>
+  </g>
+
+  <!-- Round 0: Initial State -->
+  <g transform="translate(40, 128)" filter="url(#ripShadow)">
+    <rect width="880" height="110" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+    <rect width="880" height="24" rx="6" fill="#e2e8f0"/>
+    <text x="16" y="16" fill="#334155" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">
+      VÒNG 0: TRẠNG THÁI KHỞI ĐẦU (T=0s — CHỈ BIẾT CÁC MẠNG KẾT NỐI TRỰC TIẾP, HOP = 0)
+    </text>
+
+    <!-- R1 Table -->
+    <rect x="20" y="32" width="260" height="66" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="30" y="48" fill="#4f46e5" font-family="system-ui, sans-serif" font-size="10" font-weight="bold">Bảng R1 (Initial):</text>
+    <text x="30" y="66" fill="#334155" font-family="monospace" font-size="9">C 192.168.1.0/24  Fa0/0  (Hop 0)</text>
+    <text x="30" y="84" fill="#334155" font-family="monospace" font-size="9">C 192.168.12.0/30 S0/0/0 (Hop 0)</text>
+
+    <!-- R2 Table -->
+    <rect x="310" y="32" width="260" height="66" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="320" y="48" fill="#0f766e" font-family="system-ui, sans-serif" font-size="10" font-weight="bold">Bảng R2 (Initial):</text>
+    <text x="320" y="66" fill="#334155" font-family="monospace" font-size="9">C 192.168.12.0/30 S0/0/0 (Hop 0)</text>
+    <text x="320" y="84" fill="#334155" font-family="monospace" font-size="9">C 192.168.23.0/30 S0/0/1 (Hop 0)</text>
+
+    <!-- R3 Table -->
+    <rect x="600" y="32" width="260" height="66" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="610" y="48" fill="#059669" font-family="system-ui, sans-serif" font-size="10" font-weight="bold">Bảng R3 (Initial):</text>
+    <text x="610" y="66" fill="#334155" font-family="monospace" font-size="9">C 192.168.23.0/30 S0/0/0 (Hop 0)</text>
+    <text x="610" y="84" fill="#334155" font-family="monospace" font-size="9">C 192.168.3.0/24  Fa0/0  (Hop 0)</text>
+  </g>
+
+  <!-- Round 1: First Periodic Update -->
+  <g transform="translate(40, 252)" filter="url(#ripShadow)">
+    <rect width="880" height="120" rx="6" fill="#f8fafc" stroke="#6366f1" stroke-width="1.5"/>
+    <rect width="880" height="24" rx="6" fill="#e0e7ff"/>
+    <text x="16" y="16" fill="#3730a3" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">
+      VÒNG 1: CẬP NHẬT ĐỊNH KỲ ĐẦU TIÊN (T=30s — LÁNG GIỀNG TRAO ĐỔI VỚI NHAU, HOP = NHẬN + 1)
+    </text>
+
+    <!-- R1 Table Round 1 -->
+    <rect x="20" y="32" width="260" height="76" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="30" y="48" fill="#4f46e5" font-family="system-ui, sans-serif" font-size="10" font-weight="bold">Bảng R1 sau Vòng 1:</text>
+    <text x="30" y="64" fill="#334155" font-family="monospace" font-size="8.5">C 192.168.1.0/24 (Hop 0)</text>
+    <text x="30" y="78" fill="#334155" font-family="monospace" font-size="8.5">C 192.168.12.0/30 (Hop 0)</text>
+    <text x="30" y="94" fill="#4f46e5" font-family="monospace" font-size="8.5" font-weight="bold">R 192.168.23.0/30 via R2 (Hop 1)</text>
+
+    <!-- R2 Table Round 1 -->
+    <rect x="310" y="32" width="260" height="76" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="320" y="48" fill="#0f766e" font-family="system-ui, sans-serif" font-size="10" font-weight="bold">Bảng R2 sau Vòng 1 (Học từ 2 phía):</text>
+    <text x="320" y="64" fill="#0f766e" font-family="monospace" font-size="8.5" font-weight="bold">R 192.168.1.0/24 via R1 (Hop 1)</text>
+    <text x="320" y="78" fill="#334155" font-family="monospace" font-size="8.5">C .12.0/30 &amp; .23.0/30 (Hop 0)</text>
+    <text x="320" y="94" fill="#0f766e" font-family="monospace" font-size="8.5" font-weight="bold">R 192.168.3.0/24 via R3 (Hop 1)</text>
+
+    <!-- R3 Table Round 1 -->
+    <rect x="600" y="32" width="260" height="76" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="610" y="48" fill="#059669" font-family="system-ui, sans-serif" font-size="10" font-weight="bold">Bảng R3 sau Vòng 1:</text>
+    <text x="610" y="64" fill="#334155" font-family="monospace" font-size="8.5">C 192.168.3.0/24 (Hop 0)</text>
+    <text x="610" y="78" fill="#334155" font-family="monospace" font-size="8.5">C 192.168.23.0/30 (Hop 0)</text>
+    <text x="610" y="94" fill="#059669" font-family="monospace" font-size="8.5" font-weight="bold">R 192.168.12.0/30 via R2 (Hop 1)</text>
+  </g>
+
+  <!-- Round 2: Convergence -->
+  <g transform="translate(40, 386)" filter="url(#ripShadow)">
+    <rect width="880" height="135" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+    <rect width="880" height="24" rx="6" fill="#dcfce7"/>
+    <text x="16" y="16" fill="#15803d" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">
+      VÒNG 2: MẠNG HỘI TỤ HOÀN TOÀN (T=60s — R1 VÀ R3 ĐÃ BIẾT TOÀN BỘ MẠNG, HOP = 2)
+    </text>
+
+    <!-- R1 Table Converged -->
+    <rect x="20" y="32" width="260" height="90" rx="4" fill="#ffffff" stroke="#86efac"/>
+    <text x="30" y="48" fill="#166534" font-family="system-ui, sans-serif" font-size="10" font-weight="bold">Bảng R1 Hội Tụ:</text>
+    <text x="30" y="64" fill="#334155" font-family="monospace" font-size="8.5">C 192.168.1.0/24 (Hop 0)</text>
+    <text x="30" y="78" fill="#334155" font-family="monospace" font-size="8.5">R 192.168.23.0/30 (Hop 1)</text>
+    <text x="30" y="94" fill="#dc2626" font-family="monospace" font-size="8.5" font-weight="bold">R 192.168.3.0/24 via R2 [Hop 2]</text>
+    <text x="30" y="110" fill="#15803d" font-family="system-ui, sans-serif" font-size="8.5">Học được LAN 3 cách 2 router</text>
+
+    <!-- R2 Table Converged -->
+    <rect x="310" y="32" width="260" height="90" rx="4" fill="#ffffff" stroke="#86efac"/>
+    <text x="320" y="48" fill="#166534" font-family="system-ui, sans-serif" font-size="10" font-weight="bold">Bảng R2 Hội Tụ:</text>
+    <text x="320" y="64" fill="#166534" font-family="monospace" font-size="8.5">R 192.168.1.0/24 via R1 [Hop 1]</text>
+    <text x="320" y="78" fill="#334155" font-family="monospace" font-size="8.5">C .12.0/30 &amp; .23.0/30 (Hop 0)</text>
+    <text x="320" y="94" fill="#166534" font-family="monospace" font-size="8.5">R 192.168.3.0/24 via R3 [Hop 1]</text>
+    <text x="320" y="110" fill="#15803d" font-family="system-ui, sans-serif" font-size="8.5">Đã biết đầy đủ mọi phân đoạn</text>
+
+    <!-- R3 Table Converged -->
+    <rect x="600" y="32" width="260" height="90" rx="4" fill="#ffffff" stroke="#86efac"/>
+    <text x="610" y="48" fill="#166534" font-family="system-ui, sans-serif" font-size="10" font-weight="bold">Bảng R3 Hội Tụ:</text>
+    <text x="610" y="64" fill="#334155" font-family="monospace" font-size="8.5">C 192.168.3.0/24 (Hop 0)</text>
+    <text x="610" y="78" fill="#334155" font-family="monospace" font-size="8.5">R 192.168.12.0/30 (Hop 1)</text>
+    <text x="610" y="94" fill="#dc2626" font-family="monospace" font-size="8.5" font-weight="bold">R 192.168.1.0/24 via R2 [Hop 2]</text>
+    <text x="610" y="110" fill="#15803d" font-family="system-ui, sans-serif" font-size="8.5">Học được LAN 1 cách 2 router</text>
+  </g>
+</svg>

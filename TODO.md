@@ -35,9 +35,19 @@
 
 ## M3 — Theory and practical labs
 
-- [ ] Migrate reviewed theory notes.
-- [ ] Add practical lab guides and prerequisite links.
-- [ ] Add diagrams and command examples with provenance.
+### M3.1 — Core networking foundation (Gold standard theory)
+
+- [x] Author Chapter 1: Network Infrastructure & Packet Flow (`thiet-bi-va-ha-tang.md`).
+- [x] Author Chapter 2: Static Routing (`static-routing.md`).
+- [x] Author Chapter 3: RIP Distance Vector (`rip.md`).
+- [x] Author Chapter 4: OSPF Link State & Dijkstra (`ospf.md`).
+- [x] Create original SVG diagrams for local forwarding, cross-LAN forwarding, static routing, RIP rounds, and OSPF Dijkstra SPF.
+- [x] Integrate artifact audit checks into CI (`npm run test:audit`).
+
+### M3.2+ — Remaining theory chapters and practical lab curriculum
+
+- [ ] Author remaining theory chapters (Switching/VLAN, Inter-VLAN, Network Services, etc.).
+- [ ] Add practical lab guides and Packet Tracer topologies.
 
 ## M4 — Exam preparation and exam intelligence
 

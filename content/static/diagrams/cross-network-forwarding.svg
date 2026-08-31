@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="100%" height="100%">
+  <defs>
+    <linearGradient id="blueBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f0f9ff"/>
+      <stop offset="100%" stop-color="#e0f2fe"/>
+    </linearGradient>
+    <linearGradient id="headerGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <filter id="shadow2" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff" rx="12"/>
+
+  <!-- Title Banner -->
+  <rect x="20" y="14" width="920" height="42" rx="8" fill="url(#headerGrad2)"/>
+  <text x="480" y="40" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">
+    CHUYỂN TIẾP GÓI TIN QUA CÁC MẠNG KHÁC NHAU (CROSS-NETWORK FORWARDING)
+  </text>
+
+  <!-- Network Segments Background -->
+  <!-- LAN 1 -->
+  <rect x="25" y="66" width="270" height="230" rx="8" fill="#f8fafc" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="35" y="86" fill="#0369a1" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">LAN 1: 192.168.10.0/24</text>
+
+  <!-- WAN Link -->
+  <rect x="345" y="66" width="270" height="230" rx="8" fill="#f8fafc" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="355" y="86" fill="#d97706" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">WAN Link: 192.168.12.0/30</text>
+
+  <!-- LAN 2 -->
+  <rect x="665" y="66" width="270" height="230" rx="8" fill="#f8fafc" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="675" y="86" fill="#047857" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">LAN 2: 192.168.20.0/24</text>
+
+  <!-- Nodes -->
+  <!-- PC-A -->
+  <g transform="translate(35, 110)" filter="url(#shadow2)">
+    <rect width="115" height="110" rx="6" fill="url(#blueBox)" stroke="#0284c7" stroke-width="1.5"/>
+    <rect width="115" height="22" rx="6" fill="#0284c7"/>
+    <text x="57" y="15" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">PC-A</text>
+    <text x="8" y="38" fill="#334155" font-family="monospace" font-size="8.5">IP: .10.10/24</text>
+    <text x="8" y="54" fill="#334155" font-family="monospace" font-size="8.5">GW: .10.1</text>
+    <text x="8" y="70" fill="#0369a1" font-family="monospace" font-size="8.5">MAC: AAAA</text>
+  </g>
+
+  <!-- SW1 -->
+  <g transform="translate(180, 130)" filter="url(#shadow2)">
+    <rect width="90" height="70" rx="6" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+    <rect width="90" height="20" rx="6" fill="#64748b"/>
+    <text x="45" y="14" fill="#ffffff" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">Switch 1</text>
+    <text x="45" y="44" fill="#475569" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Layer 2</text>
+    <text x="45" y="58" fill="#475569" font-family="system-ui, sans-serif" font-size="8" text-anchor="middle">Forward MAC</text>
+  </g>
+
+  <!-- Router R1 -->
+  <g transform="translate(315, 110)" filter="url(#shadow2)">
+    <rect width="140" height="135" rx="6" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+    <rect width="140" height="24" rx="6" fill="#0284c7"/>
+    <text x="70" y="16" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Router R1</text>
+    <text x="8" y="42" fill="#0369a1" font-family="monospace" font-size="8.5">Gi0/0: 192.168.10.1</text>
+    <text x="8" y="56" fill="#475569" font-family="monospace" font-size="8">MAC: 1111 (Default GW)</text>
+    <line x1="8" y1="64" x2="132" y2="64" stroke="#e2e8f0"/>
+    <text x="8" y="80" fill="#d97706" font-family="monospace" font-size="8.5">Gi0/1: 192.168.12.1</text>
+    <text x="8" y="94" fill="#475569" font-family="monospace" font-size="8">MAC: 2222</text>
+    <text x="70" y="118" fill="#0f766e" font-family="system-ui, sans-serif" font-size="9" font-weight="bold" text-anchor="middle">Tra Routing Table R1</text>
+  </g>
+
+  <!-- Router R2 -->
+  <g transform="translate(505, 110)" filter="url(#shadow2)">
+    <rect width="140" height="135" rx="6" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+    <rect width="140" height="24" rx="6" fill="#059669"/>
+    <text x="70" y="16" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Router R2</text>
+    <text x="8" y="42" fill="#d97706" font-family="monospace" font-size="8.5">Gi0/0: 192.168.12.2</text>
+    <text x="8" y="56" fill="#475569" font-family="monospace" font-size="8">MAC: 3333</text>
+    <line x1="8" y1="64" x2="132" y2="64" stroke="#e2e8f0"/>
+    <text x="8" y="80" fill="#059669" font-family="monospace" font-size="8.5">Gi0/1: 192.168.20.1</text>
+    <text x="8" y="94" fill="#475569" font-family="monospace" font-size="8">MAC: 4444 (Default GW)</text>
+    <text x="70" y="118" fill="#0f766e" font-family="system-ui, sans-serif" font-size="9" font-weight="bold" text-anchor="middle">Tra Routing Table R2</text>
+  </g>
+
+  <!-- SW2 -->
+  <g transform="translate(690, 130)" filter="url(#shadow2)">
+    <rect width="90" height="70" rx="6" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+    <rect width="90" height="20" rx="6" fill="#64748b"/>
+    <text x="45" y="14" fill="#ffffff" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">Switch 2</text>
+    <text x="45" y="44" fill="#475569" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Layer 2</text>
+    <text x="45" y="58" fill="#475569" font-family="system-ui, sans-serif" font-size="8" text-anchor="middle">Forward MAC</text>
+  </g>
+
+  <!-- PC-B -->
+  <g transform="translate(810, 110)" filter="url(#shadow2)">
+    <rect width="115" height="110" rx="6" fill="url(#blueBox)" stroke="#059669" stroke-width="1.5"/>
+    <rect width="115" height="22" rx="6" fill="#059669"/>
+    <text x="57" y="15" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">PC-B</text>
+    <text x="8" y="38" fill="#334155" font-family="monospace" font-size="8.5">IP: .20.20/24</text>
+    <text x="8" y="54" fill="#334155" font-family="monospace" font-size="8.5">GW: .20.1</text>
+    <text x="8" y="70" fill="#059669" font-family="monospace" font-size="8.5">MAC: BBBB</text>
+  </g>
+
+  <!-- Interconnect Lines -->
+  <line x1="150" y1="165" x2="180" y2="165" stroke="#0284c7" stroke-width="2"/>
+  <line x1="270" y1="165" x2="315" y2="165" stroke="#0284c7" stroke-width="2"/>
+  <line x1="455" y1="165" x2="505" y2="165" stroke="#f59e0b" stroke-width="3"/>
+  <line x1="645" y1="165" x2="690" y2="165" stroke="#059669" stroke-width="2"/>
+  <line x1="780" y1="165" x2="810" y2="165" stroke="#059669" stroke-width="2"/>
+
+  <!-- Trace Stages Bottom Table -->
+  <g transform="translate(25, 310)" filter="url(#shadow2)">
+    <rect width="910" height="190" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+    <rect width="910" height="28" rx="8" fill="#f1f5f9"/>
+    <text x="455" y="19" fill="#1e293b" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">
+      BẢNG THEO DÕI SỰ THAY ĐỔI HEADER QUA TỪNG HOP (PACKET &amp; FRAME TRACE)
+    </text>
+
+    <!-- Column Headers -->
+    <text x="90" y="48" fill="#475569" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle">Chặng (Hop)</text>
+    <text x="240" y="48" fill="#475569" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle">Source / Dest IP (Layer 3)</text>
+    <text x="440" y="48" fill="#475569" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle">Source / Dest MAC (Layer 2)</text>
+    <text x="660" y="48" fill="#475569" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle">Quyết định thiết bị</text>
+    <text x="835" y="48" fill="#475569" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle">Nhận xét</text>
+    <line x1="10" y1="56" x2="900" y2="56" stroke="#cbd5e1"/>
+
+    <!-- Row 1: PC-A to R1 -->
+    <text x="90" y="76" fill="#0284c7" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">1. PC-A → R1</text>
+    <text x="240" y="76" fill="#0f172a" font-family="monospace" font-size="9.5" text-anchor="middle">SIP: 192.168.10.10 | DIP: 192.168.20.20</text>
+    <text x="440" y="76" fill="#0f172a" font-family="monospace" font-size="9.5" text-anchor="middle">SMAC: AAAA | DMAC: 1111 (GW)</text>
+    <text x="660" y="76" fill="#334155" font-family="system-ui, sans-serif" font-size="9.5" text-anchor="middle">PC-A gửi frame đến Default Gateway R1</text>
+    <text x="835" y="76" fill="#0284c7" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Khác subnet /24</text>
+    <line x1="10" y1="86" x2="900" y2="86" stroke="#f1f5f9"/>
+
+    <!-- Row 2: R1 to R2 -->
+    <text x="90" y="106" fill="#d97706" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">2. R1 → R2</text>
+    <text x="240" y="106" fill="#0f172a" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">SIP: 192.168.10.10 | DIP: 192.168.20.20</text>
+    <text x="440" y="106" fill="#d97706" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">SMAC: 2222 | DMAC: 3333 (Next-hop)</text>
+    <text x="660" y="106" fill="#334155" font-family="system-ui, sans-serif" font-size="9.5" text-anchor="middle">R1 tra routing table, rewrite L2 header</text>
+    <text x="835" y="106" fill="#d97706" font-family="system-ui, sans-serif" font-size="9" font-weight="bold" text-anchor="middle">MAC THAY ĐỔI</text>
+    <line x1="10" y1="116" x2="900" y2="116" stroke="#f1f5f9"/>
+
+    <!-- Row 3: R2 to PC-B -->
+    <text x="90" y="136" fill="#059669" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">3. R2 → PC-B</text>
+    <text x="240" y="136" fill="#0f172a" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">SIP: 192.168.10.10 | DIP: 192.168.20.20</text>
+    <text x="440" y="136" fill="#059669" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">SMAC: 4444 | DMAC: BBBB (PC-B)</text>
+    <text x="660" y="136" fill="#334155" font-family="system-ui, sans-serif" font-size="9.5" text-anchor="middle">R2 chuyển tiếp ra connected Gi0/1</text>
+    <text x="835" y="136" fill="#059669" font-family="system-ui, sans-serif" font-size="9" font-weight="bold" text-anchor="middle">Đến đích an toàn</text>
+
+    <!-- Key Takeaway -->
+    <rect x="10" y="148" width="890" height="32" rx="4" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="455" y="169" fill="#166534" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle">
+      KẾT LUẬN CỐT LÕI: Địa chỉ IP định danh hai đầu cuối (End-to-End, giữ nguyên). Địa chỉ MAC chỉ có giá trị cục bộ từng chặng (Hop-by-Hop, bóc tách và viết lại).
+    </text>
+  </g>
+</svg>

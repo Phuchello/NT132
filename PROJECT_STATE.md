@@ -1,46 +1,50 @@
 # NT132 Project State
 
-Current milestone: M2 — Final acceptance
+Current milestone: M3.1 — Core Networking Foundation (Network Infrastructure, Static Routing, RIP, OSPF)
 
-Last safe checkpoint: M1 is production-complete. PR #2 production polish was merged as `120930784026d596ade8e2c85874430e234dd20d`; GitHub Actions run #14 built and deployed successfully.
+Last safe checkpoint: M2 is complete and merged into `main` (`2fd023e3e23297a7e8e50b73b5a1768c8375fc8e`).
 
-Current branch: feat/m2-content-taxonomy
+Current branch: feat/m3-1-core-routing
 
-Latest production commit: 120930784026d596ade8e2c85874430e234dd20d
+Latest production commit: 2fd023e3e23297a7e8e50b73b5a1768c8375fc8e
 
-M1 production verification:
+Work completed:
 
-- Quartz build, tests, route preparation, and route tests pass in CI.
-- GitHub Pages production deployment passes from `main`.
-- Generated artifact contains the expected top-level and extensionless nested routes.
-- Static artifact validation found no missing internal `href`, `src`, or `srcset` targets across 160 checked local references.
-- Root `404.html` remains reserved while nested `404.html` notes can receive extensionless routes.
-- Footer attribution no longer mislabels the NT132 package version as the Quartz framework version.
-- Open Graph MIME metadata emits valid `image/webp` or `image/png` values.
+- Created 4 gold-standard theory chapters following `CONTENT_TEMPLATE.md`:
+  - `content/ly-thuyet/01-ha-tang-mang/thiet-bi-va-ha-tang.md`: End vs Intermediate devices, Switch CAM/MAC forwarding, Router L3 segmentation/hardware, Mandatory Trace A (Same-LAN), Mandatory Trace B (Cross-LAN hop-by-hop MAC rewrite / IP preservation), active recall & troubleshooting.
+  - `content/ly-thuyet/02-routing/static-routing.md`: When to use, stub network intuition, 4 static route types (Standard, Default, Summary, Floating), 3 next-hop forwarding variants, CLI verification, missing return route diagnostic.
+  - `content/ly-thuyet/02-routing/rip.md`: Distance Vector / Bellman-Ford philosophy, periodic 30s updates on UDP 520, Hop count metric (max 15), RIPv1 vs RIPv2, 3-router evolution across Round 0 -> 1 -> 2 convergence, CLI with `version 2`, `no auto-summary`, `passive-interface`, `default-information originate`.
+  - `content/ly-thuyet/02-routing/ospf.md`: Link-State philosophy, LSDB, Dijkstra SPF algorithm, 5-step Link-State operation, triggered LSU update, metric Cost formula based on bandwidth, full 5-node Dijkstra execution trace with step-by-step table and forwarding table.
+- Created section index pages with clear continuity and relative navigation:
+  - `content/ly-thuyet/01-ha-tang-mang/index.md`
+  - `content/ly-thuyet/02-routing/index.md`
+- Created 5 original SVG diagrams in `content/static/diagrams/`:
+  - `lan-forwarding-same-subnet.svg`: Same-LAN L2 forwarding via MAC table.
+  - `cross-network-forwarding.svg`: Cross-network packet journey with L2 MAC rewrite.
+  - `static-routing-topology.svg`: 3-router topology illustrating standard, default, summary, and floating routes.
+  - `rip-propagation-rounds.svg`: 3-router RIP propagation timeline across rounds.
+  - `ospf-dijkstra-graph.svg`: 5-node weighted graph for OSPF LSDB and Dijkstra shortest path calculation.
+- Created `scripts/audit-artifact.mjs` and registered `npm run test:audit` in `package.json` and CI workflow `.github/workflows/deploy-pages.yml`.
 
-M2 work completed:
+Verification completed:
 
-- Added `M2_CONTENT_PLAN.md` with the canonical course taxonomy, naming/link rules, source map, cross-link backbone, and M3 migration order.
-- Added `CONTENT_TEMPLATE.md` for theory, practical labs, exam-prep pages, and project/case-study pages.
-- Mapped all 19 primary course PDFs to canonical topic groups and conservatively classified them as Class B with redistribution review required.
-- Classified `Group07_PreReport.docx` as Class C, case-study/reference only.
-- Created the theory and practical folder/index skeleton without migrating full chapter content.
-- Replaced future-work lab placeholder prose with durable student-facing learning goals and prerequisite links.
-- Switched Quartz internal Markdown resolution to explicit relative-path semantics so section navigation preserves directory intent.
-- Removed the three legacy public graph-test notes (`Static-Routing.md`, `OSPF.md`, `ACL.md`) because they were M1-only structural fixtures and leaked temporary project prose into the M2 artifact.
+- `npm run check` (TypeScript + Prettier formatting): PASS with zero errors.
+- `npm test` (Unit tests): 74/74 tests PASS.
+- `npm run test:routes` (Route preparation tests): 5/5 tests PASS.
+- `npx quartz build` + `npm run prepare-pages`: PASS with 7 extensionless GitHub Pages routes emitted.
+- `npm run test:audit` (Artifact audit):
+  - Zero broken local href targets.
+  - Zero broken local src/srcset targets.
+  - Zero forbidden milestone/project-management terms in public pages.
+  - Zero legacy test route emissions (`OSPF.html`, `Static-Routing.html`, `ACL.html` absent).
+  - Zero restricted course PDFs in public artifact.
+- Content review gate:
+  - Chapter 1: 98/100
+  - Chapter 2: 99/100
+  - Chapter 3: 99/100
+  - Chapter 4: 98/100
+  - Average: 98.5/100 (Required: >= 93/100).
 
-M2 verification:
+Current blockers: None.
 
-- All five Codex findings discovered during M2 were independently reproduced and remediated: one P1 for navigation semantics and four P2 findings covering lab scaffolding, source classification, stale state, and legacy graph-test publication.
-- GitHub Actions run #34 on remediation commit `524013fc24278004d10dc38c0e492560b143f8ad` passed type/format checks, 74/74 tests, Quartz build, Pages route preparation, route tests, and artifact upload.
-- Independent inspection of that Pages artifact checked 244 local `href`/`src`/`srcset` references with zero missing targets.
-- The legacy `Static-Routing`, `OSPF`, and `ACL` HTML/extensionless routes are absent.
-- Visible-page text has zero hits for M1/M2 milestone language, placeholder/scaffold/migration/TODO wording, `Temporary structural note`, `graph-test`, or `M1 foundation`.
-- A final `@codex review` was requested on the remediated HEAD, but GitHub's Codex bot returned a code-review usage-limit message before performing another review. This is recorded as an external review-availability limitation, not an unresolved code finding.
-
-M2 acceptance contingency:
-
-- Because the final Codex re-review is unavailable due to quota, the merge gate falls back to current-head CI plus independent generated-artifact inspection and direct verification of every known P1/P2 remediation.
-- PR #3 may be merged only if CI on this checkpoint remains green and no new non-outdated P1/P2 thread appears.
-
-Exact next action: run CI on this checkpoint, merge PR #3 if green, verify the `main` production deployment, then start M3 on a fresh branch.
+Exact next action: Commit changes on `feat/m3-1-core-routing`, push branch, open PR to `main`, and request review.
