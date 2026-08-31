@@ -8,29 +8,34 @@ Turn the current Quartz shell into a coherent NT132 course knowledge base withou
 
 Use the uploaded course materials as reference inputs, but keep the repository source policy intact.
 
-### Primary course-source set
+The 19 uploaded course PDFs are treated **conservatively as Class B** under `SOURCE_POLICY.md`: course/instructor material whose redistribution rights have not been cleared. They may be used as reference inputs for independently authored notes, but the original PDFs are not mirrored into the public repository unless permission is documented.
 
-1. `1.1 Chương 1 Thiết bị mạng và hạ tầng mạng.pdf`
-2. `2.1 Static Routing.pdf`
-3. `2.2 Routing protocol - RIP.pdf`
-4. `2.3 Routing protocol - OSPF.pdf`
-5. `3.1 Switch and VLAN.pdf`
-6. `3. InterVLAN routing.pdf`
-7. `4.1 Network Services.pdf`
-8. `4.2 DHCP Overview.pdf`
-9. `4.3 NAT overview.pdf`
-10. `4.4 ACL Overview.pdf`
-11. `4.5 ACL Wildcard mask.pdf`
-12. `5.1 Windows Server.pdf`
-13. `5.2 Linux Server.pdf`
-14. `5.3 Cloud Server.pdf`
-15. `6. Linux Adminstration.pdf`
-16. `8.1 Intro to Cloud computing.pdf`
-17. `9.1 Windows administration.pdf`
-18. `9.1 Manage task.pdf`
-19. `9.2 Network management system.pdf`
+`Group07_PreReport.docx` is a student-produced report rather than canonical course theory, so it is treated as **Class C** for this project: case-study/reference only, with no public mirroring unless redistribution permission is documented.
 
-`Group07_PreReport.docx` is not a canonical source for core theory. It may later become a clearly labeled Linux/iptables case study.
+### Source map and policy class
+
+| # | Source | Class | Redistribution status | Canonical destination |
+| --- | --- | --- | --- | --- |
+| 1 | `1.1 Chương 1 Thiết bị mạng và hạ tầng mạng.pdf` | B | Rights review required; reference only | `ly-thuyet/01-ha-tang-mang/` |
+| 2 | `2.1 Static Routing.pdf` | B | Rights review required; reference only | `ly-thuyet/02-routing/` |
+| 3 | `2.2 Routing protocol - RIP.pdf` | B | Rights review required; reference only | `ly-thuyet/02-routing/` |
+| 4 | `2.3 Routing protocol - OSPF.pdf` | B | Rights review required; reference only | `ly-thuyet/02-routing/` |
+| 5 | `3.1 Switch and VLAN.pdf` | B | Rights review required; reference only | `ly-thuyet/03-switching-vlan/` |
+| 6 | `3. InterVLAN routing.pdf` | B | Rights review required; reference only | `ly-thuyet/03-switching-vlan/` |
+| 7 | `4.1 Network Services.pdf` | B | Rights review required; reference only | `ly-thuyet/04-network-services/` |
+| 8 | `4.2 DHCP Overview.pdf` | B | Rights review required; reference only | `ly-thuyet/04-network-services/` |
+| 9 | `4.3 NAT overview.pdf` | B | Rights review required; reference only | `ly-thuyet/04-network-services/` |
+| 10 | `4.4 ACL Overview.pdf` | B | Rights review required; reference only | `ly-thuyet/04-network-services/` |
+| 11 | `4.5 ACL Wildcard mask.pdf` | B | Rights review required; reference only | `ly-thuyet/04-network-services/` |
+| 12 | `5.1 Windows Server.pdf` | B | Rights review required; reference only | `ly-thuyet/05-server-platforms/` |
+| 13 | `5.2 Linux Server.pdf` | B | Rights review required; reference only | `ly-thuyet/05-server-platforms/` |
+| 14 | `5.3 Cloud Server.pdf` | B | Rights review required; reference only | `ly-thuyet/05-server-platforms/` |
+| 15 | `6. Linux Adminstration.pdf` | B | Rights review required; reference only | `ly-thuyet/06-linux-administration/` |
+| 16 | `8.1 Intro to Cloud computing.pdf` | B | Rights review required; reference only | `ly-thuyet/07-cloud-computing/` |
+| 17 | `9.1 Windows administration.pdf` | B | Rights review required; reference only | `ly-thuyet/08-windows-administration/` |
+| 18 | `9.1 Manage task.pdf` | B | Rights review required; reference only | `ly-thuyet/09-management/` |
+| 19 | `9.2 Network management system.pdf` | B | Rights review required; reference only | `ly-thuyet/09-management/` |
+| — | `Group07_PreReport.docx` | C | Case-study/reference only; permission required before mirroring | `do-an/case-studies/` |
 
 ## Course taxonomy
 
@@ -167,8 +172,8 @@ M2 is complete when all of the following are true:
 
 - [ ] Taxonomy and naming conventions are accepted.
 - [ ] Theory/lab/exam/project templates are committed.
-- [ ] All 19 primary course files are mapped to canonical destination topics.
-- [ ] `Group07_PreReport.docx` is classified as case-study-only.
+- [ ] All 19 primary course files are mapped to canonical destination topics with A/B/C policy class and redistribution status.
+- [ ] `Group07_PreReport.docx` is classified as Class C, case-study-only.
 - [ ] No public page contains milestone/agent/scaffolding language.
 - [ ] Internal navigation resolves to emitted routes with zero missing local references.
 - [ ] A migration order for M3 is fixed.
