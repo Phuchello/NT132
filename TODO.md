@@ -27,9 +27,11 @@
 - [x] Review the taxonomy/source map for omissions or duplicate concepts.
 - [x] Create the destination theory/practical folder and index skeleton without migrating full chapter content.
 - [x] Replace public future-work lab placeholders with durable student-facing section guidance.
-- [x] Define explicit relative internal-link semantics and verify a zero-missing-reference artifact on the link remediation build.
-- [ ] Run final CI and artifact checks on the complete current M2 remediation HEAD.
-- [ ] Obtain a clean current-head Codex re-review and merge PR #3.
+- [x] Define explicit relative internal-link semantics and verify zero missing local references.
+- [x] Remove legacy M1 graph-test notes from the public M2 artifact.
+- [x] Reproduce and remediate all P1/P2 findings returned by available Codex reviews.
+- [x] Run final remediation CI and artifact checks; record the final Codex quota limitation and independent-review contingency.
+- [ ] Merge PR #3 and verify the production deployment from `main`.
 
 ## M3 — Theory and practical labs
 
