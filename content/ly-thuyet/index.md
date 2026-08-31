@@ -9,14 +9,14 @@ Học theo luồng từ **hạ tầng mạng → routing → switching/VLAN → 
 
 ## Nội dung
 
-1. [[01-ha-tang-mang/index|Hạ tầng mạng]]
-2. [[02-routing/index|Routing]]
-3. [[03-switching-vlan/index|Switching & VLAN]]
-4. [[04-network-services/index|Network Services]]
-5. [[05-server-platforms/index|Server Platforms]]
-6. [[06-linux-administration/index|Linux Administration]]
-7. [[07-cloud-computing/index|Cloud Computing]]
-8. [[08-windows-administration/index|Windows Administration]]
-9. [[09-management/index|System & Network Management]]
+1. [Hạ tầng mạng](./01-ha-tang-mang/)
+2. [Routing](./02-routing/)
+3. [Switching & VLAN](./03-switching-vlan/)
+4. [Network Services](./04-network-services/)
+5. [Server Platforms](./05-server-platforms/)
+6. [Linux Administration](./06-linux-administration/)
+7. [Cloud Computing](./07-cloud-computing/)
+8. [Windows Administration](./08-windows-administration/)
+9. [System & Network Management](./09-management/)
 
-Quay lại [[../index|NT132]].
+[Quay lại NT132](../).

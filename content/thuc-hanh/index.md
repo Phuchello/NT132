@@ -9,11 +9,11 @@ Mỗi lab hướng tới **làm được → verify được → tự chẩn đo
 
 ## Nhóm lab
 
-- [[routing/index|Routing]]
-- [[switching-vlan/index|Switching & VLAN]]
-- [[network-services/index|Network Services]]
-- [[server/index|Server]]
-- [[administration/index|Administration]]
-- [[management/index|Management]]
+- [Routing](./routing/)
+- [Switching & VLAN](./switching-vlan/)
+- [Network Services](./network-services/)
+- [Server](./server/)
+- [Administration](./administration/)
+- [Management](./management/)
 
-Quay lại [[../index|NT132]].
+[Quay lại NT132](../).

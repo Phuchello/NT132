@@ -17,4 +17,4 @@ Trọng tâm: packet đi qua dịch vụ nào, trạng thái nào được tạo
 
 Nguồn chính: `4.1 Network Services.pdf`, `4.2 DHCP Overview.pdf`, `4.3 NAT overview.pdf`, `4.4 ACL Overview.pdf`, `4.5 ACL Wildcard mask.pdf`.
 
-Tiếp theo: [[../05-server-platforms/index|Server Platforms]].
+[Tiếp theo: Server Platforms](../05-server-platforms/).

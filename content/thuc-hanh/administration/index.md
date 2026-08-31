@@ -6,4 +6,4 @@ title: Lab Administration
 
 Khu vực thực hành quản trị Linux/Windows: user, service, network configuration và kiểm tra trạng thái.
 
-Quay lại [[../index|Thực hành]].
+[Quay lại Thực hành](../).

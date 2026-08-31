@@ -14,4 +14,4 @@ description: Tác vụ quản trị, NMS và mô hình quản lý mạng/hệ th
 
 Nguồn chính: `9.1 Manage task.pdf`, `9.2 Network management system.pdf`.
 
-Quay lại [[../index|Lý thuyết]].
+[Quay lại Lý thuyết](../).

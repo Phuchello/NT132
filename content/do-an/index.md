@@ -1,11 +1,12 @@
 ---
 title: Đồ án
-description: Mục lục đồ án và báo cáo của NT132.
+description: Ý tưởng, kiến trúc và case study cho đồ án NT132.
 ---
 
 # Đồ án
 
-Mục lục placeholder cho M1. Ý tưởng đồ án và hướng dẫn báo cáo sẽ được thêm ở
-milestone riêng.
+Khu vực dành cho ý tưởng đồ án, cách thiết kế architecture, traffic/data flow, security/failure modes và tiêu chí kiểm chứng.
 
-Quay lại [[index|NT132]].
+Báo cáo sinh viên chỉ được dùng như **case study có nhãn rõ ràng**, không thay thế nguồn lý thuyết chuẩn của môn.
+
+[Quay lại NT132](../).

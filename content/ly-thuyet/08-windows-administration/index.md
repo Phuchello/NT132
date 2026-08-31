@@ -9,4 +9,4 @@ Tập trung vào các tác vụ quản trị Windows và cách kiểm soát user
 
 Nguồn chính: `9.1 Windows administration.pdf`.
 
-Tiếp theo: [[../09-management/index|System & Network Management]].
+[Tiếp theo: System & Network Management](../09-management/).

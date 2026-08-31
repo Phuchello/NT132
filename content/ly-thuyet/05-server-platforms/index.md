@@ -15,4 +15,4 @@ Trọng tâm: vai trò server, service, network configuration và sự khác nha
 
 Nguồn chính: `5.1 Windows Server.pdf`, `5.2 Linux Server.pdf`, `5.3 Cloud Server.pdf`.
 
-Tiếp theo: [[../06-linux-administration/index|Linux Administration]].
+[Tiếp theo: Linux Administration](../06-linux-administration/).

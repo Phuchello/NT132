@@ -1,10 +1,12 @@
 ---
 title: Ôn cuối kỳ
-description: Mục lục ôn thi cuối kỳ của NT132.
+description: Bản đồ ôn cuối kỳ NT132 theo concept, packet trace và lỗi thường gặp.
 ---
 
 # Ôn cuối kỳ
 
-Mục lục placeholder cho M1. Chưa có nội dung ôn thi nào được migrate.
+Tập trung vào ba lớp kiến thức: **hiểu cơ chế**, **tự trace được luồng**, và **chẩn đoán được cấu hình sai**.
 
-Quay lại [[index|NT132]].
+Các nhóm trọng tâm gồm routing, VLAN/Inter-VLAN, DHCP/NAT, ACL, server/administration và network management.
+
+[Bắt đầu từ bản đồ Lý thuyết](../ly-thuyet/) · [Quay lại NT132](../).

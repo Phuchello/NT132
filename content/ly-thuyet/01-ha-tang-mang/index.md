@@ -9,4 +9,4 @@ Nền tảng trước khi học routing và switching: thiết bị, interface, 
 
 Nguồn chính: `1.1 Chương 1 Thiết bị mạng và hạ tầng mạng.pdf`.
 
-Tiếp theo: [[../02-routing/index|Routing]].
+[Tiếp theo: Routing](../02-routing/).

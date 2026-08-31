@@ -16,4 +16,4 @@ description: VLAN, access/trunk và các mô hình Inter-VLAN Routing.
 
 Nguồn chính: `3.1 Switch and VLAN.pdf`, `3. InterVLAN routing.pdf`.
 
-Tiếp theo: [[../04-network-services/index|Network Services]].
+[Tiếp theo: Network Services](../04-network-services/).

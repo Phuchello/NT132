@@ -9,4 +9,4 @@ Tập trung vào các khái niệm cloud, mô hình triển khai và cách cloud
 
 Nguồn chính: `8.1 Intro to Cloud computing.pdf`.
 
-Tiếp theo: [[../08-windows-administration/index|Windows Administration]].
+[Tiếp theo: Windows Administration](../08-windows-administration/).

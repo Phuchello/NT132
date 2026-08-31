@@ -9,4 +9,4 @@ Tập trung vào quản trị user, service, network configuration và các tác
 
 Nguồn chính: `6. Linux Adminstration.pdf`.
 
-Tiếp theo: [[../07-cloud-computing/index|Cloud Computing]].
+[Tiếp theo: Cloud Computing](../07-cloud-computing/).
