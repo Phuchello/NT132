@@ -1,0 +1,84 @@
+name: Build and deploy Quartz to GitHub Pages
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build site
+    runs-on: ubuntu-latest
+    # A newer run for the same PR may replace stale validation. This group is
+    # intentionally separate from the production deployment group below.
+    concurrency:
+      group: pages-validation-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: true
+    permissions:
+      contents: read
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check types and formatting
+        run: npm run check
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build Quartz
+        run: npm run quartz -- build -d content -v
+
+      - name: Prepare extensionless Pages routes
+        run: npm run prepare-pages
+
+      - name: Test extensionless Pages routes
+        run: npm run test:routes
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: public
+
+  deploy:
+    name: Deploy site
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    needs: build
+    runs-on: ubuntu-latest
+    # Production deployments queue instead of being canceled by a later run.
+    # PR validation never shares this group, so it cannot cancel production.
+    concurrency:
+      group: pages-production
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
