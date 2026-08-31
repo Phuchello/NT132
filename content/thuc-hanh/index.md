@@ -1,6 +1,6 @@
 ---
 title: Thực hành
-description: Bài thực hành NT132 theo nhóm kỹ năng: routing, switching/VLAN, network services, server, administration và management.
+description: "Bài thực hành NT132 theo nhóm kỹ năng: routing, switching/VLAN, network services, server, administration và management."
 ---
 
 # Thực hành
