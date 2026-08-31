@@ -104,7 +104,7 @@ Nội dung cơ bản gồm:
 
 > [!NOTE]
 > **Cập nhật khi có sự cố (Triggered Update & Periodic Refresh)**:
-> Khi một liên kết thay đổi trạng thái, router phát hiện sẽ tạo bản tin cập nhật **LSU (Link-State Update)** để flood đi ngay lập tức. Ngoài ra, OSPF cũng có cơ chế refresh LSA định kỳ (mặc định 30 phút theo chuẩn RFC 2328) để đảm bảo tính toàn vẹn của cơ sở dữ liệu.
+> Khi topology thay đổi, router phát hiện sẽ khởi tạo hoặc cập nhật **LSA (Link-State Advertisement)** liên quan. Các LSA này được flood đến những router OSPF khác bên trong các gói **LSU (Link State Update)**. Course slide tóm tắt bước này là một LSU update; ở cấp giao thức OSPF (RFC 2328), thông tin topology nằm trong LSA và được vận chuyển/flood trong LSU. Ngoài ra, OSPF cũng có cơ chế refresh LSA định kỳ (mặc định 30 phút theo chuẩn RFC 2328) để đảm bảo tính toàn vẹn của cơ sở dữ liệu.
 
 ---
 
@@ -257,7 +257,7 @@ Giả sử liên kết giữa $R_1$ và $R_3$ bị đứt:
 
 > **Hướng dẫn giải**:
 >
-> 1. Router phát hiện cổng `down` sẽ tạo gói tin cập nhật trạng thái liên kết (**LSU**) và flood ngay lập tức cho các router trong Area. Các router cập nhật lại LSDB và thực hiện tính toán lại thuật toán Dijkstra để tìm đường đi mới.
+> 1. Router phát hiện cổng `down` sẽ khởi tạo hoặc cập nhật LSA mô tả trạng thái liên kết mới. LSA đó được flood ngay lập tức bên trong các gói LSU cho các router trong Area; các router cập nhật LSDB và thực hiện lại thuật toán Dijkstra để tìm đường đi mới.
 > 2. Khác với việc phải chờ chu kỳ định kỳ trong RIP, cơ chế cập nhật theo sự kiện (**Triggered Update**) của Link-State giúp thông tin thay đổi được lan truyền nhanh chóng trong mạng.
 
 ---
@@ -267,7 +267,7 @@ Giả sử liên kết giữa $R_1$ và $R_3$ bị đứt:
 - **Link-State**: Mỗi router thu thập thông tin để xây dựng bản đồ cấu trúc liên kết toàn mạng (**LSDB**).
 - **Dijkstra (SPF)**: Thuật toán tìm cây đường đi có tổng Cost nhỏ nhất từ gốc tới mọi đích.
 - **Metric Cost**: Thường tỷ lệ nghịch với băng thông ($\frac{\text{Reference Bandwidth}}{\text{Interface Bandwidth}}$).
-- **Quy trình hoạt động**: Phát hiện link $\rightarrow$ Gửi Hello $\rightarrow$ Tạo LSP/LSA $\rightarrow$ Flood LSDB $\rightarrow$ Chạy Dijkstra.
+- **Quy trình hoạt động**: Phát hiện link $\rightarrow$ Gửi Hello $\rightarrow$ Tạo LSP (mô hình tổng quát) / LSA (OSPF) $\rightarrow$ Flood LSA trong LSU và cập nhật LSDB $\rightarrow$ Chạy Dijkstra.
 
 ---
 
@@ -283,7 +283,9 @@ Giả sử liên kết giữa $R_1$ và $R_3$ bị đứt:
 
 ### A. Nguồn bài giảng chính (Class B — Reference Only)
 
-- `2.3 Routing protocol - OSPF.pdf` (Khoa Mạng máy tính & Truyền thông — Trường Đại học Công nghệ Thông tin, ĐHQG-HCM): Ôn tập thuật toán Dijkstra trên đồ thị có trọng số, tổng quan Link-State, các thuật ngữ Link, Link-State, Neighbor, Cost, LSP, LSDB, quy trình hoạt động của giao thức Link-State và cập nhật khi có thay đổi liên kết (LSU).
+- `2.3 Routing protocol - OSPF.pdf` (Khoa Mạng máy tính & Truyền thông — Trường Đại học Công nghệ Thông tin, ĐHQG-HCM): Ôn tập thuật toán Dijkstra trên đồ thị có trọng số, tổng quan Link-State, các thuật ngữ Link, Link-State, Neighbor, Cost, LSP, LSDB, quy trình hoạt động của giao thức Link-State và cách slide tóm tắt cập nhật khi có thay đổi liên kết bằng Link-State Update (LSU).
+
+> **Làm rõ thuật ngữ OSPF:** Slide dùng cách nói “LSU update” để mô tả bước cập nhật. Ở cấp giao thức theo RFC 2328, thông tin trạng thái/topology được biểu diễn bằng LSA; LSU là gói dùng để vận chuyển và flood một hoặc nhiều LSA.
 
 ### B. Tài liệu chuẩn & tham khảo bổ trợ (Class C — Standards / Vendor Docs)
 

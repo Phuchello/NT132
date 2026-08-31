@@ -15,7 +15,7 @@ sources:
   1. **Standard Static Route**: Trỏ đến một mạng đích cụ thể với prefix/subnet mask xác định.
   2. **Default Static Route (`0.0.0.0/0`)**: Tuyến đường mặc định ("Gateway of Last Resort") khớp với mọi địa chỉ không có trong bảng định tuyến.
   3. **Summary Static Route**: Gộp nhiều dải mạng liên tiếp có chung tiền tố thành một route duy nhất để thu gọn bảng định tuyến.
-  4. **Floating Static Route**: Tuyến đường dự phòng có **Administrative Distance (AD)** cao hơn route chính cần dự phòng, chỉ tự động kích hoạt khi đường truyền chính gặp sự cố kết nối cục bộ.
+  4. **Floating Static Route**: Tuyến đường dự phòng có **Administrative Distance (AD)** cao hơn route chính cần dự phòng; route phụ trở nên eligible khi route ưu tiên bị gỡ hoặc không còn resolve/được cài vào bảng định tuyến.
 - **3 cách chỉ định lối ra trong câu lệnh `ip route`**: Next-hop IP (gây ra _Recursive Lookup_), Exit Interface (Directly attached), hoặc Fully Specified (kết hợp cả hai).
 - **Quy tắc hai chiều (Two-way Rule)**: Mọi kết nối mạng TCP/IP đều là tương tác hai chiều; có đường đi nhưng **thiếu đường về** là nguyên nhân kinh điển khiến mạng không thông suốt.
 
@@ -46,7 +46,9 @@ So sánh tổng quan đặc tính:
 |                   | giao thức định tuyến (giảm nguy cơ do thám).      | mật/xác thực cho giao thức định tuyến.             |
 | Khả năng mở rộng  | Kém (phù hợp mạng nhỏ; mạng lớn cấu hình phức tạp)| Rất tốt (tự thích ứng mạng quy mô lớn).            |
 | Khi có sự cố đứt  | Đường đi cố định; không tự đổi đường (trừ khi dùng| Tự động phát hiện đứt link và chuyển hướng dữ liệu.|
-|                   | Floating Route khi interface cục bộ down).        |                                                    |
+|                   | Floating Route khi route chính bị gỡ hoặc không  |                                                    |
+|                   | còn resolve/được cài). Static thuần túy không tự  |                                                    |
+|                   | phát hiện mọi sự cố ở xa.                        |                                                    |
 +-------------------+---------------------------------------------------+----------------------------------------------------+
 ```
 
@@ -112,8 +114,8 @@ So sánh tổng quan đặc tính:
   - _Ví dụ 2_: Nếu tuyến đường chính học qua **OSPF** (mặc định $\text{AD} = 110$), route dự phòng tĩnh cần có $\text{AD} > 110$ (ví dụ $\text{AD} = 200$).
 - **Cơ chế hoạt động**:
   - _Bình thường_: Router chỉ cài tuyến đường có AD nhỏ hơn vào Routing Table. Route dự phòng nằm "chìm" trong cấu hình (`running-config`).
-  - _Khi đường chính đứt_: Interface chính chuyển sang trạng thái `down`, route chính bị rút khỏi Routing Table. Ngay lập tức, route dự phòng "nổi lên" (**Float**) và được cài vào Routing Table.
-- **Giới hạn quan trọng**: Cơ chế chuyển mạch dự phòng của Static Route thuần túy chỉ kích hoạt khi cổng vật lý hoặc liên kết trực tiếp cục bộ bị ngắt (`down`). Đối với các sự cố đứt cáp gián tiếp ở xa mà interface cục bộ vẫn `up`, static route không thể tự nhận biết nếu không kết hợp với các tính năng nâng cao như IP SLA Tracking.
+  - _Khi route chính bị gỡ_: Nếu route chính bị xóa, không còn resolve được next-hop, hoặc không còn được cài vào Routing Table, route dự phòng có thể trở nên đủ điều kiện và được cài vào bảng định tuyến.
+- **Giới hạn quan trọng**: Static Route thuần túy không tự phát hiện mọi sự cố downstream/remote khi interface cục bộ vẫn `up`. Muốn theo dõi các trường hợp đó cần cơ chế nâng cao như IP SLA Tracking, nằm ngoài phạm vi cốt lõi của môn học.
 
 ---
 
@@ -283,6 +285,7 @@ Hãy viết bộ lệnh cấu hình trên Router chi nhánh để mọi lưu lư
 
 - **Static Route**: Người quản trị cấu hình tay; tiết kiệm băng thông/CPU trao đổi update; kiểm soát đường đi chặt chẽ.
 - **4 dạng route**: Standard (mạng cụ thể), Default (`0.0.0.0/0` — mọi mạng), Summary (gộp dải mạng), Floating (dự phòng với AD lớn hơn route chính).
+- **Floating Route**: Route phụ đủ điều kiện khi route ưu tiên bị gỡ hoặc không còn resolve/được cài; static thuần túy không phát hiện mọi lỗi downstream.
 - **Longest Prefix Match**: Router luôn ưu tiên route có subnet mask dài nhất (cụ thể nhất).
 - **Nguyên lý 2 chiều**: Cấu hình mạng luôn phải bảo đảm cả đường đi (Request) và đường về (Reply).
 

@@ -1,105 +1,89 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 620" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 700" width="100%" height="700" preserveAspectRatio="xMidYMin meet">
+  <title>Chuyển tiếp gói tin liên mạng từ PC-A đến PC-B</title>
+  <desc>Địa chỉ IP giữ nguyên end-to-end; địa chỉ MAC được viết lại qua từng hop giữa PC-A, R1, R2 và PC-B.</desc>
+
   <defs>
     <linearGradient id="crossHdr" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#1e293b"/>
       <stop offset="100%" stop-color="#0f172a"/>
     </linearGradient>
-    <filter id="cShadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
-      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.10"/>
-    </filter>
   </defs>
 
-  <rect width="100%" height="100%" fill="#ffffff" rx="10"/>
+  <rect width="360" height="700" fill="#ffffff" rx="10"/>
 
   <!-- Title -->
-  <rect x="12" y="12" width="396" height="38" rx="6" fill="url(#crossHdr)"/>
-  <text x="210" y="36" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">
-    CHUYỂN TIẾP GÓI TIN LIÊN MẠNG (3 HOPS)
+  <rect x="12" y="12" width="336" height="45" rx="7" fill="url(#crossHdr)"/>
+  <text x="180" y="32" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">
+    CHUYỂN TIẾP LIÊN MẠNG
+  </text>
+  <text x="180" y="48" fill="#bae6fd" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" text-anchor="middle">
+    3 HOPS · TỪ PC-A ĐẾN PC-B
   </text>
 
-  <!-- Hop 1 Card -->
-  <g transform="translate(15, 60)" filter="url(#cShadow)">
-    <rect width="390" height="135" rx="6" fill="#f8fafc" stroke="#0284c7" stroke-width="1.5"/>
-    <rect width="390" height="24" rx="6" fill="#0284c7"/>
-    <text x="195" y="17" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11.5" font-weight="bold" text-anchor="middle">
-      CHẶNG 1: PC-A → Switch 1 → Router R1 (LAN 1)
-    </text>
-
-    <text x="14" y="44" fill="#334155" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">PC-A (.10.10) gửi đến Default Gateway R1 Gi0/0 (.10.1)</text>
-
-    <!-- L3 & L2 Badges -->
-    <rect x="12" y="54" width="366" height="34" rx="4" fill="#e0f2fe" stroke="#bae6fd"/>
-    <text x="20" y="68" fill="#0369a1" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold">Layer 3 (IP):</text>
-    <text x="100" y="68" fill="#0f172a" font-family="monospace" font-size="11">SIP: 192.168.10.10 → DIP: 192.168.20.20</text>
-    <text x="20" y="82" fill="#0369a1" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold">Layer 2 (MAC):</text>
-    <text x="100" y="82" fill="#0284c7" font-family="monospace" font-size="11">SMAC: AAAA (PC-A) → DMAC: 1111 (GW R1)</text>
-
-    <text x="195" y="118" fill="#475569" font-family="system-ui, sans-serif" font-size="10.5" text-anchor="middle">
-      R1 nhận frame, so khớp MAC 1111 → Bóc bỏ Header L2
-    </text>
+  <!-- End-to-end path -->
+  <g font-family="system-ui, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">
+    <rect x="18" y="72" width="58" height="32" rx="16" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+    <text x="47" y="92" fill="#075985">PC-A</text>
+    <text x="89" y="94" fill="#64748b" font-size="18">→</text>
+    <rect x="102" y="72" width="48" height="32" rx="16" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="126" y="92" fill="#1e3a8a">R1</text>
+    <text x="163" y="94" fill="#64748b" font-size="18">→</text>
+    <rect x="176" y="72" width="48" height="32" rx="16" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+    <text x="200" y="92" fill="#92400e">R2</text>
+    <text x="237" y="94" fill="#64748b" font-size="18">→</text>
+    <rect x="250" y="72" width="74" height="32" rx="16" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+    <text x="287" y="92" fill="#065f46">PC-B</text>
   </g>
 
-  <!-- Arrow down -->
-  <text x="210" y="210" fill="#d97706" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">▼</text>
-
-  <!-- Hop 2 Card -->
-  <g transform="translate(15, 220)" filter="url(#cShadow)">
-    <rect width="390" height="145" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
-    <rect width="390" height="24" rx="6" fill="#d97706"/>
-    <text x="195" y="17" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11.5" font-weight="bold" text-anchor="middle">
-      CHẶNG 2: Router R1 → Router R2 (Link WAN)
-    </text>
-
-    <text x="14" y="44" fill="#78350f" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">R1 tra Routing Table: Đi qua Next-hop R2 (.12.2)</text>
-
-    <!-- L3 & L2 Badges -->
-    <rect x="12" y="54" width="366" height="48" rx="4" fill="#ffffff" stroke="#fde68a"/>
-    <text x="20" y="70" fill="#92400e" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold">Layer 3 (IP):</text>
-    <text x="100" y="70" fill="#0f172a" font-family="monospace" font-size="11" font-weight="bold">SIP: 192.168.10.10 → DIP: 192.168.20.20 (GIỮ NGUYÊN)</text>
-    <text x="20" y="90" fill="#b45309" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold">Layer 2 (MAC):</text>
-    <text x="100" y="90" fill="#dc2626" font-family="monospace" font-size="11" font-weight="bold">SMAC: 2222 (R1) → DMAC: 3333 (R2) [VIẾT LẠI]</text>
-
-    <text x="195" y="128" fill="#92400e" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle">
-      ★ MAC NGUỒN VÀ MAC ĐÍCH ĐÃ ĐƯỢC VIẾT LẠI TẠI R1
-    </text>
+  <!-- Invariants -->
+  <g font-family="system-ui, sans-serif" text-anchor="middle">
+    <rect x="15" y="118" width="160" height="58" rx="7" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="95" y="139" fill="#1d4ed8" font-size="11" font-weight="bold">IP (L3)</text>
+    <text x="95" y="158" fill="#0f172a" font-size="13" font-weight="bold">END-TO-END</text>
+    <rect x="185" y="118" width="160" height="58" rx="7" fill="#ecfdf5" stroke="#86efac"/>
+    <text x="265" y="139" fill="#047857" font-size="11" font-weight="bold">MAC (L2)</text>
+    <text x="265" y="158" fill="#0f172a" font-size="13" font-weight="bold">HOP-BY-HOP</text>
   </g>
 
-  <!-- Arrow down -->
-  <text x="210" y="380" fill="#059669" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">▼</text>
+  <!-- Hop 1 -->
+  <g>
+    <rect x="15" y="190" width="330" height="132" rx="8" fill="#f8fafc" stroke="#0284c7" stroke-width="1.5"/>
+    <rect x="15" y="190" width="330" height="28" rx="8" fill="#0284c7"/>
+    <text x="30" y="209" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">CHẶNG 1 · PC-A → R1</text>
+    <text x="30" y="241" fill="#0369a1" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold">IP (L3)</text>
+    <text x="30" y="257" fill="#0f172a" font-family="monospace" font-size="11">SIP  192.168.10.10</text>
+    <text x="30" y="272" fill="#0f172a" font-family="monospace" font-size="11">DIP  192.168.20.20</text>
+    <text x="30" y="291" fill="#0369a1" font-family="monospace" font-size="11" font-weight="bold">MAC  AAAA → 1111</text>
+    <text x="30" y="309" fill="#475569" font-family="system-ui, sans-serif" font-size="10.5">R1 giữ IP · đổi frame MAC</text>
+  </g>
+  <text x="180" y="343" fill="#d97706" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">▼</text>
 
-  <!-- Hop 3 Card -->
-  <g transform="translate(15, 390)" filter="url(#cShadow)">
-    <rect width="390" height="135" rx="6" fill="#f8fafc" stroke="#059669" stroke-width="1.5"/>
-    <rect width="390" height="24" rx="6" fill="#059669"/>
-    <text x="195" y="17" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11.5" font-weight="bold" text-anchor="middle">
-      CHẶNG 3: Router R2 → Switch 2 → PC-B (LAN 2)
-    </text>
+  <!-- Hop 2 -->
+  <g>
+    <rect x="15" y="355" width="330" height="132" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="15" y="355" width="330" height="28" rx="8" fill="#d97706"/>
+    <text x="30" y="374" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">CHẶNG 2 · R1 → R2</text>
+    <text x="30" y="406" fill="#92400e" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold">IP (L3) · GIỮ NGUYÊN</text>
+    <text x="30" y="422" fill="#0f172a" font-family="monospace" font-size="11">SIP  192.168.10.10</text>
+    <text x="30" y="437" fill="#0f172a" font-family="monospace" font-size="11">DIP  192.168.20.20</text>
+    <text x="30" y="456" fill="#b45309" font-family="monospace" font-size="11" font-weight="bold">MAC  2222 → 3333</text>
+    <text x="30" y="474" fill="#78350f" font-family="system-ui, sans-serif" font-size="10.5">R1 viết lại MAC cho hop kế tiếp</text>
+  </g>
+  <text x="180" y="508" fill="#059669" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">▼</text>
 
-    <text x="14" y="44" fill="#065f46" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">R2 tra Routing Table: LAN 2 kết nối trực tiếp Gi0/1</text>
-
-    <!-- L3 & L2 Badges -->
-    <rect x="12" y="54" width="366" height="48" rx="4" fill="#ecfdf5" stroke="#a7f3d0"/>
-    <text x="20" y="70" fill="#065f46" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold">Layer 3 (IP):</text>
-    <text x="100" y="70" fill="#0f172a" font-family="monospace" font-size="11">SIP: 192.168.10.10 → DIP: 192.168.20.20 (GIỮ NGUYÊN)</text>
-    <text x="20" y="90" fill="#047857" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold">Layer 2 (MAC):</text>
-    <text x="100" y="90" fill="#059669" font-family="monospace" font-size="11" font-weight="bold">SMAC: 4444 (R2 Gi0/1) → DMAC: BBBB (PC-B)</text>
-
-    <text x="195" y="122" fill="#065f46" font-family="system-ui, sans-serif" font-size="10.5" text-anchor="middle">
-      PC-B nhận frame, khớp MAC BBBB → Bóc L2, nhận IP Packet
-    </text>
+  <!-- Hop 3 -->
+  <g>
+    <rect x="15" y="520" width="330" height="132" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="1.5"/>
+    <rect x="15" y="520" width="330" height="28" rx="8" fill="#059669"/>
+    <text x="30" y="539" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">CHẶNG 3 · R2 → PC-B</text>
+    <text x="30" y="571" fill="#047857" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold">IP (L3) · GIỮ NGUYÊN</text>
+    <text x="30" y="587" fill="#0f172a" font-family="monospace" font-size="11">SIP  192.168.10.10</text>
+    <text x="30" y="602" fill="#0f172a" font-family="monospace" font-size="11">DIP  192.168.20.20</text>
+    <text x="30" y="621" fill="#059669" font-family="monospace" font-size="11" font-weight="bold">MAC  4444 → BBBB</text>
+    <text x="30" y="639" fill="#065f46" font-family="system-ui, sans-serif" font-size="10.5">PC-B nhận frame · bóc L2 · nhận IP</text>
   </g>
 
-  <!-- Summary Card -->
-  <g transform="translate(15, 540)" filter="url(#cShadow)">
-    <rect width="390" height="65" rx="6" fill="#1e293b"/>
-    <text x="195" y="24" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="11.5" font-weight="bold" text-anchor="middle">
-      QUY LUẬT BẤT BIẾN CẦN GHI NHỚ:
-    </text>
-    <text x="195" y="44" fill="#ffffff" font-family="system-ui, sans-serif" font-size="10.5" text-anchor="middle">
-      • IP (L3): Giữ nguyên từ nguồn đến đích (End-to-End).
-    </text>
-    <text x="195" y="58" fill="#fcd34d" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle">
-      • MAC (L2): Bị bóc và viết lại qua từng Router (Hop-by-Hop).
-    </text>
-  </g>
+  <!-- Takeaway -->
+  <text x="180" y="675" fill="#0f172a" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">IP không đổi từ nguồn đến đích</text>
+  <text x="180" y="691" fill="#b45309" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">MAC đổi theo từng hop</text>
 </svg>

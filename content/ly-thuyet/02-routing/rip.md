@@ -247,7 +247,7 @@ Cho mạng dạng vòng gồm 4 Router: `R1 - R2 - R3 - R4 - R1`. Mỗi liên k�
 > 1. `R3` nhận thông tin về `LAN A`:
 >    - Qua hướng `R2`: `LAN A (0h)` $\rightarrow$ `R1` $\rightarrow$ `R2 (1h)` $\rightarrow$ `R3` nhận được với **Hop = 2**.
 >    - Qua hướng `R4`: `LAN A (0h)` $\rightarrow$ `R1` $\rightarrow$ `R4 (1h)` $\rightarrow$ `R3` nhận được với **Hop = 2**.
-> 2. Cả hai hướng đều có Metric bằng nhau (Hop = 2). RIP hỗ trợ cài đặt cả hai đường để thực hiện cân bằng tải với chi phí bằng nhau (**Equal-Cost Load Balancing**).
+> 2. Cả hai hướng đều có Metric bằng nhau (Hop = 2). Vì vậy, trong bài toán này `R3` có hai tuyến thay thế cùng chi phí; bài tập chỉ tập trung vào việc so sánh metric, không mở rộng sang cơ chế cài đặt hoặc cân bằng tải cụ thể của từng nền tảng.
 
 ---
 
