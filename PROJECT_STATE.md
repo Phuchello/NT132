@@ -1,37 +1,34 @@
 # NT132 Project State
 
-Current milestone: M1 — Production polish verification
+Current milestone: M2 — Content planning and taxonomy
 
-Last safe checkpoint: PR #1 was merged to `main` as `cc07d72d5d41a250f07b889f3e62dcc324c17306`; GitHub Actions run #11 built and deployed successfully to GitHub Pages.
+Last safe checkpoint: M1 is production-complete. PR #2 production polish was merged as `120930784026d596ade8e2c85874430e234dd20d`; GitHub Actions run #14 built and deployed successfully.
 
-Current branch: fix/m1-production-polish
+Current branch: feat/m2-content-taxonomy
 
-Latest production commit: cc07d72d5d41a250f07b889f3e62dcc324c17306
+Latest production commit: 120930784026d596ade8e2c85874430e234dd20d
 
-Working features:
+M1 production verification:
 
-- Quartz v4.5.2 build pipeline with Markdown content under `content/`
-- NT132 light/dark visual system and Vietnamese UI locale
-- Explorer, search, local/global graph, table of contents, backlinks, breadcrumbs, popovers, and SPA navigation
-- Responsive desktop/tablet/mobile layout with an accessible mobile Explorer trigger
-- GitHub Pages build/deploy workflow targeting `main`
-- GitHub Pages route preparation for extensionless nested refreshes
-- Root-only GitHub Pages 404 preservation with nested `404.html` route support
-- Three temporary structural graph-test notes: Static Routing, OSPF, and ACL
-
-Production verification completed:
-
-- Main build and deploy jobs passed.
-- The Pages deployment reported success for commit `cc07d72d5d41a250f07b889f3e62dcc324c17306`.
-- The deployed artifact contains all expected top-level and nested extensionless routes.
+- Quartz build, tests, route preparation, and route tests pass in CI.
+- GitHub Pages production deployment passes from `main`.
+- Generated artifact contains the expected top-level and extensionless nested routes.
 - Static artifact validation found no missing internal `href`, `src`, or `srcset` targets across 160 checked local references.
-- Viewport metadata and mobile Explorer controls are present in generated HTML.
+- Root `404.html` remains reserved while nested `404.html` notes can receive extensionless routes.
+- Footer attribution no longer mislabels the NT132 package version as the Quartz framework version.
+- Open Graph MIME metadata emits valid `image/webp` or `image/png` values.
 
-Final production-polish findings being remediated:
+M2 work completed so far:
 
-- Footer displayed the project package version as if it were the Quartz framework version; attribution should show `Quartz` without the misleading `v0.1.0` label.
-- Default Open Graph image metadata emitted `image/.png`; it should emit the valid MIME type `image/png`.
+- Added `M2_CONTENT_PLAN.md` with the canonical course taxonomy, source map, naming rules, cross-link backbone, and M3 migration order.
+- Added `CONTENT_TEMPLATE.md` for theory, practical labs, exam-prep pages, and project/case-study pages.
+- Mapped the 19 primary course-source files into canonical topic groups.
+- Classified `Group07_PreReport.docx` as case-study-only rather than a canonical theory source.
 
-M2 content work has not started yet.
+M2 open gates:
 
-Exact next action: Validate the production-polish branch with CI and generated-artifact inspection, merge it if clean, then immediately start M2 content planning and taxonomy on a fresh branch.
+- Review the taxonomy/source map for omissions and duplicate concepts.
+- Create the destination folder/index skeleton without migrating full theory content yet.
+- Run CI and inspect the generated artifact for the completed M2 planning branch.
+
+Exact next action: Create the M2 folder/index skeleton from `M2_CONTENT_PLAN.md`, validate navigation/build output, then open the M2 planning PR for review.
