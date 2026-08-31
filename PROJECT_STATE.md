@@ -6,7 +6,7 @@ Last safe checkpoint: PR build succeeds, but P2 route/concurrency issues are und
 
 Current branch: feat/quartz-foundation
 
-Latest verified commit: 105e7bb (M1 review remediation and visual verification)
+Latest verified commit: ab55d4e (M1 route rebase, srcset fix, and verification)
 
 Working features:
 
@@ -20,7 +20,7 @@ Working features:
 
 Known unresolved findings and gates:
 
-- The two Codex review threads have actual-fix replies; the fresh Codex re-review has not returned yet.
+- The two Codex review threads have actual-fix replies; the final Codex re-review after the srcset fix has not returned yet.
 - PR #1 remains intentionally unmerged until that re-review confirms the blockers are closed.
 - GitHub Pages has not been deployed from this environment; the first live deployment remains merge-gated.
 - M2 content work has not started.
