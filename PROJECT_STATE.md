@@ -20,9 +20,10 @@ Working features:
 
 Known unresolved findings and gates:
 
-- The two Codex review threads still need the actual-fix replies and a fresh re-review.
+- The two Codex review threads have actual-fix replies; the fresh Codex re-review has not returned yet.
 - PR #1 remains intentionally unmerged until that re-review confirms the blockers are closed.
 - GitHub Pages has not been deployed from this environment; the first live deployment remains merge-gated.
 - M2 content work has not started.
 
-Exact next action: Resolve review findings -> run CI -> verify direct nested routes -> request re-review.
+Recorded M1 review sequence: Resolve review findings -> run CI -> verify direct nested routes -> request re-review.
+Exact next action: Wait for fresh Codex re-review; merge only if it accepts the remediation.
