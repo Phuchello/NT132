@@ -3,8 +3,6 @@ title: Lý thuyết
 description: Bản đồ kiến thức lý thuyết NT132 từ hạ tầng, routing, switching đến server, cloud và quản trị.
 ---
 
-# Lý thuyết
-
 Học theo luồng từ **hạ tầng mạng → routing → switching/VLAN → network services → server → cloud → administration → management**.
 
 ## Nội dung

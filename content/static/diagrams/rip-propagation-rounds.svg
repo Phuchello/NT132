@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ripHdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4338ca"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <filter id="rSh" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff" rx="10"/>
+
+  <!-- Title -->
+  <rect x="12" y="12" width="396" height="38" rx="6" fill="url(#ripHdr)"/>
+  <text x="210" y="36" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">
+    TIẾN TRÌNH HỌC ĐỊNH TUYẾN RIP (DISTANCE VECTOR)
+  </text>
+
+  <!-- Topology Ref -->
+  <g transform="translate(15, 58)">
+    <rect width="390" height="30" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="210" y="20" fill="#334155" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">
+      [LAN 1] --- (R1) === (R2) === (R3) --- [LAN 3]
+    </text>
+  </g>
+
+  <!-- Round 0 Card -->
+  <g transform="translate(15, 98)" filter="url(#rSh)">
+    <rect width="390" height="135" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect width="390" height="22" rx="6" fill="#64748b"/>
+    <text x="14" y="16" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">
+      VÒNG 0 (MÔ HÌNH LÝ THUYẾT): KHỞI ĐẦU
+    </text>
+    <text x="14" y="38" fill="#475569" font-family="system-ui, sans-serif" font-size="10">Mỗi router chỉ mới biết các mạng kết nối trực tiếp (Hop = 0):</text>
+
+    <!-- 3 Mini columns -->
+    <rect x="10" y="46" width="118" height="78" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="69" y="62" fill="#4338ca" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">Bảng R1</text>
+    <text x="14" y="80" fill="#334155" font-family="monospace" font-size="9">C LAN1 (0h)</text>
+    <text x="14" y="98" fill="#334155" font-family="monospace" font-size="9">C WAN1 (0h)</text>
+
+    <rect x="136" y="46" width="118" height="78" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="195" y="62" fill="#0f766e" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">Bảng R2</text>
+    <text x="140" y="80" fill="#334155" font-family="monospace" font-size="9">C WAN1 (0h)</text>
+    <text x="140" y="98" fill="#334155" font-family="monospace" font-size="9">C WAN2 (0h)</text>
+
+    <rect x="262" y="46" width="118" height="78" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="321" y="62" fill="#059669" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">Bảng R3</text>
+    <text x="266" y="80" fill="#334155" font-family="monospace" font-size="9">C WAN2 (0h)</text>
+    <text x="266" y="98" fill="#334155" font-family="monospace" font-size="9">C LAN3 (0h)</text>
+  </g>
+
+  <!-- Round 1 Card -->
+  <g transform="translate(15, 245)" filter="url(#rSh)">
+    <rect width="390" height="155" rx="6" fill="#f8fafc" stroke="#6366f1" stroke-width="1.5"/>
+    <rect width="390" height="22" rx="6" fill="#4f46e5"/>
+    <text x="14" y="16" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">
+      VÒNG 1 (MÔ HÌNH LÝ THUYẾT): LÁNG GIỀNG TRAO ĐỔI
+    </text>
+    <text x="14" y="38" fill="#3730a3" font-family="system-ui, sans-serif" font-size="10">Router gửi danh sách mạng cho láng giềng kề sát; nhận và cộng 1 hop:</text>
+
+    <rect x="10" y="46" width="118" height="85" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="69" y="60" fill="#4338ca" font-family="system-ui, sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">Bảng R1</text>
+    <text x="14" y="76" fill="#334155" font-family="monospace" font-size="8.5">C LAN1, WAN1</text>
+    <text x="14" y="94" fill="#4338ca" font-family="monospace" font-size="8.5" font-weight="bold">R WAN2 [1h]</text>
+    <text x="69" y="118" fill="#dc2626" font-family="system-ui" font-size="8" text-anchor="middle">Chưa biết LAN3</text>
+
+    <rect x="136" y="46" width="118" height="85" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="195" y="60" fill="#0f766e" font-family="system-ui, sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">Bảng R2</text>
+    <text x="140" y="76" fill="#0f766e" font-family="monospace" font-size="8.5" font-weight="bold">R LAN1 [1h]</text>
+    <text x="140" y="94" fill="#334155" font-family="monospace" font-size="8.5">C WAN1, WAN2</text>
+    <text x="140" y="112" fill="#0f766e" font-family="monospace" font-size="8.5" font-weight="bold">R LAN3 [1h]</text>
+
+    <rect x="262" y="46" width="118" height="85" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="321" y="60" fill="#059669" font-family="system-ui, sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">Bảng R3</text>
+    <text x="266" y="76" fill="#334155" font-family="monospace" font-size="8.5">C WAN2, LAN3</text>
+    <text x="266" y="94" fill="#059669" font-family="monospace" font-size="8.5" font-weight="bold">R WAN1 [1h]</text>
+    <text x="321" y="118" fill="#dc2626" font-family="system-ui" font-size="8" text-anchor="middle">Chưa biết LAN1</text>
+
+    <text x="195" y="146" fill="#4338ca" font-family="system-ui, sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">
+      Lưu ý: Bảng R2 học được từ 2 phía; R1 và R3 cần thêm 1 vòng nữa.
+    </text>
+  </g>
+
+  <!-- Round 2 Card -->
+  <g transform="translate(15, 412)" filter="url(#rSh)">
+    <rect width="390" height="175" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+    <rect width="390" height="22" rx="6" fill="#15803d"/>
+    <text x="14" y="16" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">
+      VÒNG 2 (MÔ HÌNH LÝ THUYẾT): MẠNG HỘI TỤ HOÀN TOÀN
+    </text>
+    <text x="14" y="38" fill="#166534" font-family="system-ui, sans-serif" font-size="10">R2 gửi bản tin chứa thông tin của LAN 1 và LAN 3; R1 và R3 cộng thêm 1 hop:</text>
+
+    <rect x="10" y="46" width="118" height="90" rx="4" fill="#ffffff" stroke="#86efac"/>
+    <text x="69" y="60" fill="#15803d" font-family="system-ui, sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">Bảng R1 (Hội tụ)</text>
+    <text x="14" y="76" fill="#334155" font-family="monospace" font-size="8.5">C LAN1, WAN1</text>
+    <text x="14" y="94" fill="#334155" font-family="monospace" font-size="8.5">R WAN2 [1h]</text>
+    <text x="14" y="114" fill="#dc2626" font-family="monospace" font-size="8.5" font-weight="bold">R LAN3 [2h]</text>
+
+    <rect x="136" y="46" width="118" height="90" rx="4" fill="#ffffff" stroke="#86efac"/>
+    <text x="195" y="60" fill="#15803d" font-family="system-ui, sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">Bảng R2 (Hội tụ)</text>
+    <text x="140" y="76" fill="#166534" font-family="monospace" font-size="8.5">R LAN1 [1h]</text>
+    <text x="140" y="94" fill="#334155" font-family="monospace" font-size="8.5">C WAN1, WAN2</text>
+    <text x="140" y="112" fill="#166534" font-family="monospace" font-size="8.5">R LAN3 [1h]</text>
+
+    <rect x="262" y="46" width="118" height="90" rx="4" fill="#ffffff" stroke="#86efac"/>
+    <text x="321" y="60" fill="#15803d" font-family="system-ui, sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">Bảng R3 (Hội tụ)</text>
+    <text x="266" y="76" fill="#334155" font-family="monospace" font-size="8.5">C WAN2, LAN3</text>
+    <text x="266" y="94" fill="#334155" font-family="monospace" font-size="8.5">R WAN1 [1h]</text>
+    <text x="266" y="114" fill="#dc2626" font-family="monospace" font-size="8.5" font-weight="bold">R LAN1 [2h]</text>
+
+    <rect x="10" y="142" width="370" height="24" rx="4" fill="#dcfce7"/>
+    <text x="195" y="158" fill="#15803d" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">
+      ✓ Mọi router đã học đủ 4 phân đoạn mạng — Đạt trạng thái hội tụ
+    </text>
+  </g>
+</svg>

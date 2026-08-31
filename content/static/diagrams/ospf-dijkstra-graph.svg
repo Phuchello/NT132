@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ospfHdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0f766e"/>
+      <stop offset="100%" stop-color="#134e4a"/>
+    </linearGradient>
+    <filter id="oSh" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff" rx="10"/>
+
+  <!-- Title -->
+  <rect x="12" y="12" width="396" height="38" rx="6" fill="url(#ospfHdr)"/>
+  <text x="210" y="36" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">
+    ĐỒ THỊ TRỌNG SỐ VÀ CÂY SPF (DIJKSTRA TRÊN R1)
+  </text>
+
+  <!-- Main Graph Box -->
+  <g transform="translate(15, 60)" filter="url(#oSh)">
+    <rect width="390" height="260" rx="6" fill="#f8fafc" stroke="#0f766e" stroke-width="1.5"/>
+
+    <!-- Non-SPT Links (Gray) -->
+    <!-- R1 (60, 130) to R2 (190, 45) -->
+    <line x1="65" y1="130" x2="190" y2="45" stroke="#94a3b8" stroke-width="2"/>
+    <rect x="105" y="68" width="48" height="20" rx="3" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="129" y="82" fill="#64748b" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">Cost 20</text>
+
+    <!-- R1 (60, 130) to R4 (190, 215) -->
+    <line x1="65" y1="130" x2="190" y2="215" stroke="#94a3b8" stroke-width="2"/>
+    <rect x="105" y="172" width="48" height="20" rx="3" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="129" y="186" fill="#64748b" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">Cost 20</text>
+
+    <!-- R2 (190, 45) to R5 (320, 130) -->
+    <line x1="190" y1="45" x2="320" y2="130" stroke="#94a3b8" stroke-width="2"/>
+    <rect x="245" y="68" width="48" height="20" rx="3" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="269" y="82" fill="#64748b" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">Cost 10</text>
+
+    <!-- Highlighted Shortest Path Tree Links (Green Thick) -->
+    <!-- R1 to R3 -->
+    <line x1="65" y1="130" x2="190" y2="130" stroke="#0f766e" stroke-width="4"/>
+    <rect x="105" y="120" width="44" height="20" rx="3" fill="#0f766e"/>
+    <text x="127" y="134" fill="#ffffff" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Cost 5</text>
+
+    <!-- R3 to R4 -->
+    <line x1="190" y1="130" x2="190" y2="215" stroke="#0f766e" stroke-width="4"/>
+    <rect x="168" y="162" width="48" height="20" rx="3" fill="#0f766e"/>
+    <text x="192" y="176" fill="#ffffff" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">Cost 10</text>
+
+    <!-- R4 to R5 -->
+    <line x1="190" y1="215" x2="320" y2="130" stroke="#0f766e" stroke-width="4"/>
+    <rect x="245" y="172" width="48" height="20" rx="3" fill="#0f766e"/>
+    <text x="269" y="186" fill="#ffffff" font-family="monospace" font-size="10.5" font-weight="bold" text-anchor="middle">Cost 10</text>
+
+    <!-- Node Circles -->
+    <!-- R1 Root -->
+    <circle cx="65" cy="130" r="22" fill="#0284c7" stroke="#0369a1" stroke-width="2.5"/>
+    <text x="65" y="135" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">R1</text>
+    <text x="65" y="165" fill="#0284c7" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">Root (u)</text>
+
+    <!-- R2 -->
+    <circle cx="190" cy="45" r="20" fill="#334155"/>
+    <text x="190" y="50" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">R2</text>
+
+    <!-- R3 -->
+    <circle cx="190" cy="130" r="20" fill="#0f766e"/>
+    <text x="190" y="135" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">R3</text>
+
+    <!-- R4 -->
+    <circle cx="190" cy="215" r="20" fill="#0f766e"/>
+    <text x="190" y="220" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">R4</text>
+
+    <!-- R5 -->
+    <circle cx="320" cy="130" r="20" fill="#0f766e"/>
+    <text x="320" y="135" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">R5</text>
+  </g>
+
+  <!-- Legend / Bottom Card -->
+  <g transform="translate(15, 330)">
+    <rect width="390" height="38" rx="4" fill="#f0fdfa" stroke="#99f6e4"/>
+    <line x1="25" y1="19" x2="65" y2="19" stroke="#0f766e" stroke-width="4"/>
+    <text x="75" y="23" fill="#0f766e" font-family="system-ui, sans-serif" font-size="10.5" font-weight="bold">
+      Đường xanh đậm: Cây SPF ngắn nhất tính từ R1 (Dijkstra)
+    </text>
+  </g>
+</svg>

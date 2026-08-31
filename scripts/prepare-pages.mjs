@@ -2,6 +2,7 @@ import { access, mkdir, readdir, readFile, writeFile } from "node:fs/promises"
 import path from "node:path"
 import { pathToFileURL } from "node:url"
 import { parse, serialize } from "parse5"
+import { parseSrcsetCandidates } from "./srcset.mjs"
 
 const outputDirectory = path.resolve("public")
 const urlBase = "https://nt132.invalid"
@@ -91,46 +92,11 @@ export function rebaseRelativeUrl(value, originalDocumentUrl, destinationDocumen
 }
 
 function rebaseSrcset(value, originalDocumentUrl, destinationDocumentUrl) {
-  let cursor = 0
-  let rewritten = ""
+  let rewritten = value
 
-  while (cursor < value.length) {
-    const leadingStart = cursor
-    while (/\s/.test(value[cursor] ?? "")) cursor += 1
-
-    const urlStart = cursor
-    while (cursor < value.length) {
-      const character = value[cursor]
-      const nextCharacter = value[cursor + 1]
-      if (/\s/.test(character)) break
-      if (character === "," && /\s/.test(nextCharacter ?? "")) break
-      cursor += 1
-    }
-
-    if (urlStart === cursor) {
-      rewritten += value[cursor]
-      cursor += 1
-      continue
-    }
-
-    const descriptorStart = cursor
-    while (/\s/.test(value[cursor] ?? "")) cursor += 1
-    if (descriptorStart !== cursor) {
-      while (cursor < value.length && value[cursor] !== ",") cursor += 1
-    }
-
-    rewritten += value.slice(leadingStart, urlStart)
-    rewritten += rebaseRelativeUrl(
-      value.slice(urlStart, descriptorStart),
-      originalDocumentUrl,
-      destinationDocumentUrl,
-    )
-    rewritten += value.slice(descriptorStart, cursor)
-
-    if (value[cursor] === ",") {
-      rewritten += ","
-      cursor += 1
-    }
+  for (const candidate of parseSrcsetCandidates(value).reverse()) {
+    const rebasedUrl = rebaseRelativeUrl(candidate.url, originalDocumentUrl, destinationDocumentUrl)
+    rewritten = `${rewritten.slice(0, candidate.start)}${rebasedUrl}${rewritten.slice(candidate.end)}`
   }
 
   return rewritten

@@ -3,8 +3,6 @@ title: Switching & VLAN
 description: VLAN, access/trunk và các mô hình Inter-VLAN Routing.
 ---
 
-# Switching & VLAN
-
 ## Chủ đề
 
 - Switch và VLAN

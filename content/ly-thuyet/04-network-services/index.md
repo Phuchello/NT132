@@ -3,8 +3,6 @@ title: Network Services
 description: DHCP, NAT, ACL và các dịch vụ mạng cốt lõi trong NT132.
 ---
 
-# Network Services
-
 ## Chủ đề
 
 - Network Services overview

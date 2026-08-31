@@ -3,8 +3,6 @@ title: Lab Routing
 description: Thực hành đọc route table, kiểm tra đường đi và chẩn đoán Static Routing, RIP, OSPF.
 ---
 
-# Lab Routing
-
 Nhóm thực hành này tập trung vào **route table → quyết định next-hop → kiểm tra đường đi thực tế**.
 
 ## Bạn cần làm được

@@ -3,8 +3,6 @@ title: Lab Network Services
 description: Thực hành DHCP, NAT và ACL bằng cách theo dõi địa chỉ, state và điểm kiểm tra trên đường đi.
 ---
 
-# Lab Network Services
-
 Nhóm thực hành này tập trung vào **dịch vụ mạng và chính sách trên đường đi của packet**.
 
 ## Bạn cần làm được

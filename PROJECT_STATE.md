@@ -1,46 +1,60 @@
 # NT132 Project State
 
-Current milestone: M2 — Final acceptance
+Current milestone: M3.1 — final mentor review
 
-Last safe checkpoint: M1 is production-complete. PR #2 production polish was merged as `120930784026d596ade8e2c85874430e234dd20d`; GitHub Actions run #14 built and deployed successfully.
+Current branch: feat/m3-1-core-routing
 
-Current branch: feat/m2-content-taxonomy
+Last safe checkpoint: Mentor review held the release gate on the shared srcset parser; the final micro-remediation is implemented and ready for re-review.
 
-Latest production commit: 120930784026d596ade8e2c85874430e234dd20d
+Latest production commit: af561c936e0b13929cc9bb81f73c14b13f057784
 
-M1 production verification:
+Latest reviewed implementation commit: 1662e5a516440cc57393930a6c4e45c91cbea2a9
 
-- Quartz build, tests, route preparation, and route tests pass in CI.
-- GitHub Pages production deployment passes from `main`.
-- Generated artifact contains the expected top-level and extensionless nested routes.
-- Static artifact validation found no missing internal `href`, `src`, or `srcset` targets across 160 checked local references.
-- Root `404.html` remains reserved while nested `404.html` notes can receive extensionless routes.
-- Footer attribution no longer mislabels the NT132 package version as the Quartz framework version.
-- Open Graph MIME metadata emits valid `image/webp` or `image/png` values.
+Subsequent documentation-only checkpoint commits do not change the reviewed implementation.
 
-M2 work completed:
+Work completed in Remediation Round 1:
 
-- Added `M2_CONTENT_PLAN.md` with the canonical course taxonomy, naming/link rules, source map, cross-link backbone, and M3 migration order.
-- Added `CONTENT_TEMPLATE.md` for theory, practical labs, exam-prep pages, and project/case-study pages.
-- Mapped all 19 primary course PDFs to canonical topic groups and conservatively classified them as Class B with redistribution review required.
-- Classified `Group07_PreReport.docx` as Class C, case-study/reference only.
-- Created the theory and practical folder/index skeleton without migrating full chapter content.
-- Replaced future-work lab placeholder prose with durable student-facing learning goals and prerequisite links.
-- Switched Quartz internal Markdown resolution to explicit relative-path semantics so section navigation preserves directory intent.
-- Removed the three legacy public graph-test notes (`Static-Routing.md`, `OSPF.md`, `ACL.md`) because they were M1-only structural fixtures and leaked temporary project prose into the M2 artifact.
+- **Source Fidelity & Supplementary Provenance**:
+  - Partitioned every chapter's sources into three distinct tiers: Course Sources (Class B), Authoritative Standards / Vendor Documentation (Class C), and Author-Derived Original Topologies/Diagrams.
+  - Explicitly marked supplementary networking concepts (CAM aging timer, RFC 826 ARP context, Cisco CLI output interpretations, RFC 1812 Longest Prefix Match, RFC 2453 / RFC 2328 specifications).
+- **Technical Overstatement Corrections**:
+  - _Static Routing_: Replaced absolute claims of "no CPU/RAM" with precise descriptions of low control-plane overhead and absence of dynamic protocol updates. Clarified security scope: lack of routing advertisements reduces exposure but does not encrypt or secure payload data.
+  - _Floating Static_: Clarified that backup AD must exceed the preferred competing route's AD (not merely `> 1`), and explained failover limitations under silent remote link failures without tracking.
+  - _RIP_: Renamed propagation intervals to Conceptual Rounds (0, 1, 2) rather than deterministic wall-clock timestamps. Clarified that Cisco route age timer is elapsed time since last update, not a countdown.
+  - _OSPF_: Qualified area LSDB synchronization, Cost calculation derivation, transient convergence states, and distinguished generic LSP concepts from OSPF LSA/LSU terminology.
+- **Duplicate H1 Elimination**:
+  - Removed redundant manual `# Title` lines across all Markdown pages.
+  - Verified generated HTML contains strictly ONE `<h1>` on all 40 public routes.
+- **Mobile-First SVG Diagram Redesign**:
+  - Redesigned all 5 SVGs (`lan-forwarding-same-subnet.svg`, `cross-network-forwarding.svg`, `static-routing-topology.svg`, `rip-propagation-rounds.svg`, `ospf-dijkstra-graph.svg`) for 390px viewport readability with large typography and simplified stacked components.
+- **Comprehensive Artifact Audit**:
+  - Upgraded `scripts/audit-artifact.mjs` to check `href`, `src`, `srcset`, single `<h1>` tag integrity, required diagrams, forbidden terms, and PDF leaks.
 
-M2 verification:
+Work completed in Remediation Round 2:
 
-- All five Codex findings discovered during M2 were independently reproduced and remediated: one P1 for navigation semantics and four P2 findings covering lab scaffolding, source classification, stale state, and legacy graph-test publication.
-- GitHub Actions run #34 on remediation commit `524013fc24278004d10dc38c0e492560b143f8ad` passed type/format checks, 74/74 tests, Quartz build, Pages route preparation, route tests, and artifact upload.
-- Independent inspection of that Pages artifact checked 244 local `href`/`src`/`srcset` references with zero missing targets.
-- The legacy `Static-Routing`, `OSPF`, and `ACL` HTML/extensionless routes are absent.
-- Visible-page text has zero hits for M1/M2 milestone language, placeholder/scaffold/migration/TODO wording, `Temporary structural note`, `graph-test`, or `M1 foundation`.
-- A final `@codex review` was requested on the remediated HEAD, but GitHub's Codex bot returned a code-review usage-limit message before performing another review. This is recorded as an external review-availability limitation, not an unresolved code finding.
+- Redesigned the cross-network forwarding diagram for 390px and desktop rendering, explicitly teaching PC-A → R1 → R2 → PC-B, end-to-end IP addresses, and hop-by-hop MAC addresses.
+- Corrected OSPF terminology around LSA contents and LSU transport while preserving the course-slide “LSU update” framing with an RFC 2328 clarification.
+- Removed unattributed ECMP implementation detail from RIP and made Floating Static failover wording precise about route removal, resolution, installation, and downstream failure limits.
+- Extracted a shared `srcset`/`imagesrcset` parser and added regression coverage for bare-relative candidates, density/width descriptors, multiple candidates, data URL commas, and ordinary URL commas.
+- Added a nested-route integration regression proving bare-relative `srcset` and `src` URLs rebase correctly while descriptors, query commas, and data URLs remain intact.
+- Added audit gates for forbidden `prompt`, `placeholder`, and `TODO` terms and kept external/data references out of broken-local counters.
 
-M2 acceptance contingency:
+Current blockers:
 
-- Because the final Codex re-review is unavailable due to quota, the merge gate falls back to current-head CI plus independent generated-artifact inspection and direct verification of every known P1/P2 remediation.
-- PR #3 may be merged only if CI on this checkpoint remains green and no new non-outdated P1/P2 thread appears.
+- Mentor final re-review only.
 
-Exact next action: run CI on this checkpoint, merge PR #3 if green, verify the `main` production deployment, then start M3 on a fresh branch.
+Verification completed after Round 2:
+
+- `npm ci`: PASS
+- `npm run check`: PASS
+- `npm test`: PASS (76/76)
+- `npm run quartz -- build -d content -v`: PASS (77 files emitted)
+- `npm run prepare-pages`: PASS (7 extensionless routes)
+- `npm run test:routes`: PASS (6/6)
+- `npm run test:audit`: PASS (40 routes, 374 hrefs, 90 srcs, 0 srcsets, 0 broken targets, 0 H1 violations, 0 term violations, 0 restricted PDFs)
+- `git diff --check`: PASS
+- Visual inspection: all 5 diagrams checked at 390px and desktop width; cross-network forwarding checked in the actual embedded image viewport without clipping or duplicate content.
+
+Review note: Codex independent review is unavailable due to quota. Mentor final review remains the merge gate.
+
+Exact Next Action: mentor final review -> merge only if PASS.

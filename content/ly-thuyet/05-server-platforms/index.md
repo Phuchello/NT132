@@ -3,8 +3,6 @@ title: Server Platforms
 description: Windows Server, Linux Server và Cloud Server trong kiến trúc hệ thống.
 ---
 
-# Server Platforms
-
 ## Chủ đề
 
 - Windows Server

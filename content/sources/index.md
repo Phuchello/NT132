@@ -3,8 +3,6 @@ title: Nguồn học liệu
 description: Nguồn và nguyên tắc sử dụng tài liệu cho NT132.
 ---
 
-# Nguồn học liệu
-
 Nội dung của knowledge base được biên soạn lại từ học liệu môn học và các nguồn tham khảo có xuất xứ rõ ràng.
 
 - Ghi rõ nguồn cho kiến thức, hình và tài liệu tham khảo.

@@ -3,8 +3,6 @@ title: Lab Administration
 description: Thực hành quản trị Linux và Windows qua user, service, network configuration, permission và trạng thái hệ thống.
 ---
 
-# Lab Administration
-
 Nhóm thực hành này tập trung vào **thay đổi cấu hình có kiểm soát và xác minh trạng thái hệ thống sau thay đổi**.
 
 ## Bạn cần làm được

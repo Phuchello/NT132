@@ -3,8 +3,6 @@ title: System & Network Management
 description: Tác vụ quản trị, NMS và mô hình quản lý mạng/hệ thống.
 ---
 
-# System & Network Management
-
 ## Chủ đề
 
 - Management tasks

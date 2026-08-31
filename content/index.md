@@ -3,8 +3,6 @@ title: NT132
 description: Quản trị mạng và hệ thống.
 ---
 
-# NT132
-
 ## Quản trị mạng và hệ thống
 
 Kho kiến thức học tập về quản trị mạng và hệ thống.
