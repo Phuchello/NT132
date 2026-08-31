@@ -1,0 +1,53 @@
+@use "./base.scss";
+@use "./variables.scss" as *;
+
+// NT132 keeps Quartz's reading-first layout and adds only restrained course branding.
+
+:root {
+  --nt132-border: color-mix(in srgb, var(--gray) 28%, transparent);
+  --nt132-accent-soft: color-mix(in srgb, var(--secondary) 10%, transparent);
+}
+
+.page-title a {
+  color: var(--secondary);
+  letter-spacing: 0.02em;
+}
+
+.page-title h2 {
+  font-size: 1.25rem;
+}
+
+.graph h3,
+.toc h3,
+.backlinks h3 {
+  color: var(--secondary);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.explorer-content {
+  border-top: 1px solid var(--nt132-border);
+  border-bottom: 1px solid var(--nt132-border);
+  padding-block: 0.45rem;
+}
+
+.explorer-content .folder-container div > a,
+.explorer-content .folder-container div > button {
+  border-radius: 0.25rem;
+}
+
+.explorer-content .folder-container div > a:hover,
+.explorer-content .folder-container div > button:hover {
+  background: var(--nt132-accent-soft);
+}
+
+.content-meta {
+  color: var(--gray);
+}
+
+@media #{$mobile} {
+  .page-title h2 {
+    font-size: 1.1rem;
+  }
+}
