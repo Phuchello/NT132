@@ -4,6 +4,12 @@ NT132 is a connected course knowledge base, not a document mirror. Every
 future page or downloadable asset must have a traceable origin and a clear
 redistribution decision.
 
+The repository vendors the Quartz framework under its MIT license. That
+license applies to the Quartz framework source and permitted derivatives only;
+it does not relicense NT132 course content. See [NOTICE.md](NOTICE.md) and
+[LICENSES/Quartz-LICENSE.txt](LICENSES/Quartz-LICENSE.txt) for the attribution
+boundary.
+
 ## Rules
 
 1. Prefer notes authored for this repository and label them as Class A.
