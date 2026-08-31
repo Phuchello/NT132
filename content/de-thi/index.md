@@ -1,11 +1,12 @@
 ---
 title: Đề thi
-description: Mục lục thông tin đề thi của NT132.
+description: Khu vực phân tích dạng câu hỏi và kỹ năng cần có cho NT132.
 ---
 
 # Đề thi
 
-Mục lục placeholder cho M1. Không có đề thi hoặc PDF bên thứ ba nào được
-upload ở milestone này.
+Dùng để hệ thống hóa **dạng câu hỏi**, **concept được kiểm tra**, **kiểu packet/configuration trace** và các lỗi dễ mất điểm.
 
-Quay lại [[index|NT132]].
+Tài liệu đề thi chỉ được dẫn nguồn hoặc trích dùng khi quyền sử dụng phù hợp với [chính sách nguồn](../sources/).
+
+[Quay lại NT132](../).

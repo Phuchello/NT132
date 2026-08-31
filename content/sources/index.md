@@ -1,11 +1,15 @@
 ---
-title: Nguồn tham khảo
-description: Chính sách và danh mục nguồn tham khảo của NT132.
+title: Nguồn học liệu
+description: Nguồn và nguyên tắc sử dụng tài liệu cho NT132.
 ---
 
-# Nguồn tham khảo
+# Nguồn học liệu
 
-Mục lục placeholder cho M1. Xem `SOURCE_POLICY.md` ở thư mục gốc để biết quy
-tắc phân loại và tài liệu có thể redistributable.
+Nội dung của knowledge base được biên soạn lại từ học liệu môn học và các nguồn tham khảo có xuất xứ rõ ràng.
 
-Quay lại [[index|NT132]].
+- Ghi rõ nguồn cho kiến thức, hình và tài liệu tham khảo.
+- Ưu tiên diễn giải và sơ đồ tự biên soạn.
+- Không mặc định đưa nguyên PDF, đề thi, sách hoặc tài liệu bên thứ ba lên website khi chưa rõ quyền phân phối.
+- Báo cáo sinh viên được tách khỏi nguồn lý thuyết chuẩn và chỉ dùng như case study khi phù hợp.
+
+[Quay lại NT132](../).

@@ -1,11 +1,19 @@
 ---
 title: Thực hành
-description: Mục lục bài thực hành của NT132.
+description: "Bài thực hành NT132 theo nhóm kỹ năng: routing, switching/VLAN, network services, server, administration và management."
 ---
 
 # Thực hành
 
-Mục lục placeholder cho M1. Lab và sơ đồ sẽ được bổ sung sau khi có phạm vi
-và nguồn được duyệt.
+Mỗi lab hướng tới **làm được → verify được → tự chẩn đoán khi sai**.
 
-Quay lại [[index|NT132]].
+## Nhóm lab
+
+- [Routing](./routing/)
+- [Switching & VLAN](./switching-vlan/)
+- [Network Services](./network-services/)
+- [Server](./server/)
+- [Administration](./administration/)
+- [Management](./management/)
+
+[Quay lại NT132](../).
