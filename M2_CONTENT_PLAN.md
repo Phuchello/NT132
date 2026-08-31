@@ -107,13 +107,15 @@ content/
     index.md
 ```
 
-## Naming rules
+## Naming and link rules
 
 - Folder/file slugs: lowercase ASCII kebab-case.
 - Vietnamese diacritics stay in visible titles, not in slugs.
 - One canonical concept page per topic; use aliases instead of duplicate pages.
 - Do not encode semester, teacher, milestone, or source-file number into public URLs unless needed for disambiguation.
 - Preserve standard English technical terms in titles/body when that is the normal networking term: `Static Routing`, `RIP`, `OSPF`, `VLAN`, `DHCP`, `NAT`, `ACL`, `SNMP`, etc.
+- Internal links are authored as explicit paths relative to the current Markdown page, for example `./01-ha-tang-mang/`, `../02-routing/`, or `../../`. Quartz is configured with `markdownLinkResolution: "relative"` so these paths keep their intended directory semantics after build and GitHub Pages route preparation.
+- Do not rely on ambiguous same-name `index` resolution or shortest-name inference for navigation.
 - Public pages must not mention agent workflow, migration rounds, M1/M2 status, or implementation scaffolding.
 
 ## Learning architecture
@@ -168,6 +170,7 @@ M2 is complete when all of the following are true:
 - [ ] All 19 primary course files are mapped to canonical destination topics.
 - [ ] `Group07_PreReport.docx` is classified as case-study-only.
 - [ ] No public page contains milestone/agent/scaffolding language.
+- [ ] Internal navigation resolves to emitted routes with zero missing local references.
 - [ ] A migration order for M3 is fixed.
 - [ ] CI passes on the M2 branch.
 
