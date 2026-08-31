@@ -8,7 +8,7 @@ import { preparePages, rebaseRelativeUrl } from "./prepare-pages.mjs"
 
 const testOrigin = "https://nt132.invalid"
 
-function fixture({ css, js, contentIndex, icon, internal }) {
+function fixture({ css, js, contentIndex, icon, internal, srcset }) {
   return `<!doctype html>
 <html><head>
   <link data-test="css" rel="stylesheet" href="${css}">
@@ -18,6 +18,7 @@ function fixture({ css, js, contentIndex, icon, internal }) {
 </head><body>
   <a data-test="internal" href="${internal}">Internal</a>
   <img data-test="static" src="${icon}" alt="static asset">
+  <img data-test="srcset" srcset="${srcset}" alt="responsive asset">
   <a data-test="anchor" href="#section">Anchor</a>
   <a data-test="absolute" href="https://example.com/reference">Absolute</a>
   <a data-test="root" href="/NT132/index.css">Root-relative</a>
@@ -37,6 +38,7 @@ const pages = [
       contentIndex: "./static/contentIndex.json",
       icon: "./static/icon.png",
       internal: "./ly-thuyet/",
+      srcset: "./small.png 1x, ./large.png 2x",
     },
   },
   {
@@ -48,6 +50,7 @@ const pages = [
       contentIndex: "../static/contentIndex.json",
       icon: "../static/icon.png",
       internal: "../",
+      srcset: "../small.png 1x, ./large.png 2x",
     },
   },
   {
@@ -59,6 +62,7 @@ const pages = [
       contentIndex: "../../static/contentIndex.json",
       icon: "../../static/icon.png",
       internal: "../routing/ospf",
+      srcset: "data:image/png;base64,AAAA 1x, ../../small.png 2x",
     },
     original: {
       css: "../index.css",
@@ -66,6 +70,7 @@ const pages = [
       contentIndex: "../static/contentIndex.json",
       icon: "../static/icon.png",
       internal: "./routing/ospf",
+      srcset: "data:image/png;base64,AAAA 1x, ../small.png 2x",
     },
   },
   {
@@ -77,6 +82,7 @@ const pages = [
       contentIndex: "../../../static/contentIndex.json",
       icon: "../../../static/icon.png",
       internal: "../../static-routing",
+      srcset: "../../../small.png 1x, ../large.png 2x",
     },
     original: {
       css: "../../index.css",
@@ -84,6 +90,7 @@ const pages = [
       contentIndex: "../../static/contentIndex.json",
       icon: "../../static/icon.png",
       internal: "../static-routing",
+      srcset: "../../small.png 1x, ./large.png 2x",
     },
   },
 ]
@@ -94,8 +101,8 @@ function findTestAttributes(document) {
   function visit(node) {
     const marker = node.attrs?.find((attribute) => attribute.name === "data-test")
     if (marker) {
-      const value = node.attrs.find(
-        (attribute) => attribute.name === "href" || attribute.name === "src",
+      const value = node.attrs.find((attribute) =>
+        ["href", "src", "srcset"].includes(attribute.name),
       )
       if (value) attributes.set(marker.value, value.value)
       if (marker.value === "contentIndex") {
@@ -157,6 +164,8 @@ test("rebases generated URLs for root, folder, and nested routes", async () => {
           )
         }
       }
+
+      assert.equal(actual.get("srcset"), page.expected.srcset, `${page.route} srcset`)
 
       assert.equal(actual.get("anchor"), "#section")
       assert.equal(actual.get("absolute"), "https://example.com/reference")

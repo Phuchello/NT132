@@ -91,14 +91,50 @@ export function rebaseRelativeUrl(value, originalDocumentUrl, destinationDocumen
 }
 
 function rebaseSrcset(value, originalDocumentUrl, destinationDocumentUrl) {
-  return value
-    .split(",")
-    .map((candidate) =>
-      replaceTrimmedValue(candidate, (trimmed) =>
-        rebaseRelativeUrl(trimmed, originalDocumentUrl, destinationDocumentUrl),
-      ),
+  let cursor = 0
+  let rewritten = ""
+
+  while (cursor < value.length) {
+    const leadingStart = cursor
+    while (/\s/.test(value[cursor] ?? "")) cursor += 1
+
+    const urlStart = cursor
+    const isDataUrl = value.slice(urlStart, urlStart + 5).toLowerCase() === "data:"
+    while (cursor < value.length) {
+      const character = value[cursor]
+      const nextCharacter = value[cursor + 1]
+      if (/\s/.test(character)) break
+      if (character === "," && (!isDataUrl || /\s/.test(nextCharacter ?? ""))) break
+      cursor += 1
+    }
+
+    if (urlStart === cursor) {
+      rewritten += value[cursor]
+      cursor += 1
+      continue
+    }
+
+    const descriptorStart = cursor
+    while (/\s/.test(value[cursor] ?? "")) cursor += 1
+    if (descriptorStart !== cursor) {
+      while (cursor < value.length && value[cursor] !== ",") cursor += 1
+    }
+
+    rewritten += value.slice(leadingStart, urlStart)
+    rewritten += rebaseRelativeUrl(
+      value.slice(urlStart, descriptorStart),
+      originalDocumentUrl,
+      destinationDocumentUrl,
     )
-    .join(",")
+    rewritten += value.slice(descriptorStart, cursor)
+
+    if (value[cursor] === ",") {
+      rewritten += ","
+      cursor += 1
+    }
+  }
+
+  return rewritten
 }
 
 function rebaseSpaceSeparatedUrls(value, originalDocumentUrl, destinationDocumentUrl) {
