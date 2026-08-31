@@ -82,7 +82,7 @@ const pages = [
       contentIndex: "../../../static/contentIndex.json",
       icon: "../../../static/icon.png",
       internal: "../../static-routing",
-      srcset: "../../../small.png 1x, ../large.png 2x",
+      srcset: "../../../small.png?crop=1,2 1x, ../large.png 2x",
     },
     original: {
       css: "../../index.css",
@@ -90,7 +90,7 @@ const pages = [
       contentIndex: "../../static/contentIndex.json",
       icon: "../../static/icon.png",
       internal: "../static-routing",
-      srcset: "../../small.png 1x, ./large.png 2x",
+      srcset: "../../small.png?crop=1,2 1x, ./large.png 2x",
     },
   },
 ]

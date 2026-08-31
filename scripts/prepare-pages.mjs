@@ -99,12 +99,11 @@ function rebaseSrcset(value, originalDocumentUrl, destinationDocumentUrl) {
     while (/\s/.test(value[cursor] ?? "")) cursor += 1
 
     const urlStart = cursor
-    const isDataUrl = value.slice(urlStart, urlStart + 5).toLowerCase() === "data:"
     while (cursor < value.length) {
       const character = value[cursor]
       const nextCharacter = value[cursor + 1]
       if (/\s/.test(character)) break
-      if (character === "," && (!isDataUrl || /\s/.test(nextCharacter ?? ""))) break
+      if (character === "," && /\s/.test(nextCharacter ?? "")) break
       cursor += 1
     }
 
