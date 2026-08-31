@@ -4,7 +4,7 @@ Use these templates for authored pages. They are intentionally student-facing an
 
 ## Theory page
 
-```markdown
+```text
 ---
 title: <Visible Vietnamese/English title>
 aliases:
@@ -79,7 +79,7 @@ List the source record and attribution notes. Do not embed restricted originals.
 
 ## Practical lab page
 
-```markdown
+```text
 ---
 title: Lab — <name>
 tags:
@@ -134,7 +134,7 @@ Break one thing deliberately and ask the learner to diagnose it from symptoms.
 
 ## Exam-prep page
 
-```markdown
+```text
 # <Topic> — Ôn thi
 
 ## Must know
@@ -160,7 +160,7 @@ The smallest useful memory scaffold.
 
 ## Project / case-study page
 
-```markdown
+```text
 # <Project or case study>
 
 ## Problem
