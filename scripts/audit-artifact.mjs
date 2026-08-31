@@ -111,7 +111,7 @@ function targetExists(resolved) {
 
 const hrefRegex = /href=["']([^"'#?]+)(?:[#?][^"']*)?["']/gi
 const srcRegex = /src=["']([^"'#?]+)(?:[#?][^"']*)?["']/gi
-const srcsetRegex = /(?:srcset|imagesrcset)=["']([^"']+)["']/gi
+const srcsetRegex = /\b(?:srcset|imagesrcset)=["']([^"']+)["']/gi
 const h1Regex = /<h1\b[^>]*>(.*?)<\/h1>/gis
 
 for (const f of htmlFiles) {
