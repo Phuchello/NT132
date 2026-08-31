@@ -14,7 +14,8 @@
 - [x] Configure Explorer, search, graph view, TOC, backlinks, breadcrumbs, and responsive layout.
 - [x] Add the GitHub Pages build and deployment workflow.
 - [x] Verify a clean build and browser behavior at desktop and mobile widths.
-- [ ] Confirm the first GitHub Pages deployment after the pull request is merged.
+- [x] Confirm the first GitHub Pages deployment after the pull request is merged.
+- [ ] Complete final production-polish verification for footer attribution and Open Graph metadata.
 
 ## M2 — Content planning and taxonomy
 
