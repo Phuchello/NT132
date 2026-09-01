@@ -44,11 +44,11 @@ Trong switching Layer 2 thông thường, switch học Source MAC ở cổng ing
 
 VLAN đặt thêm ranh giới cho quá trình đó:
 
-| Thành phần | Câu hỏi cần trả lời | Ví dụ |
-| --- | --- | --- |
-| MAC forwarding | Frame unicast đã biết phải ra cổng nào? | `BBBB -> Fa0/24` |
+| Thành phần      | Câu hỏi cần trả lời                     | Ví dụ               |
+| --------------- | --------------------------------------- | ------------------- |
+| MAC forwarding  | Frame unicast đã biết phải ra cổng nào? | `BBBB -> Fa0/24`    |
 | VLAN membership | Cổng/frame đang ở broadcast domain nào? | `Fa0/10 -> VLAN 10` |
-| IP subnet | Đích có nằm cùng mạng Layer 3 không? | `192.168.10.0/24` |
+| IP subnet       | Đích có nằm cùng mạng Layer 3 không?    | `192.168.10.0/24`   |
 
 Một switch Layer 2 thông thường đang được mô tả ở đây không cần đọc IP để quyết định forward frame. Không nên biến điều đó thành mệnh đề tuyệt đối về mọi phần cứng có khả năng Layer 3.
 
@@ -99,11 +99,11 @@ VLAN 10 sang VLAN 20: cần Layer 3.
 
 Topology dùng `PC-A` VLAN 10 ở S1 và `PC-C` VLAN 10 ở S2. Giả sử hai host thuộc cùng subnet `192.168.10.0/24` và đã biết MAC của nhau.
 
-| Bước | VLAN context | SIP | DIP | SMAC | DMAC | Ingress / quyết định | Egress |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | VLAN 10 | `192.168.10.10` | `192.168.10.30` | `AAAA` | `CCCC` | PC-A thấy đích cùng subnet, gửi thẳng tới PC-C, không gửi default gateway | access vào S1 |
-| 2 | VLAN 10 | giữ nguyên | giữ nguyên | giữ nguyên | giữ nguyên | S1 học `AAAA`, tra `CCCC`, chọn uplink trunk | trunk S1-S2, mang VLAN 10 |
-| 3 | VLAN 10 | giữ nguyên | giữ nguyên | giữ nguyên | giữ nguyên | S2 nhận frame trong VLAN 10, tra `CCCC`, chọn cổng PC-C | access ra PC-C |
+| Bước | VLAN context | SIP             | DIP             | SMAC       | DMAC       | Ingress / quyết định                                                      | Egress                    |
+| ---- | ------------ | --------------- | --------------- | ---------- | ---------- | ------------------------------------------------------------------------- | ------------------------- |
+| 1    | VLAN 10      | `192.168.10.10` | `192.168.10.30` | `AAAA`     | `CCCC`     | PC-A thấy đích cùng subnet, gửi thẳng tới PC-C, không gửi default gateway | access vào S1             |
+| 2    | VLAN 10      | giữ nguyên      | giữ nguyên      | giữ nguyên | giữ nguyên | S1 học `AAAA`, tra `CCCC`, chọn uplink trunk                              | trunk S1-S2, mang VLAN 10 |
+| 3    | VLAN 10      | giữ nguyên      | giữ nguyên      | giữ nguyên | giữ nguyên | S2 nhận frame trong VLAN 10, tra `CCCC`, chọn cổng PC-C                   | access ra PC-C            |
 
 Không có router trong đường đi này. IP source/destination giữ nguyên, và switch không rewrite SMAC/DMAC chỉ vì frame đi qua nó. Nếu có ARP trước đó, ARP là bước phân giải `192.168.10.30 -> CCCC`, không phải một lần routing.
 
@@ -120,8 +120,8 @@ Switch(config-vlan)# name SALES
 Switch(config-vlan)# end
 ```
 
-| Trước | Command | Sau |
-| --- | --- | --- |
+| Trước                               | Command                    | Sau                                                                                       |
+| ----------------------------------- | -------------------------- | ----------------------------------------------------------------------------------------- |
 | VLAN 20 chưa có trong VLAN database | `vlan 20` rồi `name SALES` | `show vlan brief` có VLAN `20 SALES` ở trạng thái active nếu platform tạo VLAN thành công |
 
 ### 7.2. Trace bắt buộc: đổi `Fa0/10` từ VLAN 1 sang VLAN 20
@@ -188,11 +188,11 @@ Switch(config-if)# switchport trunk allowed vlan 10,20,30
 Switch(config-if)# end
 ```
 
-| Command | State change | Cách quan sát |
-| --- | --- | --- |
-| `switchport mode trunk` | ép cổng vào administrative trunk mode | `show interfaces Fa0/1 switchport` |
-| `switchport trunk native vlan 99` | đặt VLAN context cho traffic untagged của trunk | `show interfaces trunk` hiển thị Native vlan `99` |
-| `switchport trunk allowed vlan 10,20,30` | giới hạn VLAN được phép qua trunk | `show interfaces trunk` hiển thị danh sách allowed |
+| Command                                  | State change                                    | Cách quan sát                                      |
+| ---------------------------------------- | ----------------------------------------------- | -------------------------------------------------- |
+| `switchport mode trunk`                  | ép cổng vào administrative trunk mode           | `show interfaces Fa0/1 switchport`                 |
+| `switchport trunk native vlan 99`        | đặt VLAN context cho traffic untagged của trunk | `show interfaces trunk` hiển thị Native vlan `99`  |
+| `switchport trunk allowed vlan 10,20,30` | giới hạn VLAN được phép qua trunk               | `show interfaces trunk` hiển thị danh sách allowed |
 
 Các lệnh trunk và cách trình bày native/allowed ở đây là **SUPPLEMENTARY - Cisco IOS** dựa trên [Cisco IEEE 802.1Q VLAN configuration](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/lan-wan/b-lan-wan/m_lnsw-conf-vlan-ieee.html). Trên hai đầu trunk, native VLAN và allowed list cần được kiểm tra nhất quán. Đừng kết luận “mọi frame trên trunk luôn có tag”; native VLAN là lý do phải hỏi frame cụ thể đang được xử lý theo ngữ cảnh nào.
 
@@ -207,12 +207,12 @@ Switch# show interfaces fastethernet 0/1 switchport
 
 ## 9. Sai lầm thường gặp và troubleshooting
 
-| Hiện tượng | Hypothesis | Command / diagnosis | Hướng sửa |
-| --- | --- | --- | --- |
-| Hai host cùng VLAN ở hai switch không ping được | VLAN chưa tồn tại, access VLAN sai, trunk down hoặc VLAN bị chặn | `show vlan brief`, `show interfaces trunk`, `show interfaces <port> switchport` | Tạo VLAN ở nơi cần, sửa membership, đưa cả hai đầu link về trunk và cho phép VLAN cần thiết |
-| Host VLAN 10 ping được trong cùng switch nhưng không qua switch còn lại | Trunk đang up nhưng VLAN 10 không nằm trong allowed/forwarding set | So sánh `Vlans allowed on trunk` và `Vlans in spanning tree forwarding state` | Đồng bộ allowed list rồi kiểm tra lại hai đầu |
-| Cắm host vào cổng mới nhưng host “biến mất” khỏi nhóm | Cổng đang ở VLAN 1 hoặc VLAN khác | `show vlan brief` và `show interfaces <port> switchport` | Cấu hình `switchport mode access` và `switchport access vlan <id>` đúng cổng |
-| Trunk không mang traffic sau khi đổi native VLAN | Native VLAN hai đầu không khớp hoặc VLAN native không tồn tại | `show interfaces trunk`, `show interfaces <port> switchport` | Tạo/kiểm tra VLAN và thống nhất native VLAN; không dùng native VLAN như tên gọi thay cho default VLAN |
+| Hiện tượng                                                              | Hypothesis                                                         | Command / diagnosis                                                             | Hướng sửa                                                                                             |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Hai host cùng VLAN ở hai switch không ping được                         | VLAN chưa tồn tại, access VLAN sai, trunk down hoặc VLAN bị chặn   | `show vlan brief`, `show interfaces trunk`, `show interfaces <port> switchport` | Tạo VLAN ở nơi cần, sửa membership, đưa cả hai đầu link về trunk và cho phép VLAN cần thiết           |
+| Host VLAN 10 ping được trong cùng switch nhưng không qua switch còn lại | Trunk đang up nhưng VLAN 10 không nằm trong allowed/forwarding set | So sánh `Vlans allowed on trunk` và `Vlans in spanning tree forwarding state`   | Đồng bộ allowed list rồi kiểm tra lại hai đầu                                                         |
+| Cắm host vào cổng mới nhưng host “biến mất” khỏi nhóm                   | Cổng đang ở VLAN 1 hoặc VLAN khác                                  | `show vlan brief` và `show interfaces <port> switchport`                        | Cấu hình `switchport mode access` và `switchport access vlan <id>` đúng cổng                          |
+| Trunk không mang traffic sau khi đổi native VLAN                        | Native VLAN hai đầu không khớp hoặc VLAN native không tồn tại      | `show interfaces trunk`, `show interfaces <port> switchport`                    | Tạo/kiểm tra VLAN và thống nhất native VLAN; không dùng native VLAN như tên gọi thay cho default VLAN |
 
 ### Câu hỏi chẩn đoán
 

@@ -45,11 +45,11 @@ PC-A thấy `192.168.20.10` không nằm trong subnet `/24` của mình. Vì v�
 
 ## 4. Ba mô hình, một hành trình khái niệm
 
-| Mô hình | Điểm đặt interface Layer 3 | Liên kết switch-router | Ý nghĩa khi thêm VLAN |
-| --- | --- | --- | --- |
-| Legacy | Mỗi VLAN dùng một cổng vật lý riêng trên router | Các cổng router nối bằng các access VLAN tương ứng | Thường cần thêm cổng vật lý và dây |
-| Router-on-a-stick | Một cổng vật lý router có nhiều subinterface | Uplink switch-router là trunk 802.1Q | Một uplink phục vụ nhiều VLAN; cần subinterface/tag khớp |
-| Multilayer Switch | SVI của từng VLAN trên switch Layer 3 | Access switch có thể trunk về switch đa lớp | Routing nằm trong thiết bị chuyển mạch đa lớp; cần bật routing |
+| Mô hình           | Điểm đặt interface Layer 3                      | Liên kết switch-router                             | Ý nghĩa khi thêm VLAN                                          |
+| ----------------- | ----------------------------------------------- | -------------------------------------------------- | -------------------------------------------------------------- |
+| Legacy            | Mỗi VLAN dùng một cổng vật lý riêng trên router | Các cổng router nối bằng các access VLAN tương ứng | Thường cần thêm cổng vật lý và dây                             |
+| Router-on-a-stick | Một cổng vật lý router có nhiều subinterface    | Uplink switch-router là trunk 802.1Q               | Một uplink phục vụ nhiều VLAN; cần subinterface/tag khớp       |
+| Multilayer Switch | SVI của từng VLAN trên switch Layer 3           | Access switch có thể trunk về switch đa lớp        | Routing nằm trong thiết bị chuyển mạch đa lớp; cần bật routing |
 
 Ba dòng trên là cách phân loại trong course slides. “Legacy” không có nghĩa là sai; nó dễ nhìn khi học trace nhưng kém linh hoạt hơn khi số VLAN tăng. Router-on-a-stick và Multilayer Switch giải quyết bài toán mở rộng theo hai vị trí khác nhau của chức năng Layer 3.
 
@@ -59,10 +59,10 @@ Trong mô hình Legacy, VLAN 10 đi vào một cổng router và VLAN 20 đi và
 
 ### Trace SIP / DIP / SMAC / DMAC
 
-| Vị trí | VLAN context | SIP | DIP | SMAC | DMAC | Điều đang xảy ra |
-| --- | --- | --- | --- | --- | --- | --- |
-| PC-A -> router | VLAN 10 | `192.168.10.10` | `192.168.20.10` | MAC PC-A | MAC `G0/0` của router | PC-A gửi tới default gateway vì đích khác subnet |
-| router -> PC-B | VLAN 20 | giữ nguyên `192.168.10.10` | giữ nguyên `192.168.20.10` | MAC `G0/1` của router | MAC PC-B | Router tạo frame mới trên interface VLAN 20 |
+| Vị trí         | VLAN context | SIP                        | DIP                        | SMAC                  | DMAC                  | Điều đang xảy ra                                 |
+| -------------- | ------------ | -------------------------- | -------------------------- | --------------------- | --------------------- | ------------------------------------------------ |
+| PC-A -> router | VLAN 10      | `192.168.10.10`            | `192.168.20.10`            | MAC PC-A              | MAC `G0/0` của router | PC-A gửi tới default gateway vì đích khác subnet |
+| router -> PC-B | VLAN 20      | giữ nguyên `192.168.10.10` | giữ nguyên `192.168.20.10` | MAC `G0/1` của router | MAC PC-B              | Router tạo frame mới trên interface VLAN 20      |
 
 SIP/DIP mô tả IP endpoint và thường giữ nguyên qua lần định tuyến này (ngoại trừ các trường IP khác như TTL có thể bị giảm). SMAC/DMAC thuộc frame từng đoạn, nên thay đổi khi router chuyển từ cổng của VLAN 10 sang cổng của VLAN 20. Đây là đúng tinh thần trace của course slides.
 
@@ -76,13 +76,13 @@ Router-on-a-stick gom nhiều gateway logic vào các subinterface của một c
 
 ### 6.1. Trace từng chặng
 
-| Chặng | VLAN/tag | SIP | DIP | SMAC / DMAC | Quyết định |
-| --- | --- | --- | --- | --- | --- |
-| PC-A -> cổng access S1 | VLAN 10 nội bộ trên S1 | `192.168.10.10` | `192.168.20.10` | SMAC PC-A, DMAC gateway VLAN 10 | PC-A gửi đến default gateway, frame vào access VLAN 10 |
-| S1 -> router G0/0 | tag VLAN 10 trên trunk | giữ nguyên | giữ nguyên | frame được mang theo VLAN 10 | S1 chọn uplink trunk; router nhận đúng `G0/0.10` |
-| router xử lý L3 | interface `G0/0.10` -> `G0/0.20` | giữ nguyên endpoint | giữ nguyên endpoint | tra route connected VLAN 20 | Router tách ngữ cảnh VLAN 10, chọn gateway/interface VLAN 20 |
-| router -> S1 | tag VLAN 20 trên trunk | giữ nguyên | giữ nguyên | SMAC router VLAN 20, DMAC PC-B | Router gửi frame mới qua `G0/0.20`; S1 bỏ tag khi ra access |
-| S1 -> PC-B | VLAN 20 trên access | `192.168.10.10` | `192.168.20.10` | SMAC gateway VLAN 20, DMAC PC-B | PC-B nhận frame trong VLAN 20 |
+| Chặng                  | VLAN/tag                         | SIP                 | DIP                 | SMAC / DMAC                     | Quyết định                                                   |
+| ---------------------- | -------------------------------- | ------------------- | ------------------- | ------------------------------- | ------------------------------------------------------------ |
+| PC-A -> cổng access S1 | VLAN 10 nội bộ trên S1           | `192.168.10.10`     | `192.168.20.10`     | SMAC PC-A, DMAC gateway VLAN 10 | PC-A gửi đến default gateway, frame vào access VLAN 10       |
+| S1 -> router G0/0      | tag VLAN 10 trên trunk           | giữ nguyên          | giữ nguyên          | frame được mang theo VLAN 10    | S1 chọn uplink trunk; router nhận đúng `G0/0.10`             |
+| router xử lý L3        | interface `G0/0.10` -> `G0/0.20` | giữ nguyên endpoint | giữ nguyên endpoint | tra route connected VLAN 20     | Router tách ngữ cảnh VLAN 10, chọn gateway/interface VLAN 20 |
+| router -> S1           | tag VLAN 20 trên trunk           | giữ nguyên          | giữ nguyên          | SMAC router VLAN 20, DMAC PC-B  | Router gửi frame mới qua `G0/0.20`; S1 bỏ tag khi ra access  |
+| S1 -> PC-B             | VLAN 20 trên access              | `192.168.10.10`     | `192.168.20.10`     | SMAC gateway VLAN 20, DMAC PC-B | PC-B nhận frame trong VLAN 20                                |
 
 Ở ranh giới Layer 3, router không “đổi SIP thành gateway”. Gateway là DMAC của frame cục bộ phía vào; IP source/destination vẫn là hai host đang giao tiếp. Sau khi route xong, frame phía ra có cặp MAC khác và VLAN context khác.
 
@@ -133,11 +133,11 @@ Multilayer Switch giữ switching Layer 2 ở access/trunk port và cung cấp g
 
 ### Trace khác VLAN qua SVI
 
-| Vị trí | VLAN context | SIP | DIP | SMAC | DMAC | Ý nghĩa |
-| --- | --- | --- | --- | --- | --- | --- |
-| PC-A -> SVI VLAN 10 | VLAN 10 | `192.168.10.10` | `192.168.20.10` | MAC PC-A | MAC SVI VLAN 10 | PC-A gửi frame cho gateway logic của mạng mình |
-| MLS route | ranh giới L3 logic | giữ nguyên | giữ nguyên | không còn là một frame end-to-end | không áp dụng cho một cặp frame duy nhất | MLS tra route giữa các mạng connected |
-| SVI VLAN 20 -> PC-B | VLAN 20 | `192.168.10.10` | `192.168.20.10` | MAC SVI VLAN 20 | MAC PC-B | MLS đóng gói frame mới và gửi vào VLAN 20 |
+| Vị trí              | VLAN context       | SIP             | DIP             | SMAC                              | DMAC                                     | Ý nghĩa                                        |
+| ------------------- | ------------------ | --------------- | --------------- | --------------------------------- | ---------------------------------------- | ---------------------------------------------- |
+| PC-A -> SVI VLAN 10 | VLAN 10            | `192.168.10.10` | `192.168.20.10` | MAC PC-A                          | MAC SVI VLAN 10                          | PC-A gửi frame cho gateway logic của mạng mình |
+| MLS route           | ranh giới L3 logic | giữ nguyên      | giữ nguyên      | không còn là một frame end-to-end | không áp dụng cho một cặp frame duy nhất | MLS tra route giữa các mạng connected          |
+| SVI VLAN 20 -> PC-B | VLAN 20            | `192.168.10.10` | `192.168.20.10` | MAC SVI VLAN 20                   | MAC PC-B                                 | MLS đóng gói frame mới và gửi vào VLAN 20      |
 
 Một số sơ đồ lớp học viết “SMAC/DMAC là Interface VLAN 10/20” để làm nổi bật điểm gateway. Cách đọc chính xác hơn là: SVI là interface Layer 3 logic; mỗi đoạn Layer 2 có cặp MAC cục bộ riêng. IP endpoint không đổi chỉ vì MLS route giữa hai VLAN.
 
@@ -176,12 +176,12 @@ Access# show interfaces trunk
 
 ## 8. Troubleshooting theo giả thuyết
 
-| Hiện tượng | Hypothesis đầu tiên | Lệnh/chứng cứ | Hướng sửa |
-| --- | --- | --- | --- |
-| Cùng VLAN qua hai switch không hoạt động | VLAN/access membership sai, trunk down hoặc VLAN bị loại khỏi allowed/forwarding | `show vlan brief`, `show interfaces trunk`, `show interfaces <port> switchport` | Sửa membership, trunk hai đầu và allowed list; xác nhận VLAN forwarding |
-| Cùng VLAN hoạt động nhưng VLAN 10 không đến VLAN 20 | Host chưa có gateway đúng hoặc chưa có interface Layer 3/routing giữa hai VLAN | `ipconfig`, `show ip interface brief`, `show ip route connected`, ping gateway trước | Đặt default gateway đúng; tạo/kiểm tra Legacy, subinterface hoặc SVI và bật routing khi cần |
-| Router-on-a-stick: VLAN 10 được, VLAN 20 hỏng | VLAN 20 thiếu ở access/trunk, tag `20` không khớp, subinterface hoặc gateway sai | `show vlan brief`, `show interfaces trunk`, `show ip interface brief`, `show ip route connected` | Đồng bộ VLAN ID, `encapsulation dot1q 20`, IP gateway, allowed list và trạng thái interface |
-| SVI có IP nhưng báo down | VLAN chưa active hoặc chưa có điều kiện Layer 2/link phù hợp | `show interfaces vlan 10`, `show vlan brief`, `show interfaces trunk` | Khôi phục VLAN/link/access-trunk rồi kiểm tra lại SVI; đừng chữa bằng cách đổi IP ngẫu nhiên |
+| Hiện tượng                                          | Hypothesis đầu tiên                                                              | Lệnh/chứng cứ                                                                                    | Hướng sửa                                                                                    |
+| --------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
+| Cùng VLAN qua hai switch không hoạt động            | VLAN/access membership sai, trunk down hoặc VLAN bị loại khỏi allowed/forwarding | `show vlan brief`, `show interfaces trunk`, `show interfaces <port> switchport`                  | Sửa membership, trunk hai đầu và allowed list; xác nhận VLAN forwarding                      |
+| Cùng VLAN hoạt động nhưng VLAN 10 không đến VLAN 20 | Host chưa có gateway đúng hoặc chưa có interface Layer 3/routing giữa hai VLAN   | `ipconfig`, `show ip interface brief`, `show ip route connected`, ping gateway trước             | Đặt default gateway đúng; tạo/kiểm tra Legacy, subinterface hoặc SVI và bật routing khi cần  |
+| Router-on-a-stick: VLAN 10 được, VLAN 20 hỏng       | VLAN 20 thiếu ở access/trunk, tag `20` không khớp, subinterface hoặc gateway sai | `show vlan brief`, `show interfaces trunk`, `show ip interface brief`, `show ip route connected` | Đồng bộ VLAN ID, `encapsulation dot1q 20`, IP gateway, allowed list và trạng thái interface  |
+| SVI có IP nhưng báo down                            | VLAN chưa active hoặc chưa có điều kiện Layer 2/link phù hợp                     | `show interfaces vlan 10`, `show vlan brief`, `show interfaces trunk`                            | Khôi phục VLAN/link/access-trunk rồi kiểm tra lại SVI; đừng chữa bằng cách đổi IP ngẫu nhiên |
 
 ### Hai bài chẩn đoán ngắn
 
