@@ -57,10 +57,10 @@
 - [x] Create original mobile-first diagrams for VLAN physical/logical membership, access/trunk, Legacy, Router-on-a-stick, and Multilayer/SVI routing.
 - [x] Mark course-derived scope and supplementary Cisco CLI material in the authored pages.
 - [x] Add M3.2 diagram files to the generated-artifact audit.
-- [ ] Run full local QA, artifact audit, and mobile/desktop visual verification.
+- [x] Run full local QA, artifact audit, and mobile/desktop visual verification.
 - [ ] Push branch and open one PR to `main`.
 - [ ] Wait for mentor M3.2 review; do not merge.
-- Exact Next Action: complete QA, push the branch, open one PR, then wait for mentor M3.2 review.
+- Exact Next Action: push the branch, open one PR, then wait for mentor M3.2 review.
 
 ### M3.2+ — Remaining theory chapters and practical lab curriculum
 

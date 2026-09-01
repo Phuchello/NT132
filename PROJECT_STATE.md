@@ -60,6 +60,26 @@ M3.2 implementation in progress:
 - Authored the Switching/VLAN chapter and its two original mobile-first diagrams.
 - Authored the Inter-VLAN Routing chapter and its three original mobile-first diagrams.
 - Added M3.2 diagrams to the generated-artifact required-assets audit.
+- Verified all five diagrams in the embedded pages at 390px and desktop width; no horizontal overflow and no browser console errors.
+
+M3.2 self-review:
+
+- Switching/VLAN: 95/100. Weakness: IOS command output and SVI state details remain platform/version-dependent.
+- Inter-VLAN Routing: 97/100. Weakness: the supplementary CLI is Cisco-oriented and the pages do not yet include a hands-on simulator lab.
+- Both pages meet the source-fidelity, learning-flow, trace, visual, recall, troubleshooting, navigation, and provenance gates for this theory milestone.
+
+M3.2 verification completed locally:
+
+- `npm ci`: PASS (machine reports 10 high-severity npm audit advisories; no dependency changes made).
+- `npm run check`: PASS
+- `npm test`: PASS (76/76)
+- `npm run quartz -- build -d content -v`: PASS (88 files emitted)
+- `npm run prepare-pages`: PASS (11 extensionless routes)
+- `npm run test:routes`: PASS (6/6)
+- `npm run test:audit`: PASS (48 HTML/route files, 511 hrefs, 116 srcs, 0 broken targets, 0 H1 violations, 0 term violations, 0 restricted PDFs)
+- `git diff --check`: PASS
+- Direct refresh checks: PASS for the M3.2 index, Switch/VLAN, and Inter-VLAN routes.
+- Search initialization/query, Explorer visibility, TOC, provenance, and diagram loading: PASS.
 
 Verification completed after Round 2:
 
@@ -75,4 +95,4 @@ Verification completed after Round 2:
 
 Review note: M3.1 final mentor review was PASS and Codex independent review remained unavailable due to quota.
 
-Exact Next Action: complete local QA, push `feat/m3-2-switching-vlan`, open one PR, then wait for mentor M3.2 review; do not merge.
+Exact Next Action: push `feat/m3-2-switching-vlan`, open one PR, then wait for mentor M3.2 review; do not merge.
