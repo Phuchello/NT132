@@ -55,7 +55,7 @@ Current blockers:
 
 - Mentor M3.2 review remains the final gate.
 
-M3.2 implementation in progress:
+M3.2 implementation submitted for mentor review:
 
 - Authored the Switching/VLAN chapter and its two original mobile-first diagrams.
 - Authored the Inter-VLAN Routing chapter and its three original mobile-first diagrams.
@@ -81,6 +81,13 @@ M3.2 verification completed locally:
 - Direct refresh checks: PASS for the M3.2 index, Switch/VLAN, and Inter-VLAN routes.
 - Search initialization/query, Explorer visibility, TOC, provenance, and diagram loading: PASS.
 
+M3.2 review handoff:
+
+- PR: https://github.com/Phuchello/NT132/pull/5
+- Latest pushed commit: `d550fe2acbbc354f3076cf5ae58accc0320e1e0c`
+- GitHub Actions PR workflow: `33462837850` — Build site PASS; all required build, test, route, artifact-audit, and upload steps PASS. Deploy site is intentionally deferred until a merge to `main`.
+- Network Services work has not started.
+
 Verification completed after Round 2:
 
 - `npm ci`: PASS
@@ -95,4 +102,4 @@ Verification completed after Round 2:
 
 Review note: M3.1 final mentor review was PASS and Codex independent review remained unavailable due to quota.
 
-Exact Next Action: push `feat/m3-2-switching-vlan`, open one PR, then wait for mentor M3.2 review; do not merge.
+Exact Next Action: wait for mentor M3.2 review on PR #5; do not merge and do not start Network Services.

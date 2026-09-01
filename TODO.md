@@ -58,9 +58,10 @@
 - [x] Mark course-derived scope and supplementary Cisco CLI material in the authored pages.
 - [x] Add M3.2 diagram files to the generated-artifact audit.
 - [x] Run full local QA, artifact audit, and mobile/desktop visual verification.
-- [ ] Push branch and open one PR to `main`.
+- [x] Push branch and open one PR to `main` (PR #5).
 - [ ] Wait for mentor M3.2 review; do not merge.
-- Exact Next Action: push the branch, open one PR, then wait for mentor M3.2 review.
+- GitHub Actions PR workflow `33462837850`: Build site PASS; deploy is deferred until merge.
+- Exact Next Action: wait for mentor M3.2 review on PR #5; do not merge and do not start Network Services.
 
 ### M3.2+ — Remaining theory chapters and practical lab curriculum
 
