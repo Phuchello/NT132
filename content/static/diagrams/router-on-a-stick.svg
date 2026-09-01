@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 700" width="100%" height="100%">
+  <rect width="390" height="700" rx="14" fill="#ffffff"/>
+  <rect x="14" y="14" width="362" height="42" rx="8" fill="#ea580c"/>
+  <text x="195" y="41" fill="#ffffff" font-family="system-ui, sans-serif" font-size="18" font-weight="700" text-anchor="middle">ROUTER-ON-A-STICK</text>
+  <text x="195" y="82" fill="#475569" font-family="system-ui, sans-serif" font-size="13" text-anchor="middle">Một đường vật lý, nhiều subinterface 802.1Q</text>
+
+  <rect x="22" y="108" width="145" height="82" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="94" y="135" fill="#1d4ed8" font-family="system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">PC-A</text>
+  <text x="94" y="158" fill="#0f172a" font-family="system-ui, sans-serif" font-size="13" text-anchor="middle">VLAN 10</text>
+  <text x="94" y="179" fill="#475569" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">192.168.10.10</text>
+  <line x1="94" y1="190" x2="94" y2="236" stroke="#2563eb" stroke-width="3"/>
+  <polygon points="94,248 87,234 101,234" fill="#2563eb"/>
+  <rect x="45" y="252" width="99" height="65" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="94" y="280" fill="#0f172a" font-family="system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">S1</text>
+  <text x="94" y="301" fill="#475569" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle">access VLAN 10</text>
+
+  <rect x="223" y="108" width="145" height="82" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <text x="295" y="135" fill="#b91c1c" font-family="system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">PC-B</text>
+  <text x="295" y="158" fill="#0f172a" font-family="system-ui, sans-serif" font-size="13" text-anchor="middle">VLAN 20</text>
+  <text x="295" y="179" fill="#475569" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">192.168.20.10</text>
+  <line x1="295" y1="190" x2="295" y2="236" stroke="#dc2626" stroke-width="3"/>
+  <polygon points="295,248 288,234 302,234" fill="#dc2626"/>
+  <rect x="246" y="252" width="99" height="65" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="295" y="280" fill="#0f172a" font-family="system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">S1</text>
+  <text x="295" y="301" fill="#475569" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle">access VLAN 20</text>
+
+  <line x1="144" y1="284" x2="174" y2="284" stroke="#ea580c" stroke-width="4"/>
+  <line x1="216" y1="284" x2="246" y2="284" stroke="#ea580c" stroke-width="4"/>
+  <rect x="170" y="251" width="50" height="67" rx="9" fill="#ea580c"/>
+  <text x="195" y="278" fill="#ffffff" font-family="system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">R</text>
+  <text x="195" y="298" fill="#ffffff" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle">G0/0</text>
+  <text x="195" y="340" fill="#c2410c" font-family="system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">TRUNK 802.1Q</text>
+
+  <rect x="24" y="370" width="342" height="106" rx="10" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="38" y="397" fill="#c2410c" font-family="system-ui, sans-serif" font-size="14" font-weight="700">Các subinterface trên G0/0</text>
+  <text x="38" y="424" fill="#0f172a" font-family="ui-monospace, monospace" font-size="13">G0/0.10  →  dot1q 10  →  192.168.10.1</text>
+  <text x="38" y="450" fill="#0f172a" font-family="ui-monospace, monospace" font-size="13">G0/0.20  →  dot1q 20  →  192.168.20.1</text>
+  <text x="38" y="468" fill="#475569" font-family="system-ui, sans-serif" font-size="11.5">Router chọn gateway theo VLAN tag và định tuyến giữa hai subnet.</text>
+
+  <rect x="24" y="502" width="342" height="80" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="38" y="529" fill="#0f172a" font-family="system-ui, sans-serif" font-size="14" font-weight="700">Trace</text>
+  <text x="38" y="554" fill="#475569" font-family="ui-monospace, monospace" font-size="12">VLAN 10 → R/G0/0.10 → R/G0/0.20 → VLAN 20</text>
+  <text x="195" y="624" fill="#ea580c" font-family="system-ui, sans-serif" font-size="13" text-anchor="middle">Trunk vận chuyển; router mới định tuyến.</text>
+  <text x="195" y="650" fill="#64748b" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle">Một uplink có thể phục vụ nhiều VLAN.</text>
+</svg>

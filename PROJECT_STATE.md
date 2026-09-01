@@ -1,6 +1,6 @@
 # NT132 Project State
 
-Current milestone: M3.2 — Switching, VLAN & Inter-VLAN
+Current milestone: M3.2 — Switching, VLAN & Inter-VLAN Routing
 
 Previous milestone: M3.1 — production complete
 
@@ -45,9 +45,21 @@ Work completed in Remediation Round 2:
 - Added a nested-route integration regression proving bare-relative `srcset` and `src` URLs rebase correctly while descriptors, query commas, and data URLs remain intact.
 - Added audit gates for forbidden `prompt`, `placeholder`, and `TODO` terms and kept external/data references out of broken-local counters.
 
+Current M3.2 source checkpoint:
+
+- Previous blocker: resolved — the two required Class-B PDFs were attached directly to the Windows workspace and read in full (21 + 15 pages).
+- Course scope confirmed: Layer-2 switching/MAC forwarding, port-based VLAN, access/trunk, native/allowed VLAN, VLAN verification, Legacy Inter-VLAN, Router-on-a-stick, Multilayer Switch/SVI, and SIP/DIP/SMAC/DMAC traces.
+- Concepts not fully shown as CLI in the course slides are labeled supplementary Cisco material in the authored chapter.
+
 Current blockers:
 
-- Mentor M3.2 implementation prompt only.
+- Mentor M3.2 review remains the final gate.
+
+M3.2 implementation in progress:
+
+- Authored the Switching/VLAN chapter and its two original mobile-first diagrams.
+- Authored the Inter-VLAN Routing chapter and its three original mobile-first diagrams.
+- Added M3.2 diagrams to the generated-artifact required-assets audit.
 
 Verification completed after Round 2:
 
@@ -63,4 +75,4 @@ Verification completed after Round 2:
 
 Review note: M3.1 final mentor review was PASS and Codex independent review remained unavailable due to quota.
 
-Exact Next Action: wait for mentor M3.2 implementation prompt
+Exact Next Action: complete local QA, push `feat/m3-2-switching-vlan`, open one PR, then wait for mentor M3.2 review; do not merge.

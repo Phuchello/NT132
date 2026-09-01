@@ -51,8 +51,16 @@
 - M3.1 merge commit: `6ece18f2aad49aa1a899b68dbcf1af31834a1036`.
 - M3.1 production workflow: `33406354082`.
 - Current branch: `feat/m3-2-switching-vlan`.
-- [ ] Wait for mentor M3.2 implementation prompt.
-- Exact Next Action: wait for mentor M3.2 implementation prompt.
+- Previous source-access blocker resolved: the required Class-B PDFs are attached to the Windows workspace and were read in full.
+- [x] Author Switching and VLAN theory page.
+- [x] Author Inter-VLAN Routing theory page.
+- [x] Create original mobile-first diagrams for VLAN physical/logical membership, access/trunk, Legacy, Router-on-a-stick, and Multilayer/SVI routing.
+- [x] Mark course-derived scope and supplementary Cisco CLI material in the authored pages.
+- [x] Add M3.2 diagram files to the generated-artifact audit.
+- [ ] Run full local QA, artifact audit, and mobile/desktop visual verification.
+- [ ] Push branch and open one PR to `main`.
+- [ ] Wait for mentor M3.2 review; do not merge.
+- Exact Next Action: complete QA, push the branch, open one PR, then wait for mentor M3.2 review.
 
 ### M3.2+ — Remaining theory chapters and practical lab curriculum
 

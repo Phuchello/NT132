@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 620" role="img" aria-labelledby="title desc">
+  <title id="title">Physical topology versus logical VLAN membership</title>
+  <desc id="desc">Two switches on different floors connect Engineering and Sales hosts. The lower view groups hosts by VLAN rather than physical switch.</desc>
+  <rect width="390" height="620" fill="#f7fafc"/>
+  <text x="195" y="28" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#12335b">VLAN: 2 góc nhìn</text>
+  <rect x="14" y="45" width="362" height="242" rx="14" fill="#ffffff" stroke="#9fb6cc" stroke-width="2"/>
+  <text x="28" y="70" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#12335b">TOPOLOGY VẬT LÝ</text>
+  <text x="28" y="92" font-family="Arial,sans-serif" font-size="14" fill="#40566d">Ai cắm vào switch nào?</text>
+  <line x1="195" y1="130" x2="195" y2="222" stroke="#496b86" stroke-width="4"/>
+  <rect x="150" y="112" width="90" height="40" rx="10" fill="#1b78a8"/>
+  <text x="195" y="138" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#fff">S1 - Tầng 1</text>
+  <rect x="150" y="220" width="90" height="40" rx="10" fill="#1b78a8"/>
+  <text x="195" y="246" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#fff">S2 - Tầng 2</text>
+  <line x1="105" y1="152" x2="150" y2="220" stroke="#496b86" stroke-width="3"/>
+  <line x1="285" y1="152" x2="240" y2="220" stroke="#496b86" stroke-width="3"/>
+  <rect x="30" y="102" width="112" height="50" rx="10" fill="#e5f4ff" stroke="#2995c5" stroke-width="2"/>
+  <text x="86" y="123" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#12335b">PC-A</text>
+  <text x="86" y="142" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#12335b">Engineering</text>
+  <rect x="248" y="102" width="112" height="50" rx="10" fill="#fff1df" stroke="#e38b20" stroke-width="2"/>
+  <text x="304" y="123" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#12335b">PC-B</text>
+  <text x="304" y="142" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#12335b">Sales</text>
+  <rect x="30" y="230" width="112" height="50" rx="10" fill="#e5f4ff" stroke="#2995c5" stroke-width="2"/>
+  <text x="86" y="251" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#12335b">PC-C</text>
+  <text x="86" y="270" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#12335b">Engineering</text>
+  <rect x="248" y="230" width="112" height="50" rx="10" fill="#fff1df" stroke="#e38b20" stroke-width="2"/>
+  <text x="304" y="251" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#12335b">PC-D</text>
+  <text x="304" y="270" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#12335b">Sales</text>
+  <rect x="14" y="306" width="362" height="298" rx="14" fill="#ffffff" stroke="#9fb6cc" stroke-width="2"/>
+  <text x="28" y="331" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#12335b">MEMBERSHIP LOGIC</text>
+  <text x="28" y="353" font-family="Arial,sans-serif" font-size="14" fill="#40566d">Ai cùng broadcast domain?</text>
+  <rect x="30" y="375" width="330" height="83" rx="12" fill="#e5f4ff" stroke="#2995c5" stroke-width="3"/>
+  <text x="48" y="401" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#08668f">VLAN 10 - Engineering</text>
+  <text x="48" y="427" font-family="Arial,sans-serif" font-size="16" fill="#12335b">PC-A (S1)  <tspan font-weight="700">&lt;-&gt;</tspan>  PC-C (S2)</text>
+  <text x="48" y="448" font-family="Arial,sans-serif" font-size="13" fill="#40566d">Cùng VLAN dù khác switch vật lý</text>
+  <rect x="30" y="480" width="330" height="83" rx="12" fill="#fff1df" stroke="#e38b20" stroke-width="3"/>
+  <text x="48" y="506" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#a95f00">VLAN 20 - Sales</text>
+  <text x="48" y="532" font-family="Arial,sans-serif" font-size="16" fill="#12335b">PC-B (S1)  <tspan font-weight="700">&lt;-&gt;</tspan>  PC-D (S2)</text>
+  <text x="48" y="553" font-family="Arial,sans-serif" font-size="13" fill="#40566d">Cùng VLAN dù khác switch vật lý</text>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 660" role="img" aria-labelledby="title desc">
+  <title id="title">Access and trunk bridge between switches</title>
+  <desc id="desc">VLAN 10 crosses a trunk between two switches while VLAN 20 is separate and requires Layer 3 routing to communicate with VLAN 10.</desc>
+  <rect width="390" height="660" fill="#f7fafc"/>
+  <text x="195" y="28" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#12335b">ACCESS - TRUNK - ACCESS</text>
+  <rect x="18" y="52" width="354" height="308" rx="14" fill="#ffffff" stroke="#9fb6cc" stroke-width="2"/>
+  <rect x="35" y="133" width="88" height="56" rx="10" fill="#e5f4ff" stroke="#2995c5" stroke-width="2"/>
+  <text x="79" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#12335b">PC-A</text>
+  <text x="79" y="178" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#08668f">VLAN 10</text>
+  <rect x="153" y="112" width="84" height="82" rx="12" fill="#1b78a8"/>
+  <text x="195" y="146" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#fff">S1</text>
+  <text x="195" y="169" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#fff">access</text>
+  <line x1="123" y1="161" x2="153" y2="153" stroke="#496b86" stroke-width="4"/>
+  <text x="137" y="137" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#40566d">access</text>
+  <rect x="267" y="112" width="84" height="82" rx="12" fill="#1b78a8"/>
+  <text x="309" y="146" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#fff">S2</text>
+  <text x="309" y="169" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#fff">access</text>
+  <line x1="237" y1="153" x2="267" y2="153" stroke="#d67800" stroke-width="6"/>
+  <text x="252" y="132" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#a95f00">TRUNK</text>
+  <text x="252" y="181" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#a95f00">VLAN 10, 20</text>
+  <rect x="35" y="242" width="88" height="56" rx="10" fill="#fff1df" stroke="#e38b20" stroke-width="2"/>
+  <text x="79" y="266" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#12335b">PC-B</text>
+  <text x="79" y="287" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#a95f00">VLAN 20</text>
+  <rect x="267" y="242" width="84" height="56" rx="10" fill="#fff1df" stroke="#e38b20" stroke-width="2"/>
+  <text x="309" y="266" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#12335b">PC-D</text>
+  <text x="309" y="287" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#a95f00">VLAN 20</text>
+  <line x1="79" y1="242" x2="178" y2="194" stroke="#496b86" stroke-width="3"/>
+  <line x1="237" y1="194" x2="309" y2="242" stroke="#496b86" stroke-width="3"/>
+  <text x="195" y="333" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" fill="#40566d">Access port = một VLAN cho endpoint</text>
+  <rect x="18" y="383" width="354" height="112" rx="14" fill="#e8f8ef" stroke="#1a9b65" stroke-width="3"/>
+  <text x="36" y="414" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#087245">PC-A -> PC-C</text>
+  <text x="36" y="442" font-family="Arial,sans-serif" font-size="17" fill="#12335b">VLAN 10 -> trunk -> VLAN 10</text>
+  <text x="36" y="470" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#087245">Giải được ở Layer 2</text>
+  <rect x="18" y="515" width="354" height="112" rx="14" fill="#fff1df" stroke="#d67800" stroke-width="3"/>
+  <text x="36" y="546" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#a95f00">PC-A -> PC-D</text>
+  <text x="36" y="574" font-family="Arial,sans-serif" font-size="17" fill="#12335b">VLAN 10 -> VLAN 20</text>
+  <text x="36" y="602" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#a95f00">Trunk không route; cần Layer 3</text>
+</svg>
