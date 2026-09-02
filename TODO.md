@@ -45,9 +45,29 @@
 - [x] Remediate Round 1 review findings (provenance tiers, technical claim qualifiers, single H1, mobile 390px diagrams, expanded artifact audit).
 - [x] Integrate comprehensive artifact audit checks into CI (`npm run test:audit`).
 
+### M3.2 — Switching, VLAN & Inter-VLAN
+
+- Previous milestone: M3.1 — production complete.
+- M3.1 merge commit: `6ece18f2aad49aa1a899b68dbcf1af31834a1036`.
+- M3.1 production workflow: `33406354082`.
+- Current branch: `feat/m3-2-switching-vlan`.
+- Previous source-access blocker resolved: the required Class-B PDFs are attached to the Windows workspace and were read in full.
+- [x] Author Switching and VLAN theory page.
+- [x] Author Inter-VLAN Routing theory page.
+- [x] Create original mobile-first diagrams for VLAN physical/logical membership, access/trunk, Legacy, Router-on-a-stick, and Multilayer/SVI routing.
+- [x] Mark course-derived scope and supplementary Cisco CLI material in the authored pages.
+- [x] Add M3.2 diagram files to the generated-artifact audit.
+- [x] Remediation Round 1: correct the physical VLAN, access/trunk, and Router-on-a-stick topology semantics; correct provenance and trace wording.
+- [x] Final micro-remediation: complete the VLAN 20 endpoint configuration, state IPv4 TTL decrement precisely, and correct access/trunk teaching captions.
+- [x] Run full local QA, artifact audit, and mobile/desktop visual verification.
+- [x] Push branch and open one PR to `main` (PR #5).
+- [ ] Wait for mentor final M3.2 review; do not merge.
+- GitHub Actions PR build: PASS across all required build, test, route, artifact-audit, and upload steps; deploy is deferred until merge.
+- Exact Next Action: wait for mentor final M3.2 review on PR #5; do not merge and do not start Network Services.
+
 ### M3.2+ — Remaining theory chapters and practical lab curriculum
 
-- [ ] Author remaining theory chapters (Switching/VLAN, Inter-VLAN, Network Services, etc.).
+- [ ] Author remaining theory chapters (Network Services, DHCP, NAT, ACL, Server Platforms, Administration, Cloud Computing, Management/NMS).
 - [ ] Add practical lab guides and Packet Tracer topologies.
 
 ## M4 — Exam preparation and exam intelligence

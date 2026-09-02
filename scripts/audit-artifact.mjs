@@ -72,6 +72,11 @@ const requiredDiagrams = [
   "static-routing-topology.svg",
   "rip-propagation-rounds.svg",
   "ospf-dijkstra-graph.svg",
+  "vlan-physical-logical.svg",
+  "access-trunk-bridge.svg",
+  "legacy-inter-vlan.svg",
+  "router-on-a-stick.svg",
+  "multilayer-svi.svg",
 ]
 for (const diag of requiredDiagrams) {
   const diskPath = path.join("content", "static", "diagrams", diag)
