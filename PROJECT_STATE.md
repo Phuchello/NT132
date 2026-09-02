@@ -1,6 +1,6 @@
 # NT132 Project State
 
-Current milestone: M3.2 — remediation / mentor review
+Current milestone: M3.2 — final mentor review
 
 Previous milestone: M3.1 — production complete
 
@@ -51,9 +51,9 @@ Current M3.2 source checkpoint:
 - Course scope confirmed: Layer-2 switching/MAC forwarding, port-based VLAN, access/trunk, native/allowed VLAN, VLAN verification, Legacy Inter-VLAN, Router-on-a-stick, Multilayer Switch/SVI, and SIP/DIP/SMAC/DMAC traces.
 - Concepts not fully shown as CLI in the course slides are labeled supplementary Cisco material in the authored chapter.
 
-Current blocker: mentor re-review after visual-semantic fixes
+Current blocker: final re-review after Codex P2 remediation
 
-M3.2 remediation round 1 completed locally:
+M3.2 final micro-remediation completed locally:
 
 - Authored the Switching/VLAN chapter and its two original mobile-first diagrams.
 - Authored the Inter-VLAN Routing chapter and its three original mobile-first diagrams.
@@ -61,6 +61,8 @@ M3.2 remediation round 1 completed locally:
 - Rebuilt the physical VLAN, access/trunk, and Router-on-a-stick diagrams so their device links, endpoint placement, and Layer-2/Layer-3 boundaries are canonical at mobile width.
 - Rechecked the untouched Legacy Inter-VLAN and Multilayer/SVI diagrams for the same semantic and rendering gates.
 - Corrected the trunk provenance tiers and the Router-on-a-stick egress wording without changing the course-derived framing.
+- Completed the Router-on-a-stick switch sequence with VLAN creation and both illustrative endpoint access ports, including PC-B on VLAN 20.
+- Corrected IPv4 TTL wording for the forwarded Legacy Inter-VLAN packet and removed the ambiguous access/trunk Case A caption.
 
 M3.2 self-review:
 
@@ -102,4 +104,4 @@ Verification completed after Round 2:
 
 Review note: M3.1 final mentor review was PASS and Codex independent review remained unavailable due to quota.
 
-Exact Next Action: wait for mentor M3.2 re-review on PR #5; do not merge and do not start Network Services.
+Exact Next Action: wait for mentor final M3.2 review on PR #5; do not merge and do not start Network Services.

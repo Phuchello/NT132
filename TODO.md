@@ -58,11 +58,12 @@
 - [x] Mark course-derived scope and supplementary Cisco CLI material in the authored pages.
 - [x] Add M3.2 diagram files to the generated-artifact audit.
 - [x] Remediation Round 1: correct the physical VLAN, access/trunk, and Router-on-a-stick topology semantics; correct provenance and trace wording.
+- [x] Final micro-remediation: complete the VLAN 20 endpoint configuration, state IPv4 TTL decrement precisely, and correct access/trunk teaching captions.
 - [x] Run full local QA, artifact audit, and mobile/desktop visual verification.
 - [x] Push branch and open one PR to `main` (PR #5).
-- [ ] Wait for mentor M3.2 re-review; do not merge.
+- [ ] Wait for mentor final M3.2 review; do not merge.
 - GitHub Actions PR build: PASS across all required build, test, route, artifact-audit, and upload steps; deploy is deferred until merge.
-- Exact Next Action: wait for mentor M3.2 re-review on PR #5; do not merge and do not start Network Services.
+- Exact Next Action: wait for mentor final M3.2 review on PR #5; do not merge and do not start Network Services.
 
 ### M3.2+ — Remaining theory chapters and practical lab curriculum
 

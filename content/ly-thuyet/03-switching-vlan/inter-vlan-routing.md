@@ -64,7 +64,7 @@ Trong mô hình Legacy, VLAN 10 đi vào một cổng router và VLAN 20 đi và
 | PC-A -> router | VLAN 10      | `192.168.10.10`            | `192.168.20.10`            | MAC PC-A              | MAC `G0/0` của router | PC-A gửi tới default gateway vì đích khác subnet |
 | router -> PC-B | VLAN 20      | giữ nguyên `192.168.10.10` | giữ nguyên `192.168.20.10` | MAC `G0/1` của router | MAC PC-B              | Router tạo frame mới trên interface VLAN 20      |
 
-SIP/DIP mô tả IP endpoint và thường giữ nguyên qua lần định tuyến này (ngoại trừ các trường IP khác như TTL có thể bị giảm). SMAC/DMAC thuộc frame từng đoạn, nên thay đổi khi router chuyển từ cổng của VLAN 10 sang cổng của VLAN 20. Đây là đúng tinh thần trace của course slides.
+SIP/DIP mô tả IP endpoint và giữ nguyên qua router trong ví dụ không NAT này. Với gói IPv4 được router thực sự chuyển tiếp, router decrements IPv4 TTL và tạo một frame Layer 2 mới cho mạng egress. Vì SMAC/DMAC thuộc frame từng đoạn, cặp MAC thay đổi khi router chuyển từ cổng của VLAN 10 sang cổng của VLAN 20. Đây là đúng tinh thần trace của course slides.
 
 Legacy cho thấy bản chất rõ nhất: **khác VLAN -> đến gateway -> route -> đóng gói frame mới**. Nhược điểm chính là mỗi VLAN cần một kết nối vật lý riêng đến router, nên việc thêm VLAN có thể kéo theo thêm cổng và dây.
 
@@ -110,12 +110,23 @@ Router# show ip route connected
 Trên switch, uplink về router cần ở trunk và port nối PC cần ở access VLAN tương ứng:
 
 ```text
+Switch(config)# vlan 10
+Switch(config-vlan)# name ENGINEERING
+Switch(config-vlan)# exit
+Switch(config)# vlan 20
+Switch(config-vlan)# name SALES
+Switch(config-vlan)# exit
 Switch(config)# interface gigabitEthernet 0/1
 Switch(config-if)# switchport mode trunk
 Switch(config-if)# switchport trunk allowed vlan 10,20
-Switch(config-if)# interface fastEthernet 0/10
+Switch(config-if)# exit
+Switch(config)# interface fastEthernet 0/10
 Switch(config-if)# switchport mode access
 Switch(config-if)# switchport access vlan 10
+Switch(config-if)# exit
+Switch(config)# interface fastEthernet 0/20
+Switch(config-if)# switchport mode access
+Switch(config-if)# switchport access vlan 20
 Switch(config-if)# end
 Switch# show interfaces trunk
 Switch# show vlan brief
