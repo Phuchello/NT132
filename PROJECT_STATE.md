@@ -1,6 +1,6 @@
 # NT132 Project State
 
-Current milestone: M3.2 — Switching, VLAN & Inter-VLAN Routing
+Current milestone: M3.2 — remediation / mentor review
 
 Previous milestone: M3.1 — production complete
 
@@ -51,21 +51,21 @@ Current M3.2 source checkpoint:
 - Course scope confirmed: Layer-2 switching/MAC forwarding, port-based VLAN, access/trunk, native/allowed VLAN, VLAN verification, Legacy Inter-VLAN, Router-on-a-stick, Multilayer Switch/SVI, and SIP/DIP/SMAC/DMAC traces.
 - Concepts not fully shown as CLI in the course slides are labeled supplementary Cisco material in the authored chapter.
 
-Current blockers:
+Current blocker: mentor re-review after visual-semantic fixes
 
-- Mentor M3.2 review remains the final gate.
-
-M3.2 implementation submitted for mentor review:
+M3.2 remediation round 1 completed locally:
 
 - Authored the Switching/VLAN chapter and its two original mobile-first diagrams.
 - Authored the Inter-VLAN Routing chapter and its three original mobile-first diagrams.
 - Added M3.2 diagrams to the generated-artifact required-assets audit.
-- Verified all five diagrams in the embedded pages at 390px and desktop width; no horizontal overflow and no browser console errors.
+- Rebuilt the physical VLAN, access/trunk, and Router-on-a-stick diagrams so their device links, endpoint placement, and Layer-2/Layer-3 boundaries are canonical at mobile width.
+- Rechecked the untouched Legacy Inter-VLAN and Multilayer/SVI diagrams for the same semantic and rendering gates.
+- Corrected the trunk provenance tiers and the Router-on-a-stick egress wording without changing the course-derived framing.
 
 M3.2 self-review:
 
-- Switching/VLAN: 95/100. Weakness: IOS command output and SVI state details remain platform/version-dependent.
-- Inter-VLAN Routing: 97/100. Weakness: the supplementary CLI is Cisco-oriented and the pages do not yet include a hands-on simulator lab.
+- Switching/VLAN: 94/100. Weakness: IOS command output and SVI state details remain platform/version-dependent, and the chapter does not yet include a hands-on simulator lab.
+- Inter-VLAN Routing: 94/100. Weakness: the supplementary CLI is Cisco-oriented and the pages do not yet include a hands-on simulator lab.
 - Both pages meet the source-fidelity, learning-flow, trace, visual, recall, troubleshooting, navigation, and provenance gates for this theory milestone.
 
 M3.2 verification completed locally:
@@ -84,7 +84,7 @@ M3.2 verification completed locally:
 M3.2 review handoff:
 
 - PR: https://github.com/Phuchello/NT132/pull/5
-- Latest verified content commit: `fa3bc4d` (the following handoff commits only record verification and review state).
+- Latest verified content commit: `fa3bc4d` (the remediation changes are carried by the next pushed PR head).
 - GitHub Actions PR workflow: the latest pushed PR head is green across all required build, test, route, artifact-audit, and upload steps; Deploy site is intentionally deferred until a merge to `main`.
 - Network Services work has not started.
 
@@ -102,4 +102,4 @@ Verification completed after Round 2:
 
 Review note: M3.1 final mentor review was PASS and Codex independent review remained unavailable due to quota.
 
-Exact Next Action: wait for mentor M3.2 review on PR #5; do not merge and do not start Network Services.
+Exact Next Action: wait for mentor M3.2 re-review on PR #5; do not merge and do not start Network Services.

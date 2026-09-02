@@ -76,13 +76,13 @@ Router-on-a-stick gom nhiều gateway logic vào các subinterface của một c
 
 ### 6.1. Trace từng chặng
 
-| Chặng                  | VLAN/tag                         | SIP                 | DIP                 | SMAC / DMAC                     | Quyết định                                                   |
-| ---------------------- | -------------------------------- | ------------------- | ------------------- | ------------------------------- | ------------------------------------------------------------ |
-| PC-A -> cổng access S1 | VLAN 10 nội bộ trên S1           | `192.168.10.10`     | `192.168.20.10`     | SMAC PC-A, DMAC gateway VLAN 10 | PC-A gửi đến default gateway, frame vào access VLAN 10       |
-| S1 -> router G0/0      | tag VLAN 10 trên trunk           | giữ nguyên          | giữ nguyên          | frame được mang theo VLAN 10    | S1 chọn uplink trunk; router nhận đúng `G0/0.10`             |
-| router xử lý L3        | interface `G0/0.10` -> `G0/0.20` | giữ nguyên endpoint | giữ nguyên endpoint | tra route connected VLAN 20     | Router tách ngữ cảnh VLAN 10, chọn gateway/interface VLAN 20 |
-| router -> S1           | tag VLAN 20 trên trunk           | giữ nguyên          | giữ nguyên          | SMAC router VLAN 20, DMAC PC-B  | Router gửi frame mới qua `G0/0.20`; S1 bỏ tag khi ra access  |
-| S1 -> PC-B             | VLAN 20 trên access              | `192.168.10.10`     | `192.168.20.10`     | SMAC gateway VLAN 20, DMAC PC-B | PC-B nhận frame trong VLAN 20                                |
+| Chặng                  | VLAN/tag                         | SIP                 | DIP                 | SMAC / DMAC                     | Quyết định                                                                                    |
+| ---------------------- | -------------------------------- | ------------------- | ------------------- | ------------------------------- | --------------------------------------------------------------------------------------------- |
+| PC-A -> cổng access S1 | VLAN 10 nội bộ trên S1           | `192.168.10.10`     | `192.168.20.10`     | SMAC PC-A, DMAC gateway VLAN 10 | PC-A gửi đến default gateway, frame vào access VLAN 10                                        |
+| S1 -> router G0/0      | tag VLAN 10 trên trunk           | giữ nguyên          | giữ nguyên          | frame được mang theo VLAN 10    | S1 chọn uplink trunk; router nhận đúng `G0/0.10`                                              |
+| router xử lý L3        | interface `G0/0.10` -> `G0/0.20` | giữ nguyên endpoint | giữ nguyên endpoint | tra route connected VLAN 20     | Router tách ngữ cảnh VLAN 10, chọn mạng VLAN 20 đã connected và subinterface egress `G0/0.20` |
+| router -> S1           | tag VLAN 20 trên trunk           | giữ nguyên          | giữ nguyên          | SMAC router VLAN 20, DMAC PC-B  | Router gửi frame mới qua `G0/0.20`; S1 bỏ tag khi ra access                                   |
+| S1 -> PC-B             | VLAN 20 trên access              | `192.168.10.10`     | `192.168.20.10`     | SMAC gateway VLAN 20, DMAC PC-B | PC-B nhận frame trong VLAN 20                                                                 |
 
 Ở ranh giới Layer 3, router không “đổi SIP thành gateway”. Gateway là DMAC của frame cục bộ phía vào; IP source/destination vẫn là hai host đang giao tiếp. Sau khi route xong, frame phía ra có cặp MAC khác và VLAN context khác.
 

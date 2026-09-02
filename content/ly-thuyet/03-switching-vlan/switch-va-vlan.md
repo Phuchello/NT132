@@ -194,7 +194,9 @@ Switch(config-if)# end
 | `switchport trunk native vlan 99`        | đặt VLAN context cho traffic untagged của trunk | `show interfaces trunk` hiển thị Native vlan `99`  |
 | `switchport trunk allowed vlan 10,20,30` | giới hạn VLAN được phép qua trunk               | `show interfaces trunk` hiển thị danh sách allowed |
 
-Các lệnh trunk và cách trình bày native/allowed ở đây là **SUPPLEMENTARY - Cisco IOS** dựa trên [Cisco IEEE 802.1Q VLAN configuration](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/lan-wan/b-lan-wan/m_lnsw-conf-vlan-ieee.html). Trên hai đầu trunk, native VLAN và allowed list cần được kiểm tra nhất quán. Đừng kết luận “mọi frame trên trunk luôn có tag”; native VLAN là lý do phải hỏi frame cụ thể đang được xử lý theo ngữ cảnh nào.
+**COURSE SOURCE:** PDF môn học đã minh họa các lệnh cấu hình trunk `switchport mode trunk`, `switchport trunk native vlan <vlan-id>`, `switchport trunk allowed vlan <vlan-list>` và các ví dụ verification bằng `show interfaces ... switchport`. Vì vậy, sự tồn tại và mục đích cấu hình của các lệnh này là nội dung course-derived.
+
+**SUPPLEMENTARY CISCO:** semantics của 802.1Q, cách phân biệt administrative với operational state, hành vi chi tiết của native VLAN, và khác biệt output theo platform/version được bổ sung từ [Cisco IEEE 802.1Q VLAN configuration](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/lan-wan/b-lan-wan/m_lnsw-conf-vlan-ieee.html). Trên hai đầu trunk, native VLAN và allowed list cần được kiểm tra nhất quán. Đừng kết luận “mọi frame trên trunk luôn có tag”; native VLAN là lý do phải hỏi frame cụ thể đang được xử lý theo ngữ cảnh nào. Native VLAN không mặc nhiên đồng nghĩa với default VLAN hay management VLAN.
 
 Verification tối thiểu:
 
