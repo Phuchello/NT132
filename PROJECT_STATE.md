@@ -1,22 +1,29 @@
 # NT132 Project State
 
-Current milestone: M3.2 — production hotfix
+Current milestone: M3.3 — Network Services, DHCP, NAT & ACL
 
-Previous milestone: M3.1 — production complete
+Previous milestone: M3.2 — production complete
 
-Current branch: fix/m3-2-cli-mode-transitions
+Current branch: feat/m3-3-network-services
 
-Last safe checkpoint: M3.1 received final mentor PASS, was squash-merged into main, and passed the production GitHub Pages build, deployment, and smoke test.
+Last safe checkpoint: M3.2 received mentor PASS, PR #6 was squash-merged into main, and the hotfix passed the production GitHub Pages build, deployment, and production CLI verification.
 
 M3.1 merge commit: 6ece18f2aad49aa1a899b68dbcf1af31834a1036
 
 M3.1 production workflow: 33406354082
 
-Latest production commit: 6ece18f2aad49aa1a899b68dbcf1af31834a1036
+Latest production commit: 1bc52ef6dedb946e64c0920d2b71ee0908b2966f
 
 Latest reviewed implementation commit: 1662e5a516440cc57393930a6c4e45c91cbea2a9
 
 Subsequent documentation-only checkpoint commits do not change the reviewed implementation.
+
+M3.2 production closeout:
+
+- M3.2 content merge: `6e8343606d8007c8773d9f0417471b701909a03a`
+- M3.2 hotfix merge: `1bc52ef6dedb946e64c0920d2b71ee0908b2966f`
+- M3.2 hotfix production workflow: `33630246332`
+- Status: M3.2 — PRODUCTION PASS / CLOSED
 
 Work completed in Remediation Round 1:
 
@@ -51,17 +58,17 @@ Current M3.2 source checkpoint:
 - Course scope confirmed: Layer-2 switching/MAC forwarding, port-based VLAN, access/trunk, native/allowed VLAN, VLAN verification, Legacy Inter-VLAN, Router-on-a-stick, Multilayer Switch/SVI, and SIP/DIP/SMAC/DMAC traces.
 - Concepts not fully shown as CLI in the course slides are labeled supplementary Cisco material in the authored chapter.
 
-M3.2 production hotfix reopened:
+M3.2 production hotfix history:
 
-- Production commit: `6e8343606d8007c8773d9f0417471b701909a03a`
+- M3.2 content commit: `6e8343606d8007c8773d9f0417471b701909a03a`
 - Production workflow: `33626870986`
 - Reason reopened: late Codex P2 on current M3.2 candidate was returned before merge but was not honored by the release gate.
 - Hotfix branch: `fix/m3-2-cli-mode-transitions`
 - Scope: normalize Cisco IOS configuration-mode transitions in the M3.2 examples; passed content and diagrams remain unchanged.
 
-Current blocker: CLI configuration-mode correction + production re-verification
+Current blocker: wait for mentor M3.3 implementation prompt
 
-Exact Next Action: fix -> review -> merge hotfix -> redeploy -> mentor closeout
+Exact Next Action: wait for mentor M3.3 implementation prompt
 
 M3.2 final micro-remediation completed locally:
 
@@ -114,4 +121,4 @@ Verification completed after Round 2:
 
 Review note: M3.1 final mentor review was PASS and Codex independent review remained unavailable due to quota.
 
-Exact Next Action: wait for mentor final M3.2 review on PR #5; do not merge and do not start Network Services.
+Historical Exact Next Action (superseded): wait for mentor final M3.2 review on PR #5; do not merge and do not start Network Services.
