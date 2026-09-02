@@ -1,10 +1,10 @@
 # NT132 Project State
 
-Current milestone: M3.2 — final mentor review
+Current milestone: M3.2 — production hotfix
 
 Previous milestone: M3.1 — production complete
 
-Current branch: feat/m3-2-switching-vlan
+Current branch: fix/m3-2-cli-mode-transitions
 
 Last safe checkpoint: M3.1 received final mentor PASS, was squash-merged into main, and passed the production GitHub Pages build, deployment, and smoke test.
 
@@ -51,7 +51,17 @@ Current M3.2 source checkpoint:
 - Course scope confirmed: Layer-2 switching/MAC forwarding, port-based VLAN, access/trunk, native/allowed VLAN, VLAN verification, Legacy Inter-VLAN, Router-on-a-stick, Multilayer Switch/SVI, and SIP/DIP/SMAC/DMAC traces.
 - Concepts not fully shown as CLI in the course slides are labeled supplementary Cisco material in the authored chapter.
 
-Current blocker: final re-review after Codex P2 remediation
+M3.2 production hotfix reopened:
+
+- Production commit: `6e8343606d8007c8773d9f0417471b701909a03a`
+- Production workflow: `33626870986`
+- Reason reopened: late Codex P2 on current M3.2 candidate was returned before merge but was not honored by the release gate.
+- Hotfix branch: `fix/m3-2-cli-mode-transitions`
+- Scope: normalize Cisco IOS configuration-mode transitions in the M3.2 examples; passed content and diagrams remain unchanged.
+
+Current blocker: CLI configuration-mode correction + production re-verification
+
+Exact Next Action: fix -> review -> merge hotfix -> redeploy -> mentor closeout
 
 M3.2 final micro-remediation completed locally:
 

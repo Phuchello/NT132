@@ -96,10 +96,12 @@ Trên router:
 Router# configure terminal
 Router(config)# interface gigabitEthernet 0/0
 Router(config-if)# no shutdown
-Router(config-if)# interface gigabitEthernet 0/0.10
+Router(config-if)# exit
+Router(config)# interface gigabitEthernet 0/0.10
 Router(config-subif)# encapsulation dot1q 10
 Router(config-subif)# ip address 192.168.10.1 255.255.255.0
-Router(config-subif)# interface gigabitEthernet 0/0.20
+Router(config-subif)# exit
+Router(config)# interface gigabitEthernet 0/0.20
 Router(config-subif)# encapsulation dot1q 20
 Router(config-subif)# ip address 192.168.20.1 255.255.255.0
 Router(config-subif)# end
@@ -159,12 +161,15 @@ Switch# configure terminal
 Switch(config)# ip routing
 Switch(config)# vlan 10
 Switch(config-vlan)# name USERS
-Switch(config-vlan)# vlan 20
+Switch(config-vlan)# exit
+Switch(config)# vlan 20
 Switch(config-vlan)# name SERVERS
-Switch(config-vlan)# interface vlan 10
+Switch(config-vlan)# exit
+Switch(config)# interface vlan 10
 Switch(config-if)# ip address 192.168.10.1 255.255.255.0
 Switch(config-if)# no shutdown
-Switch(config-if)# interface vlan 20
+Switch(config-if)# exit
+Switch(config)# interface vlan 20
 Switch(config-if)# ip address 192.168.20.1 255.255.255.0
 Switch(config-if)# no shutdown
 Switch(config-if)# end

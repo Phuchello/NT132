@@ -135,7 +135,8 @@ Switch# show vlan brief
 Switch# configure terminal
 Switch(config)# vlan 20
 Switch(config-vlan)# name SALES
-Switch(config-vlan)# interface fastethernet 0/10
+Switch(config-vlan)# exit
+Switch(config)# interface fastethernet 0/10
 Switch(config-if)# switchport mode access
 Switch(config-if)# switchport access vlan 20
 Switch(config-if)# end
