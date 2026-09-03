@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 500" role="img" aria-labelledby="title desc">
+  <title id="title">Server monitoring flow</title>
+  <desc id="desc">Windows hosts, Linux hosts, and network services provide checks or metrics to a monitoring server, which produces status and alerts.</desc>
+  <style>
+    .bg{fill:#f8fafc}.title{font:700 22px sans-serif;fill:#0f172a}.sub{font:13px sans-serif;fill:#475569}
+    .box{fill:#fff;stroke:#16a34a;stroke-width:2;rx:12}.core{fill:#dcfce7;stroke:#15803d;stroke-width:2;rx:12}
+    .h{font:700 15px sans-serif;fill:#0f172a}.t{font:12px sans-serif;fill:#334155}.small{font:11px sans-serif;fill:#64748b}
+    .line{stroke:#16a34a;stroke-width:3}.arrow{fill:#16a34a}
+  </style>
+  <rect class="bg" width="390" height="500"/>
+  <text class="title" x="195" y="34" text-anchor="middle">Monitoring flow</text>
+  <text class="sub" x="195" y="56" text-anchor="middle">measurement → state → action</text>
+  <rect class="box" x="20" y="82" width="105" height="72"/>
+  <text class="h" x="72" y="112" text-anchor="middle">Windows host</text>
+  <text class="small" x="72" y="135" text-anchor="middle">target</text>
+  <rect class="box" x="142" y="82" width="105" height="72"/>
+  <text class="h" x="194" y="112" text-anchor="middle">Linux host</text>
+  <text class="small" x="194" y="135" text-anchor="middle">target</text>
+  <rect class="box" x="264" y="82" width="105" height="72"/>
+  <text class="h" x="316" y="112" text-anchor="middle">Network service</text>
+  <text class="small" x="316" y="135" text-anchor="middle">target</text>
+  <line class="line" x1="72" y1="154" x2="72" y2="184"/>
+  <line class="line" x1="194" y1="154" x2="194" y2="184"/>
+  <line class="line" x1="316" y1="154" x2="316" y2="184"/>
+  <line class="line" x1="72" y1="184" x2="194" y2="184"/>
+  <line class="line" x1="316" y1="184" x2="194" y2="184"/>
+  <polygon class="arrow" points="194,198 186,184 202,184"/>
+  <rect class="core" x="45" y="210" width="300" height="78"/>
+  <text class="h" x="195" y="241" text-anchor="middle">Checks / metrics</text>
+  <text class="t" x="195" y="265" text-anchor="middle">agent · probe · availability · performance</text>
+  <line class="line" x1="195" y1="288" x2="195" y2="320"/>
+  <polygon class="arrow" points="195,330 187,316 203,316"/>
+  <rect class="core" x="45" y="342" width="300" height="78"/>
+  <text class="h" x="195" y="373" text-anchor="middle">Monitoring Server</text>
+  <text class="t" x="195" y="397" text-anchor="middle">collect · compare · keep history</text>
+  <line class="line" x1="195" y1="420" x2="195" y2="452"/>
+  <polygon class="arrow" points="195,462 187,448 203,448"/>
+  <text class="h" x="195" y="488" text-anchor="middle">status / alert</text>
+</svg>
