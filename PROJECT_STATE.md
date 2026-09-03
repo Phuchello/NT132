@@ -1,6 +1,6 @@
 # NT132 Project State
 
-Current milestone: M3.3 — Network Services, DHCP, NAT & ACL
+Current milestone: M3.3 — implementation candidate
 
 Previous milestone: M3.2 — production complete
 
@@ -66,9 +66,16 @@ M3.2 production hotfix history:
 - Hotfix branch: `fix/m3-2-cli-mode-transitions`
 - Scope: normalize Cisco IOS configuration-mode transitions in the M3.2 examples; passed content and diagrams remain unchanged.
 
-Current blocker: wait for mentor M3.3 implementation prompt
+M3.3 implementation checkpoint:
 
-Exact Next Action: wait for mentor M3.3 implementation prompt
+- Read and source-mapped all five Class-B PDFs in full: Network Services (28 pages), DHCP (12 pages), NAT (11 pages), ACL Overview (19 pages), and ACL Wildcard mask (10 pages).
+- Authored the Network Services index plus five substantive pages covering overview, DHCP, NAT/PAT, ACL, and wildcard masks.
+- Added five original mobile-first SVG diagrams; source PDFs remain reference inputs only and are not in the repository.
+- Supplementary Cisco semantics are explicitly labeled and linked to vendor documentation.
+
+Current blocker: PR, Codex review, and mentor review
+
+Exact Next Action: push -> open one PR -> request Codex review -> await mentor review
 
 M3.2 final micro-remediation completed locally:
 

@@ -77,8 +77,14 @@
 - Current branch: `feat/m3-3-network-services`.
 - Canonical source directory: `C:\Users\lyle3\OneDrive\Documents\Môn học\Quản trị mạng và hệ thống`.
 - Expected source files: `4.1 Network Services.pdf`, `4.2 DHCP Overview.pdf`, `4.3 NAT overview.pdf`, `4.4 ACL Overview.pdf`, `4.5 ACL Wildcard mask.pdf`.
-- [ ] Wait for mentor M3.3 implementation prompt; do not author M3.3 content yet.
-- Exact Next Action: wait for mentor M3.3 implementation prompt
+- [x] Read and source-map all five Class-B PDFs in full.
+- [x] Author the Network Services index and five substantive theory pages.
+- [x] Create five original mobile-first diagrams and add them to the artifact audit.
+- [x] Label supplementary Cisco semantics and preserve the course-derived framing.
+- [x] Run full local QA, generated-artifact audit, and CLI-mode audit.
+- [ ] Push the branch and open one PR to `main`.
+- [ ] Request one Codex review and await mentor review; do not merge.
+- Exact Next Action: run full QA -> push -> open one PR -> request Codex review -> await mentor review
 
 ### M3.2+ — Remaining theory chapters and practical lab curriculum
 

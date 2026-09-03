@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 650" role="img" aria-labelledby="title desc">
+  <title id="title">ACL wildcard mask bit matching</title>
+  <desc id="desc">A zero bit in a wildcard mask requires the corresponding address bit to match, while a one bit ignores it. Examples show host, network, and any matching.</desc>
+  <rect width="390" height="650" fill="#f7fafc"/>
+  <text x="195" y="31" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#12335b">WILDCARD MASK</text>
+  <text x="195" y="55" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#40566d">0 kiểm tra - 1 bỏ qua</text>
+
+  <rect x="18" y="82" width="354" height="138" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="36" y="112" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#12335b">Mỗi bit nói một điều</text>
+  <rect x="36" y="130" width="144" height="36" rx="8" fill="#dcfce7"/>
+  <text x="108" y="154" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" font-weight="700" fill="#166534">0 = match</text>
+  <text x="190" y="153" font-family="Arial,sans-serif" font-size="12" fill="#40566d">bit địa chỉ phải giống nhau</text>
+  <rect x="36" y="174" width="144" height="36" rx="8" fill="#fef3c7"/>
+  <text x="108" y="198" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" font-weight="700" fill="#92400e">1 = ignore</text>
+  <text x="190" y="197" font-family="Arial,sans-serif" font-size="12" fill="#40566d">bit địa chỉ có thể khác</text>
+
+  <rect x="18" y="242" width="354" height="126" rx="14" fill="#e5f4ff" stroke="#2995c5" stroke-width="2"/>
+  <text x="36" y="272" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#12335b">Ví dụ mạng /24</text>
+  <text x="36" y="300" font-family="ui-monospace,monospace" font-size="13" fill="#08668f">base:    192.168.10.0</text>
+  <text x="36" y="324" font-family="ui-monospace,monospace" font-size="13" fill="#08668f">wildcard: 0.0.0.255</text>
+  <text x="36" y="350" font-family="Arial,sans-serif" font-size="13" fill="#40566d">Hai octet đầu và octet thứ ba phải khớp;</text>
+  <text x="36" y="366" font-family="Arial,sans-serif" font-size="13" fill="#40566d">octet cuối được phép thay đổi.</text>
+
+  <rect x="18" y="390" width="354" height="198" rx="14" fill="#fff7ed" stroke="#f59e0b" stroke-width="2"/>
+  <text x="36" y="420" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#12335b">Ba cách viết quen thuộc</text>
+  <text x="36" y="452" font-family="ui-monospace,monospace" font-size="13" fill="#a95f00">host 192.168.10.10</text>
+  <text x="36" y="474" font-family="Arial,sans-serif" font-size="12" fill="#40566d">= 192.168.10.10 0.0.0.0</text>
+  <text x="36" y="510" font-family="ui-monospace,monospace" font-size="13" fill="#a95f00">any</text>
+  <text x="36" y="532" font-family="Arial,sans-serif" font-size="12" fill="#40566d">= 0.0.0.0 255.255.255.255</text>
+  <text x="36" y="568" font-family="ui-monospace,monospace" font-size="13" fill="#a95f00">192.168.10.0 0.0.0.255</text>
+
+  <rect x="18" y="610" width="354" height="22" rx="8" fill="#12335b"/>
+  <text x="195" y="626" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#ffffff">ĐỌC WILDCARD TRƯỚC KHI ĐỌC ACL</text>
+</svg>
