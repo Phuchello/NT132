@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 520" role="img" aria-labelledby="title desc">
+  <title id="title">Server platform map</title>
+  <desc id="desc">One service requirement can be hosted by Windows Server, Linux Server, or a cloud platform.</desc>
+  <style>
+    .bg{fill:#f8fafc}.title{font:700 22px sans-serif;fill:#0f172a}.sub{font:13px sans-serif;fill:#475569}
+    .box{fill:#fff;stroke:#2563eb;stroke-width:2;rx:12}.platform{fill:#eff6ff;stroke:#1d4ed8;stroke-width:2;rx:12}
+    .h{font:700 16px sans-serif;fill:#0f172a}.t{font:12px sans-serif;fill:#334155}.small{font:11px sans-serif;fill:#64748b}
+    .line{stroke:#2563eb;stroke-width:3}.arrow{fill:#2563eb}
+  </style>
+  <rect class="bg" width="390" height="520"/>
+  <text class="title" x="195" y="34" text-anchor="middle">Service → platform</text>
+  <text class="sub" x="195" y="56" text-anchor="middle">một mục tiêu, nhiều boundary vận hành</text>
+  <rect class="box" x="30" y="78" width="330" height="72"/>
+  <text class="h" x="195" y="108" text-anchor="middle">Service requirement</text>
+  <text class="t" x="195" y="131" text-anchor="middle">DNS · web · file · identity · monitoring</text>
+  <line class="line" x1="195" y1="150" x2="195" y2="178"/>
+  <polygon class="arrow" points="195,188 187,174 203,174"/>
+  <rect class="platform" x="25" y="198" width="340" height="78"/>
+  <text class="h" x="195" y="229" text-anchor="middle">Windows Server</text>
+  <text class="t" x="195" y="252" text-anchor="middle">role / process / policy / guest OS</text>
+  <rect class="platform" x="25" y="310" width="340" height="78"/>
+  <text class="h" x="195" y="341" text-anchor="middle">Linux Server</text>
+  <text class="t" x="195" y="364" text-anchor="middle">daemon / package / permissions / guest OS</text>
+  <rect class="platform" x="25" y="422" width="340" height="78"/>
+  <text class="h" x="195" y="453" text-anchor="middle">Cloud platform</text>
+  <text class="t" x="195" y="476" text-anchor="middle">VM control or managed app boundary</text>
+  <line class="line" x1="195" y1="188" x2="95" y2="198"/>
+  <line class="line" x1="195" y1="188" x2="295" y2="198"/>
+  <line class="line" x1="195" y1="188" x2="195" y2="310"/>
+  <line class="line" x1="195" y1="388" x2="195" y2="422"/>
+</svg>

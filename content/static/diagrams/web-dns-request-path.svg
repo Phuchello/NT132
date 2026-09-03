@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 430" role="img" aria-labelledby="title desc">
+  <title id="title">Web and DNS request path</title>
+  <desc id="desc">A browser resolves a hostname before connecting to a web server and receiving an HTTP response.</desc>
+  <style>
+    .bg{fill:#f8fafc}.title{font:700 22px sans-serif;fill:#0f172a}.sub{font:13px sans-serif;fill:#475569}
+    .box{fill:#fff;stroke:#2563eb;stroke-width:2;rx:12}.step{fill:#eff6ff;stroke:#1d4ed8;stroke-width:2;rx:12}
+    .h{font:700 15px sans-serif;fill:#0f172a}.t{font:12px sans-serif;fill:#334155}.small{font:11px sans-serif;fill:#64748b}
+    .line{stroke:#2563eb;stroke-width:3}.arrow{fill:#2563eb}
+  </style>
+  <rect class="bg" width="390" height="430"/>
+  <text class="title" x="195" y="34" text-anchor="middle">Hostname → web response</text>
+  <text class="sub" x="195" y="56" text-anchor="middle">DNS không phải web server</text>
+  <rect class="box" x="30" y="78" width="330" height="58"/>
+  <text class="h" x="195" y="104" text-anchor="middle">1. Browser</text>
+  <text class="t" x="195" y="123" text-anchor="middle">requests www.example.test</text>
+  <line class="line" x1="195" y1="136" x2="195" y2="161"/>
+  <polygon class="arrow" points="195,171 187,157 203,157"/>
+  <rect class="step" x="30" y="181" width="330" height="70"/>
+  <text class="h" x="195" y="210" text-anchor="middle">2. DNS query → address result</text>
+  <text class="t" x="195" y="232" text-anchor="middle">name → endpoint, not application content</text>
+  <line class="line" x1="195" y1="251" x2="195" y2="276"/>
+  <polygon class="arrow" points="195,286 187,272 203,272"/>
+  <rect class="step" x="30" y="296" width="330" height="70"/>
+  <text class="h" x="195" y="325" text-anchor="middle">3. Web server listener</text>
+  <text class="t" x="195" y="347" text-anchor="middle">HTTP/HTTPS request reaches service</text>
+  <line class="line" x1="195" y1="366" x2="195" y2="391"/>
+  <polygon class="arrow" points="195,401 187,387 203,387"/>
+  <text class="small" x="195" y="420" text-anchor="middle">4. Application returns the response</text>
+</svg>

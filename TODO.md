@@ -104,15 +104,18 @@
 
 ### M3.4 — Server Platforms
 
-- Current milestone: M3.4 — Server Platforms / awaiting mentor prompt.
+- Current milestone: M3.4 — Server Platforms / implementation in progress.
 - Previous milestone: M3.3 — production complete.
 - M3.3 merge commit: `be922db5c6fb8506879a5ce541eded2354d74d54`.
 - M3.3 production workflow: run #58 / ID `33736529578`.
 - Current branch: `feat/m3-4-server-platforms`.
-- No M3.4 content or placeholder student-facing pages have been authored.
 - No M3.4 PR has been opened.
-- [ ] Wait for mentor M3.4 implementation prompt.
-- Exact Next Action: wait for mentor M3.4 prompt.
+- [x] Verify and read all three Class-B course PDFs in full.
+- [x] Record the source-scope boundary: platform/project objectives from Class B; detailed mechanics separately sourced or author-derived.
+- [x] Keep the source PDFs outside the repository.
+- [x] Begin the canonical gateway and Windows Server page.
+- [ ] Author Linux Server and Cloud Server pages, complete diagrams, run QA, and open one PR.
+- Exact Next Action: complete the source-grounded Windows, Linux, and Cloud Server platform pages, run artifact QA, then open one PR for mentor review.
 
 ## M4 — Exam preparation and exam intelligence
 

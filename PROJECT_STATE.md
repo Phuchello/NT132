@@ -1,6 +1,6 @@
 # NT132 Project State
 
-Current milestone: M3.4 — Server Platforms / awaiting mentor prompt
+Current milestone: M3.4 — Server Platforms / implementation in progress
 
 Previous milestone: M3.3 — production complete
 
@@ -28,12 +28,11 @@ M3.3 release checkpoint:
 - Production URL: https://phuchello.github.io/NT132/
 - Status: M3.3 — PRODUCTION PASS / CLOSED
 
-M3.4 handoff:
+M3.4 source checkpoint:
 
-- Current milestone: M3.4 — Server Platforms / awaiting mentor prompt
-- Current branch: feat/m3-4-server-platforms
-- No M3.4 theory content or student-facing placeholder pages have been authored.
-- No M3.4 PR has been opened.
+- Verified and read all pages of 5.1 Windows Server.pdf (9 pages), 5.2 Linux Server.pdf (10 pages), and 5.3 Cloud Server.pdf (7 pages) from the canonical course-material directory.
+- Course scope is platform overview plus project objectives; detailed OS, proxy, monitoring, and Azure mechanics are labeled supplementary or author-derived.
+- Source PDFs remain reference inputs only and are not copied into the repository.
 
 Latest reviewed implementation commit: 1662e5a516440cc57393930a6c4e45c91cbea2a9
 
@@ -103,9 +102,9 @@ M3.3 remediation checkpoint:
 - Added explicit troubleshooting/application prompts to DHCP, NAT, ACL, and ACL wildcard pages.
 - Refreshed README as a separate documentation commit after content remediation.
 
-Current blocker: mentor M3.4 implementation prompt
+Current blocker: none; M3.4 implementation is in progress
 
-Exact Next Action: wait for mentor M3.4 prompt
+Exact Next Action: complete the source-grounded Windows, Linux, and Cloud Server platform pages, run artifact QA, then open one PR for mentor review
 
 M3.2 final micro-remediation completed locally:
 
