@@ -131,18 +131,7 @@
 
 ### M3.5 — Linux Administration
 
-- Previous milestone: M3.4 — production complete.
-- M3.4 merge commit: `cfb141f244fa5316e7193a6942f28d0b09ec85f1`.
-- M3.4 production workflow: run #65 / ID `33764849387`.
-- Pages artifact: `github-pages`, ID `9897047491`, digest `sha256:e4b4dab1b6211298531fcc348680daa054bc951152928aa7f086866dbe6def89`.
-- Production URL: https://phuchello.github.io/NT132/.
-- Current branch: `feat/m3-5-linux-administration`.
-- No M3.5 content or PR has been created.
-- Exact Next Action: wait for mentor M3.5 implementation prompt
-
-### M3.5 — Linux Administration
-
-- Current milestone: M3.5 — Linux Administration / implementation in progress.
+- Current milestone: M3.5 — Linux Administration / implementation complete, review pending.
 - Previous milestone: M3.4 — production complete.
 - M3.4 merge commit: `cfb141f244fa5316e7193a6942f28d0b09ec85f1`.
 - M3.4 production workflow: run #65 / ID `33764849387`.
@@ -152,11 +141,13 @@
 - [x] Build a private source map and classify course, current, legacy, supplementary, and author-derived scope.
 - [x] Keep the source PDF outside the repository.
 - [x] Author the canonical Linux Administration gateway and substantive chapter.
-- [ ] Add seven original mobile-first diagrams.
-- [ ] Extend the generated-artifact audit with M3.5 routes and diagrams.
-- [ ] Run full QA, artifact audit, and 390px visual/semantic review.
-- [ ] Complete honest rubric self-review and prepare one PR to `main`.
-- Exact Next Action: add the seven diagrams, extend artifact gates, and complete QA before requesting the single Codex review.
+- [x] Add seven original mobile-first diagrams.
+- [x] Extend the generated-artifact audit with M3.5 routes and diagrams.
+- [x] Run full QA, artifact audit, and 390px visual/semantic review.
+- [x] Complete honest rubric self-review: Linux Administration 95/100, gateway 94/100.
+- [ ] Push the candidate branch and open one PR to `main`.
+- [ ] Request one Codex review and stop for mentor review.
+- Exact Next Action: push the candidate branch, open one PR to `main`, request the single Codex review, then stop before merge.
 
 ## M4 — Exam preparation and exam intelligence
 

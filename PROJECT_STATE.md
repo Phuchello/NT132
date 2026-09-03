@@ -1,12 +1,12 @@
 # NT132 Project State
 
-Current milestone: M3.5 — Linux Administration / implementation in progress
+Current milestone: M3.5 — Linux Administration / implementation complete, review pending
 
 Previous milestone: M3.4 — production complete
 
 Current branch: feat/m3-5-linux-administration
 
-Last safe checkpoint: M3.4 received mentor PASS, PR #8 was squash-merged into main, and the production GitHub Pages build, deployment, and HTTPS smoke verification passed. M3.5 source review and the first canonical pages are now in progress on the handoff branch.
+Last safe checkpoint: M3.4 received mentor PASS, PR #8 was squash-merged into main, and the production GitHub Pages build, deployment, and HTTPS smoke verification passed. M3.5 source review, authoring, diagrams, and QA are complete on the handoff branch.
 
 M3.1 merge commit: 6ece18f2aad49aa1a899b68dbcf1af31834a1036
 
@@ -39,8 +39,23 @@ M3.5 implementation checkpoint:
 
 - Added the canonical Linux Administration gateway and one substantive chapter at `content/ly-thuyet/06-linux-administration/`.
 - Established the state-management model, legacy/current boot framing, UID/GID identity model, runtime versus persistent network model, resolver pipeline, SSH host-key trust model, and service operational-state model.
+- Added seven original mobile-first diagrams for architecture, boot comparison, identity, network troubleshooting, name resolution, SSH trust, and service state.
+- Extended `scripts/audit-artifact.mjs` with both canonical routes and all seven required M3.5 diagrams.
 - README remains unchanged and does not advertise Linux Administration as published material.
-- Diagrams, artifact assertions, full QA, self-review, and mentor handoff remain open.
+
+M3.5 verification checkpoint:
+
+- `npm ci`: PASS; no dependency changes; the existing 10 high-severity npm advisories remain reported by npm.
+- `npm run check`: PASS.
+- `npm test`: PASS (76/76).
+- Quartz build: PASS (39 Markdown files, 137 files emitted).
+- `npm run prepare-pages`: PASS (30 extensionless routes).
+- `npm run test:routes`: PASS (6/6).
+- `npm run test:audit`: PASS (167 public files, 86 HTML/route files, 1067 hrefs, 238 srcs, zero broken references, H1, term, or PDF violations).
+- Seven SVGs rendered at 390px and 1200px; title/desc, bounds, readable typography, and semantic geometry checks passed. The image preview helper was unavailable because of a Windows ACL helper failure; no clipping was found by the render and bounds checks.
+- Honest self-review: Linux Administration 95/100 (source fidelity 19/20, currentness 14/15, beginner clarity 14/15, mechanism reasoning 19/20, visual quality 9/10, recall 10/10, troubleshooting 5/5, navigation/provenance 5/5); gateway 94/100.
+- Known limitations: no distro-specific hands-on lab, and command behavior remains intentionally environment-dependent; later administration work can add lab depth.
+- Mentor handoff remains the final review gate.
 
 M3.3 release checkpoint:
 
