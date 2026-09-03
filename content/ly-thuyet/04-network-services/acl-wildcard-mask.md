@@ -5,7 +5,7 @@ tags:
   - nt132
   - acl
   - wildcard-mask
-status: candidate
+status: reviewed
 sources:
   - "4.4 ACL Overview.pdf"
   - "4.5 ACL Wildcard mask.pdf"

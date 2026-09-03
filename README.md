@@ -42,6 +42,12 @@ Các nội dung dưới đây thuộc baseline đang được xuất bản:
 - [OSPF](https://phuchello.github.io/NT132/ly-thuyet/02-routing/ospf/)
 - [Switch & VLAN](https://phuchello.github.io/NT132/ly-thuyet/03-switching-vlan/switch-va-vlan/)
 - [Inter-VLAN Routing](https://phuchello.github.io/NT132/ly-thuyet/03-switching-vlan/inter-vlan-routing/)
+- [Network Services](https://phuchello.github.io/NT132/ly-thuyet/04-network-services/)
+- [Network Services overview](https://phuchello.github.io/NT132/ly-thuyet/04-network-services/tong-quan-network-services/)
+- [DHCP](https://phuchello.github.io/NT132/ly-thuyet/04-network-services/dhcp/)
+- [NAT và PAT](https://phuchello.github.io/NT132/ly-thuyet/04-network-services/nat/)
+- [ACL](https://phuchello.github.io/NT132/ly-thuyet/04-network-services/acl/)
+- [ACL Wildcard Mask](https://phuchello.github.io/NT132/ly-thuyet/04-network-services/acl-wildcard-mask/)
 
 ## Feature highlights
 

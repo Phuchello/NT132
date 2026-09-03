@@ -1,6 +1,6 @@
 # NT132 Project State
 
-Current milestone: M3.3 — mentor remediation
+Current milestone: M3.3 — mentor PASS / release pending
 
 Previous milestone: M3.2 — production complete
 
@@ -17,6 +17,12 @@ Latest production commit: 1bc52ef6dedb946e64c0920d2b71ee0908b2966f
 Production baseline: 1bc52ef6dedb946e64c0920d2b71ee0908b2966f
 
 Current PR: #7
+
+M3.3 release checkpoint:
+
+- Accepted content head: `5658ede65a708494efa92a32fcd16394cc785493`
+- Mentor score: 95/100 — ACCEPTED
+- Status: M3.3 — mentor PASS / release pending
 
 Latest reviewed implementation commit: 1662e5a516440cc57393930a6c4e45c91cbea2a9
 
@@ -86,9 +92,9 @@ M3.3 remediation checkpoint:
 - Added explicit troubleshooting/application prompts to DHCP, NAT, ACL, and ACL wildcard pages.
 - Refreshed README as a separate documentation commit after content remediation.
 
-Current blocker: Codex re-review and mentor re-review
+Current blocker: release-only CI, squash merge, and production verification pending
 
-Exact Next Action: request one Codex re-review on the fully green current head -> await mentor re-review; do not merge.
+Exact Next Action: run release-only CI -> squash merge PR #7 -> verify production deployment -> create M3.4 branch from production main
 
 M3.2 final micro-remediation completed locally:
 

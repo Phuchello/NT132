@@ -4,7 +4,7 @@ description: Hiểu địa chỉ inside/outside, translation table, NAT overload
 tags:
   - nt132
   - nat
-status: candidate
+status: reviewed
 sources:
   - "4.1 Network Services.pdf"
   - "4.3 NAT overview.pdf"

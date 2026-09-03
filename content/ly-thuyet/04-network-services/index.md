@@ -4,7 +4,7 @@ description: Từ lease DHCP đến NAT/PAT và ACL, theo dõi state, translatio
 tags:
   - nt132
   - network-services
-status: candidate
+status: reviewed
 sources:
   - "4.1 Network Services.pdf"
   - "4.2 DHCP Overview.pdf"

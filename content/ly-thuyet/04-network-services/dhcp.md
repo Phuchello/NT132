@@ -4,7 +4,7 @@ description: Theo dõi DORA, vai trò DHCP server và relay, rồi kiểm tra le
 tags:
   - nt132
   - dhcp
-status: candidate
+status: reviewed
 sources:
   - "4.1 Network Services.pdf"
   - "4.2 DHCP Overview.pdf"

@@ -4,7 +4,7 @@ description: Phân biệt standard/extended ACL, inbound/outbound, vị trí áp
 tags:
   - nt132
   - acl
-status: candidate
+status: reviewed
 sources:
   - "4.1 Network Services.pdf"
   - "4.4 ACL Overview.pdf"

@@ -70,9 +70,11 @@
 
 ### M3.3 — Network Services, DHCP, NAT & ACL
 
-- Current milestone: M3.3 — mentor remediation.
+- Current milestone: M3.3 — mentor PASS / release pending.
 - Production baseline: `1bc52ef6dedb946e64c0920d2b71ee0908b2966f`.
 - Current PR: #7.
+- Accepted content head: `5658ede65a708494efa92a32fcd16394cc785493`.
+- Mentor score: 95/100 — ACCEPTED.
 - Previous milestone: M3.2 — production complete.
 - M3.2 content merge: `6e8343606d8007c8773d9f0417471b701909a03a`.
 - M3.2 hotfix merge: `1bc52ef6dedb946e64c0920d2b71ee0908b2966f`.
@@ -91,8 +93,9 @@
 - [x] Label supplementary Cisco semantics and preserve the course-derived framing.
 - [x] Run full local QA, generated-artifact audit, and CLI-mode audit.
 - [x] Push the remediation commits to the existing PR #7.
-- [ ] Request one Codex re-review and await mentor re-review; do not merge.
-- Exact Next Action: request one Codex re-review on the fully green current head -> await mentor re-review; do not merge.
+- [x] Complete mentor review: 95/100 — ACCEPTED.
+- [ ] Run release-only CI, squash merge PR #7, verify production deployment, and create M3.4 branch.
+- Exact Next Action: run release-only CI -> squash merge PR #7 -> verify production deployment -> create M3.4 branch from production main.
 
 ### M3.2+ — Remaining theory chapters and practical lab curriculum
 

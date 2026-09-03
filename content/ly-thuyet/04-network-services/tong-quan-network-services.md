@@ -4,7 +4,7 @@ description: Nhìn dịch vụ mạng như các điểm tạo trạng thái, đ�
 tags:
   - nt132
   - network-services
-status: candidate
+status: reviewed
 sources:
   - "4.1 Network Services.pdf"
   - "4.2 DHCP Overview.pdf"
