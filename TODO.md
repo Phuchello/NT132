@@ -140,6 +140,24 @@
 - No M3.5 content or PR has been created.
 - Exact Next Action: wait for mentor M3.5 implementation prompt
 
+### M3.5 — Linux Administration
+
+- Current milestone: M3.5 — Linux Administration / implementation in progress.
+- Previous milestone: M3.4 — production complete.
+- M3.4 merge commit: `cfb141f244fa5316e7193a6942f28d0b09ec85f1`.
+- M3.4 production workflow: run #65 / ID `33764849387`.
+- Current branch: `feat/m3-5-linux-administration`.
+- No M3.5 content PR exists.
+- [x] Read all 53 pages of the Class-B source `6. Linux Adminstration.pdf` before authoring.
+- [x] Build a private source map and classify course, current, legacy, supplementary, and author-derived scope.
+- [x] Keep the source PDF outside the repository.
+- [x] Author the canonical Linux Administration gateway and substantive chapter.
+- [ ] Add seven original mobile-first diagrams.
+- [ ] Extend the generated-artifact audit with M3.5 routes and diagrams.
+- [ ] Run full QA, artifact audit, and 390px visual/semantic review.
+- [ ] Complete honest rubric self-review and prepare one PR to `main`.
+- Exact Next Action: add the seven diagrams, extend artifact gates, and complete QA before requesting the single Codex review.
+
 ## M4 — Exam preparation and exam intelligence
 
 - [ ] Build the final-exam topic map.

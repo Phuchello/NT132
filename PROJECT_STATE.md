@@ -1,12 +1,12 @@
 # NT132 Project State
 
-Current milestone: M3.5 — Linux Administration / awaiting mentor brief
+Current milestone: M3.5 — Linux Administration / implementation in progress
 
 Previous milestone: M3.4 — production complete
 
 Current branch: feat/m3-5-linux-administration
 
-Last safe checkpoint: M3.4 received mentor PASS, PR #8 was squash-merged into main, and the production GitHub Pages build, deployment, and HTTPS smoke verification passed.
+Last safe checkpoint: M3.4 received mentor PASS, PR #8 was squash-merged into main, and the production GitHub Pages build, deployment, and HTTPS smoke verification passed. M3.5 source review and the first canonical pages are now in progress on the handoff branch.
 
 M3.1 merge commit: 6ece18f2aad49aa1a899b68dbcf1af31834a1036
 
@@ -27,6 +27,20 @@ M3.4 release checkpoint:
 - Pages artifact: `github-pages`, ID `9897047491`, digest `sha256:e4b4dab1b6211298531fcc348680daa054bc951152928aa7f086866dbe6def89`
 - Production URL: https://phuchello.github.io/NT132/
 - Status: M3.4 — PRODUCTION PASS / CLOSED
+
+M3.5 source checkpoint:
+
+- Read all 53 pages of `6. Linux Adminstration.pdf` from the canonical course-material directory before authoring.
+- Built a private page/range source map covering architecture, boot, CLI/help, privilege, users/groups, account files, network state, DNS, tools, SSH, and network services.
+- Preserved course terminology while classifying CentOS/SysV-era examples as legacy and current Linux mechanisms as environment-dependent.
+- Source PDF remains a reference input only and is not copied into the repository.
+
+M3.5 implementation checkpoint:
+
+- Added the canonical Linux Administration gateway and one substantive chapter at `content/ly-thuyet/06-linux-administration/`.
+- Established the state-management model, legacy/current boot framing, UID/GID identity model, runtime versus persistent network model, resolver pipeline, SSH host-key trust model, and service operational-state model.
+- README remains unchanged and does not advertise Linux Administration as published material.
+- Diagrams, artifact assertions, full QA, self-review, and mentor handoff remain open.
 
 M3.3 release checkpoint:
 
