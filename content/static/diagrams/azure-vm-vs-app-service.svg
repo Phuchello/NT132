@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 610" role="img" aria-labelledby="title desc">
+  <title id="title">Azure VM versus App Service responsibility</title>
+  <desc id="desc">An Azure VM leaves guest OS and server operations with the operator, while App Service abstracts more of those operations.</desc>
+  <style>
+    .bg{fill:#f8fafc}.title{font:700 22px sans-serif;fill:#0f172a}.sub{font:13px sans-serif;fill:#475569}
+    .vm{fill:#eff6ff;stroke:#2563eb;stroke-width:2;rx:12}.app{fill:#ecfeff;stroke:#0891b2;stroke-width:2;rx:12}
+    .h{font:700 16px sans-serif;fill:#0f172a}.t{font:12px sans-serif;fill:#334155}.small{font:11px sans-serif;fill:#64748b}
+    .rule{stroke:#94a3b8;stroke-width:2;stroke-dasharray:6 4}
+  </style>
+  <rect class="bg" width="390" height="610"/>
+  <text class="title" x="195" y="34" text-anchor="middle">Cloud hosting boundary</text>
+  <text class="sub" x="195" y="56" text-anchor="middle">control chuyển ở đâu?</text>
+  <rect class="vm" x="18" y="82" width="170" height="460"/>
+  <text class="h" x="103" y="116" text-anchor="middle">Azure VM</text>
+  <text class="small" x="103" y="138" text-anchor="middle">self-managed guest OS</text>
+  <text class="h" x="103" y="180" text-anchor="middle">Bạn quản lý</text>
+  <text class="t" x="35" y="215">• application</text>
+  <text class="t" x="35" y="244">• web server/runtime</text>
+  <text class="t" x="35" y="273">• guest OS</text>
+  <text class="t" x="35" y="302">• OS firewall</text>
+  <text class="t" x="35" y="331">• listener/process</text>
+  <text class="t" x="35" y="360">• VM/network rule</text>
+  <line class="rule" x1="35" y1="386" x2="171" y2="386"/>
+  <text class="h" x="103" y="422" text-anchor="middle">Platform manages</text>
+  <text class="small" x="35" y="450">physical infrastructure</text>
+  <text class="small" x="35" y="474">virtualization layer</text>
+  <text class="small" x="103" y="515" text-anchor="middle">nhiều control hơn</text>
+  <rect class="app" x="202" y="82" width="170" height="460"/>
+  <text class="h" x="287" y="116" text-anchor="middle">App Service</text>
+  <text class="small" x="287" y="138" text-anchor="middle">managed app hosting</text>
+  <text class="h" x="287" y="180" text-anchor="middle">Bạn quản lý</text>
+  <text class="t" x="219" y="215">• application code</text>
+  <text class="t" x="219" y="244">• deployment</text>
+  <text class="t" x="219" y="273">• runtime settings</text>
+  <text class="t" x="219" y="302">• domain/access</text>
+  <text class="t" x="219" y="331">• data/observability</text>
+  <line class="rule" x1="219" y1="386" x2="355" y2="386"/>
+  <text class="h" x="287" y="422" text-anchor="middle">Platform abstracts</text>
+  <text class="small" x="219" y="450">guest OS operations</text>
+  <text class="small" x="219" y="474">server hosting operations</text>
+  <text class="small" x="287" y="515" text-anchor="middle">ít control server hơn</text>
+  <text class="sub" x="195" y="580" text-anchor="middle">abstracted ≠ nonexistent</text>
+</svg>
