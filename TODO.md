@@ -109,6 +109,7 @@
 - M3.3 merge commit: `be922db5c6fb8506879a5ce541eded2354d74d54`.
 - M3.3 production workflow: run #58 / ID `33736529578`.
 - Current branch: `feat/m3-4-server-platforms`.
+- Current PR: #8.
 - No M3.4 PR has been opened.
 - [x] Verify and read all three Class-B course PDFs in full.
 - [x] Record the source-scope boundary: platform/project objectives from Class B; detailed mechanics separately sourced or author-derived.
@@ -119,8 +120,10 @@
 - [x] Complete 390px semantic/bounds review for all six diagrams.
 - [x] Run full local QA and generated-artifact audit.
 - [x] Complete honest rubric self-review: Windows 95/100, Linux 94/100, Cloud 95/100, average 94.7/100.
-- [ ] Push the complete M3.4 head, open one PR to main, request one Codex review, and stop before merge.
-- Exact Next Action: push the complete M3.4 head, open one PR to main, request one Codex review, then stop before merge.
+- [x] Push the complete M3.4 head and open one PR to main.
+- [x] Request the single Codex review.
+- [ ] Await Codex and mentor review; do not merge and do not start Linux Administration.
+- Exact Next Action: await the single Codex review and mentor review; do not merge and do not start Linux Administration.
 
 ## M4 — Exam preparation and exam intelligence
 

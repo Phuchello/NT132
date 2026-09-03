@@ -16,7 +16,7 @@ Latest production commit: be922db5c6fb8506879a5ce541eded2354d74d54
 
 Production baseline: be922db5c6fb8506879a5ce541eded2354d74d54
 
-Current PR: none (M3.4 PR not opened)
+Current PR: #8
 
 M3.3 release checkpoint:
 
@@ -44,6 +44,7 @@ M3.4 implementation checkpoint:
 - Linux Server self-review: 94/100. Weakness: NFS/SMB/FTP and Squid remain conceptual rather than deployment labs.
 - Cloud Server self-review: 95/100. Weakness: Azure networking and App Service domain setup remain conceptual rather than portal or infrastructure labs.
 - All three pages meet the 90-point minimum; average self-review: 94.7/100.
+- PR #8 opened to main; one Codex review requested; mentor review remains the final gate.
 
 M3.4 verification checkpoint:
 
@@ -121,7 +122,7 @@ M3.3 remediation checkpoint:
 
 Current blocker: Codex review and mentor review pending
 
-Exact Next Action: push the complete M3.4 head, open one PR to main, request one Codex review, then stop before merge
+Exact Next Action: await the single Codex review and mentor review; do not merge and do not start Linux Administration
 
 M3.2 final micro-remediation completed locally:
 
