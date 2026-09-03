@@ -1,38 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 520" role="img" aria-labelledby="title desc">
   <title id="title">Windows Server service map</title>
-  <desc id="desc">Windows Server hosts Web, DNS, File Service, AD DS, and Remote Access categories.</desc>
+  <desc id="desc">Windows Server independently hosts Web and DNS, File Service, AD DS, and Remote Access or VPN categories.</desc>
   <style>
     .bg{fill:#f8fafc}.title{font:700 22px sans-serif;fill:#0f172a}.sub{font:13px sans-serif;fill:#475569}
     .core{fill:#dbeafe;stroke:#1d4ed8;stroke-width:2;rx:14}.svc{fill:#fff;stroke:#2563eb;stroke-width:2;rx:10}
     .h{font:700 15px sans-serif;fill:#0f172a}.t{font:12px sans-serif;fill:#334155}.small{font:11px sans-serif;fill:#64748b}
-    .line{stroke:#2563eb;stroke-width:2.5}
+    .line{stroke:#2563eb;stroke-width:2.5;fill:none}
   </style>
   <rect class="bg" width="390" height="520"/>
+  <!-- Both buses are platform-level distribution points, not service dependencies. -->
+  <line class="line" x1="195" y1="150" x2="195" y2="178"/>
+  <line class="line" x1="40" y1="178" x2="350" y2="178"/>
+  <line class="line" x1="102" y1="178" x2="102" y2="212"/>
+  <line class="line" x1="288" y1="178" x2="288" y2="212"/>
+  <line class="line" x1="195" y1="178" x2="195" y2="310"/>
+  <line class="line" x1="40" y1="310" x2="350" y2="310"/>
+  <line class="line" x1="102" y1="310" x2="102" y2="338"/>
+  <line class="line" x1="288" y1="310" x2="288" y2="338"/>
+  <rect class="core" x="85" y="78" width="220" height="72"/>
+  <rect class="svc" x="20" y="212" width="165" height="88"/>
+  <rect class="svc" x="205" y="212" width="165" height="88"/>
+  <rect class="svc" x="20" y="338" width="165" height="88"/>
+  <rect class="svc" x="205" y="338" width="165" height="88"/>
   <text class="title" x="195" y="34" text-anchor="middle">Windows Server</text>
   <text class="sub" x="195" y="56" text-anchor="middle">platform, không phải một service</text>
-  <rect class="core" x="85" y="78" width="220" height="72"/>
   <text class="h" x="195" y="108" text-anchor="middle">Windows Server</text>
   <text class="t" x="195" y="131" text-anchor="middle">OS + roles + policy boundary</text>
-  <line class="line" x1="195" y1="150" x2="195" y2="190"/>
-  <line class="line" x1="195" y1="190" x2="75" y2="220"/>
-  <line class="line" x1="195" y1="190" x2="195" y2="220"/>
-  <line class="line" x1="195" y1="190" x2="315" y2="220"/>
-  <rect class="svc" x="20" y="222" width="110" height="84"/>
-  <text class="h" x="75" y="252" text-anchor="middle">Web + DNS</text>
-  <text class="small" x="75" y="274" text-anchor="middle">name → listener</text>
-  <text class="small" x="75" y="291" text-anchor="middle">application response</text>
-  <rect class="svc" x="140" y="222" width="110" height="84"/>
-  <text class="h" x="195" y="252" text-anchor="middle">File</text>
-  <text class="small" x="195" y="274" text-anchor="middle">storage + share</text>
-  <text class="small" x="195" y="291" text-anchor="middle">authorization</text>
-  <rect class="svc" x="260" y="222" width="110" height="84"/>
-  <text class="h" x="315" y="252" text-anchor="middle">AD DS</text>
-  <text class="small" x="315" y="274" text-anchor="middle">identity + domain</text>
-  <text class="small" x="315" y="291" text-anchor="middle">policy capability</text>
-  <line class="line" x1="195" y1="306" x2="195" y2="346"/>
-  <rect class="svc" x="45" y="350" width="300" height="86"/>
-  <text class="h" x="195" y="381" text-anchor="middle">Remote access / VPN</text>
-  <text class="t" x="195" y="405" text-anchor="middle">tunnel → route → policy → internal resource</text>
-  <text class="small" x="195" y="423" text-anchor="middle">DHCP/NAT may be infrastructure services</text>
-  <text class="sub" x="195" y="478" text-anchor="middle">tách role theo control, risk và ownership</text>
+  <text class="h" x="102" y="245" text-anchor="middle">Web / DNS</text>
+  <text class="small" x="102" y="267" text-anchor="middle">name → listener</text>
+  <text class="small" x="102" y="285" text-anchor="middle">application response</text>
+  <text class="h" x="287" y="245" text-anchor="middle">File service</text>
+  <text class="small" x="287" y="267" text-anchor="middle">storage + share</text>
+  <text class="small" x="287" y="285" text-anchor="middle">authorization</text>
+  <text class="h" x="102" y="371" text-anchor="middle">AD DS</text>
+  <text class="small" x="102" y="393" text-anchor="middle">identity + domain</text>
+  <text class="small" x="102" y="411" text-anchor="middle">policy capability</text>
+  <text class="h" x="287" y="371" text-anchor="middle">Remote access / VPN</text>
+  <text class="small" x="287" y="393" text-anchor="middle">tunnel → route → policy</text>
+  <text class="small" x="287" y="411" text-anchor="middle">internal resource access</text>
+  <text class="sub" x="195" y="470" text-anchor="middle">DHCP / NAT: optional infrastructure note</text>
+  <text class="small" x="195" y="490" text-anchor="middle">tách role theo control, risk và ownership</text>
 </svg>

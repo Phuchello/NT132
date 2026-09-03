@@ -104,7 +104,7 @@
 
 ### M3.4 — Server Platforms
 
-- Current milestone: M3.4 — Server Platforms / review pending.
+- Current milestone: M3.4 — remediation.
 - Previous milestone: M3.3 — production complete.
 - M3.3 merge commit: `be922db5c6fb8506879a5ce541eded2354d74d54`.
 - M3.3 production workflow: run #58 / ID `33736529578`.
@@ -122,8 +122,9 @@
 - [x] Complete honest rubric self-review: Windows 95/100, Linux 94/100, Cloud 95/100, average 94.7/100.
 - [x] Push the complete M3.4 head and open one PR to main.
 - [x] Request the single Codex review.
-- [ ] Await Codex and mentor review; do not merge and do not start Linux Administration.
-- Exact Next Action: await the single Codex review and mentor review; do not merge and do not start Linux Administration.
+- Current blocker: resolve current Codex P2 + mentor visual-semantic findings.
+- [ ] Resolve current Codex P2 and mentor visual-semantic findings.
+- Exact Next Action: fix findings -> QA -> mentor re-review
 
 ## M4 — Exam preparation and exam intelligence
 

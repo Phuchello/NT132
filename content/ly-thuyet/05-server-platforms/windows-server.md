@@ -125,7 +125,7 @@ Bạn nên giải thích được:
 ### Nhớ
 
 1. Ba release Windows Server nào xuất hiện trong slide course?
-2. Bốn nhóm service chính trong mục tiêu Windows Server là gì?
+2. Năm nhóm service chính trong mục tiêu Windows Server là gì?
 3. Ba lớp của file service là gì?
 4. AD DS giải quyết vấn đề identity/policy nào?
 5. VPN endpoint đứng ở đâu trong request path của remote user?

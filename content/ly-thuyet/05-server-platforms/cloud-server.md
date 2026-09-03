@@ -58,9 +58,13 @@ Microsoft hướng dẫn custom domain cho VM từ một resource có public IP 
 
 ## 4. App Service và custom domain
 
-Với App Service, request path thay đổi ở lớp hosting:
+Với App Service, hãy tách provisioning/configuration khỏi request runtime. Trong giai đoạn chuẩn bị, application được deploy, service endpoint tồn tại, rồi custom domain/DNS binding (nếu dùng) được cấu hình:
 
-<code>application → App Service deployment → service endpoint → optional custom domain mapping → user request</code>
+<code>application → deploy to App Service → service endpoint exists → optional custom-domain/DNS binding configured</code>
+
+Khi user truy cập sau đó, request path là:
+
+<code>User / Browser → DNS resolution → App Service hostname/custom-domain endpoint → App Service hosting boundary → application → response</code>
 
 App Service là managed application hosting platform. Operator tập trung vào application và các runtime/service settings trong boundary; không cài web server và quản lý guest OS như với một VM. Điều đó không có nghĩa “không có server”: hạ tầng vẫn tồn tại, chỉ là nhiều trách nhiệm server operations được platform abstract khỏi operator.
 
@@ -142,7 +146,7 @@ Bạn nên giải thích được:
 1. Hai project objective Azure nào xuất hiện trong slide course?
 2. Với Azure VM, operator quản lý những lớp nào?
 3. App Service abstract phần nào khỏi application operator?
-4. Năm state cần kiểm tra khi website trên VM không reachable là gì?
+4. Những state/layer nào cần kiểm tra khi website trên VM không reachable?
 5. Custom domain của App Service liên quan đến endpoint và DNS ra sao?
 
 ### Suy luận

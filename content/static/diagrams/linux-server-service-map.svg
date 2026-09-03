@@ -1,46 +1,55 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 570" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 560" role="img" aria-labelledby="title desc">
   <title id="title">Linux Server service map</title>
-  <desc id="desc">Linux Server hosts course service groups: Web and DNS, file access, monitoring, proxy, and VPN.</desc>
+  <desc id="desc">Linux Server independently hosts Web and DNS, File and Data, Monitoring, Proxy, VPN, and DHCP or NAT service groups.</desc>
   <style>
     .bg{fill:#f8fafc}.title{font:700 22px sans-serif;fill:#0f172a}.sub{font:13px sans-serif;fill:#475569}
     .core{fill:#dcfce7;stroke:#15803d;stroke-width:2;rx:14}.svc{fill:#fff;stroke:#16a34a;stroke-width:2;rx:10}
-    .h{font:700 15px sans-serif;fill:#0f172a}.t{font:12px sans-serif;fill:#334155}.small{font:11px sans-serif;fill:#64748b}
-    .line{stroke:#16a34a;stroke-width:2.5}
+    .h{font:700 14px sans-serif;fill:#0f172a}.t{font:12px sans-serif;fill:#334155}.small{font:11px sans-serif;fill:#64748b}
+    .line{stroke:#16a34a;stroke-width:2.5;fill:none}
   </style>
-  <rect class="bg" width="390" height="570"/>
+  <rect class="bg" width="390" height="560"/>
+  <!-- The side route and both buses remain platform-level distribution paths. -->
+  <line class="line" x1="195" y1="150" x2="195" y2="178"/>
+  <line class="line" x1="28" y1="178" x2="362" y2="178"/>
+  <line class="line" x1="68" y1="178" x2="68" y2="212"/>
+  <line class="line" x1="195" y1="178" x2="195" y2="212"/>
+  <line class="line" x1="322" y1="178" x2="322" y2="212"/>
+  <line class="line" x1="28" y1="178" x2="6" y2="200"/>
+  <line class="line" x1="6" y1="200" x2="6" y2="346"/>
+  <line class="line" x1="6" y1="346" x2="68" y2="346"/>
+  <line class="line" x1="68" y1="346" x2="322" y2="346"/>
+  <line class="line" x1="68" y1="346" x2="68" y2="366"/>
+  <line class="line" x1="195" y1="346" x2="195" y2="366"/>
+  <line class="line" x1="322" y1="346" x2="322" y2="366"/>
+  <rect class="core" x="85" y="78" width="220" height="72"/>
+  <rect class="svc" x="14" y="212" width="112" height="88"/>
+  <rect class="svc" x="139" y="212" width="112" height="88"/>
+  <rect class="svc" x="264" y="212" width="112" height="88"/>
+  <rect class="svc" x="14" y="366" width="112" height="88"/>
+  <rect class="svc" x="139" y="366" width="112" height="88"/>
+  <rect class="svc" x="264" y="366" width="112" height="88"/>
   <text class="title" x="195" y="34" text-anchor="middle">Linux Server</text>
   <text class="sub" x="195" y="56" text-anchor="middle">platform cho nhiều service purpose</text>
-  <rect class="core" x="85" y="78" width="220" height="72"/>
   <text class="h" x="195" y="108" text-anchor="middle">Linux Server</text>
   <text class="t" x="195" y="131" text-anchor="middle">OS + daemon + package + permission</text>
-  <line class="line" x1="195" y1="150" x2="195" y2="184"/>
-  <line class="line" x1="195" y1="184" x2="75" y2="212"/>
-  <line class="line" x1="195" y1="184" x2="195" y2="212"/>
-  <line class="line" x1="195" y1="184" x2="315" y2="212"/>
-  <rect class="svc" x="20" y="214" width="110" height="76"/>
-  <text class="h" x="75" y="243" text-anchor="middle">Web / DNS</text>
-  <text class="small" x="75" y="264" text-anchor="middle">app + name</text>
-  <text class="small" x="75" y="280" text-anchor="middle">resolution</text>
-  <rect class="svc" x="140" y="214" width="110" height="76"/>
-  <text class="h" x="195" y="243" text-anchor="middle">NFS / SMB / FTP</text>
-  <text class="small" x="195" y="264" text-anchor="middle">file/data access</text>
-  <text class="small" x="195" y="280" text-anchor="middle">different models</text>
-  <rect class="svc" x="260" y="214" width="110" height="76"/>
-  <text class="h" x="315" y="243" text-anchor="middle">Nagios / Zabbix</text>
-  <text class="small" x="315" y="264" text-anchor="middle">checks → state</text>
-  <text class="small" x="315" y="280" text-anchor="middle">→ alert</text>
-  <line class="line" x1="195" y1="290" x2="195" y2="326"/>
-  <rect class="svc" x="45" y="330" width="140" height="80"/>
-  <text class="h" x="115" y="360" text-anchor="middle">Squid</text>
-  <text class="small" x="115" y="382" text-anchor="middle">proxy / policy</text>
-  <text class="small" x="115" y="398" text-anchor="middle">not a router</text>
-  <rect class="svc" x="205" y="330" width="140" height="80"/>
-  <text class="h" x="275" y="360" text-anchor="middle">VPN</text>
-  <text class="small" x="275" y="382" text-anchor="middle">tunnel → route</text>
-  <text class="small" x="275" y="398" text-anchor="middle">→ resource policy</text>
-  <line class="line" x1="195" y1="410" x2="195" y2="448"/>
-  <rect class="svc" x="45" y="452" width="300" height="72"/>
-  <text class="h" x="195" y="481" text-anchor="middle">DHCP / NAT</text>
-  <text class="t" x="195" y="504" text-anchor="middle">infrastructure services, separate ownership</text>
-  <text class="sub" x="195" y="552" text-anchor="middle">không cần chạy tất cả cùng lúc</text>
+  <text class="h" x="70" y="244" text-anchor="middle">Web / DNS</text>
+  <text class="small" x="70" y="266" text-anchor="middle">app + name</text>
+  <text class="small" x="70" y="282" text-anchor="middle">resolution</text>
+  <text class="h" x="195" y="244" text-anchor="middle">File / Data</text>
+  <text class="small" x="195" y="266" text-anchor="middle">NFS · SMB · FTP</text>
+  <text class="small" x="195" y="282" text-anchor="middle">different models</text>
+  <text class="h" x="320" y="244" text-anchor="middle">Monitoring</text>
+  <text class="small" x="320" y="266" text-anchor="middle">Nagios / Zabbix</text>
+  <text class="small" x="320" y="282" text-anchor="middle">checks → alert</text>
+  <text class="h" x="70" y="398" text-anchor="middle">Proxy</text>
+  <text class="small" x="70" y="420" text-anchor="middle">Squid · policy</text>
+  <text class="small" x="70" y="438" text-anchor="middle">not a router</text>
+  <text class="h" x="195" y="398" text-anchor="middle">VPN</text>
+  <text class="small" x="195" y="420" text-anchor="middle">tunnel → route</text>
+  <text class="small" x="195" y="438" text-anchor="middle">resource policy</text>
+  <text class="h" x="320" y="398" text-anchor="middle">DHCP / NAT</text>
+  <text class="small" x="320" y="420" text-anchor="middle">infrastructure</text>
+  <text class="small" x="320" y="438" text-anchor="middle">separate ownership</text>
+  <text class="sub" x="195" y="500" text-anchor="middle">service groups are independent choices</text>
+  <text class="small" x="195" y="520" text-anchor="middle">không phải processing chain</text>
 </svg>

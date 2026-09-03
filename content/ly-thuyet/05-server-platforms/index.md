@@ -105,7 +105,13 @@ Sau khi học ba trang con, bạn cần có thể:
 6. DNS đã resolve nhưng website không mở được: bước nào sau DNS cần kiểm tra?
 7. User nhìn thấy server trên mạng nhưng không đọc được file: lỗi routing hay authorization?
 
-## 8. Nguồn và phạm vi
+## 8. Tiếp theo trong lộ trình
+
+[Tiếp theo trong lộ trình: Linux Administration](../06-linux-administration/)
+
+Trang tiếp theo mở phần Linux Administration; phần lý thuyết substantive đó chưa được author trong milestone này.
+
+## 9. Nguồn và phạm vi
 
 ### A. Course source - Class B
 

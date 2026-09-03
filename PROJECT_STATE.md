@@ -1,6 +1,6 @@
 # NT132 Project State
 
-Current milestone: M3.4 — Server Platforms / review pending
+Current milestone: M3.4 — remediation
 
 Previous milestone: M3.3 — production complete
 
@@ -120,9 +120,9 @@ M3.3 remediation checkpoint:
 - Added explicit troubleshooting/application prompts to DHCP, NAT, ACL, and ACL wildcard pages.
 - Refreshed README as a separate documentation commit after content remediation.
 
-Current blocker: Codex review and mentor review pending
+Current blocker: resolve current Codex P2 + mentor visual-semantic findings
 
-Exact Next Action: await the single Codex review and mentor review; do not merge and do not start Linux Administration
+Exact Next Action: fix findings -> QA -> mentor re-review
 
 M3.2 final micro-remediation completed locally:
 
