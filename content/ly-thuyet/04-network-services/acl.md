@@ -18,7 +18,9 @@ sources:
 - Standard ACL chủ yếu nhìn source; extended ACL có thể nhìn source, destination, protocol và port.
 - Rule được đọc từ trên xuống; wildcard mask quyết định địa chỉ nào match.
 
-![Luồng lọc packet bằng ACL](../../static/diagrams/acl-filter-flow.svg)
+![Hướng ACL nhìn từ interface](../../static/diagrams/acl-inbound-outbound.svg)
+
+![Heuristic vị trí standard và extended ACL](../../static/diagrams/acl-standard-extended-placement.svg)
 
 ## 2. ACL giải quyết bài toán gì?
 
@@ -47,7 +49,7 @@ Standard ACL chủ yếu lọc theo source IPv4 address. Slide đưa dải số 
 
 ### Extended ACL
 
-Extended ACL có thể lọc source, destination, protocol như ICMP/IP/TCP/UDP và port number. Slide đưa dải số `100-1299` và minh họa deny SSH tới Server 1 nhưng permit HTTP. Extended ACL thường được đặt gần source để loại traffic không mong muốn sớm, nhưng vị trí cuối cùng vẫn phải dựa trên policy và topology.
+Extended ACL có thể lọc source, destination, protocol như ICMP/IP/TCP/UDP và port number. Slide minh họa deny SSH tới Server 1 nhưng permit HTTP. Theo tài liệu Cisco IOS/IOS XE hiện hành, numbered extended IPv4 ACL dùng các dải `100-199` và `2000-2699`; numbered standard ACL dùng `1-99` và `1300-1999`. Extended ACL thường được đặt gần source để loại traffic không mong muốn sớm, nhưng vị trí cuối cùng vẫn phải dựa trên policy và topology.
 
 “Gần source” và “gần destination” là quy tắc định hướng, không phải luật thay thế việc phân tích flow. Một ACL chỉ có tác dụng khi được apply vào interface hoặc điểm hỗ trợ tương ứng.
 
@@ -110,7 +112,7 @@ Wildcard không đọc giống subnet mask:
 
 Ví dụ `192.168.10.0 0.0.0.255` khớp các host trong network /24 vì ba octet đầu được kiểm tra và octet cuối được bỏ qua. `host 192.168.10.10` tương đương địa chỉ với wildcard `0.0.0.0`; `any` tương đương `0.0.0.0 255.255.255.255`.
 
-Học chi tiết bit và bài tập ở [Wildcard mask](./wildcard-mask/).
+Học chi tiết bit và bài tập ở [Wildcard mask](./acl-wildcard-mask/).
 
 ## 9. ACL configuration checklist
 
@@ -134,6 +136,11 @@ Trước khi kết luận ACL “đã cấu hình đúng”, hãy ghi lại:
 | HTTP chạy nhưng ping không chạy  | rule chỉ permit TCP/80                 | xem protocol và port                          |
 | Nhiều mạng bị chặn ngoài dự kiến | wildcard có bit ignore quá rộng        | chuyển wildcard sang binary/đối chiếu network |
 | Rule counter không tăng          | packet không đi qua interface/hướng đó | trace route, interface và direction           |
+
+### Câu hỏi tự chẩn đoán
+
+1. **Troubleshooting:** một HTTP request bị deny dù rule permit HTTP tồn tại. Hãy kiểm tra thứ tự ACE, interface, hướng và protocol/port theo đúng thứ tự chẩn đoán.
+2. **Application:** với packet từ PC-A VLAN 10 tới Web Server, hãy chọn một interface để apply ACL và mô tả chính xác packet đang đi vào hay rời interface đó; không dùng LAN/Internet làm định nghĩa cho in/out.
 
 ## 11. Recall - đóng tài liệu lại
 
@@ -164,11 +171,11 @@ Trước khi kết luận ACL “đã cấu hình đúng”, hãy ghi lại:
 
 ### C. Nội dung & sơ đồ do tác giả biên soạn độc lập
 
-- `acl-filter-flow.svg`: sơ đồ original mô tả interface direction, rule order và decision.
+- `acl-inbound-outbound.svg` và `acl-standard-extended-placement.svg`: hai sơ đồ original tách direction khỏi placement heuristic.
 - Các trace, bảng state và câu hỏi được viết độc lập; PDF không được sao chép hoặc đưa vào public output.
 
 ## 14. Liên kết
 
 - **Bài trước:** [NAT và PAT](./nat/).
-- **Bài tiếp theo:** [Wildcard mask](./wildcard-mask/).
+- **Bài tiếp theo:** [Wildcard mask](./acl-wildcard-mask/).
 - **Bài thực hành:** [Lab Network Services](../../thuc-hanh/network-services/).

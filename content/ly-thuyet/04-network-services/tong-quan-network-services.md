@@ -22,7 +22,7 @@ sources:
 
 Điểm nối của bốn bài không phải là một chuỗi bắt buộc trong mọi packet. Hãy hỏi đúng câu hỏi: client đang cần địa chỉ, packet đang cần translation, hay packet đang bị policy kiểm tra?
 
-![Bản đồ các dịch vụ mạng](../../static/diagrams/network-services-flow.svg)
+![Hành trình chung của Network Services](../../static/diagrams/network-services-journey.svg)
 
 ## 2. Tư duy theo state
 
@@ -56,7 +56,7 @@ ACL là danh sách điều kiện. Một rule có thể cho phép hoặc từ ch
 
 Vị trí của ACL là một quyết định thiết kế, không phải nhãn tuyệt đối. Slide dùng quy tắc định hướng: standard ACL thường gần destination vì chỉ biết source, còn extended ACL thường gần source vì có thể lọc cụ thể hơn. Khi đọc một lỗi, hãy kiểm tra cả interface, hướng và thứ tự rule.
 
-Xem toàn bộ quy trình ở [ACL](./acl/), rồi học cách đọc địa chỉ trong rule ở [Wildcard mask](./wildcard-mask/).
+Xem toàn bộ quy trình ở [ACL](./acl/), rồi học cách đọc địa chỉ trong rule ở [Wildcard mask](./acl-wildcard-mask/).
 
 ## 5. NAT/PAT: mapping tại biên mạng
 
@@ -66,7 +66,36 @@ Với PAT (NAT overload), nhiều host có thể dùng một địa chỉ public
 
 NAT có thể thay đổi địa chỉ/cổng, nhưng không nên được mô tả như firewall. ACL mới là nơi thể hiện policy permit/deny trong phạm vi bài học này. Xem trace và cấu hình ở [NAT](./nat/).
 
-## 6. Một packet, nhiều câu hỏi
+## 6. Một topology chung để nối các cơ chế
+
+Để không trộn lẫn ví dụ nguồn với hành trình chính, các phần trace dưới đây dùng một topology do tác giả dựng độc lập:
+
+| Vùng           | Dải địa chỉ                     | Thành phần và vai trò                                      |
+| -------------- | ------------------------------- | ---------------------------------------------------------- |
+| Client VLAN 10 | `192.168.10.0/24`               | PC-A nhận `192.168.10.10` qua DHCP; gateway `192.168.10.1` |
+| Server VLAN 20 | `192.168.20.0/24`               | DHCP Server `192.168.20.10`; relay ở gateway VLAN 10       |
+| Edge / NAT     | mạng inside ở phía doanh nghiệp | Edge dùng địa chỉ ví dụ `198.51.100.10` ở outside          |
+| Internet       | mạng documentation              | Web Server `203.0.113.80`                                  |
+
+Luồng học là: **DHCP** cấp cấu hình cho PC-A → **relay** nối broadcast domain VLAN 10 với server VLAN 20 → **routing** đưa packet về edge → **ACL** kiểm tra theo interface → **NAT/PAT** đại diện source khi đi Internet. `192.168.10.0/24` và `192.168.20.0/24` là địa chỉ private; `198.51.100.0/24` và `203.0.113.0/24` là các dải dành cho tài liệu, không phải địa chỉ production.
+
+## 7. Trace tích hợp: PC-A từ DHCP đến HTTPS
+
+PC-A khởi động trong VLAN 10, nhận lease rồi kết nối tới Web Server. Bảng này theo dõi các điểm xử lý có ý nghĩa; MAC chỉ là giá trị minh họa để thấy frame hop-by-hop, còn SIP/DIP và port là identity của flow ở từng chặng.
+
+| Điểm xử lý          | SIP → DIP                      | SPORT → DPORT | SMAC → DMAC             | VLAN / context                     | Routing decision           | ACL decision                   | NAT/PAT state                                         |
+| ------------------- | ------------------------------ | ------------- | ----------------------- | ---------------------------------- | -------------------------- | ------------------------------ | ----------------------------------------------------- |
+| DHCP Discover       | `0.0.0.0 → 255.255.255.255`    | `68 → 67`     | PC-A → broadcast        | VLAN 10, broadcast                 | dừng ở gateway L3          | chưa có flow HTTPS             | XID `0xA1327C4E`, chưa có lease                       |
+| DHCP relay → server | `192.168.10.1 → 192.168.20.10` | `67 → 67`     | relay → next hop        | routed path, `giaddr=192.168.10.1` | tới scope VLAN 10          | relay path được phép           | server chuẩn bị lease `.10`                           |
+| PC-A → gateway      | `192.168.10.10 → 203.0.113.80` | `51514 → 443` | PC-A → gateway SVI      | VLAN 10                            | default route tới edge     | inbound permit theo policy     | chưa dịch, inside local                               |
+| gateway → edge      | `192.168.10.10 → 203.0.113.80` | `51514 → 443` | gateway → edge inside   | routed inside                      | next hop edge              | outbound permit nếu được apply | candidate source cho PAT                              |
+| edge → Internet     | `198.51.100.10 → 203.0.113.80` | `40001 → 443` | edge outside → upstream | outside                            | route tới web server       | egress policy tùy topology     | tạo entry `192.168.10.10:51514 ↔ 198.51.100.10:40001` |
+| reply → edge        | `203.0.113.80 → 198.51.100.10` | `443 → 40001` | upstream → edge outside | outside                            | route về public edge       | kiểm tra hướng inbound         | reverse lookup về PC-A                                |
+| edge → PC-A         | `203.0.113.80 → 192.168.10.10` | `443 → 51514` | edge → gateway → PC-A   | VLAN 10                            | route connected về VLAN 10 | egress permit theo policy      | destination được phục hồi                             |
+
+ACL có thể được đặt ở nhiều điểm hơn bảng rút gọn này; vì vậy hãy đọc “in/out” từ interface thật. NAT chỉ xuất hiện ở edge trong topology minh họa, không phải mọi flow nội bộ đều cần NAT.
+
+## 8. Một packet, nhiều câu hỏi
 
 Giả sử client đã nhận IP bằng DHCP và gửi một request ra ngoài:
 
@@ -80,19 +109,20 @@ Giả sử client đã nhận IP bằng DHCP và gửi một request ra ngoài:
 
 Đây là một khung suy luận, không phải khẳng định mọi thiết bị luôn đặt dịch vụ theo đúng thứ tự vật lý trên. Thiết kế thật có thể đặt ACL ở nhiều interface và NAT có thể không xuất hiện trong flow nội bộ.
 
-## 7. Command -> state change -> observable result
+## 9. Command -> state change -> observable result
 
 | Command hoặc quan sát             | State change cần nghĩ tới              | Cách verify                               |
-| --------------------------------- | -------------------------------------- | ----------------------------------------- | --------------------------------- |
+| --------------------------------- | -------------------------------------- | ----------------------------------------- |
 | DHCP Discover/Offer/Request/ACK   | lease được thương lượng cho client     | địa chỉ client, lease và log/server state |
 | `ip helper-address <server>`      | relay có đích để chuyển DHCP broadcast | cấu hình interface và DHCP trace          |
 | NAT/PAT rule                      | tạo điều kiện cho translation entry    | `show ip nat translations`                |
 | `access-list ... permit/deny ...` | thêm điều kiện vào danh sách xét       | `show access-lists` và counter            |
-| `ip access-group <id> in          | out`                                   | gắn ACL vào interface và hướng            | `show running-config` / interface |
+| `ip access-group <id> in`         | gắn ACL vào interface theo hướng vào   | `show running-config` / interface         |
+| `ip access-group <id> out`        | gắn ACL vào interface theo hướng ra    | `show running-config` / interface         |
 
 Tên lệnh `show` có thể khác theo platform/version. Điều cần giữ là quan hệ giữa **lệnh**, **state**, và **bằng chứng quan sát**.
 
-## 8. Sai lầm thường gặp
+## 10. Sai lầm thường gặp
 
 | Hiện tượng                                   | Hypothesis                                                    | Điểm kiểm tra đầu tiên              |
 | -------------------------------------------- | ------------------------------------------------------------- | ----------------------------------- |
@@ -102,7 +132,7 @@ Tên lệnh `show` có thể khác theo platform/version. Điều cần giữ l�
 | Rule ACL đúng nhưng traffic vẫn bị deny      | sai thứ tự hoặc implicit deny ở cuối                          | đọc từ trên xuống, xét hướng in/out |
 | Một network match quá rộng                   | wildcard có quá nhiều bit `1`                                 | đổi wildcard theo bit cần kiểm tra  |
 
-## 9. Recall - đóng tài liệu lại
+## 11. Recall - đóng tài liệu lại
 
 1. DHCP giải quyết bài toán nào trước khi client có thể gửi packet theo cấu hình ổn định?
 2. ACL khác NAT ở câu hỏi mà nó trả lời là gì?
@@ -110,19 +140,19 @@ Tên lệnh `show` có thể khác theo platform/version. Điều cần giữ l�
 4. Vì sao PAT cần port transport để phân biệt nhiều flow dùng chung một địa chỉ?
 5. Wildcard mask dùng bit `0` và `1` khác subnet mask ở cách diễn giải nào?
 
-## 10. Reasoning - vận dụng
+## 12. Reasoning - vận dụng
 
 1. Một client ở VLAN 10 không nhận được IP từ server ở mạng khác. Hãy tách lỗi thành hai giả thuyết: relay chưa chuyển request hoặc server không có scope phù hợp.
 2. Một request bị deny trước khi NAT tạo mapping. Bạn sẽ kiểm tra ACL hay translation table trước? Giải thích bằng vị trí xử lý, không chỉ bằng tên dịch vụ.
 3. Một rule standard ACL intended cho một mạng lại match quá nhiều host. Hãy dùng wildcard mask để chỉ ra phần nào đang bị ignore.
 
-## 11. Liên kết
+## 13. Liên kết
 
 - **Bài trước:** [Switching, VLAN & Inter-VLAN Routing](../03-switching-vlan/).
 - **Bài tiếp theo:** [DHCP](./dhcp/).
 - **Bài thực hành:** [Lab Network Services](../../thuc-hanh/network-services/).
 
-## 12. Nguồn & phạm vi
+## 14. Nguồn & phạm vi
 
 ### A. Nguồn bài giảng chính - Class B, reference only
 
@@ -131,6 +161,8 @@ Tên lệnh `show` có thể khác theo platform/version. Điều cần giữ l�
 - `4.3 NAT overview.pdf`: inside/outside addressing, NAT operation, translation table và port forwarding.
 - `4.4 ACL Overview.pdf`: ACL operation, inbound/outbound, standard/extended ACL, placement, rule syntax và apply vào interface.
 - `4.5 ACL Wildcard mask.pdf`: match/ignore theo bit, host/any, network wildcard và bài tập xác định permit/deny.
+- [RFC 1918](https://www.rfc-editor.org/rfc/rfc1918): dải IPv4 private dùng trong topology nội bộ.
+- [RFC 5737](https://www.rfc-editor.org/rfc/rfc5737): dải IPv4 documentation dùng cho các ví dụ public.
 
 ### B. Tài liệu bổ trợ - Class C
 
@@ -141,5 +173,5 @@ Tên lệnh `show` có thể khác theo platform/version. Điều cần giữ l�
 
 ### C. Nội dung & sơ đồ do tác giả biên soạn độc lập
 
-- `network-services-flow.svg`: bản đồ original nối DHCP, ACL và NAT bằng câu hỏi state.
+- `network-services-journey.svg`: bản đồ original nối topology chung, routing, ACL và NAT/PAT bằng các điểm xử lý.
 - Các bảng trace, câu hỏi và ví dụ địa chỉ được viết lại độc lập; không sao chép slide screenshot hay đoạn văn dài từ PDF.

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 500" role="img" aria-labelledby="title desc">
+  <title id="title">DHCP relay across broadcast domains</title>
+  <desc id="desc">A client broadcast stops at the Layer 3 gateway; the relay forwards toward a DHCP server in another VLAN and returns the response.</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#2563eb"/></marker></defs>
+  <style>
+    .bg{fill:#f8fafc}.title{font:700 21px sans-serif;fill:#0f172a}.sub{font:13px sans-serif;fill:#475569}
+    .zone{fill:#eff6ff;stroke:#2563eb;stroke-width:2;stroke-dasharray:7 5;rx:12}.box{fill:#fff;stroke:#0f766e;stroke-width:2;rx:11}
+    .h{font:700 14px sans-serif;fill:#0f172a}.t{font:12px sans-serif;fill:#334155}.note{font:700 12px sans-serif;fill:#b45309}
+    .arr{stroke:#2563eb;stroke-width:3;marker-end:url(#arrow)}
+  </style>
+  <rect class="bg" width="390" height="500"/>
+  <text class="title" x="195" y="31" text-anchor="middle">DHCP Relay</text>
+  <text class="sub" x="195" y="52" text-anchor="middle">broadcast local, relay routed</text>
+  <rect class="zone" x="18" y="76" width="125" height="290"/><text class="h" x="80" y="100" text-anchor="middle">VLAN 10</text><text class="t" x="80" y="118" text-anchor="middle">broadcast domain</text>
+  <rect class="box" x="32" y="150" width="97" height="72"/><text class="h" x="80" y="175" text-anchor="middle">PC-A</text><text class="t" x="80" y="194" text-anchor="middle">Discover</text><text class="t" x="80" y="212" text-anchor="middle">0.0.0.0</text>
+  <rect class="box" x="157" y="150" width="101" height="72"/><text class="h" x="207" y="175" text-anchor="middle">L3 Gateway</text><text class="t" x="207" y="194" text-anchor="middle">Relay</text><text class="t" x="207" y="212" text-anchor="middle">192.168.10.1</text>
+  <rect class="zone" x="272" y="76" width="100" height="290"/><text class="h" x="322" y="100" text-anchor="middle">VLAN 20</text><text class="t" x="322" y="118" text-anchor="middle">server subnet</text>
+  <rect class="box" x="284" y="150" width="76" height="72"/><text class="h" x="322" y="175" text-anchor="middle">DHCP</text><text class="t" x="322" y="194" text-anchor="middle">Server</text><text class="t" x="322" y="212" text-anchor="middle">.20.10</text>
+  <line class="arr" x1="129" y1="186" x2="153" y2="186"/><text class="t" x="141" y="174" text-anchor="middle">broadcast</text>
+  <line class="arr" x1="258" y1="186" x2="280" y2="186"/><text class="t" x="269" y="174" text-anchor="middle">routed</text>
+  <path class="arr" d="M280 250 H258"/><path class="arr" d="M153 250 H129"/><text class="t" x="207" y="272" text-anchor="middle">Offer / ACK quay về relay</text>
+  <text class="note" x="195" y="318" text-anchor="middle">broadcast không đi xuyên ranh giới L3</text>
+  <text class="t" x="195" y="401" text-anchor="middle">Relay nhận request, ghi ngữ cảnh subnet</text>
+  <text class="t" x="195" y="421" text-anchor="middle">và chuyển tới server đã cấu hình.</text>
+  <text class="t" x="195" y="462" text-anchor="middle">ip helper-address → đích server</text>
+</svg>

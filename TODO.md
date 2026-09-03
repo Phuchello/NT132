@@ -70,6 +70,9 @@
 
 ### M3.3 — Network Services, DHCP, NAT & ACL
 
+- Current milestone: M3.3 — mentor remediation.
+- Production baseline: `1bc52ef6dedb946e64c0920d2b71ee0908b2966f`.
+- Current PR: #7.
 - Previous milestone: M3.2 — production complete.
 - M3.2 content merge: `6e8343606d8007c8773d9f0417471b701909a03a`.
 - M3.2 hotfix merge: `1bc52ef6dedb946e64c0920d2b71ee0908b2966f`.
@@ -78,13 +81,18 @@
 - Canonical source directory: `C:\Users\lyle3\OneDrive\Documents\Môn học\Quản trị mạng và hệ thống`.
 - Expected source files: `4.1 Network Services.pdf`, `4.2 DHCP Overview.pdf`, `4.3 NAT overview.pdf`, `4.4 ACL Overview.pdf`, `4.5 ACL Wildcard mask.pdf`.
 - [x] Read and source-map all five Class-B PDFs in full.
-- [x] Author the Network Services index and five substantive theory pages.
-- [x] Create five original mobile-first diagrams and add them to the artifact audit.
+- [x] Author the canonical Network Services index and five substantive theory pages.
+- [x] Restore canonical page filenames and route links.
+- [x] Create eight focused original mobile-first diagrams and add them to the artifact audit.
+- [x] Add the shared M3.3 topology, DHCP single-XID/RFC 2131 trace, relay trace, and integrative packet trace.
+- [x] Add explicit troubleshooting/application prompts to each core page.
+- [x] Fix numbered IPv4 ACL ranges and the malformed overview command table.
+- [x] Refresh the public README in one isolated documentation commit.
 - [x] Label supplementary Cisco semantics and preserve the course-derived framing.
 - [x] Run full local QA, generated-artifact audit, and CLI-mode audit.
-- [ ] Push the branch and open one PR to `main`.
-- [ ] Request one Codex review and await mentor review; do not merge.
-- Exact Next Action: run full QA -> push -> open one PR -> request Codex review -> await mentor review
+- [x] Push the remediation commits to the existing PR #7.
+- [ ] Request one Codex re-review and await mentor re-review; do not merge.
+- Exact Next Action: request one Codex re-review on the fully green current head -> await mentor re-review; do not merge.
 
 ### M3.2+ — Remaining theory chapters and practical lab curriculum
 

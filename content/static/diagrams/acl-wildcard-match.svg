@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 500" role="img" aria-labelledby="title desc">
+  <title id="title">ACL wildcard match and ignore bits</title>
+  <desc id="desc">Wildcard bit zero compares the corresponding address bit; bit one ignores it. Examples show host and network matching.</desc>
+  <style>
+    .bg{fill:#f8fafc}.title{font:700 20px sans-serif;fill:#0f172a}.sub{font:13px sans-serif;fill:#475569}
+    .row{fill:#fff;stroke:#64748b;stroke-width:1.5;rx:9}.zero{fill:#dbeafe;stroke:#2563eb;stroke-width:1.5;rx:4}.one{fill:#ffedd5;stroke:#c2410c;stroke-width:1.5;rx:4}
+    .h{font:700 14px sans-serif;fill:#0f172a}.t{font:12px sans-serif;fill:#334155}.small{font:11px sans-serif;fill:#64748b}
+  </style>
+  <rect class="bg" width="390" height="500"/>
+  <text class="title" x="195" y="31" text-anchor="middle">Wildcard mask</text>
+  <text class="sub" x="195" y="52" text-anchor="middle">0 = compare · 1 = ignore</text>
+  <rect class="row" x="24" y="88" width="342" height="80"/><text class="h" x="44" y="116">Wildcard bit 0</text><text class="t" x="44" y="140">bit địa chỉ tương ứng phải khớp</text><rect class="zero" x="283" y="108" width="32" height="32"/><text class="h" x="299" y="130" text-anchor="middle">0</text><text class="small" x="326" y="130">compare</text>
+  <rect class="row" x="24" y="184" width="342" height="80"/><text class="h" x="44" y="212">Wildcard bit 1</text><text class="t" x="44" y="236">bit địa chỉ tương ứng được bỏ qua</text><rect class="one" x="283" y="204" width="32" height="32"/><text class="h" x="299" y="226" text-anchor="middle">1</text><text class="small" x="326" y="226">ignore</text>
+  <text class="h" x="195" y="305" text-anchor="middle">Ví dụ network /24</text>
+  <text class="t" x="195" y="330" text-anchor="middle">base 192.168.10.0</text><text class="t" x="195" y="351" text-anchor="middle">wildcard 0.0.0.255</text>
+  <rect class="zero" x="43" y="371" width="62" height="36"/><text class="h" x="74" y="395" text-anchor="middle">0.0.0</text><rect class="one" x="115" y="371" width="62" height="36"/><text class="h" x="146" y="395" text-anchor="middle">255</text><text class="t" x="195" y="395">→ 3 octet compare, host octet ignore</text>
+  <text class="small" x="195" y="445" text-anchor="middle">host = 0.0.0.0 · any = 255.255.255.255</text>
+  <text class="t" x="195" y="470" text-anchor="middle">Không đảo nghĩa 0 và 1.</text>
+</svg>

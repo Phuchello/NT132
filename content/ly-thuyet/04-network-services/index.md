@@ -15,11 +15,11 @@ sources:
 
 ## Học theo thứ tự
 
-1. [Network Services](./network-services/): lập bản đồ câu hỏi state - client nhận gì, packet đổi gì và policy nào quyết định.
+1. [Network Services](./tong-quan-network-services/): lập bản đồ câu hỏi state - client nhận gì, packet đổi gì và policy nào quyết định.
 2. [DHCP](./dhcp/): theo dõi DORA, lease, DHCP server và relay.
 3. [NAT và PAT](./nat/): đọc inside/outside, translation table, overload và port forwarding.
 4. [ACL](./acl/): đọc rule order, inbound/outbound, standard/extended và apply vào interface.
-5. [Wildcard mask](./wildcard-mask/): tính bit match/ignore để biết địa chỉ nào nằm trong rule.
+5. [Wildcard mask](./acl-wildcard-mask/): tính bit match/ignore để biết địa chỉ nào nằm trong rule.
 
 ## Kết quả học tập
 

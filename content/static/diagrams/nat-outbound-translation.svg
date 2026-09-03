@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 520" role="img" aria-labelledby="title desc">
+  <title id="title">Outbound NAT and PAT translation</title>
+  <desc id="desc">An inside host crosses a NAT boundary; its source tuple is represented by an outside address and port in a translation table.</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#2563eb"/></marker></defs>
+  <style>
+    .bg{fill:#f8fafc}.title{font:700 20px sans-serif;fill:#0f172a}.sub{font:13px sans-serif;fill:#475569}
+    .box{fill:#fff;stroke:#2563eb;stroke-width:2;rx:12}.edge{fill:#fff7ed;stroke:#c2410c;stroke-width:2;rx:12}.table{fill:#fff;stroke:#64748b;stroke-width:1.5;rx:8}
+    .h{font:700 14px sans-serif;fill:#0f172a}.t{font:12px sans-serif;fill:#334155}.small{font:11px sans-serif;fill:#475569}.arr{stroke:#2563eb;stroke-width:3;marker-end:url(#arrow)}
+  </style>
+  <rect class="bg" width="390" height="520"/>
+  <text class="title" x="195" y="31" text-anchor="middle">NAT outbound</text>
+  <text class="sub" x="195" y="52" text-anchor="middle">source tuple được đại diện ở outside</text>
+  <rect class="box" x="20" y="92" width="105" height="76"/><text class="h" x="72" y="118" text-anchor="middle">Inside host</text><text class="t" x="72" y="140" text-anchor="middle">192.168.10.10</text><text class="t" x="72" y="157" text-anchor="middle">:51514</text>
+  <rect class="edge" x="142" y="78" width="106" height="104"/><text class="h" x="195" y="108" text-anchor="middle">NAT edge</text><text class="t" x="195" y="130" text-anchor="middle">inside → outside</text><text class="t" x="195" y="149" text-anchor="middle">PAT state</text><text class="small" x="195" y="168" text-anchor="middle">198.51.100.10</text>
+  <rect class="box" x="265" y="92" width="105" height="76"/><text class="h" x="317" y="118" text-anchor="middle">Internet web</text><text class="t" x="317" y="140" text-anchor="middle">203.0.113.80</text><text class="t" x="317" y="157" text-anchor="middle">:443</text>
+  <line class="arr" x1="126" y1="130" x2="138" y2="130"/><line class="arr" x1="249" y1="130" x2="261" y2="130"/>
+  <text class="t" x="195" y="213" text-anchor="middle">trước: 192.168.10.10:51514</text>
+  <text class="t" x="195" y="233" text-anchor="middle">sau: 198.51.100.10:40001</text>
+  <rect class="table" x="30" y="272" width="330" height="128"/><text class="h" x="195" y="298" text-anchor="middle">Translation table</text>
+  <line x1="45" y1="310" x2="345" y2="310" stroke="#cbd5e1"/><text class="small" x="55" y="331">inside local</text><text class="small" x="205" y="331">inside global</text><text class="small" x="55" y="355">192.168.10.10:51514</text><text class="small" x="205" y="355">198.51.100.10:40001</text><text class="small" x="55" y="382">reply lookup → restore destination</text>
+  <path d="M317 168 C317 245 300 255 270 272" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="5 4"/>
+  <text class="t" x="195" y="436" text-anchor="middle">Reply tra về public tuple → tra entry → PC-A</text>
+  <text class="small" x="195" y="476" text-anchor="middle">NAT đổi identity của flow; không tự là firewall.</text>
+</svg>

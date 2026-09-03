@@ -17,7 +17,7 @@ sources:
 - DHCP server đề nghị một lease và các option như subnet mask, default gateway, DNS.
 - DHCP relay giúp request đi từ broadcast domain của client tới server ở mạng khác.
 
-![Chuỗi DHCP DORA và relay](../../static/diagrams/dhcp-dora-relay.svg)
+![Chuỗi DHCP DORA](../../static/diagrams/dhcp-dora.svg)
 
 ## 2. Bài toán nó giải quyết
 
@@ -52,7 +52,22 @@ Server gửi ACK để xác nhận lease. Sau ACK, client có thể cài IP, mas
 
 Trong slide, một số transaction ID giữa các message được trình bày như ví dụ minh họa. Ý cần giữ là **các message của một cuộc trao đổi phải được liên hệ bằng transaction/client state**, không phải coi mọi con số trong slide là giá trị cố định của mọi client.
 
+### 3.5. Một transaction nhất quán
+
+Bảng dưới đây là trace original với cùng một transaction ID <code>0xA1327C4E</code> từ Discover đến ACK. Các dòng Offer/ACK ghi IP của leg server → relay; relay sau đó phân phối message ở phía client VLAN. Vì vậy SIP/DIP có thể khác giữa hai leg, nhưng transaction ID và client state vẫn nối cùng một cuộc trao đổi.
+
+| Bước | Message  | SIP                        | DIP                               | UDP source | UDP destination | Transaction ID          | Offered / assigned address          | Lease / client state   |
+| ---- | -------- | -------------------------- | --------------------------------- | ---------- | --------------- | ----------------------- | ----------------------------------- | ---------------------- |
+| 1    | Discover | <code>0.0.0.0</code>       | <code>255.255.255.255</code>      | 68         | 67              | <code>0xA1327C4E</code> | chưa có                             | INIT / SELECTING       |
+| 2    | Offer    | <code>192.168.20.10</code> | <code>192.168.10.1</code> (relay) | 67         | 67              | <code>0xA1327C4E</code> | <code>192.168.10.10</code>          | OFFER received         |
+| 3    | Request  | <code>0.0.0.0</code>       | <code>255.255.255.255</code>      | 68         | 67              | <code>0xA1327C4E</code> | yêu cầu <code>192.168.10.10</code>  | REQUESTING             |
+| 4    | ACK      | <code>192.168.20.10</code> | <code>192.168.10.1</code> (relay) | 67         | 67              | <code>0xA1327C4E</code> | xác nhận <code>192.168.10.10</code> | BOUND, lease hoạt động |
+
+Sau khi relay nhận Offer hoặc ACK, leg phía VLAN 10 có thể là broadcast hoặc unicast tùy cờ và trạng thái client. <code>giaddr=192.168.10.1</code> giúp server nhận diện subnet cần chọn pool; nó không biến relay thành DHCP server. [RFC 2131](https://www.rfc-editor.org/rfc/rfc2131.html) là tài liệu bổ trợ để đối chiếu transaction matching và các state của DHCP; bảng trên vẫn giữ DORA theo cách trình bày của Class B.
+
 ## 4. DHCP server, modem/AP và relay
+
+![Ranh giới broadcast của DHCP relay](../../static/diagrams/dhcp-relay.svg)
 
 ### DHCP server trên modem/AP
 
@@ -132,6 +147,11 @@ Trên Cisco IOS, `ip helper-address` là cấu hình interface; nó không tự 
 
 Chuỗi chẩn đoán nên đi từ client state -> broadcast domain -> relay -> server scope -> option gateway. Không bắt đầu bằng việc sửa DNS nếu client còn chưa có lease.
 
+### Câu hỏi tự chẩn đoán
+
+1. **Troubleshooting:** nếu bảng trace có Discover và Offer cùng XID nhưng không có ACK, hãy chọn hai điểm kiểm tra đầu tiên giữa scope, relay path và client state, rồi giải thích thứ tự.
+2. **Application:** với topology Client VLAN 10 / Server VLAN 20, hãy chỉ ra packet nào là broadcast local và packet nào là routed relay traffic; ghi interface nhận packet ở mỗi bước.
+
 ## 7. Recall - đóng tài liệu lại
 
 1. DORA viết đầy đủ là gì và mỗi bước thay đổi client state thế nào?
@@ -158,13 +178,15 @@ Chuỗi chẩn đoán nên đi từ client state -> broadcast domain -> relay ->
 - [Cisco IOS XE DHCP Server](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-addressing/b-ip-addressing/m_config-dhcp-server-xe.html): pool, binding và server/relay behavior.
 - [Cisco IOS XE DHCP Relay Agent](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_dhcp/configuration/xe-2/dhcp-xe-2-book/dhcp-relay-agent-xe.html): `ip helper-address` và chuyển tiếp request.
 
+[RFC 2131](https://www.rfc-editor.org/rfc/rfc2131.html) — transaction matching và DHCP state, dùng như tài liệu bổ trợ.
+
 ### C. Nội dung & sơ đồ do tác giả biên soạn độc lập
 
-- `dhcp-dora-relay.svg`: sơ đồ original gộp client, relay, server và bốn state DORA.
+- `dhcp-dora.svg` và `dhcp-relay.svg`: hai sơ đồ original tách message sequence khỏi broadcast-domain boundary.
 - Các bảng trace, ví dụ địa chỉ và câu hỏi được viết độc lập; PDF không được sao chép hoặc đưa vào public output.
 
 ## 10. Liên kết
 
-- **Bài trước:** [Network Services - Địa chỉ, translation và policy](./network-services/).
+- **Bài trước:** [Network Services - Địa chỉ, translation và policy](./tong-quan-network-services/).
 - **Bài tiếp theo:** [NAT](./nat/).
 - **Bài thực hành:** [Lab Network Services](../../thuc-hanh/network-services/).

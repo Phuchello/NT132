@@ -1,6 +1,6 @@
 # NT132 Project State
 
-Current milestone: M3.3 — implementation candidate
+Current milestone: M3.3 — mentor remediation
 
 Previous milestone: M3.2 — production complete
 
@@ -13,6 +13,10 @@ M3.1 merge commit: 6ece18f2aad49aa1a899b68dbcf1af31834a1036
 M3.1 production workflow: 33406354082
 
 Latest production commit: 1bc52ef6dedb946e64c0920d2b71ee0908b2966f
+
+Production baseline: 1bc52ef6dedb946e64c0920d2b71ee0908b2966f
+
+Current PR: #7
 
 Latest reviewed implementation commit: 1662e5a516440cc57393930a6c4e45c91cbea2a9
 
@@ -73,9 +77,18 @@ M3.3 implementation checkpoint:
 - Added five original mobile-first SVG diagrams; source PDFs remain reference inputs only and are not in the repository.
 - Supplementary Cisco semantics are explicitly labeled and linked to vendor documentation.
 
-Current blocker: PR, Codex review, and mentor review
+M3.3 remediation checkpoint:
 
-Exact Next Action: push -> open one PR -> request Codex review -> await mentor review
+- Fixed the numbered IPv4 ACL ranges and malformed overview command table.
+- Restored canonical filenames and route audit checks.
+- Replaced five combined diagrams with eight focused original diagrams.
+- Added one shared RFC-addressed teaching topology, a single-XID DHCP trace with RFC 2131 clarification, a separate relay trace, and an integrative packet trace.
+- Added explicit troubleshooting/application prompts to DHCP, NAT, ACL, and ACL wildcard pages.
+- Refreshed README as a separate documentation commit after content remediation.
+
+Current blocker: Codex re-review and mentor re-review
+
+Exact Next Action: request one Codex re-review on the fully green current head -> await mentor re-review; do not merge.
 
 M3.2 final micro-remediation completed locally:
 

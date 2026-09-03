@@ -17,7 +17,9 @@ sources:
 - PAT, còn gọi là NAT overload, cho nhiều host dùng chung một địa chỉ public bằng cách phân biệt port và protocol.
 - Port forwarding tạo mapping tĩnh để traffic từ một địa chỉ/cổng public đi tới dịch vụ bên trong.
 
-![Đường đi NAT và PAT](../../static/diagrams/nat-translation.svg)
+![NAT outbound và translation table](../../static/diagrams/nat-outbound-translation.svg)
+
+![Port forwarding inbound](../../static/diagrams/nat-port-forwarding.svg)
 
 ## 2. Bài toán nó giải quyết
 
@@ -133,6 +135,11 @@ Trong outbound trace, destination server vẫn là `128.119.40.186:80`, còn sou
 
 NAT table chỉ trả lời câu hỏi “router đang nhớ mapping nào?”. Nó không chứng minh ACL permit, server đang listen, hay route return path đã đúng.
 
+### Câu hỏi tự chẩn đoán
+
+1. **Troubleshooting:** nếu packet outbound rời PC-A nhưng không tạo entry PAT, hãy kiểm tra theo thứ tự interface inside, source rule, outside route và traffic match; giải thích vì sao.
+2. **Application:** với Web Server <code>203.0.113.80:443</code>, hãy viết tuple trước NAT và tuple nhìn thấy ở outside, sau đó chỉ ra entry nào dùng để xử lý reply.
+
 ## 9. Recall - đóng tài liệu lại
 
 1. Phân biệt inside local với inside global bằng một câu.
@@ -161,7 +168,7 @@ NAT table chỉ trả lời câu hỏi “router đang nhớ mapping nào?”. N
 
 ### C. Nội dung & sơ đồ do tác giả biên soạn độc lập
 
-- `nat-translation.svg`: sơ đồ original cho outbound mapping, translation table và port forwarding.
+- `nat-outbound-translation.svg` và `nat-port-forwarding.svg`: hai sơ đồ original tách outbound PAT khỏi inbound static mapping.
 - Trace địa chỉ, bảng state và câu hỏi được viết độc lập; PDF không được đưa vào repository hay public output.
 
 ## 12. Liên kết

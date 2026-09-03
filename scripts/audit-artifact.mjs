@@ -77,11 +77,14 @@ const requiredDiagrams = [
   "legacy-inter-vlan.svg",
   "router-on-a-stick.svg",
   "multilayer-svi.svg",
-  "network-services-flow.svg",
-  "dhcp-dora-relay.svg",
-  "nat-translation.svg",
-  "acl-filter-flow.svg",
-  "wildcard-mask-bits.svg",
+  "network-services-journey.svg",
+  "dhcp-dora.svg",
+  "dhcp-relay.svg",
+  "nat-outbound-translation.svg",
+  "nat-port-forwarding.svg",
+  "acl-inbound-outbound.svg",
+  "acl-standard-extended-placement.svg",
+  "acl-wildcard-match.svg",
 ]
 for (const diag of requiredDiagrams) {
   const diskPath = path.join("content", "static", "diagrams", diag)
@@ -93,6 +96,36 @@ for (const diag of requiredDiagrams) {
   if (!fs.existsSync(publicPath)) {
     console.error(`ERROR: Required diagram missing in public output: ${publicPath}`)
     brokenSrcs++
+  }
+}
+
+const requiredM33Routes = [
+  ["ly-thuyet", "04-network-services", "index.html"],
+  ["ly-thuyet", "04-network-services", "tong-quan-network-services", "index.html"],
+  ["ly-thuyet", "04-network-services", "dhcp", "index.html"],
+  ["ly-thuyet", "04-network-services", "nat", "index.html"],
+  ["ly-thuyet", "04-network-services", "acl", "index.html"],
+  ["ly-thuyet", "04-network-services", "acl-wildcard-mask", "index.html"],
+]
+for (const route of requiredM33Routes) {
+  const routePath = path.join("public", ...route)
+  if (!fs.existsSync(routePath)) {
+    console.error("ERROR: Canonical M3.3 route missing:", routePath)
+    brokenLinks++
+  }
+}
+
+const forbiddenCandidateRoutes = [
+  ["network-services", "index.html"],
+  ["wildcard-mask", "index.html"],
+  ["ly-thuyet", "04-network-services", "network-services", "index.html"],
+  ["ly-thuyet", "04-network-services", "wildcard-mask", "index.html"],
+]
+for (const route of forbiddenCandidateRoutes) {
+  const routePath = path.join("public", ...route)
+  if (fs.existsSync(routePath)) {
+    console.error("ERROR: Wrong candidate route remains:", routePath)
+    brokenLinks++
   }
 }
 

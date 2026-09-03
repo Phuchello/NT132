@@ -18,7 +18,7 @@ sources:
 - Bit `1` nghĩa là bit địa chỉ tương ứng được ignore.
 - `host` là cách viết gọn cho wildcard `0.0.0.0`; `any` là cách viết gọn cho wildcard `255.255.255.255`.
 
-![Wildcard mask và bit matching](../../static/diagrams/wildcard-mask-bits.svg)
+![Wildcard mask: bit match và ignore](../../static/diagrams/acl-wildcard-match.svg)
 
 ## 2. Vì sao subnet mask chưa đủ?
 
@@ -147,6 +147,11 @@ Router# show access-lists 50
 | Input `.195` bị permit ngoài ý muốn | đọc `/26` như `/24`                         | tính dải 128-191 từ wildcard `.63` |
 | ACL đúng nhưng không tác dụng       | quên apply hoặc nhầm in/out                 | kiểm tra interface và hướng        |
 
+### Câu hỏi tự chẩn đoán
+
+1. **Troubleshooting:** rule permit <code>192.168.233.64 0.0.0.15</code> không match một host mà bạn nghĩ nằm trong /28. Hãy kiểm tra base address, dải 64–79, thứ tự rule và interface direction.
+2. **Application:** một policy cần match duy nhất <code>192.168.10.7</code> nhưng đang dùng wildcard <code>0.0.0.255</code>. Hãy chỉ ra các bit đang bị ignore và sửa thành cặp host chính xác.
+
 ## 9. Recall - đóng tài liệu lại
 
 1. Wildcard bit `0` yêu cầu điều gì?
@@ -175,7 +180,7 @@ Router# show access-lists 50
 
 ### C. Nội dung & sơ đồ do tác giả biên soạn độc lập
 
-- `wildcard-mask-bits.svg`: sơ đồ original cho match/ignore và ba mẫu host/network/any.
+- `acl-wildcard-match.svg`: sơ đồ original cho match/ignore và ba mẫu host/network/any.
 - Các bảng binary, dải địa chỉ và câu hỏi được viết độc lập; PDF không được sao chép hoặc đưa vào public output.
 
 ## 12. Liên kết
