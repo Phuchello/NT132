@@ -1,28 +1,32 @@
 # NT132 Project State
 
-Current milestone: M3.4 — mentor PASS / release pending
+Current milestone: M3.5 — Linux Administration / awaiting mentor brief
 
-Previous milestone: M3.3 — production complete
+Previous milestone: M3.4 — production complete
 
-Current branch: feat/m3-4-server-platforms
+Current branch: feat/m3-5-linux-administration
 
-Last safe checkpoint: M3.3 received mentor PASS, PR #7 was squash-merged into main, and the release passed the production GitHub Pages build, deployment, and HTTPS smoke verification.
+Last safe checkpoint: M3.4 received mentor PASS, PR #8 was squash-merged into main, and the production GitHub Pages build, deployment, and HTTPS smoke verification passed.
 
 M3.1 merge commit: 6ece18f2aad49aa1a899b68dbcf1af31834a1036
 
 M3.1 production workflow: 33406354082
 
-Latest production commit: be922db5c6fb8506879a5ce541eded2354d74d54
+Latest production commit: cfb141f244fa5316e7193a6942f28d0b09ec85f1
 
-Production baseline: be922db5c6fb8506879a5ce541eded2354d74d54
+Production baseline: cfb141f244fa5316e7193a6942f28d0b09ec85f1
 
-Current PR: #8
+Current PR: none — M3.5 content PR not opened
 
 M3.4 release checkpoint:
 
 - Accepted substantive head: `285a46501f12f83eb6888ca2f759dc64e39bf61d`
 - Mentor score: 95/100 — ACCEPTED
-- Current PR: #8
+- PR #8 squash merge commit: `cfb141f244fa5316e7193a6942f28d0b09ec85f1`
+- Production workflow: run #65 / ID `33764849387`
+- Pages artifact: `github-pages`, ID `9897047491`, digest `sha256:e4b4dab1b6211298531fcc348680daa054bc951152928aa7f086866dbe6def89`
+- Production URL: https://phuchello.github.io/NT132/
+- Status: M3.4 — PRODUCTION PASS / CLOSED
 
 M3.3 release checkpoint:
 
@@ -126,9 +130,11 @@ M3.3 remediation checkpoint:
 - Added explicit troubleshooting/application prompts to DHCP, NAT, ACL, and ACL wildcard pages.
 - Refreshed README as a separate documentation commit after content remediation.
 
-Current blocker: release pending after accepted M3.4 mentor review
+M3.4 production closeout: PR #8 was squash-merged, workflow run #65 / ID `33764849387` passed Build site and Deploy site, and the deployed canonical routes passed the read-only HTTPS smoke audit.
 
-Exact Next Action: release-only CI -> squash merge PR #8 -> production deploy -> smoke audit -> prepare M3.5 Linux Administration branch
+M3.5 handoff: branch `feat/m3-5-linux-administration` was created from production main at `cfb141f244fa5316e7193a6942f28d0b09ec85f1`; no M3.5 content or PR has been created.
+
+Exact Next Action: wait for mentor M3.5 implementation prompt
 
 M3.2 final micro-remediation completed locally:
 
