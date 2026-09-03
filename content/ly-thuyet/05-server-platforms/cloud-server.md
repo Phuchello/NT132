@@ -5,7 +5,7 @@ tags:
   - nt132
   - server-platforms
   - cloud-server
-status: candidate
+status: reviewed
 sources:
   - "5.3 Cloud Server.pdf"
   - "5.1 Windows Server.pdf"

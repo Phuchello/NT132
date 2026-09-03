@@ -104,13 +104,15 @@
 
 ### M3.4 — Server Platforms
 
-- Current milestone: M3.4 — remediation.
+- Current milestone: M3.4 — mentor PASS / release pending.
 - Previous milestone: M3.3 — production complete.
 - M3.3 merge commit: `be922db5c6fb8506879a5ce541eded2354d74d54`.
 - M3.3 production workflow: run #58 / ID `33736529578`.
 - Current branch: `feat/m3-4-server-platforms`.
 - Current PR: #8.
 - PR #8 is open; one Codex review request has been posted.
+- Accepted substantive head: `285a46501f12f83eb6888ca2f759dc64e39bf61d`.
+- Mentor score: 95/100 — ACCEPTED.
 - [x] Verify and read all three Class-B course PDFs in full.
 - [x] Record the source-scope boundary: platform/project objectives from Class B; detailed mechanics separately sourced or author-derived.
 - [x] Keep the source PDFs outside the repository.
@@ -122,9 +124,10 @@
 - [x] Complete honest rubric self-review: Windows 96/100, Linux 96/100, Cloud 97/100, average 96.3/100.
 - [x] Push the complete M3.4 head and open one PR to main.
 - [x] Request the single Codex review.
-- Current blocker: resolve current Codex P2 + mentor visual-semantic findings.
-- [ ] Resolve current Codex P2 and mentor visual-semantic findings.
-- Exact Next Action: fix findings -> QA -> mentor re-review
+- [x] Resolve current Codex P2 and mentor visual-semantic findings.
+- [x] Complete mentor re-review: 95/100 — ACCEPTED.
+- Current blocker: release pending after accepted M3.4 mentor review.
+- Exact Next Action: release-only CI -> squash merge PR #8 -> production deploy -> smoke audit -> prepare M3.5 Linux Administration branch
 
 ## M4 — Exam preparation and exam intelligence
 

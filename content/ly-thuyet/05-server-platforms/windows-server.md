@@ -5,7 +5,7 @@ tags:
   - nt132
   - server-platforms
   - windows-server
-status: candidate
+status: reviewed
 sources:
   - "5.1 Windows Server.pdf"
   - "4.1 Network Services.pdf"
@@ -54,7 +54,13 @@ Trong topology học tập, Windows Server có thể là nơi cấp DHCP hoặc 
 - NAT vẫn phải có translation state và đường trả lời.
 - VLAN/routing/ACL vẫn quyết định client có đến được host hay Internet không.
 
-Ở đây câu hỏi là **host Windows chịu trách nhiệm cho service state nào**: pool/lease, interface, firewall, log, process và quyền quản trị. Đây không phải trang cài DHCP/NAT từng bước.
+Hãy tách state theo cơ chế:
+
+- **DHCP:** scope/pool, lease/options và DHCP role/service state.
+- **NAT:** forwarding/translation configuration, interface/path và return path.
+- **Shared operational state:** firewall/policy, logging và administrator ownership.
+
+Đây không phải trang cài RRAS hay cấu hình DHCP/NAT từng bước.
 
 ## 5. File service: storage, sharing, authorization
 

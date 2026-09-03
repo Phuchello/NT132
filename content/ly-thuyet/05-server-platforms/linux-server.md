@@ -5,7 +5,7 @@ tags:
   - nt132
   - server-platforms
   - linux-server
-status: candidate
+status: reviewed
 sources:
   - "5.2 Linux Server.pdf"
   - "4.1 Network Services.pdf"
@@ -53,7 +53,13 @@ Linux Server có thể cung cấp hoặc tham gia DHCP/NAT, nhưng cơ chế pac
 - NAT phải có mapping và đường reply hợp lệ.
 - routing, VLAN và ACL phải cho phép traffic tới đúng interface/host.
 
-Ở mức platform, câu hỏi cần trả lời là daemon nào chịu trách nhiệm, process có lắng nghe không, log nằm ở đâu, policy firewall có cho phép không và ai có quyền thay đổi cấu hình. Đây chưa phải lab cài đặt từng service.
+Ở mức platform, cần tách operational state của hai cơ chế thay vì gom chúng thành một “listener”:
+
+- **DHCP:** daemon/service process, hành vi dịch vụ UDP, lease/pool/options, interface, logs và ownership của cấu hình/authorization.
+- **NAT:** IP forwarding, rule set của NAT/firewall, translation hoặc connection-tracking state khi phù hợp, inside/outside path, return routing và logs.
+- **Shared operational state:** firewall/policy, logging và administrator ownership vẫn cần được kiểm tra cho cả hai.
+
+NAT không đòi hỏi application listener; đây chưa phải lab cài đặt từng service.
 
 ## 5. NFS, SMB và FTP không tương đương
 
@@ -74,11 +80,11 @@ Course source nêu Nagios/Zabbix để monitor hiệu năng Windows/Linux machin
 ![Luồng monitoring server](../../static/diagrams/server-monitoring-flow.svg)
 
 1. Target system hoặc network service có một state cần quan sát.
-2. Check, metric, agent hoặc probe thu thập measurement.
+2. Check, metric, collector hoặc probe thu thập measurement.
 3. Monitoring server lưu state/history và áp dụng điều kiện cảnh báo.
 4. Operator nhận status/alert để điều tra.
 
-Zabbix mô tả agent có thể thực hiện passive check (server hỏi, agent trả lời) hoặc active check (agent gửi dữ liệu theo cấu hình). Đây là supplementary semantics để đọc trace, không phải hướng dẫn cài Zabbix. Nagios và Zabbix có kiến trúc chi tiết khác nhau; điểm chung ở đây là đường measurement → state → alert. Nội dung NMS mở rộng sẽ thuộc phần quản trị mạng sau này, không trình bày thành một chương mới ở đây.
+Zabbix mô tả hai kiểu check: passive (server hỏi, thành phần thu thập trả lời) và active (thành phần thu thập gửi dữ liệu theo cấu hình). Đây là supplementary semantics để đọc trace, không phải hướng dẫn cài Zabbix. Nagios và Zabbix có kiến trúc chi tiết khác nhau; điểm chung ở đây là đường measurement → state → alert. Nội dung NMS mở rộng sẽ thuộc phần quản trị mạng sau này, không trình bày thành một chương mới ở đây.
 
 ## 7. Squid: proxy không phải router
 
@@ -160,7 +166,7 @@ Bạn nên giải thích được:
 - [Ubuntu web server overview](https://ubuntu.com/server/docs/about-web-servers/) - request/response và vai trò web server.
 - [Squid interception documentation](https://wiki.squid-cache.org/SquidFaq/InterceptionProxy)
 - [Squid http_port reference](https://www.squid-cache.org/Doc/config/http_port/)
-- [Zabbix agent documentation](https://www.zabbix.com/documentation/8.0/en/manual/concepts/agent) - passive/active checks.
+- [Zabbix concepts documentation](https://www.zabbix.com/documentation/8.0/en/manual/concepts) - passive/active checks.
 
 ### C. Author-derived
 

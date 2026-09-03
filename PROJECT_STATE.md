@@ -1,6 +1,6 @@
 # NT132 Project State
 
-Current milestone: M3.4 — remediation
+Current milestone: M3.4 — mentor PASS / release pending
 
 Previous milestone: M3.3 — production complete
 
@@ -17,6 +17,12 @@ Latest production commit: be922db5c6fb8506879a5ce541eded2354d74d54
 Production baseline: be922db5c6fb8506879a5ce541eded2354d74d54
 
 Current PR: #8
+
+M3.4 release checkpoint:
+
+- Accepted substantive head: `285a46501f12f83eb6888ca2f759dc64e39bf61d`
+- Mentor score: 95/100 — ACCEPTED
+- Current PR: #8
 
 M3.3 release checkpoint:
 
@@ -120,9 +126,9 @@ M3.3 remediation checkpoint:
 - Added explicit troubleshooting/application prompts to DHCP, NAT, ACL, and ACL wildcard pages.
 - Refreshed README as a separate documentation commit after content remediation.
 
-Current blocker: resolve current Codex P2 + mentor visual-semantic findings
+Current blocker: release pending after accepted M3.4 mentor review
 
-Exact Next Action: fix findings -> QA -> mentor re-review
+Exact Next Action: release-only CI -> squash merge PR #8 -> production deploy -> smoke audit -> prepare M3.5 Linux Administration branch
 
 M3.2 final micro-remediation completed locally:
 

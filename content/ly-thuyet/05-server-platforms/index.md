@@ -4,7 +4,7 @@ description: Phân biệt service với platform qua Windows Server, Linux Serve
 tags:
   - nt132
   - server-platforms
-status: candidate
+status: reviewed
 sources:
   - "5.1 Windows Server.pdf"
   - "5.2 Linux Server.pdf"
@@ -109,7 +109,7 @@ Sau khi học ba trang con, bạn cần có thể:
 
 [Tiếp theo trong lộ trình: Linux Administration](../06-linux-administration/)
 
-Trang tiếp theo mở phần Linux Administration; phần lý thuyết substantive đó chưa được author trong milestone này.
+Nội dung chi tiết của Linux Administration sẽ được bổ sung sau; liên kết hiện dẫn tới trang mục của chương.
 
 ## 9. Nguồn và phạm vi
 
