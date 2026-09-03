@@ -136,7 +136,7 @@
 - M3.4 merge commit: `cfb141f244fa5316e7193a6942f28d0b09ec85f1`.
 - M3.4 production workflow: run #65 / ID `33764849387`.
 - Current branch: `feat/m3-5-linux-administration`.
-- No M3.5 content PR exists.
+- PR #9 is open against `main`; one Codex review request has been posted.
 - [x] Read all 53 pages of the Class-B source `6. Linux Adminstration.pdf` before authoring.
 - [x] Build a private source map and classify course, current, legacy, supplementary, and author-derived scope.
 - [x] Keep the source PDF outside the repository.
@@ -145,9 +145,9 @@
 - [x] Extend the generated-artifact audit with M3.5 routes and diagrams.
 - [x] Run full QA, artifact audit, and 390px visual/semantic review.
 - [x] Complete honest rubric self-review: Linux Administration 95/100, gateway 94/100.
-- [ ] Push the candidate branch and open one PR to `main`.
-- [ ] Request one Codex review and stop for mentor review.
-- Exact Next Action: push the candidate branch, open one PR to `main`, request the single Codex review, then stop before merge.
+- [x] Push the candidate branch and open one PR to `main` (PR #9).
+- [x] Request one Codex review.
+- Exact Next Action: wait for mentor M3.5 review; do not merge and do not start Cloud Computing.
 
 ## M4 — Exam preparation and exam intelligence
 

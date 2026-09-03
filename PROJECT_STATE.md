@@ -16,7 +16,7 @@ Latest production commit: cfb141f244fa5316e7193a6942f28d0b09ec85f1
 
 Production baseline: cfb141f244fa5316e7193a6942f28d0b09ec85f1
 
-Current PR: none — M3.5 content PR not opened
+Current PR: #9 — open; one Codex review requested
 
 M3.4 release checkpoint:
 
@@ -55,6 +55,8 @@ M3.5 verification checkpoint:
 - Seven SVGs rendered at 390px and 1200px; title/desc, bounds, readable typography, and semantic geometry checks passed. The image preview helper was unavailable because of a Windows ACL helper failure; no clipping was found by the render and bounds checks.
 - Honest self-review: Linux Administration 95/100 (source fidelity 19/20, currentness 14/15, beginner clarity 14/15, mechanism reasoning 19/20, visual quality 9/10, recall 10/10, troubleshooting 5/5, navigation/provenance 5/5); gateway 94/100.
 - Known limitations: no distro-specific hands-on lab, and command behavior remains intentionally environment-dependent; later administration work can add lab depth.
+- Candidate branch is pushed at `ea8fb7eaca72d73133b2c8254e6927c0d28c5839`; PR #9 is open against `main`.
+- One `@codex review` request was posted; no merge is authorized.
 - Mentor handoff remains the final review gate.
 
 M3.3 release checkpoint:
@@ -161,9 +163,9 @@ M3.3 remediation checkpoint:
 
 M3.4 production closeout: PR #8 was squash-merged, workflow run #65 / ID `33764849387` passed Build site and Deploy site, and the deployed canonical routes passed the read-only HTTPS smoke audit.
 
-M3.5 handoff: branch `feat/m3-5-linux-administration` was created from production main at `cfb141f244fa5316e7193a6942f28d0b09ec85f1`; no M3.5 content or PR has been created.
+M3.5 handoff: branch `feat/m3-5-linux-administration` was created from production main at `cfb141f244fa5316e7193a6942f28d0b09ec85f1`; PR #9 is open and no merge is authorized.
 
-Exact Next Action: wait for mentor M3.5 implementation prompt
+Exact Next Action: wait for mentor M3.5 review; do not merge and do not start Cloud Computing
 
 M3.2 final micro-remediation completed locally:
 
