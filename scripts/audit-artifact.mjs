@@ -92,6 +92,13 @@ const requiredDiagrams = [
   "web-dns-request-path.svg",
   "server-monitoring-flow.svg",
   "azure-vm-vs-app-service.svg",
+  "linux-admin-architecture.svg",
+  "linux-boot-legacy-modern.svg",
+  "linux-user-group-identity.svg",
+  "linux-network-troubleshooting.svg",
+  "linux-name-resolution.svg",
+  "ssh-host-key-trust.svg",
+  "linux-service-state.svg",
 ]
 for (const diag of requiredDiagrams) {
   const diskPath = path.join("content", "static", "diagrams", diag)
@@ -132,6 +139,18 @@ for (const route of requiredM34Routes) {
   const routePath = path.join("public", ...route)
   if (!fs.existsSync(routePath)) {
     console.error("ERROR: Canonical M3.4 route missing:", routePath)
+    brokenLinks++
+  }
+}
+
+const requiredM35Routes = [
+  ["ly-thuyet", "06-linux-administration", "index.html"],
+  ["ly-thuyet", "06-linux-administration", "linux-administration", "index.html"],
+]
+for (const route of requiredM35Routes) {
+  const routePath = path.join("public", ...route)
+  if (!fs.existsSync(routePath)) {
+    console.error("ERROR: Canonical Linux Administration route missing:", routePath)
     brokenLinks++
   }
 }
