@@ -40,10 +40,10 @@ M3.4 implementation checkpoint:
 - Added six original focused diagrams: platform map, Windows service map, Linux service map, Web/DNS request path, monitoring flow, and Azure VM versus App Service responsibility.
 - Preserved the service-versus-platform mental model, shared VLAN 10/VLAN 20 scenario, platform-neutral troubleshooting hierarchy, and course project objectives.
 - Added source provenance on every page and kept README public material unchanged until release.
-- Windows Server self-review: 95/100. Weakness: detailed AD DS, file-permission, VPN, and role administration are intentionally deferred to later administration material.
-- Linux Server self-review: 94/100. Weakness: NFS/SMB/FTP and Squid remain conceptual rather than deployment labs.
-- Cloud Server self-review: 95/100. Weakness: Azure networking and App Service domain setup remain conceptual rather than portal or infrastructure labs.
-- All three pages meet the 90-point minimum; average self-review: 94.7/100.
+- Windows Server self-review: 96/100. Weakness: detailed AD DS, file-permission, VPN, and role administration are intentionally deferred to later administration material.
+- Linux Server self-review: 96/100. Weakness: NFS/SMB/FTP and Squid remain conceptual rather than deployment labs.
+- Cloud Server self-review: 97/100. Weakness: Azure networking and App Service domain setup remain conceptual rather than portal or infrastructure labs.
+- All three pages meet the 90-point minimum; average self-review: 96.3/100.
 - PR #8 opened to main; one Codex review requested; mentor review remains the final gate.
 
 M3.4 verification checkpoint:

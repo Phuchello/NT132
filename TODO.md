@@ -119,7 +119,7 @@
 - [x] Add service/platform traces, project-readiness prompts, troubleshooting hierarchies, and provenance sections.
 - [x] Complete 390px semantic/bounds review for all six diagrams.
 - [x] Run full local QA and generated-artifact audit.
-- [x] Complete honest rubric self-review: Windows 95/100, Linux 94/100, Cloud 95/100, average 94.7/100.
+- [x] Complete honest rubric self-review: Windows 96/100, Linux 96/100, Cloud 97/100, average 96.3/100.
 - [x] Push the complete M3.4 head and open one PR to main.
 - [x] Request the single Codex review.
 - Current blocker: resolve current Codex P2 + mentor visual-semantic findings.
