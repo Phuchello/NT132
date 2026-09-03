@@ -110,7 +110,7 @@
 - M3.3 production workflow: run #58 / ID `33736529578`.
 - Current branch: `feat/m3-4-server-platforms`.
 - Current PR: #8.
-- No M3.4 PR has been opened.
+- PR #8 is open; one Codex review request has been posted.
 - [x] Verify and read all three Class-B course PDFs in full.
 - [x] Record the source-scope boundary: platform/project objectives from Class B; detailed mechanics separately sourced or author-derived.
 - [x] Keep the source PDFs outside the repository.
