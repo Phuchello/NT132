@@ -1,6 +1,6 @@
 ---
 title: Linux Administration - Quan sát, thay đổi và troubleshoot host
-description: Quản trị Linux theo state: shell, privilege, UID/GID, network, DNS, SSH và service operation.
+description: "Quản trị Linux theo state: shell, privilege, UID/GID, network, DNS, SSH và service operation."
 tags:
   - nt132
   - linux-administration
@@ -162,13 +162,13 @@ Filesystem ownership và permission checks cuối cùng dựa trên UID/GID cred
 
 ### Account files
 
-| File | Vai trò nên nhớ |
-| --- | --- |
-| `/etc/passwd` | Basic account identity fields như name, numeric UID/GID, comment, home và login shell trên hệ thống local. Trên shadow-password system, không coi đây là nơi chứa current password hash. |
-| `/etc/shadow` | Protected password hash và aging-related data trên shadow-based systems; không dump hash hoặc password vào bài học. |
-| `/etc/group` | Group definitions và một phần supplementary membership representation. Không dùng grep file này như universal membership oracle. |
-| `/etc/login.defs` | Policy/default inputs cho shadow tools và account behavior; range không phải một Linux law giống nhau ở mọi distribution. |
-| `/etc/default/useradd` | Default inputs cho `useradd` tùy implementation/tooling. |
+| File                   | Vai trò nên nhớ                                                                                                                                                                          |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/etc/passwd`          | Basic account identity fields như name, numeric UID/GID, comment, home và login shell trên hệ thống local. Trên shadow-password system, không coi đây là nơi chứa current password hash. |
+| `/etc/shadow`          | Protected password hash và aging-related data trên shadow-based systems; không dump hash hoặc password vào bài học.                                                                      |
+| `/etc/group`           | Group definitions và một phần supplementary membership representation. Không dùng grep file này như universal membership oracle.                                                         |
+| `/etc/login.defs`      | Policy/default inputs cho shadow tools và account behavior; range không phải một Linux law giống nhau ở mọi distribution.                                                                |
+| `/etc/default/useradd` | Default inputs cho `useradd` tùy implementation/tooling.                                                                                                                                 |
 
 Directory service, LDAP, winbind hoặc NSS module có thể làm account state đến từ nguồn khác ngoài local files. `getent` là cách quan sát qua name-service configuration khi cần.
 
@@ -317,18 +317,18 @@ Slide pages 37-38 dùng `/etc/sysconfig/network-scripts/ifcfg-eth0` với các k
 
 ## 9. Tool → diagnostic question
 
-| Tool | Câu hỏi state mà nó trả lời | Ghi chú currentness |
-| --- | --- | --- |
-| `ip link` | Interface có tồn tại và link/administrative state ra sao? | CURRENT PRIMARY MENTAL MODEL |
-| `ip addr` | Address/prefix nào đang được gắn? | CURRENT PRIMARY MENTAL MODEL |
-| `ip route` | Destination sẽ đi qua route/interface nào? | CURRENT PRIMARY MENTAL MODEL |
-| `ping` | ICMP/reachability path theo policy hiện tại có phản hồi không? | Không chứng minh application health. |
-| `ss` | Socket nào đang listen hoặc connected? | CURRENT PRIMARY SOCKET TOOL |
-| `dig` / `host` | Resolver trả answer nào cho query? | Không command nào trong hai lệnh này cấu hình DNS. |
-| `ssh` | Có thể mở authenticated remote session tới host đáng tin không? | Kết hợp với host-key verification. |
-| `ifconfig` | Interface report theo tool lịch sử ra sao? | COURSE / LEGACY COMPATIBILITY |
-| `route` | Routing-table report theo tool lịch sử ra sao? | COURSE / LEGACY COMPATIBILITY |
-| `netstat` | Connection/socket/routing report theo tool lịch sử ra sao? | COURSE / LEGACY COMPATIBILITY; `ss` thường là lựa chọn hiện đại hơn. |
+| Tool           | Câu hỏi state mà nó trả lời                                     | Ghi chú currentness                                                  |
+| -------------- | --------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `ip link`      | Interface có tồn tại và link/administrative state ra sao?       | CURRENT PRIMARY MENTAL MODEL                                         |
+| `ip addr`      | Address/prefix nào đang được gắn?                               | CURRENT PRIMARY MENTAL MODEL                                         |
+| `ip route`     | Destination sẽ đi qua route/interface nào?                      | CURRENT PRIMARY MENTAL MODEL                                         |
+| `ping`         | ICMP/reachability path theo policy hiện tại có phản hồi không?  | Không chứng minh application health.                                 |
+| `ss`           | Socket nào đang listen hoặc connected?                          | CURRENT PRIMARY SOCKET TOOL                                          |
+| `dig` / `host` | Resolver trả answer nào cho query?                              | Không command nào trong hai lệnh này cấu hình DNS.                   |
+| `ssh`          | Có thể mở authenticated remote session tới host đáng tin không? | Kết hợp với host-key verification.                                   |
+| `ifconfig`     | Interface report theo tool lịch sử ra sao?                      | COURSE / LEGACY COMPATIBILITY                                        |
+| `route`        | Routing-table report theo tool lịch sử ra sao?                  | COURSE / LEGACY COMPATIBILITY                                        |
+| `netstat`      | Connection/socket/routing report theo tool lịch sử ra sao?      | COURSE / LEGACY COMPATIBILITY; `ss` thường là lựa chọn hiện đại hơn. |
 
 `ping` thành công chỉ là evidence về ICMP/reachability trên path đã thử. ICMP có thể bị filter; ngược lại web service có thể fail dù ping thành công. Hãy dùng `ss`, application request và log để đi tiếp.
 
@@ -497,19 +497,19 @@ Giả sử Linux Server ở Server VLAN 20 cung cấp web service cho client và
 - [passwd(5)](https://man7.org/linux/man-pages/man5/passwd.5.html), [shadow(5)](https://man7.org/linux/man-pages/man5/shadow.5.html), [group(5)](https://man7.org/linux/man-pages/man5/group.5.html) cho local account-file roles.
 - [NetworkManager nm-settings-nmcli](https://www.networkmanager.dev/docs/api/latest/nm-settings-nmcli.html) và [nm-settings-keyfile](https://networkmanager.dev/docs/api/latest/nm-settings-keyfile.html) cho connection profile/persistent-state boundary.
 - [nsswitch.conf(5)](https://man7.org/linux/man-pages/man5/nsswitch.conf.5.html), [resolv.conf(5)](https://man7.org/linux/man-pages/man5/resolv.conf.5.html) cho resolver policy và managed resolver state.
-- [OpenSSH manual](https://www.openssh.org/manual.html) và [ssh-keygen(1)](https://www.man7.org/linux/man-pages/man1/ssh-keygen.1@@openssh.html) cho algorithm-neutral host keys, fingerprints và `known_hosts` tooling.
+- [OpenSSH manual](https://www.openssh.org/manual.html) và [ssh-keygen(1)](https://man.openbsd.org/ssh-keygen) cho algorithm-neutral host keys, fingerprints và `known_hosts` tooling.
 
 ### C. Discrepancies handled
 
-| Course framing cần giữ | Cách dạy an toàn trong trang |
-| --- | --- |
-| BIOS → MBR → runlevel → scripts | Gắn nhãn LEGACY EXAMPLE và đặt cạnh current conceptual boot model. |
-| `init 0` / `init 6` | Giữ để nhận diện slide; ưu tiên `systemctl poweroff/reboot` khi systemd được giả định. |
-| GID/UID dưới 1000 | Nêu là policy example phụ thuộc distribution/configuration. |
-| `ifcfg-eth0`, `ifconfig`, `route`, `netstat` | Giữ terminology tương thích course, thêm current tools/profile boundary. |
-| `/etc/resolv.conf` | Dạy vai trò resolver input và khả năng được component khác generate/manage. |
-| RSA fingerprint | Đổi mental model thành algorithm-neutral SSH host key/fingerprint; RSA chỉ là ví dụ trên slide. |
-| Group deletion | Nêu caveat primary-group và file ownership theo shadow-utils behavior. |
+| Course framing cần giữ                       | Cách dạy an toàn trong trang                                                                    |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| BIOS → MBR → runlevel → scripts              | Gắn nhãn LEGACY EXAMPLE và đặt cạnh current conceptual boot model.                              |
+| `init 0` / `init 6`                          | Giữ để nhận diện slide; ưu tiên `systemctl poweroff/reboot` khi systemd được giả định.          |
+| GID/UID dưới 1000                            | Nêu là policy example phụ thuộc distribution/configuration.                                     |
+| `ifcfg-eth0`, `ifconfig`, `route`, `netstat` | Giữ terminology tương thích course, thêm current tools/profile boundary.                        |
+| `/etc/resolv.conf`                           | Dạy vai trò resolver input và khả năng được component khác generate/manage.                     |
+| RSA fingerprint                              | Đổi mental model thành algorithm-neutral SSH host key/fingerprint; RSA chỉ là ví dụ trên slide. |
+| Group deletion                               | Nêu caveat primary-group và file ownership theo shadow-utils behavior.                          |
 
 ### D. Author-derived
 
