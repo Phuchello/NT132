@@ -48,6 +48,10 @@ Các nội dung dưới đây thuộc baseline đang được xuất bản:
 - [NAT và PAT](https://phuchello.github.io/NT132/ly-thuyet/04-network-services/nat/)
 - [ACL](https://phuchello.github.io/NT132/ly-thuyet/04-network-services/acl/)
 - [ACL Wildcard Mask](https://phuchello.github.io/NT132/ly-thuyet/04-network-services/acl-wildcard-mask/)
+- [Server Platforms](https://phuchello.github.io/NT132/ly-thuyet/05-server-platforms/)
+- [Windows Server](https://phuchello.github.io/NT132/ly-thuyet/05-server-platforms/windows-server/)
+- [Linux Server](https://phuchello.github.io/NT132/ly-thuyet/05-server-platforms/linux-server/)
+- [Cloud Server](https://phuchello.github.io/NT132/ly-thuyet/05-server-platforms/cloud-server/)
 
 ## Feature highlights
 

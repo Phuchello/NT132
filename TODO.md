@@ -50,6 +50,7 @@
 - Previous milestone: M3.1 — production complete.
 - M3.1 merge commit: `6ece18f2aad49aa1a899b68dbcf1af31834a1036`.
 - M3.1 production workflow: `33406354082`.
+- Current branch: `feat/m3-3-network-services`.
 - Previous source-access blocker resolved: the required Class-B PDFs are attached to the Windows workspace and were read in full.
 - [x] Production hotfix: normalize all Cisco IOS configuration-mode transitions in M3.2 examples.
 - [x] Merge PR #6 and verify the M3.2 hotfix production workflow.
@@ -70,15 +71,18 @@
 ### M3.3 — Network Services, DHCP, NAT & ACL
 
 - Current milestone: M3.3 — PRODUCTION PASS / CLOSED.
-- Production merge commit: `be922db5c6fb8506879a5ce541eded2354d74d54`.
-- Production workflow: `33736529578` (Build and Deploy PASS).
-- PR #7: merged.
+- Production baseline: `be922db5c6fb8506879a5ce541eded2354d74d54`.
+- PR #7: merged into `main`.
 - Accepted content head: `5658ede65a708494efa92a32fcd16394cc785493`.
 - Mentor score: 95/100 — ACCEPTED.
+- M3.3 merge commit: `be922db5c6fb8506879a5ce541eded2354d74d54`.
+- M3.3 production workflow: run #58 / ID `33736529578`.
+- Production URL: https://phuchello.github.io/NT132/.
 - Previous milestone: M3.2 — production complete.
 - M3.2 content merge: `6e8343606d8007c8773d9f0417471b701909a03a`.
 - M3.2 hotfix merge: `1bc52ef6dedb946e64c0920d2b71ee0908b2966f`.
 - M3.2 hotfix production workflow: `33630246332`.
+- Release branch: `feat/m3-3-network-services`.
 - Canonical source directory: `C:\Users\lyle3\OneDrive\Documents\Môn học\Quản trị mạng và hệ thống`.
 - Expected source files: `4.1 Network Services.pdf`, `4.2 DHCP Overview.pdf`, `4.3 NAT overview.pdf`, `4.4 ACL Overview.pdf`, `4.5 ACL Wildcard mask.pdf`.
 - [x] Read and source-map all five Class-B PDFs in full.
@@ -93,13 +97,37 @@
 - [x] Run full local QA, generated-artifact audit, and CLI-mode audit.
 - [x] Push the remediation commits to the existing PR #7.
 - [x] Complete mentor review: 95/100 — ACCEPTED.
-- [x] M3.3 — PRODUCTION PASS / CLOSED.
-- Exact Next Action: create M3.4 Server Platforms branch from production main and perform source/inventory reconnaissance before authoring content.
+- [x] Run release-only CI and verify the release-only diff.
+- [x] Squash-merge PR #7 into `main`.
+- [x] Verify the exact-merge production build, deployment, and HTTPS smoke test.
+- [x] Create the fresh M3.4 branch from production `main`.
 
-### M3.2+ — Remaining theory chapters and practical lab curriculum
+### M3.4 — Server Platforms
 
-- [ ] Author remaining theory chapters (Network Services, DHCP, NAT, ACL, Server Platforms, Administration, Cloud Computing, Management/NMS).
-- [ ] Add practical lab guides and Packet Tracer topologies.
+- Current milestone: M3.4 — mentor PASS / release pending.
+- Previous milestone: M3.3 — production complete.
+- M3.3 merge commit: `be922db5c6fb8506879a5ce541eded2354d74d54`.
+- M3.3 production workflow: run #58 / ID `33736529578`.
+- Current branch: `feat/m3-4-server-platforms`.
+- Current PR: #8.
+- PR #8 is open; one Codex review request has been posted.
+- Accepted substantive head: `285a46501f12f83eb6888ca2f759dc64e39bf61d`.
+- Mentor score: 95/100 — ACCEPTED.
+- [x] Verify and read all three Class-B course PDFs in full.
+- [x] Record the source-scope boundary: platform/project objectives from Class B; detailed mechanics separately sourced or author-derived.
+- [x] Keep the source PDFs outside the repository.
+- [x] Author the locked gateway, Windows Server, Linux Server, and Cloud Server pages.
+- [x] Add six original focused diagrams and extend the generated-artifact audit with M3.4 routes/assets.
+- [x] Add service/platform traces, project-readiness prompts, troubleshooting hierarchies, and provenance sections.
+- [x] Complete 390px semantic/bounds review for all six diagrams.
+- [x] Run full local QA and generated-artifact audit.
+- [x] Complete honest rubric self-review: Windows 96/100, Linux 96/100, Cloud 97/100, average 96.3/100.
+- [x] Push the complete M3.4 head and open one PR to main.
+- [x] Request the single Codex review.
+- [x] Resolve current Codex P2 and mentor visual-semantic findings.
+- [x] Complete mentor re-review: 95/100 — ACCEPTED.
+- Current blocker: release pending after accepted M3.4 mentor review.
+- Exact Next Action: release-only CI -> squash merge PR #8 -> production deploy -> smoke audit -> prepare M3.5 Linux Administration branch
 
 ## M4 — Exam preparation and exam intelligence
 
