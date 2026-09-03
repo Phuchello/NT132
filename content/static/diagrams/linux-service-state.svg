@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 610" role="img" aria-labelledby="title desc">
+  <title id="title">Linux service operational state</title>
+  <desc id="desc">A Linux service is checked from configuration through process, socket, network path, application response and authorization, with logs providing evidence beside every step.</desc>
+  <style>
+    .bg{fill:#f8fafc}.title{font:700 21px sans-serif;fill:#0f172a}.sub{font:12px sans-serif;fill:#475569}
+    .box{fill:#fff;stroke:#2563eb;stroke-width:2;rx:10}.result{fill:#ecfdf5;stroke:#059669;stroke-width:2;rx:10}.logs{fill:#fff7ed;stroke:#ea580c;stroke-width:2;rx:10}
+    .h{font:700 15px sans-serif;fill:#0f172a}.t{font:12px sans-serif;fill:#334155}.line{stroke:#475569;stroke-width:3}
+  </style>
+  <rect class="bg" width="390" height="610"/>
+  <line class="line" x1="195" y1="121" x2="195" y2="140"/><line class="line" x1="195" y1="181" x2="195" y2="200"/><line class="line" x1="195" y1="241" x2="195" y2="260"/><line class="line" x1="195" y1="301" x2="195" y2="320"/><line class="line" x1="195" y1="361" x2="195" y2="380"/>
+  <rect class="box" x="28" y="76" width="334" height="45"/><rect class="box" x="28" y="140" width="334" height="41"/><rect class="box" x="28" y="200" width="334" height="41"/><rect class="box" x="28" y="260" width="334" height="41"/><rect class="box" x="28" y="320" width="334" height="41"/><rect class="result" x="28" y="380" width="334" height="45"/>
+  <rect class="logs" x="28" y="475" width="334" height="72"/>
+  <text class="title" x="195" y="29" text-anchor="middle">Service operational state</text>
+  <text class="sub" x="195" y="50" text-anchor="middle">running is evidence, not the final answer</text>
+  <text class="h" x="195" y="104" text-anchor="middle">Configured?</text><text class="h" x="195" y="166" text-anchor="middle">Process / service running?</text><text class="h" x="195" y="226" text-anchor="middle">Socket / listener present?</text><text class="h" x="195" y="286" text-anchor="middle">Network path permitted?</text><text class="h" x="195" y="346" text-anchor="middle">Application request succeeds?</text><text class="h" x="195" y="408" text-anchor="middle">Authorization / data correct?</text>
+  <text class="h" x="195" y="503" text-anchor="middle">Logs sit beside every question</text><text class="t" x="195" y="526" text-anchor="middle">Use status, journal and application evidence together.</text>
+</svg>
