@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 520" role="img" aria-labelledby="title desc">
+  <title id="title">ACL inbound and outbound directions</title>
+  <desc id="desc">Inbound and outbound are defined relative to an interface: entering the interface versus leaving the interface.</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#2563eb"/></marker></defs>
+  <style>
+    .bg{fill:#f8fafc}.title{font:700 20px sans-serif;fill:#0f172a}.sub{font:13px sans-serif;fill:#475569}
+    .box{fill:#fff;stroke:#2563eb;stroke-width:2;rx:12}.if{fill:#eff6ff;stroke:#1d4ed8;stroke-width:2;rx:12}.h{font:700 15px sans-serif;fill:#0f172a}
+    .t{font:12px sans-serif;fill:#334155}.in{fill:#fef2f2;stroke:#b91c1c;stroke-width:2;rx:10}.out{fill:#ecfdf5;stroke:#047857;stroke-width:2;rx:10}
+    .arr{stroke:#2563eb;stroke-width:3;marker-end:url(#arrow)}
+  </style>
+  <rect class="bg" width="390" height="520"/>
+  <text class="title" x="195" y="31" text-anchor="middle">ACL direction</text>
+  <text class="sub" x="195" y="52" text-anchor="middle">đọc từ góc nhìn của interface</text>
+  <rect class="box" x="22" y="104" width="100" height="68"/><text class="h" x="72" y="133" text-anchor="middle">packet</text><text class="t" x="72" y="153" text-anchor="middle">đang đi tới router</text>
+  <rect class="if" x="145" y="92" width="100" height="92"/><text class="h" x="195" y="124" text-anchor="middle">interface</text><text class="t" x="195" y="146" text-anchor="middle">G0/0/0</text><text class="t" x="195" y="166" text-anchor="middle">ACL attached</text>
+  <rect class="box" x="268" y="104" width="100" height="68"/><text class="h" x="318" y="133" text-anchor="middle">router</text><text class="t" x="318" y="153" text-anchor="middle">xử lý tiếp</text>
+  <line class="arr" x1="126" y1="138" x2="141" y2="138"/><line class="arr" x1="249" y1="138" x2="264" y2="138"/>
+  <rect class="in" x="28" y="240" width="334" height="72"/><text class="h" x="195" y="268" text-anchor="middle">INBOUND</text><text class="t" x="195" y="290" text-anchor="middle">packet đi vào interface đó rồi mới được xét</text>
+  <rect class="out" x="28" y="346" width="334" height="72"/><text class="h" x="195" y="374" text-anchor="middle">OUTBOUND</text><text class="t" x="195" y="396" text-anchor="middle">packet đã chọn egress, chuẩn bị rời interface đó</text>
+  <text class="t" x="195" y="463" text-anchor="middle">in/out không đồng nghĩa LAN/Internet.</text>
+</svg>

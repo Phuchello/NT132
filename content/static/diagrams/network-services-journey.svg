@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 610" role="img" aria-labelledby="title desc">
+  <title id="title">Network Services journey</title>
+  <desc id="desc">A shared author topology connects DHCP, relay, routing, ACL and NAT PAT from PC-A to an Internet web server.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#2563eb"/></marker>
+  </defs>
+  <style>
+    .bg{fill:#f8fafc}.title{font:700 22px sans-serif;fill:#0f172a}.sub{font:13px sans-serif;fill:#475569}
+    .n{fill:#fff;stroke:#2563eb;stroke-width:2;rx:12}.num{font:700 16px sans-serif;fill:#2563eb}
+    .h{font:700 15px sans-serif;fill:#0f172a}.t{font:12px sans-serif;fill:#334155}.small{font:11px sans-serif;fill:#64748b}
+    .line{stroke:#2563eb;stroke-width:3;marker-end:url(#arrow)}.dash{stroke:#94a3b8;stroke-width:1.5;stroke-dasharray:5 4}
+  </style>
+  <rect class="bg" width="390" height="610"/>
+  <text class="title" x="195" y="32" text-anchor="middle">Network Services</text>
+  <text class="sub" x="195" y="53" text-anchor="middle">một topology, năm điểm xử lý</text>
+  <rect class="n" x="25" y="70" width="340" height="74"/>
+  <text class="num" x="45" y="96">1</text><text class="h" x="70" y="96">DHCP cấp cấu hình</text>
+  <text class="t" x="70" y="117">PC-A VLAN 10 → lease 192.168.10.10/24</text>
+  <text class="small" x="70" y="135">gateway 192.168.10.1 · DNS theo scope</text>
+  <line class="line" x1="195" y1="144" x2="195" y2="164"/>
+  <rect class="n" x="25" y="166" width="340" height="74"/>
+  <text class="num" x="45" y="192">2</text><text class="h" x="70" y="192">Relay nối broadcast domain</text>
+  <text class="t" x="70" y="213">VLAN 10 → gateway/relay → DHCP Server</text>
+  <text class="small" x="70" y="231">192.168.20.10 · giaddr theo subnet client</text>
+  <line class="line" x1="195" y1="240" x2="195" y2="260"/>
+  <rect class="n" x="25" y="262" width="340" height="74"/>
+  <text class="num" x="45" y="288">3</text><text class="h" x="70" y="288">Routing chọn next hop</text>
+  <text class="t" x="70" y="309">PC-A → default gateway → edge</text>
+  <text class="small" x="70" y="327">IP đích vẫn là web server, MAC đổi theo hop</text>
+  <line class="line" x1="195" y1="336" x2="195" y2="356"/>
+  <rect class="n" x="25" y="358" width="340" height="74"/>
+  <text class="num" x="45" y="384">4</text><text class="h" x="70" y="384">ACL xét policy</text>
+  <text class="t" x="70" y="405">interface direction → rule order → permit/deny</text>
+  <text class="small" x="70" y="423">in/out đọc theo interface, không theo tên mạng</text>
+  <line class="line" x1="195" y1="432" x2="195" y2="452"/>
+  <rect class="n" x="25" y="454" width="340" height="74"/>
+  <text class="num" x="45" y="480">5</text><text class="h" x="70" y="480">NAT/PAT đại diện flow</text>
+  <text class="t" x="70" y="501">inside 192.168.10.10 → outside 198.51.100.10</text>
+  <text class="small" x="70" y="519">Web Server: 203.0.113.80 · mapping tra hai chiều</text>
+  <line class="dash" x1="25" y1="555" x2="365" y2="555"/>
+  <text class="small" x="195" y="579" text-anchor="middle">DHCP → relay → route → ACL → NAT/PAT</text>
+</svg>

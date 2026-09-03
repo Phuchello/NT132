@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 500" role="img" aria-labelledby="title desc">
+  <title id="title">Static port forwarding</title>
+  <desc id="desc">An external client addresses a public IP and port; a static mapping changes the destination to a private server IP and port.</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#2563eb"/></marker></defs>
+  <style>
+    .bg{fill:#f8fafc}.title{font:700 21px sans-serif;fill:#0f172a}.sub{font:13px sans-serif;fill:#475569}
+    .box{fill:#fff;stroke:#2563eb;stroke-width:2;rx:12}.edge{fill:#fff7ed;stroke:#c2410c;stroke-width:2;rx:12}.map{fill:#ecfdf5;stroke:#047857;stroke-width:2;rx:12}
+    .h{font:700 14px sans-serif;fill:#0f172a}.t{font:12px sans-serif;fill:#334155}.note{font:700 12px sans-serif;fill:#b45309}.arr{stroke:#2563eb;stroke-width:3;marker-end:url(#arrow)}
+  </style>
+  <rect class="bg" width="390" height="500"/>
+  <text class="title" x="195" y="31" text-anchor="middle">Port forwarding</text>
+  <text class="sub" x="195" y="52" text-anchor="middle">inbound static mapping</text>
+  <rect class="box" x="18" y="104" width="105" height="76"/><text class="h" x="70" y="130" text-anchor="middle">External</text><text class="t" x="70" y="150" text-anchor="middle">client</text><text class="t" x="70" y="168" text-anchor="middle">203.0.113.50</text>
+  <rect class="edge" x="142" y="90" width="106" height="104"/><text class="h" x="195" y="120" text-anchor="middle">NAT edge</text><text class="t" x="195" y="143" text-anchor="middle">public listener</text><text class="t" x="195" y="162" text-anchor="middle">198.51.100.10</text><text class="t" x="195" y="181" text-anchor="middle">:8443</text>
+  <rect class="box" x="267" y="104" width="105" height="76"/><text class="h" x="319" y="130" text-anchor="middle">Private</text><text class="t" x="319" y="150" text-anchor="middle">server</text><text class="t" x="319" y="168" text-anchor="middle">192.168.20.10:443</text>
+  <line class="arr" x1="126" y1="142" x2="138" y2="142"/><line class="arr" x1="249" y1="142" x2="263" y2="142"/>
+  <rect class="map" x="36" y="250" width="318" height="88"/><text class="h" x="195" y="278" text-anchor="middle">static rule</text><text class="t" x="195" y="301" text-anchor="middle">198.51.100.10:8443 → 192.168.20.10:443</text><text class="t" x="195" y="322" text-anchor="middle">đổi destination theo mapping đã khai báo</text>
+  <text class="note" x="195" y="382" text-anchor="middle">Không có automatic discovery server bên trong</text>
+  <text class="t" x="195" y="417" text-anchor="middle">Cần verify listener, ACL và route quay về.</text>
+  <text class="t" x="195" y="451" text-anchor="middle">NAT mapping không đồng nghĩa dịch vụ an toàn.</text>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 500" role="img" aria-labelledby="title desc">
+  <title id="title">DHCP DORA message sequence</title>
+  <desc id="desc">Four DHCP messages move between a client and a server: Discover, Offer, Request and ACK.</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#2563eb"/></marker></defs>
+  <style>
+    .bg{fill:#f8fafc}.title{font:700 22px sans-serif;fill:#0f172a}.sub{font:13px sans-serif;fill:#475569}
+    .box{fill:#fff;stroke:#2563eb;stroke-width:2;rx:12}.h{font:700 15px sans-serif;fill:#0f172a}.t{font:12px sans-serif;fill:#334155}
+    .lane{stroke:#cbd5e1;stroke-width:2;stroke-dasharray:5 5}.arr{stroke:#2563eb;stroke-width:3;marker-end:url(#arrow)}
+  </style>
+  <rect class="bg" width="390" height="500"/>
+  <text class="title" x="195" y="32" text-anchor="middle">DHCP DORA</text>
+  <text class="sub" x="195" y="53" text-anchor="middle">một transaction, bốn message</text>
+  <rect class="box" x="24" y="82" width="132" height="55"/><text class="h" x="90" y="106" text-anchor="middle">Client</text><text class="t" x="90" y="124" text-anchor="middle">VLAN 10</text>
+  <rect class="box" x="234" y="82" width="132" height="55"/><text class="h" x="300" y="106" text-anchor="middle">DHCP Server</text><text class="t" x="300" y="124" text-anchor="middle">scope / lease</text>
+  <line class="lane" x1="90" y1="148" x2="90" y2="445"/><line class="lane" x1="300" y1="148" x2="300" y2="445"/>
+  <line class="arr" x1="105" y1="190" x2="285" y2="190"/><text class="h" x="195" y="181" text-anchor="middle">1 · Discover</text><text class="t" x="195" y="209" text-anchor="middle">tìm server</text>
+  <line class="arr" x1="285" y1="260" x2="105" y2="260"/><text class="h" x="195" y="251" text-anchor="middle">2 · Offer</text><text class="t" x="195" y="279" text-anchor="middle">đề nghị lease</text>
+  <line class="arr" x1="105" y1="330" x2="285" y2="330"/><text class="h" x="195" y="321" text-anchor="middle">3 · Request</text><text class="t" x="195" y="349" text-anchor="middle">chọn và yêu cầu</text>
+  <line class="arr" x1="285" y1="400" x2="105" y2="400"/><text class="h" x="195" y="391" text-anchor="middle">4 · ACK</text><text class="t" x="195" y="419" text-anchor="middle">xác nhận lease</text>
+  <text class="t" x="195" y="466" text-anchor="middle">XID giữ liên kết của cùng một exchange</text>
+</svg>

@@ -50,9 +50,10 @@
 - Previous milestone: M3.1 — production complete.
 - M3.1 merge commit: `6ece18f2aad49aa1a899b68dbcf1af31834a1036`.
 - M3.1 production workflow: `33406354082`.
-- Current branch: `fix/m3-2-cli-mode-transitions`.
+- Current branch: `feat/m3-3-network-services`.
 - Previous source-access blocker resolved: the required Class-B PDFs are attached to the Windows workspace and were read in full.
 - [x] Production hotfix: normalize all Cisco IOS configuration-mode transitions in M3.2 examples.
+- [x] Merge PR #6 and verify the M3.2 hotfix production workflow.
 - [x] Author Switching and VLAN theory page.
 - [x] Author Inter-VLAN Routing theory page.
 - [x] Create original mobile-first diagrams for VLAN physical/logical membership, access/trunk, Legacy, Router-on-a-stick, and Multilayer/SVI routing.
@@ -62,9 +63,39 @@
 - [x] Final micro-remediation: complete the VLAN 20 endpoint configuration, state IPv4 TTL decrement precisely, and correct access/trunk teaching captions.
 - [x] Run full local QA, artifact audit, and mobile/desktop visual verification.
 - [x] Push branch and open one PR to `main` (PR #5).
-- [ ] Wait for mentor M3.2 production-hotfix review; do not merge.
-- GitHub Actions hotfix PR build: pending; deployment requires a reviewed hotfix merge.
-- Exact Next Action: fix -> review -> merge hotfix -> redeploy -> mentor closeout
+- M3.2 content merge: `6e8343606d8007c8773d9f0417471b701909a03a`.
+- M3.2 hotfix merge: `1bc52ef6dedb946e64c0920d2b71ee0908b2966f`.
+- M3.2 hotfix production workflow: `33630246332` (Build and Deploy PASS).
+- [x] M3.2 — PRODUCTION PASS / CLOSED.
+
+### M3.3 — Network Services, DHCP, NAT & ACL
+
+- Current milestone: M3.3 — mentor PASS / release pending.
+- Production baseline: `1bc52ef6dedb946e64c0920d2b71ee0908b2966f`.
+- Current PR: #7.
+- Accepted content head: `5658ede65a708494efa92a32fcd16394cc785493`.
+- Mentor score: 95/100 — ACCEPTED.
+- Previous milestone: M3.2 — production complete.
+- M3.2 content merge: `6e8343606d8007c8773d9f0417471b701909a03a`.
+- M3.2 hotfix merge: `1bc52ef6dedb946e64c0920d2b71ee0908b2966f`.
+- M3.2 hotfix production workflow: `33630246332`.
+- Current branch: `feat/m3-3-network-services`.
+- Canonical source directory: `C:\Users\lyle3\OneDrive\Documents\Môn học\Quản trị mạng và hệ thống`.
+- Expected source files: `4.1 Network Services.pdf`, `4.2 DHCP Overview.pdf`, `4.3 NAT overview.pdf`, `4.4 ACL Overview.pdf`, `4.5 ACL Wildcard mask.pdf`.
+- [x] Read and source-map all five Class-B PDFs in full.
+- [x] Author the canonical Network Services index and five substantive theory pages.
+- [x] Restore canonical page filenames and route links.
+- [x] Create eight focused original mobile-first diagrams and add them to the artifact audit.
+- [x] Add the shared M3.3 topology, DHCP single-XID/RFC 2131 trace, relay trace, and integrative packet trace.
+- [x] Add explicit troubleshooting/application prompts to each core page.
+- [x] Fix numbered IPv4 ACL ranges and the malformed overview command table.
+- [x] Refresh the public README in one isolated documentation commit.
+- [x] Label supplementary Cisco semantics and preserve the course-derived framing.
+- [x] Run full local QA, generated-artifact audit, and CLI-mode audit.
+- [x] Push the remediation commits to the existing PR #7.
+- [x] Complete mentor review: 95/100 — ACCEPTED.
+- [ ] Run release-only CI, squash merge PR #7, verify production deployment, and create M3.4 branch.
+- Exact Next Action: run release-only CI -> squash merge PR #7 -> verify production deployment -> create M3.4 branch from production main.
 
 ### M3.2+ — Remaining theory chapters and practical lab curriculum
 
