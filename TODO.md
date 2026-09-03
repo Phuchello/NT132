@@ -70,16 +70,19 @@
 
 ### M3.3 — Network Services, DHCP, NAT & ACL
 
-- Current milestone: M3.3 — mentor PASS / release pending.
-- Production baseline: `1bc52ef6dedb946e64c0920d2b71ee0908b2966f`.
-- Current PR: #7.
+- Current milestone: M3.3 — PRODUCTION PASS / CLOSED.
+- Production baseline: `be922db5c6fb8506879a5ce541eded2354d74d54`.
+- PR #7: merged into `main`.
 - Accepted content head: `5658ede65a708494efa92a32fcd16394cc785493`.
 - Mentor score: 95/100 — ACCEPTED.
+- M3.3 merge commit: `be922db5c6fb8506879a5ce541eded2354d74d54`.
+- M3.3 production workflow: run #58 / ID `33736529578`.
+- Production URL: https://phuchello.github.io/NT132/.
 - Previous milestone: M3.2 — production complete.
 - M3.2 content merge: `6e8343606d8007c8773d9f0417471b701909a03a`.
 - M3.2 hotfix merge: `1bc52ef6dedb946e64c0920d2b71ee0908b2966f`.
 - M3.2 hotfix production workflow: `33630246332`.
-- Current branch: `feat/m3-3-network-services`.
+- Release branch: `feat/m3-3-network-services`.
 - Canonical source directory: `C:\Users\lyle3\OneDrive\Documents\Môn học\Quản trị mạng và hệ thống`.
 - Expected source files: `4.1 Network Services.pdf`, `4.2 DHCP Overview.pdf`, `4.3 NAT overview.pdf`, `4.4 ACL Overview.pdf`, `4.5 ACL Wildcard mask.pdf`.
 - [x] Read and source-map all five Class-B PDFs in full.
@@ -94,13 +97,22 @@
 - [x] Run full local QA, generated-artifact audit, and CLI-mode audit.
 - [x] Push the remediation commits to the existing PR #7.
 - [x] Complete mentor review: 95/100 — ACCEPTED.
-- [ ] Run release-only CI, squash merge PR #7, verify production deployment, and create M3.4 branch.
-- Exact Next Action: run release-only CI -> squash merge PR #7 -> verify production deployment -> create M3.4 branch from production main.
+- [x] Run release-only CI and verify the release-only diff.
+- [x] Squash-merge PR #7 into `main`.
+- [x] Verify the exact-merge production build, deployment, and HTTPS smoke test.
+- [x] Create the fresh M3.4 branch from production `main`.
 
-### M3.2+ — Remaining theory chapters and practical lab curriculum
+### M3.4 — Server Platforms
 
-- [ ] Author remaining theory chapters (Network Services, DHCP, NAT, ACL, Server Platforms, Administration, Cloud Computing, Management/NMS).
-- [ ] Add practical lab guides and Packet Tracer topologies.
+- Current milestone: M3.4 — Server Platforms / awaiting mentor prompt.
+- Previous milestone: M3.3 — production complete.
+- M3.3 merge commit: `be922db5c6fb8506879a5ce541eded2354d74d54`.
+- M3.3 production workflow: run #58 / ID `33736529578`.
+- Current branch: `feat/m3-4-server-platforms`.
+- No M3.4 content or placeholder student-facing pages have been authored.
+- No M3.4 PR has been opened.
+- [ ] Wait for mentor M3.4 implementation prompt.
+- Exact Next Action: wait for mentor M3.4 prompt.
 
 ## M4 — Exam preparation and exam intelligence
 

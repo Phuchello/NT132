@@ -1,28 +1,39 @@
 # NT132 Project State
 
-Current milestone: M3.3 — mentor PASS / release pending
+Current milestone: M3.4 — Server Platforms / awaiting mentor prompt
 
-Previous milestone: M3.2 — production complete
+Previous milestone: M3.3 — production complete
 
-Current branch: feat/m3-3-network-services
+Current branch: feat/m3-4-server-platforms
 
-Last safe checkpoint: M3.2 received mentor PASS, PR #6 was squash-merged into main, and the hotfix passed the production GitHub Pages build, deployment, and production CLI verification.
+Last safe checkpoint: M3.3 received mentor PASS, PR #7 was squash-merged into main, and the release passed the production GitHub Pages build, deployment, and HTTPS smoke verification.
 
 M3.1 merge commit: 6ece18f2aad49aa1a899b68dbcf1af31834a1036
 
 M3.1 production workflow: 33406354082
 
-Latest production commit: 1bc52ef6dedb946e64c0920d2b71ee0908b2966f
+Latest production commit: be922db5c6fb8506879a5ce541eded2354d74d54
 
-Production baseline: 1bc52ef6dedb946e64c0920d2b71ee0908b2966f
+Production baseline: be922db5c6fb8506879a5ce541eded2354d74d54
 
-Current PR: #7
+Current PR: none (M3.4 PR not opened)
 
 M3.3 release checkpoint:
 
 - Accepted content head: `5658ede65a708494efa92a32fcd16394cc785493`
 - Mentor score: 95/100 — ACCEPTED
-- Status: M3.3 — mentor PASS / release pending
+- PR #7 squash merge commit: `be922db5c6fb8506879a5ce541eded2354d74d54`
+- Production workflow: run #58 / ID `33736529578`
+- Pages artifact: `github-pages`, ID `9885958812`, digest `sha256:2047cd848a3b352aaeb1e363cfd5206b64d9c2355058ce8b38bf7b26daabd3dd`
+- Production URL: https://phuchello.github.io/NT132/
+- Status: M3.3 — PRODUCTION PASS / CLOSED
+
+M3.4 handoff:
+
+- Current milestone: M3.4 — Server Platforms / awaiting mentor prompt
+- Current branch: feat/m3-4-server-platforms
+- No M3.4 theory content or student-facing placeholder pages have been authored.
+- No M3.4 PR has been opened.
 
 Latest reviewed implementation commit: 1662e5a516440cc57393930a6c4e45c91cbea2a9
 
@@ -92,9 +103,9 @@ M3.3 remediation checkpoint:
 - Added explicit troubleshooting/application prompts to DHCP, NAT, ACL, and ACL wildcard pages.
 - Refreshed README as a separate documentation commit after content remediation.
 
-Current blocker: release-only CI, squash merge, and production verification pending
+Current blocker: mentor M3.4 implementation prompt
 
-Exact Next Action: run release-only CI -> squash merge PR #7 -> verify production deployment -> create M3.4 branch from production main
+Exact Next Action: wait for mentor M3.4 prompt
 
 M3.2 final micro-remediation completed locally:
 
