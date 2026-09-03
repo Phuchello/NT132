@@ -56,12 +56,12 @@ Trong slide, một số transaction ID giữa các message được trình bày 
 
 Bảng dưới đây là trace original với cùng một transaction ID <code>0xA1327C4E</code> từ Discover đến ACK. Các dòng Offer/ACK ghi IP của leg server → relay; relay sau đó phân phối message ở phía client VLAN. Vì vậy SIP/DIP có thể khác giữa hai leg, nhưng transaction ID và client state vẫn nối cùng một cuộc trao đổi.
 
-| Bước | Message  | SIP                        | DIP                               | UDP source | UDP destination | Transaction ID          | Offered / assigned address          | Lease / client state   |
-| ---- | -------- | -------------------------- | --------------------------------- | ---------- | --------------- | ----------------------- | ----------------------------------- | ---------------------- |
-| 1    | Discover | <code>0.0.0.0</code>       | <code>255.255.255.255</code>      | 68         | 67              | <code>0xA1327C4E</code> | chưa có                             | INIT / SELECTING       |
-| 2    | Offer    | <code>192.168.20.10</code> | <code>192.168.10.1</code> (relay) | 67         | 67              | <code>0xA1327C4E</code> | <code>192.168.10.10</code>          | OFFER received         |
-| 3    | Request  | <code>0.0.0.0</code>       | <code>255.255.255.255</code>      | 68         | 67              | <code>0xA1327C4E</code> | yêu cầu <code>192.168.10.10</code>  | REQUESTING             |
-| 4    | ACK      | <code>192.168.20.10</code> | <code>192.168.10.1</code> (relay) | 67         | 67              | <code>0xA1327C4E</code> | xác nhận <code>192.168.10.10</code> | BOUND, lease hoạt động |
+| Bước | Message  | SIP                        | DIP                               | UDP source | UDP destination | Transaction ID          | Offered / assigned address          | Lease / client state                                    |
+| ---- | -------- | -------------------------- | --------------------------------- | ---------- | --------------- | ----------------------- | ----------------------------------- | ------------------------------------------------------- |
+| 1    | Discover | <code>0.0.0.0</code>       | <code>255.255.255.255</code>      | 68         | 67              | <code>0xA1327C4E</code> | chưa có                             | INIT / SELECTING                                        |
+| 2    | Offer    | <code>192.168.20.10</code> | <code>192.168.10.1</code> (relay) | 67         | 67              | <code>0xA1327C4E</code> | <code>192.168.10.10</code>          | relay received; client still awaiting delivery          |
+| 3    | Request  | <code>0.0.0.0</code>       | <code>255.255.255.255</code>      | 68         | 67              | <code>0xA1327C4E</code> | yêu cầu <code>192.168.10.10</code>  | REQUESTING                                              |
+| 4    | ACK      | <code>192.168.20.10</code> | <code>192.168.10.1</code> (relay) | 67         | 67              | <code>0xA1327C4E</code> | xác nhận <code>192.168.10.10</code> | relay received ACK; client becomes BOUND after delivery |
 
 Sau khi relay nhận Offer hoặc ACK, leg phía VLAN 10 có thể là broadcast hoặc unicast tùy cờ và trạng thái client. <code>giaddr=192.168.10.1</code> giúp server nhận diện subnet cần chọn pool; nó không biến relay thành DHCP server. [RFC 2131](https://www.rfc-editor.org/rfc/rfc2131.html) là tài liệu bổ trợ để đối chiếu transaction matching và các state của DHCP; bảng trên vẫn giữ DORA theo cách trình bày của Class B.
 
@@ -100,19 +100,19 @@ Router# show ip dhcp pool
 
 Đây là **SUPPLEMENTARY CISCO**. Slide tập trung vào vai trò server; cú pháp pool và output phụ thuộc IOS/platform.
 
-### Router làm DHCP relay
+### Multilayer Switch làm DHCP relay
 
-Khi client và server khác mạng, relay nhận broadcast ở interface phía client và chuyển tiếp tới server. Slide thể hiện ý tưởng này bằng `ip helper-address 192.168.10.10`: relay không gửi broadcast nguyên vẹn qua router; nó dùng địa chỉ server làm đích chuyển tiếp.
+Khi client và server khác mạng, relay nhận broadcast ở interface phía client và chuyển tiếp tới server. Trong topology chung, một Multilayer Switch / L3 Gateway dùng SVI VLAN 10 và chuyển tới DHCP Server `192.168.20.10`; relay không gửi broadcast nguyên vẹn qua router mà dùng địa chỉ server làm đích chuyển tiếp.
 
 ```text
-Router# configure terminal
-Router(config)# interface vlan 10
-Router(config-if)# ip address 192.168.1.1 255.255.255.0
-Router(config-if)# ip helper-address 192.168.10.10
-Router(config-if)# exit
-Router(config)# end
+Switch# configure terminal
+Switch(config)# interface vlan 10
+Switch(config-if)# ip address 192.168.10.1 255.255.255.0
+Switch(config-if)# ip helper-address 192.168.20.10
+Switch(config-if)# exit
+Switch(config)# end
 
-Router# show running-config interface vlan 10
+Switch# show running-config interface vlan 10
 ```
 
 | Vị trí          | State cần kiểm tra                        | Bằng chứng                 |

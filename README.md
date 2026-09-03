@@ -66,7 +66,7 @@ Tài liệu được phân loại theo quyền sử dụng và vai trò tham kh�
 giảng không được tự động đưa vào public output; nội dung public là phần diễn
 giải độc lập, sơ đồ gốc hoặc tài liệu có quyền phân phối phù hợp. Khi cần
 thiết bị hoặc cú pháp vendor, trang học liên kết tới tài liệu chính thức và
-ghi rõ đó là phần bổ trợ.
+ghi rõ đó là phần bổ trợ. Xem thêm [SOURCE_POLICY.md](SOURCE_POLICY.md).
 
 ## Local development
 
