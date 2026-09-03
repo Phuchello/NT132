@@ -59,11 +59,11 @@ Linux Server có thể cung cấp hoặc tham gia DHCP/NAT, nhưng cơ chế pac
 
 Slide nhóm ba tên này dưới file service. Cần tách mô hình:
 
-| Cơ chế | Nó giải quyết | Điều không nên suy ra |
-| --- | --- | --- |
+| Cơ chế  | Nó giải quyết                                                                      | Điều không nên suy ra                                   |
+| ------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | **NFS** | Network filesystem model, thường gần với Unix/Linux permissions và mount semantics | Không phải mọi client đều truy cập giống một local disk |
-| **SMB** | Network file/share protocol phổ biến trong Windows và mixed environment | “Có share” không có nghĩa mọi user đều được authorize |
-| **FTP** | File-transfer protocol cho việc trao đổi file qua session | Không phải mounted filesystem model |
+| **SMB** | Network file/share protocol phổ biến trong Windows và mixed environment            | “Có share” không có nghĩa mọi user đều được authorize   |
+| **FTP** | File-transfer protocol cho việc trao đổi file qua session                          | Không phải mounted filesystem model                     |
 
 Với cả ba, hãy phân biệt storage, network reachability, sharing/session và authorization. FTP còn cần đánh giá security của deployment theo tài liệu chính thức; trang này không biến nó thành lựa chọn mặc định cho dữ liệu nhạy cảm.
 

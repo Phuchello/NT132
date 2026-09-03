@@ -41,12 +41,12 @@ VLAN, routing, DHCP, NAT/PAT và ACL quyết định đường đi đến host. 
 
 ## 3. So sánh theo quyền kiểm soát
 
-| Platform | Kiểm soát hệ điều hành | Ví dụ service gắn với course | Trách nhiệm thường gặp | Môi trường triển khai | Trang đi sâu |
-| --- | --- | --- | --- | --- | --- |
-| Windows Server | Tự quản lý guest OS, role, process, policy và network | Web + DNS, DHCP/NAT, file service, AD DS, VPN | Identity, policy, service state, patching, firewall và permissions | Server vật lý hoặc VM on-prem/cloud | [Windows Server](./windows-server/) |
-| Linux Server | Tự quản lý guest OS, daemon, package, network và permissions | Web + DNS, DHCP/NAT, NFS/SMB/FTP, Nagios/Zabbix, Squid, VPN | Process/daemon, package, logs, access control, firewall và service configuration | Server vật lý hoặc VM | [Linux Server](./linux-server/) |
-| Cloud VM | Tự quản lý guest OS và ứng dụng; cloud quản lý lớp hạ tầng bên dưới | Web + DNS trên Azure Virtual Machine | Guest OS, listener, OS firewall, cloud network rule, public endpoint và DNS | Azure VM | [Cloud Server](./cloud-server/) |
-| Managed app platform | Không quản lý guest OS theo cách của VM; tập trung vào app và boundary cấu hình | Web application trên App Service | Code, runtime setting, domain, access policy, dữ liệu và observability trong boundary | Azure App Service | [Cloud Server](./cloud-server/) |
+| Platform             | Kiểm soát hệ điều hành                                                          | Ví dụ service gắn với course                                | Trách nhiệm thường gặp                                                                | Môi trường triển khai               | Trang đi sâu                        |
+| -------------------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------- | ----------------------------------- |
+| Windows Server       | Tự quản lý guest OS, role, process, policy và network                           | Web + DNS, DHCP/NAT, file service, AD DS, VPN               | Identity, policy, service state, patching, firewall và permissions                    | Server vật lý hoặc VM on-prem/cloud | [Windows Server](./windows-server/) |
+| Linux Server         | Tự quản lý guest OS, daemon, package, network và permissions                    | Web + DNS, DHCP/NAT, NFS/SMB/FTP, Nagios/Zabbix, Squid, VPN | Process/daemon, package, logs, access control, firewall và service configuration      | Server vật lý hoặc VM               | [Linux Server](./linux-server/)     |
+| Cloud VM             | Tự quản lý guest OS và ứng dụng; cloud quản lý lớp hạ tầng bên dưới             | Web + DNS trên Azure Virtual Machine                        | Guest OS, listener, OS firewall, cloud network rule, public endpoint và DNS           | Azure VM                            | [Cloud Server](./cloud-server/)     |
+| Managed app platform | Không quản lý guest OS theo cách của VM; tập trung vào app và boundary cấu hình | Web application trên App Service                            | Code, runtime setting, domain, access policy, dữ liệu và observability trong boundary | Azure App Service                   | [Cloud Server](./cloud-server/)     |
 
 Các ô trong bảng là mô hình trách nhiệm, không phải quy tắc “mỗi platform chỉ chạy được một loại service”. Windows có thể chạy web; Linux có thể chạy DNS; cloud VM vẫn có OS. Điều thay đổi lớn nhất là **ranh giới kiểm soát và việc vận hành**.
 

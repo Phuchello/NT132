@@ -26,10 +26,10 @@ Cloud Server không có nghĩa là “không có operating system”. Với VM, 
 
 ![Ranh giới trách nhiệm Azure VM và App Service](../../static/diagrams/azure-vm-vs-app-service.svg)
 
-| Lựa chọn | Operator quản lý | Platform cung cấp/abstract |
-| --- | --- | --- |
-| **Azure Virtual Machine** | App, web server/runtime, guest OS, OS firewall, service listener, VM configuration và cloud network rule | Physical infrastructure và virtualization layer |
-| **Azure App Service** | Application, deployment, runtime settings trong boundary của service, domain mapping, access và dữ liệu | Nhiều phần của guest OS và server-platform operations; application không cần tự quản VM |
+| Lựa chọn                  | Operator quản lý                                                                                         | Platform cung cấp/abstract                                                              |
+| ------------------------- | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| **Azure Virtual Machine** | App, web server/runtime, guest OS, OS firewall, service listener, VM configuration và cloud network rule | Physical infrastructure và virtualization layer                                         |
+| **Azure App Service**     | Application, deployment, runtime settings trong boundary của service, domain mapping, access và dữ liệu  | Nhiều phần của guest OS và server-platform operations; application không cần tự quản VM |
 
 Đây là mô hình trách nhiệm trong phạm vi bài học, không phải shared-responsibility diagram chính thức của Microsoft. [Azure VM documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/overview) và [App Service overview](https://learn.microsoft.com/en-us/azure/app-service/overview) là nguồn bổ trợ cho các boundary này.
 
@@ -68,13 +68,13 @@ Custom domain vẫn cần một DNS mapping và quy trình verify/bind phù hợ
 
 ## 5. So sánh một workload web
 
-| Câu hỏi | Azure VM | Azure App Service |
-| --- | --- | --- |
-| Ai quản guest OS? | Operator | Platform abstract ở mức lớn hơn |
-| Ai chịu web server process? | Operator chọn/cấu hình trong VM | Operator triển khai app; service boundary quản phần hosting |
-| Domain trỏ tới đâu? | Public endpoint của VM/resource | App Service endpoint và custom-domain binding |
-| Failure cần tách? | Cloud rule, OS firewall, listener, app, DNS | Domain binding, service endpoint, runtime setting, app, policy |
-| Điều được đổi? | Control cao hơn, vận hành nhiều hơn | Control server thấp hơn, trách nhiệm app tập trung hơn |
+| Câu hỏi                     | Azure VM                                    | Azure App Service                                              |
+| --------------------------- | ------------------------------------------- | -------------------------------------------------------------- |
+| Ai quản guest OS?           | Operator                                    | Platform abstract ở mức lớn hơn                                |
+| Ai chịu web server process? | Operator chọn/cấu hình trong VM             | Operator triển khai app; service boundary quản phần hosting    |
+| Domain trỏ tới đâu?         | Public endpoint của VM/resource             | App Service endpoint và custom-domain binding                  |
+| Failure cần tách?           | Cloud rule, OS firewall, listener, app, DNS | Domain binding, service endpoint, runtime setting, app, policy |
+| Điều được đổi?              | Control cao hơn, vận hành nhiều hơn         | Control server thấp hơn, trách nhiệm app tập trung hơn         |
 
 Không có lựa chọn mặc định luôn đúng. Đánh giá theo control, compatibility, operational responsibility, security boundary, availability và administrative skill.
 

@@ -76,10 +76,10 @@ Course source gọi tên **Active Directory Domain Services** và các policy ou
 
 So sánh ngắn:
 
-| Local identity | Centralized domain identity/policy |
-| --- | --- |
-| Account và policy nằm trên từng máy | Directory service cung cấp một miền quản trị chung |
-| Khó giữ cấu hình đồng nhất khi số máy tăng | Policy/identity có thể được quản lý theo phạm vi tổ chức |
+| Local identity                                  | Centralized domain identity/policy                               |
+| ----------------------------------------------- | ---------------------------------------------------------------- |
+| Account và policy nằm trên từng máy             | Directory service cung cấp một miền quản trị chung               |
+| Khó giữ cấu hình đồng nhất khi số máy tăng      | Policy/identity có thể được quản lý theo phạm vi tổ chức         |
 | Truy cập resource phụ thuộc local configuration | Resource vẫn phải kiểm tra authorization theo identity và policy |
 
 Đây không phải chương AD DS/Group Policy administration: không đi vào forest, OU, object lifecycle hay quy trình cài role. [Microsoft Learn](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) là nguồn bổ trợ cho các thuật ngữ AD DS.

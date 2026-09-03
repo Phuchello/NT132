@@ -104,7 +104,7 @@
 
 ### M3.4 — Server Platforms
 
-- Current milestone: M3.4 — Server Platforms / implementation in progress.
+- Current milestone: M3.4 — Server Platforms / review pending.
 - Previous milestone: M3.3 — production complete.
 - M3.3 merge commit: `be922db5c6fb8506879a5ce541eded2354d74d54`.
 - M3.3 production workflow: run #58 / ID `33736529578`.
@@ -113,9 +113,14 @@
 - [x] Verify and read all three Class-B course PDFs in full.
 - [x] Record the source-scope boundary: platform/project objectives from Class B; detailed mechanics separately sourced or author-derived.
 - [x] Keep the source PDFs outside the repository.
-- [x] Begin the canonical gateway and Windows Server page.
-- [ ] Author Linux Server and Cloud Server pages, complete diagrams, run QA, and open one PR.
-- Exact Next Action: complete the source-grounded Windows, Linux, and Cloud Server platform pages, run artifact QA, then open one PR for mentor review.
+- [x] Author the locked gateway, Windows Server, Linux Server, and Cloud Server pages.
+- [x] Add six original focused diagrams and extend the generated-artifact audit with M3.4 routes/assets.
+- [x] Add service/platform traces, project-readiness prompts, troubleshooting hierarchies, and provenance sections.
+- [x] Complete 390px semantic/bounds review for all six diagrams.
+- [x] Run full local QA and generated-artifact audit.
+- [x] Complete honest rubric self-review: Windows 95/100, Linux 94/100, Cloud 95/100, average 94.7/100.
+- [ ] Push the complete M3.4 head, open one PR to main, request one Codex review, and stop before merge.
+- Exact Next Action: push the complete M3.4 head, open one PR to main, request one Codex review, then stop before merge.
 
 ## M4 — Exam preparation and exam intelligence
 

@@ -1,6 +1,6 @@
 # NT132 Project State
 
-Current milestone: M3.4 — Server Platforms / implementation in progress
+Current milestone: M3.4 — Server Platforms / review pending
 
 Previous milestone: M3.3 — production complete
 
@@ -33,6 +33,23 @@ M3.4 source checkpoint:
 - Verified and read all pages of 5.1 Windows Server.pdf (9 pages), 5.2 Linux Server.pdf (10 pages), and 5.3 Cloud Server.pdf (7 pages) from the canonical course-material directory.
 - Course scope is platform overview plus project objectives; detailed OS, proxy, monitoring, and Azure mechanics are labeled supplementary or author-derived.
 - Source PDFs remain reference inputs only and are not copied into the repository.
+
+M3.4 implementation checkpoint:
+
+- Added the locked gateway plus Windows Server, Linux Server, and Cloud Server pages.
+- Added six original focused diagrams: platform map, Windows service map, Linux service map, Web/DNS request path, monitoring flow, and Azure VM versus App Service responsibility.
+- Preserved the service-versus-platform mental model, shared VLAN 10/VLAN 20 scenario, platform-neutral troubleshooting hierarchy, and course project objectives.
+- Added source provenance on every page and kept README public material unchanged until release.
+- Windows Server self-review: 95/100. Weakness: detailed AD DS, file-permission, VPN, and role administration are intentionally deferred to later administration material.
+- Linux Server self-review: 94/100. Weakness: NFS/SMB/FTP and Squid remain conceptual rather than deployment labs.
+- Cloud Server self-review: 95/100. Weakness: Azure networking and App Service domain setup remain conceptual rather than portal or infrastructure labs.
+- All three pages meet the 90-point minimum; average self-review: 94.7/100.
+
+M3.4 verification checkpoint:
+
+- Full local QA, 390px SVG bounds/semantic review, canonical route generation, and generated-artifact audit pass.
+- Artifact audit: 155 public files, 82 HTML/route files, 1004 hrefs, 215 srcs, zero broken references, zero H1 violations, zero internal/scaffold terms, and zero public PDFs.
+- M3.1-M3.3 canonical routes remain covered by the audit.
 
 Latest reviewed implementation commit: 1662e5a516440cc57393930a6c4e45c91cbea2a9
 
@@ -102,9 +119,9 @@ M3.3 remediation checkpoint:
 - Added explicit troubleshooting/application prompts to DHCP, NAT, ACL, and ACL wildcard pages.
 - Refreshed README as a separate documentation commit after content remediation.
 
-Current blocker: none; M3.4 implementation is in progress
+Current blocker: Codex review and mentor review pending
 
-Exact Next Action: complete the source-grounded Windows, Linux, and Cloud Server platform pages, run artifact QA, then open one PR for mentor review
+Exact Next Action: push the complete M3.4 head, open one PR to main, request one Codex review, then stop before merge
 
 M3.2 final micro-remediation completed locally:
 
