@@ -298,8 +298,8 @@ Runtime state là cái kernel đang dùng ngay lúc quan sát. Nó có thể đ�
 Persistent state là configuration/profile mà environment dùng để dựng lại runtime state sau reboot hoặc network restart. Cơ chế này thay đổi theo distribution và môi trường:
 
 - NetworkManager thường dùng connection profiles, quan sát bằng `nmcli connection show` và kích hoạt bằng profile phù hợp.
-- Netplan là một lớp khai báo thường gặp trên Ubuntu, sau đó renderer như NetworkManager hoặc systemd-networkd áp dụng state.
-- systemd-networkd có model `.network`/`.netdev` riêng.
+- Netplan là một lớp khai báo thường gặp trên Ubuntu; YAML configuration chọn renderer `networkd` hoặc `NetworkManager`, rồi renderer áp dụng network state.
+- systemd-networkd dùng model file `.network`/`.netdev` riêng.
 
 Ví dụ NetworkManager ở mức khái niệm:
 
@@ -313,7 +313,7 @@ Tên profile, quyền và side effect phụ thuộc host. Không coi ba lệnh n
 
 ### LEGACY EXAMPLE: CentOS network-scripts
 
-Slide pages 37-38 dùng `/etc/sysconfig/network-scripts/ifcfg-eth0` với các key như `BOOTPROTO`, `IPV6INIT`, `IPV6ADDR` và `IPV6_DEFAULTGW`. Đây là **COURSE / CENTOS-ERA EXAMPLE**. Không dạy nó như “file network config của Linux” nói chung; current Red Hat-family releases và distribution khác có lifecycle/tooling khác nhau.
+Slide pages 37-38 dùng `/etc/sysconfig/network-scripts/ifcfg-eth0` với các key như `BOOTPROTO`, `IPV6INIT`, `IPV6ADDR` và `IPV6_DEFAULTGW`. Đây là **COURSE / CENTOS-ERA EXAMPLE**. Không dạy nó như “file network config của Linux” nói chung: tài liệu RHEL 8 gắn nhãn legacy network scripts là deprecated và khuyến nghị chuyển sang NetworkManager; distribution hoặc release khác có tooling riêng.
 
 ## 9. Tool → diagnostic question
 
@@ -496,6 +496,9 @@ Giả sử Linux Server ở Server VLAN 20 cung cấp web service cho client và
 - [useradd(8)](https://man7.org/linux/man-pages/man8/useradd.8.html), [usermod(8)](https://man7.org/linux/man-pages/man8/usermod.8.html), [groupdel(8)](https://man7.org/linux/man-pages/man8/groupdel.8.html), [credentials(7)](https://man7.org/linux/man-pages/man7/credentials.7.html) cho UID/GID, supplementary groups và state-change caveats.
 - [passwd(5)](https://man7.org/linux/man-pages/man5/passwd.5.html), [shadow(5)](https://man7.org/linux/man-pages/man5/shadow.5.html), [group(5)](https://man7.org/linux/man-pages/man5/group.5.html) cho local account-file roles.
 - [NetworkManager nm-settings-nmcli](https://www.networkmanager.dev/docs/api/latest/nm-settings-nmcli.html) và [nm-settings-keyfile](https://networkmanager.dev/docs/api/latest/nm-settings-keyfile.html) cho connection profile/persistent-state boundary.
+- [Netplan YAML configuration](https://netplan.readthedocs.io/en/latest/netplan-yaml/) cho declarative renderer `networkd`/`NetworkManager`; [systemd.network](https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html) và [systemd.netdev](https://www.freedesktop.org/software/systemd/man/latest/systemd.netdev.html) cho model `.network`/`.netdev` của systemd-networkd.
+- [ip(8)](https://man7.org/linux/man-pages/man8/ip.8.html), [ip-route(8)](https://man7.org/linux/man-pages/man8/ip-route.8.html) và [ss(8)](https://man7.org/linux/man-pages/man8/ss.8.html) cho quan sát interface/address/route và socket state.
+- [RHEL 8 legacy network scripts](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/assembly_legacy-network-scripts-support-in-rhel_configuring-and-managing-networking) cho ngữ cảnh `ifcfg`/network-scripts, deprecation và chuyển sang NetworkManager.
 - [nsswitch.conf(5)](https://man7.org/linux/man-pages/man5/nsswitch.conf.5.html), [resolv.conf(5)](https://man7.org/linux/man-pages/man5/resolv.conf.5.html) cho resolver policy và managed resolver state.
 - [OpenSSH manual](https://www.openssh.org/manual.html) và [ssh-keygen(1)](https://man.openbsd.org/ssh-keygen) cho algorithm-neutral host keys, fingerprints và `known_hosts` tooling.
 
