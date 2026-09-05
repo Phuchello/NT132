@@ -131,12 +131,14 @@
 
 ### M3.5 — Linux Administration
 
-- Current milestone: M3.5 — Linux Administration / implementation complete, review pending.
+- Current milestone: M3.5 — mentor PASS / release pending.
 - Previous milestone: M3.4 — production complete.
 - M3.4 merge commit: `cfb141f244fa5316e7193a6942f28d0b09ec85f1`.
 - M3.4 production workflow: run #65 / ID `33764849387`.
 - Current branch: `feat/m3-5-linux-administration`.
-- PR #9 is open against `main`; one Codex review request has been posted.
+- PR #9 is open against `main`; release is authorized.
+- Accepted head: `9c50ac079ae860e2bd9d17fca17182bb5da102aa`.
+- Mentor score: 95/100.
 - [x] Read all 53 pages of the Class-B source `6. Linux Adminstration.pdf` before authoring.
 - [x] Build a private source map and classify course, current, legacy, supplementary, and author-derived scope.
 - [x] Keep the source PDF outside the repository.
@@ -147,7 +149,7 @@
 - [x] Complete honest rubric self-review: Linux Administration 95/100, gateway 94/100.
 - [x] Push the candidate branch and open one PR to `main` (PR #9).
 - [x] Request one Codex review.
-- Exact Next Action: wait for mentor M3.5 review; do not merge and do not start Cloud Computing.
+- Exact Next Action: release CI -> squash merge -> production deploy -> smoke -> prepare M3.6.
 
 ## M4 — Exam preparation and exam intelligence
 

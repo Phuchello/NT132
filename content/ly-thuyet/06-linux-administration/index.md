@@ -4,7 +4,7 @@ description: Quan sát và thay đổi trạng thái Linux host từ shell, iden
 tags:
   - nt132
   - linux-administration
-status: candidate
+status: reviewed
 sources:
   - "6. Linux Adminstration.pdf"
 ---

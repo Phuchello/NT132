@@ -52,6 +52,8 @@ Các nội dung dưới đây thuộc baseline đang được xuất bản:
 - [Windows Server](https://phuchello.github.io/NT132/ly-thuyet/05-server-platforms/windows-server/)
 - [Linux Server](https://phuchello.github.io/NT132/ly-thuyet/05-server-platforms/linux-server/)
 - [Cloud Server](https://phuchello.github.io/NT132/ly-thuyet/05-server-platforms/cloud-server/)
+- [Linux Administration](https://phuchello.github.io/NT132/ly-thuyet/06-linux-administration/)
+- [Linux Administration — Quan sát, thay đổi và troubleshoot host](https://phuchello.github.io/NT132/ly-thuyet/06-linux-administration/linux-administration/)
 
 ## Feature highlights
 

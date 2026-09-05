@@ -4,7 +4,7 @@ description: "Quản trị Linux theo state: shell, privilege, UID/GID, network,
 tags:
   - nt132
   - linux-administration
-status: candidate
+status: reviewed
 sources:
   - "6. Linux Adminstration.pdf"
 ---
