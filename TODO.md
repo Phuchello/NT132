@@ -131,12 +131,12 @@
 
 ### M3.5 — Linux Administration
 
-- Current milestone: M3.5 — mentor PASS / release pending.
+- Current milestone: M3.5 — PRODUCTION PASS / CLOSED.
 - Previous milestone: M3.4 — production complete.
 - M3.4 merge commit: `cfb141f244fa5316e7193a6942f28d0b09ec85f1`.
 - M3.4 production workflow: run #65 / ID `33764849387`.
-- Current branch: `feat/m3-5-linux-administration`.
-- PR #9 is open against `main`; release is authorized.
+- PR #9 squash merge: `b662840a3a7cbf9488ec10d23a3bbf14032a6463`.
+- PR #9: merged into `main`.
 - Accepted head: `9c50ac079ae860e2bd9d17fca17182bb5da102aa`.
 - Mentor score: 95/100.
 - [x] Read all 53 pages of the Class-B source `6. Linux Adminstration.pdf` before authoring.
@@ -149,7 +149,22 @@
 - [x] Complete honest rubric self-review: Linux Administration 95/100, gateway 94/100.
 - [x] Push the candidate branch and open one PR to `main` (PR #9).
 - [x] Request one Codex review.
-- Exact Next Action: release CI -> squash merge -> production deploy -> smoke -> prepare M3.6.
+- Production workflow: run #74 / ID `33951676398`; artifact ID `9965026034`, digest `sha256:fcce6113a3914f39d503fdf107c42a4d6054acc7273e989c8fb3c0f6a2d5cfe7`; deployment and smoke PASS.
+
+### M3.6 — Cloud Computing
+
+- Current milestone: M3.6 — Cloud Computing / implementation complete, mentor review pending.
+- Previous milestone: M3.5 — production complete.
+- M3.5 production merge: `b662840a3a7cbf9488ec10d23a3bbf14032a6463`.
+- Current branch: `feat/m3-6-cloud-computing`.
+- [x] Read and privately source-map all 17 slides of the Class-B source as Virtualization Overview.
+- [x] Keep the source PDF outside the repository.
+- [x] Author the canonical Cloud Computing gateway and Virtualization Foundations chapter.
+- [x] Create five original mobile-first diagrams and extend artifact gates with canonical M3.6 routes/assets.
+- [x] Separate course virtualization concepts from supplementary NIST cloud delivery context.
+- [x] Run full M3.6 QA and generated-artifact review.
+- [x] Complete source-fidelity/self-review: Virtualization Foundations 94/100, gateway 93/100.
+- [x] Push the verified candidate and open one PR to `main` (PR #10).`r`n- Exact Next Action: wait for mentor M3.6 review; do not merge or start the next milestone.
 
 ## M4 — Exam preparation and exam intelligence
 
