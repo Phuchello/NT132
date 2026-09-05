@@ -426,8 +426,8 @@ Tên unit, quyền đọc log và cách service được khởi chạy phụ thu
 
 Giả sử Linux Server ở Server VLAN 20 cung cấp web service cho client và hostname là `server.example.test`. Client không mở được HTTPS. Mỗi bước phải trả lời một câu hỏi cụ thể:
 
-1. **Name resolution:** dùng `dig server.example.test` hoặc `host server.example.test`. Answer có đúng address/record kỳ vọng không?
-2. **Resolved address:** ghi lại IP mà client thực sự nhận; đừng troubleshoot một address khác với address trong answer.
+1. **Client name resolution:** dùng `getent ahosts server.example.test` để quan sát address qua NSS policy của client. Nếu cần cô lập DNS, dùng `dig` hoặc `host` riêng; DNS answer không thay thế kết quả system lookup.
+2. **Resolved address:** ghi lại IP mà client thực sự nhận từ NSS-aware lookup; đừng troubleshoot một address khác với address đó.
 3. **Client route:** dùng `ip route` trên client để biết destination đi qua interface/gateway nào.
 4. **Server interface/address:** trên server dùng `ip addr` và `ip link`; interface đúng, link up và prefix phù hợp chưa?
 5. **Server route:** nếu request cần reply qua gateway khác, dùng `ip route` để kiểm tra đường trả lời.
@@ -499,7 +499,7 @@ Giả sử Linux Server ở Server VLAN 20 cung cấp web service cho client và
 - [Netplan YAML configuration](https://netplan.readthedocs.io/en/latest/netplan-yaml/) cho declarative renderer `networkd`/`NetworkManager`; [systemd.network](https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html) và [systemd.netdev](https://www.freedesktop.org/software/systemd/man/latest/systemd.netdev.html) cho model `.network`/`.netdev` của systemd-networkd.
 - [ip(8)](https://man7.org/linux/man-pages/man8/ip.8.html), [ip-route(8)](https://man7.org/linux/man-pages/man8/ip-route.8.html) và [ss(8)](https://man7.org/linux/man-pages/man8/ss.8.html) cho quan sát interface/address/route và socket state.
 - [RHEL 8 legacy network scripts](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/assembly_legacy-network-scripts-support-in-rhel_configuring-and-managing-networking) cho ngữ cảnh `ifcfg`/network-scripts, deprecation và chuyển sang NetworkManager.
-- [nsswitch.conf(5)](https://man7.org/linux/man-pages/man5/nsswitch.conf.5.html), [resolv.conf(5)](https://man7.org/linux/man-pages/man5/resolv.conf.5.html) cho resolver policy và managed resolver state.
+- [nsswitch.conf(5)](https://man7.org/linux/man-pages/man5/nsswitch.conf.5.html), [getent(1)](https://man7.org/linux/man-pages/man1/getent.1.html), [resolv.conf(5)](https://man7.org/linux/man-pages/man5/resolv.conf.5.html) cho NSS-aware lookup, resolver policy và managed resolver state.
 - [OpenSSH manual](https://www.openssh.org/manual.html) và [ssh-keygen(1)](https://man.openbsd.org/ssh-keygen) cho algorithm-neutral host keys, fingerprints và `known_hosts` tooling.
 
 ### C. Discrepancies handled
