@@ -1,6 +1,6 @@
 # NT132 Project State
 
-Current milestone: M3.6 — Cloud Computing / implementation complete, QA pending
+Current milestone: M3.6 — Cloud Computing / implementation complete, mentor review pending
 
 Previous milestone: M3.5 — production complete
 
@@ -16,7 +16,7 @@ Latest production commit: b662840a3a7cbf9488ec10d23a3bbf14032a6463
 
 Production baseline: b662840a3a7cbf9488ec10d23a3bbf14032a6463
 
-Current PR: none — M3.6 content is local pending full QA and source-fidelity review
+Current PR: #10 — open against main; candidate head `662202cf57bd73afa6d967d6d5d75d142ae35672`
 
 M3.4 release checkpoint:
 
@@ -178,7 +178,7 @@ M3.6 verification checkpoint:
 - Artifact audit: 179 public files, 92 HTML/routes, 1171 hrefs, 261 srcs, zero broken href/src/srcset targets, H1 violations, public process terms, or restricted PDFs.
 - Five original SVGs rendered successfully at 390px. Windows image-preview tooling remains ACL-limited, so mobile semantic review uses the 390px render dimensions, explicit viewBox bounds, and source-level text/geometry inspection.
 - Honest self-review: Virtualization Foundations 94/100; gateway 93/100. Limitation: the course deck is conceptual and does not include an executable hypervisor lab or current vendor configuration guide.
-  Exact Next Action: commit and push the verified M3.6 candidate, open one PR for mentor review, then stop before merge
+  Exact Next Action: wait for mentor M3.6 review on PR #10; do not merge or start the next milestone
 
 M3.2 final micro-remediation completed locally:
 
