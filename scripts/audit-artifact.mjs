@@ -99,6 +99,11 @@ const requiredDiagrams = [
   "linux-name-resolution.svg",
   "ssh-host-key-trust.svg",
   "linux-service-state.svg",
+  "virtualization-abstraction-levels.svg",
+  "emulation-vs-virtualization.svg",
+  "vmm-host-guest.svg",
+  "hypervisor-types.svg",
+  "virtualization-to-cloud.svg",
 ]
 for (const diag of requiredDiagrams) {
   const diskPath = path.join("content", "static", "diagrams", diag)
@@ -151,6 +156,18 @@ for (const route of requiredM35Routes) {
   const routePath = path.join("public", ...route)
   if (!fs.existsSync(routePath)) {
     console.error("ERROR: Canonical Linux Administration route missing:", routePath)
+    brokenLinks++
+  }
+}
+
+const requiredM36Routes = [
+  ["ly-thuyet", "07-cloud-computing", "index.html"],
+  ["ly-thuyet", "07-cloud-computing", "virtualization-foundations", "index.html"],
+]
+for (const route of requiredM36Routes) {
+  const routePath = path.join("public", ...route)
+  if (!fs.existsSync(routePath)) {
+    console.error("ERROR: Canonical M3.6 route missing:", routePath)
     brokenLinks++
   }
 }

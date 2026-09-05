@@ -1,12 +1,12 @@
 # NT132 Project State
 
-Current milestone: M3.6 — Cloud Computing / awaiting mentor brief
+Current milestone: M3.6 — Cloud Computing / implementation complete, QA pending
 
 Previous milestone: M3.5 — production complete
 
 Current branch: feat/m3-6-cloud-computing
 
-Last safe checkpoint: M3.5 was mentor-accepted, squash-merged, deployed through GitHub Pages, and passed HTTPS production smoke verification. M3.6 is an empty handoff branch awaiting the mentor brief.
+Last safe checkpoint: M3.5 remains production complete. M3.6 now contains source-mapped Virtualization Foundations content and original diagrams; no PR or merge is authorized.
 
 M3.1 merge commit: 6ece18f2aad49aa1a899b68dbcf1af31834a1036
 
@@ -16,7 +16,7 @@ Latest production commit: b662840a3a7cbf9488ec10d23a3bbf14032a6463
 
 Production baseline: b662840a3a7cbf9488ec10d23a3bbf14032a6463
 
-Current PR: none — M3.5 PR #9 merged; do not open an M3.6 content PR before the mentor brief
+Current PR: none — M3.6 content is local pending full QA and source-fidelity review
 
 M3.4 release checkpoint:
 
@@ -164,8 +164,21 @@ M3.3 remediation checkpoint:
 M3.4 production closeout: PR #8 was squash-merged, workflow run #65 / ID `33764849387` passed Build site and Deploy site, and the deployed canonical routes passed the read-only HTTPS smoke audit.
 
 M3.5 production closeout: PRODUCTION PASS / CLOSED; accepted release head `e9769a0a5a148d32f98e9f5ca4492e5f0dd8423f`; PR #9 squash merge `b662840a3a7cbf9488ec10d23a3bbf14032a6463`; workflow run #74 / ID `33951676398`; Pages artifact ID `9965026034`, digest `sha256:fcce6113a3914f39d503fdf107c42a4d6054acc7273e989c8fb3c0f6a2d5cfe7`; production URL https://phuchello.github.io/NT132/; build/deploy and smoke PASS.
+M3.6 source and implementation checkpoint:
 
-Exact Next Action: wait for mentor M3.6 implementation prompt
+- Primary Class-B source: `8.1 Intro to Cloud computing.pdf` (17 slides), independently visually reviewed and mapped before authoring; the deck is Virtualization Overview despite its filename.
+- Course-derived scope: definition/abstraction levels, emulation versus virtualization, VM host/guest/VMM, process/system VM, Type 1/Type 2, full/para approaches, Xen/KVM/QEMU course examples, and server/storage/network virtualization.
+- Cloud delivery characteristics are explicitly supplementary NIST context; no SaaS/PaaS/IaaS or deployment-model teaching is attributed to the course deck.
+- Added the canonical Cloud Computing gateway, one substantive Virtualization Foundations chapter, five original mobile-first SVGs, and required-route/asset artifact gates.
+- Source PDF remains outside the repository. The local Windows image-preview helper had an ACL limitation; the full visual source map supplied for this branch is the authoring basis.
+
+M3.6 verification checkpoint:
+
+- `npm ci`, `npm run check`, `npm test` (76/76), Quartz build (40 Markdown inputs, 146 emitted files), route preparation (33 routes), route tests (6/6), artifact audit, and `git diff --check`: PASS.
+- Artifact audit: 179 public files, 92 HTML/routes, 1171 hrefs, 261 srcs, zero broken href/src/srcset targets, H1 violations, public process terms, or restricted PDFs.
+- Five original SVGs rendered successfully at 390px. Windows image-preview tooling remains ACL-limited, so mobile semantic review uses the 390px render dimensions, explicit viewBox bounds, and source-level text/geometry inspection.
+- Honest self-review: Virtualization Foundations 94/100; gateway 93/100. Limitation: the course deck is conceptual and does not include an executable hypervisor lab or current vendor configuration guide.
+  Exact Next Action: commit and push the verified M3.6 candidate, open one PR for mentor review, then stop before merge
 
 M3.2 final micro-remediation completed locally:
 

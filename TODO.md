@@ -153,12 +153,18 @@
 
 ### M3.6 — Cloud Computing
 
-- Current milestone: M3.6 — Cloud Computing / awaiting mentor brief.
+- Current milestone: M3.6 — Cloud Computing / implementation complete, QA pending.
 - Previous milestone: M3.5 — production complete.
 - M3.5 production merge: `b662840a3a7cbf9488ec10d23a3bbf14032a6463`.
 - Current branch: `feat/m3-6-cloud-computing`.
-- Exact Next Action: wait for mentor M3.6 implementation prompt.
-- Do not author M3.6 content or open an M3.6 content PR yet.
+- [x] Read and privately source-map all 17 slides of the Class-B source as Virtualization Overview.
+- [x] Keep the source PDF outside the repository.
+- [x] Author the canonical Cloud Computing gateway and Virtualization Foundations chapter.
+- [x] Create five original mobile-first diagrams and extend artifact gates with canonical M3.6 routes/assets.
+- [x] Separate course virtualization concepts from supplementary NIST cloud delivery context.
+- [x] Run full M3.6 QA and generated-artifact review.
+- [x] Complete source-fidelity/self-review: Virtualization Foundations 94/100, gateway 93/100.
+- Exact Next Action: commit/push the verified candidate and open one PR for mentor review. Do not merge.
 
 ## M4 — Exam preparation and exam intelligence
 
