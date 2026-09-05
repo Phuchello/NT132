@@ -1,22 +1,22 @@
 # NT132 Project State
 
-Current milestone: M3.5 — mentor PASS / release pending
+Current milestone: M3.6 — Cloud Computing / awaiting mentor brief
 
-Previous milestone: M3.4 — production complete
+Previous milestone: M3.5 — production complete
 
-Current branch: feat/m3-5-linux-administration
+Current branch: feat/m3-6-cloud-computing
 
-Last safe checkpoint: M3.4 received mentor PASS, PR #8 was squash-merged into main, and the production GitHub Pages build, deployment, and HTTPS smoke verification passed. M3.5 source review, authoring, diagrams, and QA are complete on the handoff branch.
+Last safe checkpoint: M3.5 was mentor-accepted, squash-merged, deployed through GitHub Pages, and passed HTTPS production smoke verification. M3.6 is an empty handoff branch awaiting the mentor brief.
 
 M3.1 merge commit: 6ece18f2aad49aa1a899b68dbcf1af31834a1036
 
 M3.1 production workflow: 33406354082
 
-Latest production commit: cfb141f244fa5316e7193a6942f28d0b09ec85f1
+Latest production commit: b662840a3a7cbf9488ec10d23a3bbf14032a6463
 
-Production baseline: cfb141f244fa5316e7193a6942f28d0b09ec85f1
+Production baseline: b662840a3a7cbf9488ec10d23a3bbf14032a6463
 
-Current PR: #9 — open; release authorized
+Current PR: none — M3.5 PR #9 merged; do not open an M3.6 content PR before the mentor brief
 
 M3.4 release checkpoint:
 
@@ -163,9 +163,9 @@ M3.3 remediation checkpoint:
 
 M3.4 production closeout: PR #8 was squash-merged, workflow run #65 / ID `33764849387` passed Build site and Deploy site, and the deployed canonical routes passed the read-only HTTPS smoke audit.
 
-M3.5 release checkpoint: mentor PASS / release pending; accepted head `9c50ac079ae860e2bd9d17fca17182bb5da102aa`; mentor score 95/100; PR #9.
+M3.5 production closeout: PRODUCTION PASS / CLOSED; accepted release head `e9769a0a5a148d32f98e9f5ca4492e5f0dd8423f`; PR #9 squash merge `b662840a3a7cbf9488ec10d23a3bbf14032a6463`; workflow run #74 / ID `33951676398`; Pages artifact ID `9965026034`, digest `sha256:fcce6113a3914f39d503fdf107c42a4d6054acc7273e989c8fb3c0f6a2d5cfe7`; production URL https://phuchello.github.io/NT132/; build/deploy and smoke PASS.
 
-Exact Next Action: release CI -> squash merge -> production deploy -> smoke -> prepare M3.6
+Exact Next Action: wait for mentor M3.6 implementation prompt
 
 M3.2 final micro-remediation completed locally:
 
