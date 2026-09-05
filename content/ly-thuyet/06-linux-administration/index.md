@@ -51,7 +51,7 @@ Với mọi sự cố, hãy hỏi theo cùng một nhịp:
 
 Ví dụ, “user không mở được file” không phải chỉ là một câu hỏi về password. Hãy tách `id` và `getent` để kiểm tra identity, group credentials để kiểm tra membership, permission của filesystem, rồi mới kiểm tra authorization của service/share.
 
-Mô hình này nối trực tiếp với [Linux Server](../05-server-platforms/linux-server/): platform cung cấp boundary, còn administration làm cho state trong boundary đó quan sát được và có thể kiểm chứng. [Tiếp theo khi phần đó được mở: Cloud Computing](../07-cloud-computing/).
+Mô hình này nối trực tiếp với [Linux Server](../05-server-platforms/linux-server/): platform cung cấp boundary, còn administration làm cho state trong boundary đó quan sát được và có thể kiểm chứng. [Tiếp theo trong lộ trình: Cloud Computing](../07-cloud-computing/).
 
 ## 3. Phạm vi và cách dùng trang
 
