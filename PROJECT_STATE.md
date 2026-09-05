@@ -1,28 +1,63 @@
 # NT132 Project State
 
-Current milestone: M3.4 — mentor PASS / release pending
+Current milestone: M3.5 — mentor PASS / release pending
 
-Previous milestone: M3.3 — production complete
+Previous milestone: M3.4 — production complete
 
-Current branch: feat/m3-4-server-platforms
+Current branch: feat/m3-5-linux-administration
 
-Last safe checkpoint: M3.3 received mentor PASS, PR #7 was squash-merged into main, and the release passed the production GitHub Pages build, deployment, and HTTPS smoke verification.
+Last safe checkpoint: M3.4 received mentor PASS, PR #8 was squash-merged into main, and the production GitHub Pages build, deployment, and HTTPS smoke verification passed. M3.5 source review, authoring, diagrams, and QA are complete on the handoff branch.
 
 M3.1 merge commit: 6ece18f2aad49aa1a899b68dbcf1af31834a1036
 
 M3.1 production workflow: 33406354082
 
-Latest production commit: be922db5c6fb8506879a5ce541eded2354d74d54
+Latest production commit: cfb141f244fa5316e7193a6942f28d0b09ec85f1
 
-Production baseline: be922db5c6fb8506879a5ce541eded2354d74d54
+Production baseline: cfb141f244fa5316e7193a6942f28d0b09ec85f1
 
-Current PR: #8
+Current PR: #9 — open; release authorized
 
 M3.4 release checkpoint:
 
 - Accepted substantive head: `285a46501f12f83eb6888ca2f759dc64e39bf61d`
 - Mentor score: 95/100 — ACCEPTED
-- Current PR: #8
+- PR #8 squash merge commit: `cfb141f244fa5316e7193a6942f28d0b09ec85f1`
+- Production workflow: run #65 / ID `33764849387`
+- Pages artifact: `github-pages`, ID `9897047491`, digest `sha256:e4b4dab1b6211298531fcc348680daa054bc951152928aa7f086866dbe6def89`
+- Production URL: https://phuchello.github.io/NT132/
+- Status: M3.4 — PRODUCTION PASS / CLOSED
+
+M3.5 source checkpoint:
+
+- Read all 53 pages of `6. Linux Adminstration.pdf` from the canonical course-material directory before authoring.
+- Built a private page/range source map covering architecture, boot, CLI/help, privilege, users/groups, account files, network state, DNS, tools, SSH, and network services.
+- Preserved course terminology while classifying CentOS/SysV-era examples as legacy and current Linux mechanisms as environment-dependent.
+- Source PDF remains a reference input only and is not copied into the repository.
+
+M3.5 implementation checkpoint:
+
+- Added the canonical Linux Administration gateway and one substantive chapter at `content/ly-thuyet/06-linux-administration/`.
+- Established the state-management model, legacy/current boot framing, UID/GID identity model, runtime versus persistent network model, resolver pipeline, SSH host-key trust model, and service operational-state model.
+- Added seven original mobile-first diagrams for architecture, boot comparison, identity, network troubleshooting, name resolution, SSH trust, and service state.
+- Extended `scripts/audit-artifact.mjs` with both canonical routes and all seven required M3.5 diagrams.
+- README carries the two Linux Administration production links for release.
+
+M3.5 verification checkpoint:
+
+- `npm ci`: PASS; no dependency changes; the existing 10 high-severity npm advisories remain reported by npm.
+- `npm run check`: PASS.
+- `npm test`: PASS (76/76).
+- Quartz build: PASS (39 Markdown files, 137 files emitted).
+- `npm run prepare-pages`: PASS (30 extensionless routes).
+- `npm run test:routes`: PASS (6/6).
+- `npm run test:audit`: PASS (167 public files, 86 HTML/route files, 1067 hrefs, 238 srcs, zero broken references, H1, term, or PDF violations).
+- Seven SVGs rendered at 390px and 1200px; title/desc, bounds, readable typography, and semantic geometry checks passed. The image preview helper was unavailable because of a Windows ACL helper failure; no clipping was found by the render and bounds checks.
+- Honest self-review: Linux Administration 95/100 (source fidelity 19/20, currentness 14/15, beginner clarity 14/15, mechanism reasoning 19/20, visual quality 9/10, recall 10/10, troubleshooting 5/5, navigation/provenance 5/5); gateway 94/100.
+- Known limitations: no distro-specific hands-on lab, and command behavior remains intentionally environment-dependent; later administration work can add lab depth.
+- Accepted head: `9c50ac079ae860e2bd9d17fca17182bb5da102aa`.
+- Mentor score: 95/100 — ACCEPTED.
+- PR #9 is open against `main`; release is authorized.
 
 M3.3 release checkpoint:
 
@@ -126,9 +161,11 @@ M3.3 remediation checkpoint:
 - Added explicit troubleshooting/application prompts to DHCP, NAT, ACL, and ACL wildcard pages.
 - Refreshed README as a separate documentation commit after content remediation.
 
-Current blocker: release pending after accepted M3.4 mentor review
+M3.4 production closeout: PR #8 was squash-merged, workflow run #65 / ID `33764849387` passed Build site and Deploy site, and the deployed canonical routes passed the read-only HTTPS smoke audit.
 
-Exact Next Action: release-only CI -> squash merge PR #8 -> production deploy -> smoke audit -> prepare M3.5 Linux Administration branch
+M3.5 release checkpoint: mentor PASS / release pending; accepted head `9c50ac079ae860e2bd9d17fca17182bb5da102aa`; mentor score 95/100; PR #9.
+
+Exact Next Action: release CI -> squash merge -> production deploy -> smoke -> prepare M3.6
 
 M3.2 final micro-remediation completed locally:
 

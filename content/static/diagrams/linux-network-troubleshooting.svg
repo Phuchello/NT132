@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 540" role="img" aria-labelledby="title desc">
+  <title id="title">Linux network troubleshooting ladder</title>
+  <desc id="desc">An ordered diagnostic ladder from interface and link through address, route, DNS, socket and application service.</desc>
+  <style>
+    .bg{fill:#f8fafc}.title{font:700 21px sans-serif;fill:#0f172a}.sub{font:12px sans-serif;fill:#475569}
+    .step{fill:#fff;stroke:#2563eb;stroke-width:2;rx:10}.last{fill:#ecfdf5;stroke:#059669;stroke-width:2;rx:10}.note{fill:#fff7ed;stroke:#ea580c;stroke-width:2;rx:10}
+    .h{font:700 15px sans-serif;fill:#0f172a}.t{font:12px sans-serif;fill:#334155}.line{stroke:#475569;stroke-width:3}
+  </style>
+  <rect class="bg" width="390" height="540"/>
+  <line class="line" x1="195" y1="122" x2="195" y2="140"/><line class="line" x1="195" y1="182" x2="195" y2="200"/><line class="line" x1="195" y1="242" x2="195" y2="260"/><line class="line" x1="195" y1="302" x2="195" y2="320"/><line class="line" x1="195" y1="362" x2="195" y2="380"/>
+  <rect class="step" x="28" y="77" width="334" height="45"/><rect class="step" x="28" y="140" width="334" height="42"/><rect class="step" x="28" y="200" width="334" height="42"/><rect class="step" x="28" y="260" width="334" height="42"/><rect class="step" x="28" y="320" width="334" height="42"/><rect class="last" x="28" y="380" width="334" height="45"/>
+  <rect class="note" x="28" y="455" width="334" height="55"/>
+  <text class="title" x="195" y="29" text-anchor="middle">Where should I inspect next?</text>
+  <text class="sub" x="195" y="50" text-anchor="middle">move down only after the previous state is understood</text>
+  <text class="h" x="195" y="105" text-anchor="middle">1. Interface / link</text><text class="h" x="195" y="167" text-anchor="middle">2. IP address / prefix</text><text class="h" x="195" y="227" text-anchor="middle">3. Route / gateway</text><text class="h" x="195" y="287" text-anchor="middle">4. DNS / resolver</text><text class="h" x="195" y="347" text-anchor="middle">5. Socket / listener</text><text class="h" x="195" y="408" text-anchor="middle">6. Application / service</text>
+  <text class="t" x="195" y="478" text-anchor="middle">ACL, firewall and path policy can affect</text><text class="t" x="195" y="496" text-anchor="middle">every hop; ping is not application proof.</text>
+</svg>

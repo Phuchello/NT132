@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 535" role="img" aria-labelledby="title desc">
+  <title id="title">Legacy and current Linux boot models</title>
+  <desc id="desc">The course legacy model is shown beside a current conceptual model so the terminology is not treated as universal.</desc>
+  <style>
+    .bg{fill:#f8fafc}.title{font:700 20px sans-serif;fill:#0f172a}.sub{font:12px sans-serif;fill:#475569}
+    .headL{fill:#fff7ed;stroke:#ea580c;stroke-width:2;rx:10}.headC{fill:#eff6ff;stroke:#2563eb;stroke-width:2;rx:10}
+    .boxL{fill:#fff;stroke:#f97316;stroke-width:1.6;rx:8}.boxC{fill:#fff;stroke:#3b82f6;stroke-width:1.6;rx:8}
+    .h{font:700 13px sans-serif;fill:#0f172a}.t{font:12px sans-serif;fill:#334155}.arrowL{stroke:#ea580c;stroke-width:2.2}.arrowC{stroke:#2563eb;stroke-width:2.2}
+  </style>
+  <rect class="bg" width="390" height="535"/>
+  <text class="title" x="195" y="28" text-anchor="middle">Two boot models</text>
+  <text class="sub" x="195" y="48" text-anchor="middle">course terminology beside current concept</text>
+  <rect class="headL" x="14" y="68" width="170" height="40"/>
+  <rect class="headC" x="206" y="68" width="170" height="40"/>
+  <text class="h" x="99" y="86" text-anchor="middle">COURSE / LEGACY</text>
+  <text class="t" x="99" y="101" text-anchor="middle">SysV-era reading</text>
+  <text class="h" x="291" y="86" text-anchor="middle">CURRENT CONCEPT</text>
+  <text class="t" x="291" y="101" text-anchor="middle">environment-aware</text>
+  <line class="arrowL" x1="99" y1="148" x2="99" y2="157"/><line class="arrowL" x1="99" y1="199" x2="99" y2="208"/><line class="arrowL" x1="99" y1="250" x2="99" y2="259"/><line class="arrowL" x1="99" y1="301" x2="99" y2="310"/><line class="arrowL" x1="99" y1="352" x2="99" y2="361"/>
+  <line class="arrowC" x1="291" y1="148" x2="291" y2="157"/><line class="arrowC" x1="291" y1="199" x2="291" y2="208"/><line class="arrowC" x1="291" y1="250" x2="291" y2="259"/><line class="arrowC" x1="291" y1="301" x2="291" y2="310"/><line class="arrowC" x1="291" y1="352" x2="291" y2="361"/>
+  <rect class="boxL" x="20" y="118" width="158" height="30"/><rect class="boxL" x="20" y="169" width="158" height="30"/><rect class="boxL" x="20" y="220" width="158" height="30"/><rect class="boxL" x="20" y="271" width="158" height="30"/><rect class="boxL" x="20" y="322" width="158" height="30"/><rect class="boxL" x="20" y="373" width="158" height="30"/>
+  <rect class="boxC" x="212" y="118" width="158" height="30"/><rect class="boxC" x="212" y="169" width="158" height="30"/><rect class="boxC" x="212" y="220" width="158" height="30"/><rect class="boxC" x="212" y="271" width="158" height="30"/><rect class="boxC" x="212" y="322" width="158" height="30"/><rect class="boxC" x="212" y="373" width="158" height="30"/>
+  <text class="t" x="99" y="138" text-anchor="middle">BIOS / firmware</text><text class="t" x="99" y="189" text-anchor="middle">MBR / boot record</text><text class="t" x="99" y="240" text-anchor="middle">kernel</text><text class="t" x="99" y="291" text-anchor="middle">SysV init / runlevel</text><text class="t" x="99" y="342" text-anchor="middle">startup scripts</text><text class="t" x="99" y="393" text-anchor="middle">login</text>
+  <text class="t" x="291" y="133" text-anchor="middle">BIOS or UEFI</text><text class="t" x="291" y="189" text-anchor="middle">bootloader</text><text class="t" x="291" y="231" text-anchor="middle">Linux kernel</text><text class="t" x="291" y="244" text-anchor="middle">(+ initramfs when used)</text><text class="t" x="291" y="291" text-anchor="middle">init system</text><text class="t" x="291" y="337" text-anchor="middle">services / targets</text><text class="t" x="291" y="393" text-anchor="middle">login / session</text>
+  <rect class="headC" x="33" y="440" width="324" height="54"/>
+  <text class="h" x="195" y="462" text-anchor="middle">Read the course model historically</text>
+  <text class="t" x="195" y="480" text-anchor="middle">and name the actual init environment.</text>
+</svg>

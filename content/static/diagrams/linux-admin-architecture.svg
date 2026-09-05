@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 470" role="img" aria-labelledby="title desc">
+  <title id="title">Linux administration architecture</title>
+  <desc id="desc">User and shell use an operating-system interface to reach the kernel, which manages hardware and network devices.</desc>
+  <style>
+    .bg{fill:#f8fafc}.title{font:700 22px sans-serif;fill:#0f172a}.sub{font:13px sans-serif;fill:#475569}
+    .layer{fill:#fff;stroke:#2563eb;stroke-width:2;rx:12}.interface{fill:#eff6ff;stroke:#0ea5e9;stroke-width:2;rx:12}
+    .kernel{fill:#ecfdf5;stroke:#059669;stroke-width:2;rx:12}.hardware{fill:#fff7ed;stroke:#ea580c;stroke-width:2;rx:12}
+    .h{font:700 16px sans-serif;fill:#0f172a}.t{font:13px sans-serif;fill:#334155}.arrow{stroke:#475569;stroke-width:3;fill:none}
+  </style>
+  <rect class="bg" width="390" height="470"/>
+  <line class="arrow" x1="195" y1="135" x2="195" y2="155"/>
+  <line class="arrow" x1="195" y1="220" x2="195" y2="245"/>
+  <line class="arrow" x1="195" y1="300" x2="195" y2="315"/>
+  <line class="arrow" x1="195" y1="370" x2="195" y2="395"/>
+  <rect class="layer" x="25" y="78" width="340" height="57"/>
+  <rect class="layer" x="25" y="155" width="340" height="65"/>
+  <rect class="interface" x="25" y="245" width="340" height="55"/>
+  <rect class="kernel" x="25" y="315" width="340" height="55"/>
+  <rect class="hardware" x="25" y="395" width="340" height="50"/>
+  <text class="title" x="195" y="31" text-anchor="middle">Linux host layers</text>
+  <text class="sub" x="195" y="53" text-anchor="middle">command → OS interface → managed resources</text>
+  <text class="h" x="195" y="102" text-anchor="middle">User</text>
+  <text class="t" x="195" y="122" text-anchor="middle">asks for an operation</text>
+  <text class="h" x="195" y="182" text-anchor="middle">Shell / Application</text>
+  <text class="t" x="195" y="203" text-anchor="middle">program or command interpreter</text>
+  <text class="h" x="195" y="269" text-anchor="middle">System calls / OS interface</text>
+  <text class="h" x="195" y="340" text-anchor="middle">Kernel</text>
+  <text class="t" x="195" y="360" text-anchor="middle">process · memory · files · network</text>
+  <text class="h" x="195" y="426" text-anchor="middle">Hardware / network devices</text>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 520" role="img" aria-labelledby="title desc">
+  <title id="title">Linux user and group identity mapping</title>
+  <desc id="desc">A user account maps names to UID and GID credentials, which a process uses for filesystem and service authorization.</desc>
+  <style>
+    .bg{fill:#f8fafc}.title{font:700 21px sans-serif;fill:#0f172a}.sub{font:12px sans-serif;fill:#475569}
+    .account{fill:#fff;stroke:#2563eb;stroke-width:2;rx:12}.cred{fill:#ecfdf5;stroke:#059669;stroke-width:2;rx:12}.auth{fill:#fff7ed;stroke:#ea580c;stroke-width:2;rx:12}
+    .h{font:700 16px sans-serif;fill:#0f172a}.t{font:13px sans-serif;fill:#334155}.small{font:12px sans-serif;fill:#475569}.line{stroke:#475569;stroke-width:3}
+  </style>
+  <rect class="bg" width="390" height="520"/>
+  <line class="line" x1="195" y1="235" x2="195" y2="270"/><line class="line" x1="195" y1="350" x2="195" y2="385"/>
+  <rect class="account" x="20" y="70" width="350" height="165"/>
+  <rect class="cred" x="20" y="270" width="350" height="80"/>
+  <rect class="auth" x="20" y="385" width="350" height="80"/>
+  <text class="title" x="195" y="30" text-anchor="middle">Name → numeric identity</text>
+  <text class="sub" x="195" y="51" text-anchor="middle">what permission checks actually use</text>
+  <text class="h" x="38" y="98">User account</text>
+  <text class="t" x="42" y="124">username: alice    UID: 1501</text>
+  <text class="t" x="42" y="150">primary GID: 1600</text>
+  <text class="t" x="42" y="176">supplementary: lab, web-read</text>
+  <text class="t" x="42" y="202">home: /home/alice</text>
+  <text class="h" x="195" y="300" text-anchor="middle">Process credentials</text>
+  <text class="small" x="195" y="326" text-anchor="middle">UID + primary GID + supplementary groups</text>
+  <text class="h" x="195" y="415" text-anchor="middle">Filesystem / service authorization</text>
+  <text class="small" x="195" y="441" text-anchor="middle">owner, group, ACL and service policy</text>
+</svg>

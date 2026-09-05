@@ -104,13 +104,15 @@
 
 ### M3.4 — Server Platforms
 
-- Current milestone: M3.4 — mentor PASS / release pending.
+- Current milestone: M3.4 — PRODUCTION PASS / CLOSED.
 - Previous milestone: M3.3 — production complete.
 - M3.3 merge commit: `be922db5c6fb8506879a5ce541eded2354d74d54`.
 - M3.3 production workflow: run #58 / ID `33736529578`.
-- Current branch: `feat/m3-4-server-platforms`.
-- Current PR: #8.
-- PR #8 is open; one Codex review request has been posted.
+- PR #8: squash-merged into `main`.
+- M3.4 merge commit: `cfb141f244fa5316e7193a6942f28d0b09ec85f1`.
+- M3.4 production workflow: run #65 / ID `33764849387`.
+- Pages artifact: `github-pages`, ID `9897047491`, digest `sha256:e4b4dab1b6211298531fcc348680daa054bc951152928aa7f086866dbe6def89`.
+- Production URL: https://phuchello.github.io/NT132/.
 - Accepted substantive head: `285a46501f12f83eb6888ca2f759dc64e39bf61d`.
 - Mentor score: 95/100 — ACCEPTED.
 - [x] Verify and read all three Class-B course PDFs in full.
@@ -126,8 +128,28 @@
 - [x] Request the single Codex review.
 - [x] Resolve current Codex P2 and mentor visual-semantic findings.
 - [x] Complete mentor re-review: 95/100 — ACCEPTED.
-- Current blocker: release pending after accepted M3.4 mentor review.
-- Exact Next Action: release-only CI -> squash merge PR #8 -> production deploy -> smoke audit -> prepare M3.5 Linux Administration branch
+
+### M3.5 — Linux Administration
+
+- Current milestone: M3.5 — mentor PASS / release pending.
+- Previous milestone: M3.4 — production complete.
+- M3.4 merge commit: `cfb141f244fa5316e7193a6942f28d0b09ec85f1`.
+- M3.4 production workflow: run #65 / ID `33764849387`.
+- Current branch: `feat/m3-5-linux-administration`.
+- PR #9 is open against `main`; release is authorized.
+- Accepted head: `9c50ac079ae860e2bd9d17fca17182bb5da102aa`.
+- Mentor score: 95/100.
+- [x] Read all 53 pages of the Class-B source `6. Linux Adminstration.pdf` before authoring.
+- [x] Build a private source map and classify course, current, legacy, supplementary, and author-derived scope.
+- [x] Keep the source PDF outside the repository.
+- [x] Author the canonical Linux Administration gateway and substantive chapter.
+- [x] Add seven original mobile-first diagrams.
+- [x] Extend the generated-artifact audit with M3.5 routes and diagrams.
+- [x] Run full QA, artifact audit, and 390px visual/semantic review.
+- [x] Complete honest rubric self-review: Linux Administration 95/100, gateway 94/100.
+- [x] Push the candidate branch and open one PR to `main` (PR #9).
+- [x] Request one Codex review.
+- Exact Next Action: release CI -> squash merge -> production deploy -> smoke -> prepare M3.6.
 
 ## M4 — Exam preparation and exam intelligence
 
