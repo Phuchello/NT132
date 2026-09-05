@@ -34,7 +34,7 @@ Linux Server platform
 | Làm sao thực thi lệnh an toàn?            | [Shell, help và privilege](./linux-administration/#3-shell-command-line-và-help)        | Quan sát trước khi thay đổi; hiểu root, `su`, `sudo`.       |
 | Một user thực sự gồm những gì?            | [User, group và UID/GID](./linux-administration/#5-user-group-và-identity)              | Liên hệ tên người dùng với numeric identity và quyền file.  |
 | Network host đang ở trạng thái nào?       | [Network state và tools](./linux-administration/#8-network-state-runtime-và-persistent) | Tách link, address, route, DNS và socket.                   |
-| Tên miền được phân giải qua đâu?          | [Resolver pipeline](./linux-administration/#10-dns-name-resolution-và-resolver-state)   | Dùng `dig`/`host` để quan sát, không nhầm với cấu hình DNS. |
+| Tên miền được phân giải qua đâu?          | [Resolver pipeline](./linux-administration/#10-dns-name-resolution-và-resolver-state)   | Phân biệt NSS/system lookup với DNS query.                  |
 | SSH có thể tin host nào?                  | [SSH host-key trust](./linux-administration/#11-ssh-và-remote-administration)           | Xác minh fingerprint; không bỏ qua key mismatch.            |
 | Service đã thực sự hoạt động chưa?        | [Operational service state](./linux-administration/#12-service-operational-state)       | Tách process, socket, path, log và application response.    |
 

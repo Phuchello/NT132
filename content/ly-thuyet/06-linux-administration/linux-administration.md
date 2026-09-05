@@ -317,18 +317,19 @@ Slide pages 37-38 dùng `/etc/sysconfig/network-scripts/ifcfg-eth0` với các k
 
 ## 9. Tool → diagnostic question
 
-| Tool           | Câu hỏi state mà nó trả lời                                     | Ghi chú currentness                                                  |
-| -------------- | --------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `ip link`      | Interface có tồn tại và link/administrative state ra sao?       | CURRENT PRIMARY MENTAL MODEL                                         |
-| `ip addr`      | Address/prefix nào đang được gắn?                               | CURRENT PRIMARY MENTAL MODEL                                         |
-| `ip route`     | Destination sẽ đi qua route/interface nào?                      | CURRENT PRIMARY MENTAL MODEL                                         |
-| `ping`         | ICMP/reachability path theo policy hiện tại có phản hồi không?  | Không chứng minh application health.                                 |
-| `ss`           | Socket nào đang listen hoặc connected?                          | CURRENT PRIMARY SOCKET TOOL                                          |
-| `dig` / `host` | Resolver trả answer nào cho query?                              | Không command nào trong hai lệnh này cấu hình DNS.                   |
-| `ssh`          | Có thể mở authenticated remote session tới host đáng tin không? | Kết hợp với host-key verification.                                   |
-| `ifconfig`     | Interface report theo tool lịch sử ra sao?                      | COURSE / LEGACY COMPATIBILITY                                        |
-| `route`        | Routing-table report theo tool lịch sử ra sao?                  | COURSE / LEGACY COMPATIBILITY                                        |
-| `netstat`      | Connection/socket/routing report theo tool lịch sử ra sao?      | COURSE / LEGACY COMPATIBILITY; `ss` thường là lựa chọn hiện đại hơn. |
+| Tool                             | Câu hỏi state mà nó trả lời                                     | Ghi chú currentness                                                  |
+| -------------------------------- | --------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `ip link`                        | Interface có tồn tại và link/administrative state ra sao?       | CURRENT PRIMARY MENTAL MODEL                                         |
+| `ip addr`                        | Address/prefix nào đang được gắn?                               | CURRENT PRIMARY MENTAL MODEL                                         |
+| `ip route`                       | Destination sẽ đi qua route/interface nào?                      | CURRENT PRIMARY MENTAL MODEL                                         |
+| `ping`                           | ICMP/reachability path theo policy hiện tại có phản hồi không?  | Không chứng minh application health.                                 |
+| `ss`                             | Socket nào đang listen hoặc connected?                          | CURRENT PRIMARY SOCKET TOOL                                          |
+| `getent hosts` / `getent ahosts` | Configured NSS hosts lookup trả về gì?                          | CURRENT NSS-AWARE LOOKUP                                             |
+| `dig` / `host`                   | DNS tự nó trả về gì cho query này?                              | Không command nào trong hai lệnh này cấu hình DNS.                   |
+| `ssh`                            | Có thể mở authenticated remote session tới host đáng tin không? | Kết hợp với host-key verification.                                   |
+| `ifconfig`                       | Interface report theo tool lịch sử ra sao?                      | COURSE / LEGACY COMPATIBILITY                                        |
+| `route`                          | Routing-table report theo tool lịch sử ra sao?                  | COURSE / LEGACY COMPATIBILITY                                        |
+| `netstat`                        | Connection/socket/routing report theo tool lịch sử ra sao?      | COURSE / LEGACY COMPATIBILITY; `ss` thường là lựa chọn hiện đại hơn. |
 
 `ping` thành công chỉ là evidence về ICMP/reachability trên path đã thử. ICMP có thể bị filter; ngược lại web service có thể fail dù ping thành công. Hãy dùng `ss`, application request và log để đi tiếp.
 
